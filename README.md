@@ -1,2 +1,2 @@
 # CaronaSocial
-![alt text](https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjM79ekqcblAhUnH7kGHU1ZDicQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.vandal.com.br%2Fcamisetas%2Festampa-os-mestres&psig=AOvVaw0zdn2VsBr5ScuC6mtp2GhF&ust=1572605255462881)
+Esse app é do balacobaco
