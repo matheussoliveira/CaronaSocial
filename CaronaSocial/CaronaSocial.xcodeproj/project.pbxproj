@@ -13,10 +13,11 @@
 		2F8126D4236AF608009294E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D2236AF608009294E2 /* Main.storyboard */; };
 		2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D5236AF60A009294E2 /* Assets.xcassets */; };
 		2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D7236AF60A009294E2 /* LaunchScreen.storyboard */; };
+		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2F8126C9236AF608009294E2 /* CaronaSocial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaronaSocial.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8126CC236AF608009294E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F8126CE236AF608009294E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2F8126D0236AF608009294E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +25,7 @@
 		2F8126D5236AF60A009294E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F8126D8236AF60A009294E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F8126DA236AF60A009294E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F7B599D23705A7600D7750B /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		2F8126C0236AF608009294E2 = {
 			isa = PBXGroup;
 			children = (
@@ -48,7 +57,7 @@
 		2F8126CA236AF608009294E2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2F8126C9236AF608009294E2 /* CaronaSocial.app */,
+				2F8126C9236AF608009294E2 /* Carona Social.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -60,9 +69,11 @@
 				2F8126CE236AF608009294E2 /* SceneDelegate.swift */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
+				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2F8126D5236AF60A009294E2 /* Assets.xcassets */,
 				2F8126D7236AF60A009294E2 /* LaunchScreen.storyboard */,
 				2F8126DA236AF60A009294E2 /* Info.plist */,
+				2F7B599D23705A7600D7750B /* Resourses */,
 			);
 			path = CaronaSocial;
 			sourceTree = "<group>";
@@ -84,7 +95,7 @@
 			);
 			name = CaronaSocial;
 			productName = CaronaSocial;
-			productReference = 2F8126C9236AF608009294E2 /* CaronaSocial.app */;
+			productReference = 2F8126C9236AF608009294E2 /* Carona Social.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
@@ -292,9 +304,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = oliveiramatheus.CaronaSocial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Carona Social";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,9 +322,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = oliveiramatheus.CaronaSocial;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Carona Social";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
