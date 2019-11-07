@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0A3A4E23743851004EB061 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4D23743851004EB061 /* Register.storyboard */; };
+		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
 		2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CE236AF608009294E2 /* SceneDelegate.swift */; };
 		2F8126D1236AF608009294E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126D0236AF608009294E2 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0A3A4D23743851004EB061 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8126CC236AF608009294E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F8126CE236AF608009294E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +43,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BD3DA99237457F100FEFD3D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0BD3DA9A237457F700FEFD3D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2F8126D0236AF608009294E2 /* ViewController.swift */,
+				2FF57D07237063240021732B /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		0BD3DA9B2374580000FEFD3D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0BD3DA9C2374581500FEFD3D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2F8126D2236AF608009294E2 /* Main.storyboard */,
+				0B0A3A4D23743851004EB061 /* Register.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		2F7B599D23705A7600D7750B /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
@@ -65,11 +102,12 @@
 		2F8126CB236AF608009294E2 /* CaronaSocial */ = {
 			isa = PBXGroup;
 			children = (
+				0BD3DA9C2374581500FEFD3D /* Storyboards */,
+				0BD3DA9B2374580000FEFD3D /* View */,
+				0BD3DA9A237457F700FEFD3D /* Controller */,
+				0BD3DA99237457F100FEFD3D /* Model */,
 				2F8126CC236AF608009294E2 /* AppDelegate.swift */,
 				2F8126CE236AF608009294E2 /* SceneDelegate.swift */,
-				2F8126D0236AF608009294E2 /* ViewController.swift */,
-				2F8126D2236AF608009294E2 /* Main.storyboard */,
-				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2F8126D5236AF60A009294E2 /* Assets.xcassets */,
 				2F8126D7236AF60A009294E2 /* LaunchScreen.storyboard */,
 				2F8126DA236AF60A009294E2 /* Info.plist */,
@@ -139,6 +177,7 @@
 				2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */,
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F8126D4236AF608009294E2 /* Main.storyboard in Resources */,
+				0B0A3A4E23743851004EB061 /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
@@ -297,7 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ4Y7Q4FJ2;
+				DEVELOPMENT_TEAM = FKFGBBGDU2;
 				INFOPLIST_FILE = CaronaSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -315,7 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ4Y7Q4FJ2;
+				DEVELOPMENT_TEAM = FKFGBBGDU2;
 				INFOPLIST_FILE = CaronaSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
