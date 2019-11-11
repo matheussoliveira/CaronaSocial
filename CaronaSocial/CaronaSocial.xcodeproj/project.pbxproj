@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B0A3A4E23743851004EB061 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4D23743851004EB061 /* Register.storyboard */; };
+		0B0A3A4E23743851004EB061 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4D23743851004EB061 /* Registration.storyboard */; };
 		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		0D09783D7B6127CCE34DB794 /* Pods_CaronaSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */; };
+		2F399F52237985420043B210 /* RegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F51237985420043B210 /* RegistrationTableViewController.swift */; };
+		2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F5423799FB90043B210 /* FirebaseManager.swift */; };
 		2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F59E81B23745BB600D45612 /* GoogleService-Info.plist */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
 		2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CE236AF608009294E2 /* SceneDelegate.swift */; };
@@ -21,8 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B0A3A4D23743851004EB061 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		0B0A3A4D23743851004EB061 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
 		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		2F399F51237985420043B210 /* RegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTableViewController.swift; sourceTree = "<group>"; };
+		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8126CC236AF608009294E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,7 @@
 			children = (
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
+				2F399F51237985420043B210 /* RegistrationTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -78,9 +83,17 @@
 			isa = PBXGroup;
 			children = (
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
-				0B0A3A4D23743851004EB061 /* Register.storyboard */,
+				0B0A3A4D23743851004EB061 /* Registration.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2F399F5323799F890043B210 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2F399F5423799FB90043B210 /* FirebaseManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		2F7B599D23705A7600D7750B /* Resourses */ = {
@@ -113,6 +126,7 @@
 			children = (
 				0BD3DA9C2374581500FEFD3D /* Storyboards */,
 				0BD3DA9B2374580000FEFD3D /* View */,
+				2F399F5323799F890043B210 /* Database */,
 				0BD3DA9A237457F700FEFD3D /* Controller */,
 				0BD3DA99237457F100FEFD3D /* Model */,
 				2F8126CC236AF608009294E2 /* AppDelegate.swift */,
@@ -155,6 +169,7 @@
 				2F8126C6236AF608009294E2 /* Frameworks */,
 				2F8126C7236AF608009294E2 /* Resources */,
 				C59A33D73924CA9D415F05DC /* [CP] Embed Pods Frameworks */,
+				B7F67D90F17BBAE87772898D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,7 +222,7 @@
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */,
 				2F8126D4236AF608009294E2 /* Main.storyboard in Resources */,
-				0B0A3A4E23743851004EB061 /* Register.storyboard in Resources */,
+				0B0A3A4E23743851004EB061 /* Registration.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +251,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B7F67D90F17BBAE87772898D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C59A33D73924CA9D415F05DC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,8 +294,10 @@
 			files = (
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
+				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
+				2F399F52237985420043B210 /* RegistrationTableViewController.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
