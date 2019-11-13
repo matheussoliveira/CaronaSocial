@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
-struct User {
+struct UserModel {
     let email: String
     let name: String
     let cpf: String

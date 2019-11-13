@@ -10,17 +10,18 @@ import Foundation
 import UIKit
 
 //Colors
-struct Colors {
-    let textFieldBottomLine = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+extension UIColor {
+    static let textFieldBottomLine: UIColor = #colorLiteral(red: 0.6666666667, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+    static let customBlue: UIColor = #colorLiteral(red: 0.1137254902, green: 0.4470588235, blue: 1, alpha: 1)
 }
 
 //Put bottom line in a text field
 extension UITextField {
-    func setBottomBorder(color: String) {
+    func setBottomBorder(color: UIColor) {
         self.borderStyle = UITextField.BorderStyle.none
         let border = CALayer()
-        let width = CGFloat(1.0)
-        border.borderColor = UIColor(named: color)!.cgColor
+        let width = CGFloat(2.0)
+        border.borderColor = color.cgColor
         border.frame = CGRect(x: 0,
                               y: self.frame.size.height - width,
                               width:  self.frame.size.width,
