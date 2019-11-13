@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import FirebaseUI
 
 class LoginViewController: UIViewController {
@@ -14,11 +15,24 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        emailField.layer.borderColor = #colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1).cgColor
+        emailField.setBottomBorder(color: .textFieldBottomLine)
+        passwordField.setBottomBorder(color: .textFieldBottomLine)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
     
     @IBAction func registragionButton(_ sender: Any) {
         FirebaseAuthManager().createUser(email: emailField.text!, password: passwordField.text!) {
