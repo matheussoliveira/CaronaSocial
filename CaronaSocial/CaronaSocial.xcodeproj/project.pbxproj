@@ -21,6 +21,11 @@
 		2FA541A0237C32E6001B319F /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA5419F237C32E6001B319F /* AppInfo.storyboard */; };
 		2FA541A3237C3605001B319F /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA541A2237C3605001B319F /* AppInfoViewController.swift */; };
 		2FA541A5237C362E001B319F /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA541A4237C362D001B319F /* RegisterTableViewController.swift */; };
+		2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */; };
+		2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED90237D899F00D43349 /* DriverModel.swift */; };
+		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
+		2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */; };
+		2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8ED96237D900F00D43349 /* Home.storyboard */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +46,11 @@
 		2FA5419F237C32E6001B319F /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		2FA541A2237C3605001B319F /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		2FA541A4237C362D001B319F /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
+		2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		2FA8ED90237D899F00D43349 /* DriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
+		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
+		2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		2FA8ED96237D900F00D43349 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +73,7 @@
 		0BD3DA9A237457F700FEFD3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2FA541A2237C3605001B319F /* AppInfoViewController.swift */,
@@ -85,6 +96,7 @@
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
 				2FA5419D237C32C4001B319F /* Register.storyboard */,
 				2FA5419F237C32E6001B319F /* AppInfo.storyboard */,
+				2FA8ED96237D900F00D43349 /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -93,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				2F399F5423799FB90043B210 /* FirebaseManager.swift */,
+				2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -153,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				9C1A9C532379B1FB00734AA7 /* UserModel.swift */,
+				2FA8ED90237D899F00D43349 /* DriverModel.swift */,
+				2FA8ED92237D8B3400D43349 /* PassengerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -235,6 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */,
 				2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */,
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */,
@@ -311,11 +327,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
+				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
+				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				2FA541A3237C3605001B319F /* AppInfoViewController.swift in Sources */,
 				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
+				2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */,
+				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2FA541A5237C362E001B319F /* RegisterTableViewController.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,

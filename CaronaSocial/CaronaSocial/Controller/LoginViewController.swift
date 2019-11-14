@@ -9,11 +9,16 @@
 import UIKit
 import Foundation
 import FirebaseUI
+import FirebaseDatabase
+import Firebase
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    // Database test
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +67,14 @@ class LoginViewController: UIViewController {
     }
     
     
+    // Database test
+    @IBAction func usersTest(_ sender: Any) {
+        //observeUsers()
+        FirestoreManager.shared.buildDrivers()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0, execute: {
+            self.performSegue(withIdentifier: "goToHome", sender: self)
+        })
+    }
 }
 
 // Put this piece of code anywhere you like

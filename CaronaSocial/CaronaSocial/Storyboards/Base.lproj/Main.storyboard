@@ -119,6 +119,21 @@
                                     <segue destination="wFb-Yd-8Ii" kind="show" id="lP2-20-cvA"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWu-s6-APV">
+                                <rect key="frame" x="16" y="756" width="382" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Testar usuários">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="usersTest:" destination="baH-tp-s1a" eventType="touchUpInside" id="H6q-EM-TX5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -138,10 +153,12 @@
                             <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="8Wc-EI-eHS" secondAttribute="trailing" constant="16" id="LgS-fw-9x5"/>
                             <constraint firstItem="095-23-Cts" firstAttribute="top" secondItem="NCK-S0-iYJ" secondAttribute="bottom" constant="32" id="Lnc-vo-N8w"/>
                             <constraint firstAttribute="trailing" secondItem="YLF-gR-aVK" secondAttribute="trailing" constant="16" id="MtX-Yj-jEy"/>
+                            <constraint firstItem="XWu-s6-APV" firstAttribute="top" secondItem="3LB-4C-CVv" secondAttribute="bottom" constant="64" id="SZz-ck-SIo"/>
                             <constraint firstItem="KZ4-jR-Yyx" firstAttribute="leading" secondItem="2my-hz-vt1" secondAttribute="leading" constant="16" id="Vc4-Qi-xHz"/>
                             <constraint firstItem="Yf0-sO-OzR" firstAttribute="centerY" secondItem="3LB-4C-CVv" secondAttribute="centerY" id="gtc-kf-MK1"/>
                             <constraint firstItem="KZ4-jR-Yyx" firstAttribute="top" secondItem="095-23-Cts" secondAttribute="bottom" constant="32" id="hl2-EG-8sm"/>
                             <constraint firstItem="lQc-J0-VxM" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="hsc-Mu-nvw"/>
+                            <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="XWu-s6-APV" secondAttribute="trailing" constant="16" id="lHV-Gm-Dp2"/>
                             <constraint firstItem="kxk-nb-HLx" firstAttribute="top" secondItem="qlp-rt-tHS" secondAttribute="top" constant="160" id="lma-3O-jWf"/>
                             <constraint firstItem="YLF-gR-aVK" firstAttribute="centerY" secondItem="Od6-d8-bWa" secondAttribute="centerY" id="mzr-0H-oLw"/>
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="leading" secondItem="KZ4-jR-Yyx" secondAttribute="trailing" constant="8" id="pzH-I2-ulS"/>
@@ -149,6 +166,7 @@
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="centerY" secondItem="KZ4-jR-Yyx" secondAttribute="centerY" id="qPw-RV-dFV"/>
                             <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="095-23-Cts" secondAttribute="trailing" constant="16" id="r9o-tM-PSy"/>
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="centerX" secondItem="qlp-rt-tHS" secondAttribute="centerX" id="sFB-NH-FyY"/>
+                            <constraint firstItem="XWu-s6-APV" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="uwz-gF-cXX"/>
                             <constraint firstItem="lQc-J0-VxM" firstAttribute="top" secondItem="dOb-Fq-DUH" secondAttribute="bottom" constant="16" id="xfe-Tl-s2d"/>
                             <constraint firstItem="NCK-S0-iYJ" firstAttribute="top" secondItem="lQc-J0-VxM" secondAttribute="bottom" constant="16" id="yNU-1p-0wl"/>
                         </constraints>
@@ -159,6 +177,7 @@
                         <outlet property="emailField" destination="dOb-Fq-DUH" id="PED-Uz-Cj0"/>
                         <outlet property="passwordField" destination="lQc-J0-VxM" id="cMU-aq-kun"/>
                         <segue destination="T2j-yq-CVV" kind="show" identifier="goToRegistration" id="SfA-wL-A2C"/>
+                        <segue destination="vSt-aL-nRU" kind="show" identifier="goToHome" id="qEe-gd-oQB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfb-9B-eec" sceneMemberID="firstResponder"/>
@@ -174,6 +193,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UN6-x4-Sjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2481.8840579710145" y="304.6875"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="HId-p0-uS7">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="vSt-aL-nRU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xTQ-j4-O3y"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jej-iH-gpc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2478" y="369"/>
         </scene>
         <!--AppInfo-->
         <scene sceneID="9id-FA-cYs">
