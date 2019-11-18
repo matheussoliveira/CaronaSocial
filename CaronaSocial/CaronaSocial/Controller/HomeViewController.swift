@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var day = ["Manhã", "Tarde", "Noite"]
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 3
@@ -19,6 +21,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = homeTableView.dequeueReusableCell(withIdentifier: "cell") as! HomeTableViewCell
 
+        cell.title.text = day[indexPath.row]
         
         return cell
         
@@ -31,6 +34,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // Do any additional setup after loading the view.
     }
+    
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        performSegue(withIdentifier: "rideDetail", sender: self)
+        
+    }
+    
+
     
 
     /*
