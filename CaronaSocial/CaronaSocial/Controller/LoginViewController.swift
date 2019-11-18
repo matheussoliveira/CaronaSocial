@@ -9,11 +9,16 @@
 import UIKit
 import Foundation
 import FirebaseUI
+import FirebaseDatabase
+import Firebase
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    
+    // Database test
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -60,6 +65,13 @@ class LoginViewController: UIViewController {
             }
         } else { print("Oloko") }
     }
+    
+    
+    // Database test
+    @IBAction func usersTest(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToHome", sender: self)
+    }
+    
     
     
 }
