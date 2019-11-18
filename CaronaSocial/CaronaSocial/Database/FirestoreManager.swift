@@ -16,6 +16,8 @@ class FirestoreManager {
     var driversArray: [DriverModel] = []
 
     func observeUsers() {
+        // Let us obeserve users propresties from
+        // Firestore database
         db.collection("driver").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -27,7 +29,10 @@ class FirestoreManager {
         }
     }
     
-    func buildDrivers() {
+    func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {
+        // Take all drivers from our Firestore databse and
+        // transform it into a DriverModel object
+        self.driversArray = []
         db.collection("driver").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
@@ -39,6 +44,8 @@ class FirestoreManager {
                                              accessibility: document.data()["accessibility"] as! Bool,
                                              location: document.data()["location"] as! String)
                     self.driversArray.append(driver)
+                    let drivers = self.driversArray
+                    completion(drivers)
                 }
             }
         }

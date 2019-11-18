@@ -9,15 +9,19 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    
+    var drivers: [DriverModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        FirestoreManager.shared.buildDrivers { (drivers) in
+            self.drivers = drivers
+            OperationQueue.main.addOperation {
+               self.tableView.reloadData()
+            }
+        }
+        
     }
 
     // MARK: - Table view data source
@@ -28,20 +32,17 @@ class HomeTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print(FirestoreManager.shared.driversArray.count)
-        return  FirestoreManager.shared.driversArray.count
+        return self.drivers?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "driversCell", for: indexPath)
-        print(indexPath.row)
-        let driver = FirestoreManager.shared.driversArray[indexPath.row] as! DriverModel
-        cell.textLabel?.text = driver.name
-        // Configure the cell...
         
-
+        if let driver = drivers?[indexPath.row] {
+            cell.textLabel?.text = driver.name
+        }
+        
         return cell
     }
 
