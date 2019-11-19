@@ -40,7 +40,7 @@ func createUser(email: String, password: String, completionBlock: @escaping (_ s
     }
 }
 
-func completeSignIn(id: String){
+func completeSignIn(id: String) {
     keyChain.set(id, forKey: "uid")
 }
 
@@ -65,6 +65,20 @@ func handleError(_ error: Error) -> UIAlertController{
     }
     return UIAlertController()
 }
+    
+    static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
+        let dataTask = URLSession.shared.dataTask(with: url) { data, url, error in
+            var downloadedImage: UIImage?
+            if let data = data {
+                downloadedImage = UIImage(data: data)
+            }
+            DispatchQueue.main.async {
+                completion(downloadedImage)
+            }
+        }
+        
+        dataTask.resume()
+    }
 
 }
 
