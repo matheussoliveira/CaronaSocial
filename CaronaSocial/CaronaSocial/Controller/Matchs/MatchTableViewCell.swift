@@ -10,8 +10,8 @@ import UIKit
 
 class MatchTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var rideName: UILabel!
-    @IBOutlet weak var rideNumber: UILabel!
+    @IBOutlet weak var driver: UILabel!
+    @IBOutlet weak var vacantPlaces: UILabel!
     @IBOutlet weak var distance: UILabel!
     
     override func awakeFromNib() {

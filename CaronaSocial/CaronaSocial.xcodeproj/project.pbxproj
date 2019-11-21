@@ -27,6 +27,7 @@
 		3AC9CB002382DA1E00F4F17A /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC9CAFF2382DA1E00F4F17A /* MatchTableViewCell.swift */; };
 		3ACF0CCC237D911900D980AB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACF0CCB237D911900D980AB /* HomeViewController.swift */; };
 		3ACF0CCE237D913600D980AB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ACF0CCD237D913600D980AB /* Home.storyboard */; };
+		3AF1E9932386BE9500615FEB /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1E9922386BE9500615FEB /* DriverViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		3AC9CAFF2382DA1E00F4F17A /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		3ACF0CCB237D911900D980AB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3ACF0CCD237D913600D980AB /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		3AF1E9922386BE9500615FEB /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -73,9 +75,9 @@
 		0BD3DA9A237457F700FEFD3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3AF1E9912386BE5B00615FEB /* Home */,
 				3AC9CAFC2382D9EE00F4F17A /* Matchs */,
-				3ACF0CCB237D911900D980AB /* HomeViewController.swift */,
-				3A1EAFDB237D951A00350F8E /* HomeTableViewCell.swift */,
+				3AF1E9922386BE9500615FEB /* DriverViewController.swift */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2F399F51237985420043B210 /* RegistrationTableViewController.swift */,
@@ -162,6 +164,15 @@
 				3AC9CAFF2382DA1E00F4F17A /* MatchTableViewCell.swift */,
 			);
 			path = Matchs;
+			sourceTree = "<group>";
+		};
+		3AF1E9912386BE5B00615FEB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3ACF0CCB237D911900D980AB /* HomeViewController.swift */,
+				3A1EAFDB237D951A00350F8E /* HomeTableViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		9C1A9C552379B20900734AA7 /* Model */ = {
@@ -331,6 +342,7 @@
 				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
+				3AF1E9932386BE9500615FEB /* DriverViewController.swift in Sources */,
 				3ACF0CCC237D911900D980AB /* HomeViewController.swift in Sources */,
 				3AC9CB002382DA1E00F4F17A /* MatchTableViewCell.swift in Sources */,
 				3A1EAFDC237D951A00350F8E /* HomeTableViewCell.swift in Sources */,

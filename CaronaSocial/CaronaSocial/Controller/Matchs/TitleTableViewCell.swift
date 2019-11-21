@@ -10,7 +10,7 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var rideNumber: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

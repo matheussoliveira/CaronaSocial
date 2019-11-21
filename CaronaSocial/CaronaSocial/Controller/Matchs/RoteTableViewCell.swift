@@ -11,8 +11,10 @@ import UIKit
 class RoteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var period: UILabel!
-    @IBOutlet weak var schudle: UILabel!
-    @IBOutlet weak var rote: UILabel!
+    @IBOutlet weak var departureTime: UILabel!
+    @IBOutlet weak var arrivalTime: UILabel!
+    @IBOutlet weak var start: UILabel!
+    @IBOutlet weak var destiny: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
