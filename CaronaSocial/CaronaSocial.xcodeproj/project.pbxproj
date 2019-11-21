@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B0A3A4E23743851004EB061 /* RegisterOld.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4D23743851004EB061 /* RegisterOld.storyboard */; };
 		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */; };
 		0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */; };
@@ -21,7 +20,6 @@
 		0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */; };
 		0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A252383A036003BA510 /* TitleTableViewCell.swift */; };
 		0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */; };
-		0BD3DA9E23745F5400FEFD3D /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3DA9D23745F5400FEFD3D /* RegisterTableViewController.swift */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
 		2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CE236AF608009294E2 /* SceneDelegate.swift */; };
 		2F8126D1236AF608009294E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126D0236AF608009294E2 /* ViewController.swift */; };
@@ -32,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B0A3A4D23743851004EB061 /* RegisterOld.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterOld.storyboard; sourceTree = "<group>"; };
 		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +43,6 @@
 		0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A252383A036003BA510 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
-		0BD3DA9D23745F5400FEFD3D /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8126CC236AF608009294E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F8126CE236AF608009294E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,7 +93,6 @@
 				0BA29A2123839603003BA510 /* RegisterViewController.swift */,
 				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
-				0BD3DA9D23745F5400FEFD3D /* RegisterTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,7 +113,6 @@
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
 				0BA29A1F238394E7003BA510 /* Register.storyboard */,
 				0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */,
-				0B0A3A4D23743851004EB061 /* RegisterOld.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -226,7 +220,6 @@
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F8126D4236AF608009294E2 /* Main.storyboard in Resources */,
 				0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */,
-				0B0A3A4E23743851004EB061 /* RegisterOld.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +241,6 @@
 				0B4222042384083C00A89E5E /* ImageTableViewCell.swift in Sources */,
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
-				0BD3DA9E23745F5400FEFD3D /* RegisterTableViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
