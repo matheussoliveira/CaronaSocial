@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,13 +20,22 @@
 		0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */; };
 		0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A252383A036003BA510 /* TitleTableViewCell.swift */; };
 		0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */; };
+		0D09783D7B6127CCE34DB794 /* Pods_CaronaSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */; };
+		2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F5423799FB90043B210 /* FirebaseManager.swift */; };
+		2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F59E81B23745BB600D45612 /* GoogleService-Info.plist */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
 		2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CE236AF608009294E2 /* SceneDelegate.swift */; };
 		2F8126D1236AF608009294E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126D0236AF608009294E2 /* ViewController.swift */; };
 		2F8126D4236AF608009294E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D2236AF608009294E2 /* Main.storyboard */; };
 		2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D5236AF60A009294E2 /* Assets.xcassets */; };
 		2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F8126D7236AF60A009294E2 /* LaunchScreen.storyboard */; };
+		2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */; };
+		2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED90237D899F00D43349 /* DriverModel.swift */; };
+		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
+		2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */; };
+		2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8ED96237D900F00D43349 /* Home.storyboard */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
+		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +52,8 @@
 		0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A252383A036003BA510 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F8126CC236AF608009294E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2F8126CE236AF608009294E2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,7 +62,17 @@
 		2F8126D5236AF60A009294E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F8126D8236AF60A009294E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F8126DA236AF60A009294E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2FA541A4237C362D001B319F /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
+		2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreManager.swift; sourceTree = "<group>"; };
+		2FA8ED90237D899F00D43349 /* DriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
+		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
+		2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		2FA8ED96237D900F00D43349 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
+		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		FE3F24C18CB762C038DBD642 /* Pods-CaronaSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.debug.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +80,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D09783D7B6127CCE34DB794 /* Pods_CaronaSocial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B051A212386D1A500837B6A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				2FA541A4237C362D001B319F /* RegisterTableViewController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		0B4222092386B0AF00A89E5E /* Register Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -77,16 +107,10 @@
 			path = "Register Cells";
 			sourceTree = "<group>";
 		};
-		0BD3DA99237457F100FEFD3D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		0BD3DA9A237457F700FEFD3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */,
@@ -111,10 +135,20 @@
 			isa = PBXGroup;
 			children = (
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
+				2FA8ED96237D900F00D43349 /* Home.storyboard */,
 				0BA29A1F238394E7003BA510 /* Register.storyboard */,
 				0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		2F399F5323799F890043B210 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				2F399F5423799FB90043B210 /* FirebaseManager.swift */,
+				2FA8ED8E237D86FA00D43349 /* FirestoreManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		2F7B599D23705A7600D7750B /* Resourses */ = {
@@ -129,6 +163,9 @@
 			children = (
 				2F8126CB236AF608009294E2 /* CaronaSocial */,
 				2F8126CA236AF608009294E2 /* Products */,
+				C21A7EC472F160049AB8786A /* Pods */,
+				A3AD63500461D1E560500AAA /* Frameworks */,
+				0B051A212386D1A500837B6A /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,18 +180,55 @@
 		2F8126CB236AF608009294E2 /* CaronaSocial */ = {
 			isa = PBXGroup;
 			children = (
+				2FA541A1237C33C7001B319F /* Esse */,
 				0BD3DA9C2374581500FEFD3D /* Storyboards */,
 				0BD3DA9B2374580000FEFD3D /* View */,
+				2F399F5323799F890043B210 /* Database */,
+				9C1A9C552379B20900734AA7 /* Model */,
 				0BD3DA9A237457F700FEFD3D /* Controller */,
-				0BD3DA99237457F100FEFD3D /* Model */,
 				2F8126CC236AF608009294E2 /* AppDelegate.swift */,
 				2F8126CE236AF608009294E2 /* SceneDelegate.swift */,
 				2F8126D5236AF60A009294E2 /* Assets.xcassets */,
 				2F8126D7236AF60A009294E2 /* LaunchScreen.storyboard */,
 				2F8126DA236AF60A009294E2 /* Info.plist */,
+				2F59E81B23745BB600D45612 /* GoogleService-Info.plist */,
 				2F7B599D23705A7600D7750B /* Resourses */,
 			);
 			path = CaronaSocial;
+			sourceTree = "<group>";
+		};
+		2FA541A1237C33C7001B319F /* Esse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Esse;
+			sourceTree = "<group>";
+		};
+		9C1A9C552379B20900734AA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C1A9C532379B1FB00734AA7 /* UserModel.swift */,
+				2FA8ED90237D899F00D43349 /* DriverModel.swift */,
+				2FA8ED92237D8B3400D43349 /* PassengerModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A3AD63500461D1E560500AAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C21A7EC472F160049AB8786A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE3F24C18CB762C038DBD642 /* Pods-CaronaSocial.debug.xcconfig */,
+				6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,9 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2F8126DD236AF60A009294E2 /* Build configuration list for PBXNativeTarget "CaronaSocial" */;
 			buildPhases = (
+				0A42A0ED23C85987BFE6058A /* [CP] Check Pods Manifest.lock */,
 				2F8126C5236AF608009294E2 /* Sources */,
 				2F8126C6236AF608009294E2 /* Frameworks */,
 				2F8126C7236AF608009294E2 /* Resources */,
+				C59A33D73924CA9D415F05DC /* [CP] Embed Pods Frameworks */,
+				B7F67D90F17BBAE87772898D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,15 +292,76 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */,
 				0BA29A20238394E7003BA510 /* Register.storyboard in Resources */,
 				2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */,
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
+				2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */,
 				2F8126D4236AF608009294E2 /* Main.storyboard in Resources */,
 				0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A42A0ED23C85987BFE6058A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CaronaSocial-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7F67D90F17BBAE87772898D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C59A33D73924CA9D415F05DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2F8126C5236AF608009294E2 /* Sources */ = {
@@ -235,14 +373,20 @@
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
 				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,
+				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
+				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */,
 				0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */,
 				0B4222042384083C00A89E5E /* ImageTableViewCell.swift in Sources */,
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
+				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
+				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
+				2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */,
+				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
 			);
@@ -386,6 +530,7 @@
 		};
 		2F8126DE236AF60A009294E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE3F24C18CB762C038DBD642 /* Pods-CaronaSocial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -404,6 +549,7 @@
 		};
 		2F8126DF236AF60A009294E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
