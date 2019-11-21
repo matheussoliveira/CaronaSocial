@@ -40,15 +40,14 @@ class HomeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        // TODO: Sync cell.textLabel.text and cell.imageView.image
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "driversCell", for: indexPath)
-        
-        // Tentar colocar a imagem dentro de complition para ver se carrega certo
-        
         if let driver = drivers?[indexPath.row] {
             cell.textLabel?.text = driver.name
             cell.imageView?.isHidden = false
             FirebaseManager.downloadImage(withURL:
-            URL(string: "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12")!) {
+            URL(string: driver.profileImageURL)!) {
                 image in cell.imageView?.image = image
             }
         }

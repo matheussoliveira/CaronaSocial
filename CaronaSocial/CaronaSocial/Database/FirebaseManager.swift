@@ -81,60 +81,59 @@ class FirebaseManager {
     }
     
     
-    @objc func uploadImage(imageView: UIImageView) {
-        guard  let image = imageView.image, let data = image.jpegData(compressionQuality: 1.0) else {
-            
+    @objc static func uploadProfileImage(imageView: UIImageView) {
+        
+        guard  let image = imageView.image, let data = image.jpegData(compressionQuality: 0.75) else {
             // TODO: Present an alert on view controler
             return
         }
         
         let imageName =  UUID().uuidString // Random String
         let imageReference = Storage.storage().reference()
-            .child("drivers?")
+            .child("driversProfilePhoto")
             .child(imageName)
         
         imageReference.putData(data, metadata: nil) { (metada, err) in
             if let err = err {
-               // TODO: Present an alert on view controler
+                // TODO: Present an alert on view controler
+                print(err.localizedDescription)
                 return
             }
              
         imageReference.downloadURL(completion: { (url, err) in
             if let err = err {
                 // TODO: Present an aler on view controler
+                print(err.localizedDescription)
                 return
             }
             
-            let dataReference = Firestore.firestore().collection("drivers").document()
-             
+            guard let url = url else {
+                print("URL error")
+                return
+            }
+            
+            // TODO: Get userID based com logged profile and insert in document
+            let dataReference = Firestore.firestore().collection("driver").document("userID")
+            let documentUID = dataReference.documentID
+            let urlString = url.absoluteString
+            
+            let data = [
+                "uid": documentUID,
+                "profileImageURL": urlString
+                ] as [String : Any]
+            
+            dataReference.updateData(data, completion: { (err) in
+                if let err = err {
+                    // TODO: Present an aler on view controler
+                    print(err.localizedDescription)
+                    return
+                }
+                print("Image has been successfully saved into Firebase")
+            })
         })
             
         }
     }
-    
-    func uploadProfileImage(_ image: UIImage, completion: @escaping ((_ url: String?) ->  ())) {
-         
-//        guard let userID = Auth.auth().currentUser?.uid else { return }
-//        let storegeRef = Storage.storage().reference().child("user/\(userID)")
-//
-//        guard let imageData = image.jpegData(compressionQuality: 0.75) else { return }
-//
-//        let metaData = StorageMetadata()
-//        metaData.contentType = "image/jpg"
-//
-//        storegeRef.putData(imageData, metadata: metaData) { metaData, error in
-//            if error == nil, metaData != nil {
-//                // Success
-//                if let url = metaData?.downloadURL() {
-//
-//                }
-//            } else {
-//                // ERROR
-//                completion(nil)
-//            }
-//        }
-    }
-    
 
 }
 
