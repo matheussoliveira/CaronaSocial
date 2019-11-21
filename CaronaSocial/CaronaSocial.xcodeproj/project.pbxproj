@@ -13,6 +13,8 @@
 		0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */; };
 		0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */; };
 		0B4222042384083C00A89E5E /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222032384083C00A89E5E /* ImageTableViewCell.swift */; };
+		0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222052386A53400A89E5E /* LabelTableViewCell.swift */; };
+		0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */; };
 		0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */; };
 		0BA29A20238394E7003BA510 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA29A1F238394E7003BA510 /* Register.storyboard */; };
 		0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A2123839603003BA510 /* RegisterViewController.swift */; };
@@ -36,6 +38,8 @@
 		0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliary.swift; sourceTree = "<group>"; };
 		0B4222032384083C00A89E5E /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
+		0B4222052386A53400A89E5E /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekOrOfferViewController.swift; sourceTree = "<group>"; };
 		0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutionTableViewController.swift; sourceTree = "<group>"; };
 		0BA29A1F238394E7003BA510 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		0BA29A2123839603003BA510 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B4222092386B0AF00A89E5E /* Register Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */,
+				0BA29A252383A036003BA510 /* TitleTableViewCell.swift */,
+				0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */,
+				0B4222032384083C00A89E5E /* ImageTableViewCell.swift */,
+				0B4222052386A53400A89E5E /* LabelTableViewCell.swift */,
+			);
+			path = "Register Cells";
+			sourceTree = "<group>";
+		};
 		0BD3DA99237457F100FEFD3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +95,7 @@
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */,
 				0BA29A2123839603003BA510 /* RegisterViewController.swift */,
+				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 				0BD3DA9D23745F5400FEFD3D /* RegisterTableViewController.swift */,
 			);
@@ -90,10 +107,7 @@
 			children = (
 				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
 				0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */,
-				0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */,
-				0BA29A252383A036003BA510 /* TitleTableViewCell.swift */,
-				0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */,
-				0B4222032384083C00A89E5E /* ImageTableViewCell.swift */,
+				0B4222092386B0AF00A89E5E /* Register Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +241,7 @@
 				0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */,
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
+				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */,
 				0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */,
@@ -234,6 +249,7 @@
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0BD3DA9E23745F5400FEFD3D /* RegisterTableViewController.swift in Sources */,
+				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
