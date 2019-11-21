@@ -47,7 +47,7 @@ class HomeTableViewController: UITableViewController {
         if let driver = drivers?[indexPath.row] {
             cell.textLabel?.text = driver.name
             cell.imageView?.isHidden = false
-            FirebaseAuthManager.downloadImage(withURL:
+            FirebaseManager.downloadImage(withURL:
             URL(string: "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12")!) {
                 image in cell.imageView?.image = image
             }

@@ -137,6 +137,7 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Protobuf (3.10.0)
+  - SkyFloatingLabelTextField (3.7.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -147,6 +148,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - FirebaseUI/Auth
   - KeychainSwift
+  - SkyFloatingLabelTextField (~> 3.0)
 
 SPEC REPOS:
   trunk:
@@ -175,6 +177,7 @@ SPEC REPOS:
     - leveldb-library
     - nanopb
     - Protobuf
+    - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
@@ -202,7 +205,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
 
-PODFILE CHECKSUM: 0031110e81577a43cb30f9d794e3dae5b2a90a60
+PODFILE CHECKSUM: 84aeebe8e96714e9708bddbc22255c4af2e117d6
 
 COCOAPODS: 1.8.4
