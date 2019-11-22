@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func registragionButton(_ sender: Any) {
-        FirebaseAuthManager().createUser(email: emailField.text!, password: passwordField.text!) {
+        FirebaseManager().createUser(email: emailField.text!, password: passwordField.text!) {
                 [weak self] (success) in
                 guard let self = self else { return }
                 var message: String = ""

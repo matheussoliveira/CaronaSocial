@@ -18,9 +18,10 @@ struct UserModel {
     let birthdayDate: String
     let institution: String
     let registerNumber: String
+    let profileImageURL: String
 
     // Standard init
-    init(email: String, name: String, cpf: String, memberName: String, birthdayDate: String, institution: String, registerNumber: String) {
+    init(email: String, name: String, cpf: String, memberName: String, birthdayDate: String, institution: String, registerNumber: String, profileImageURL: String) {
         self.email = email
         self.name = name
         self.cpf = cpf
@@ -28,6 +29,7 @@ struct UserModel {
         self.birthdayDate = birthdayDate
         self.institution = institution
         self.registerNumber = registerNumber
+        self.profileImageURL = profileImageURL
     }
 
     // Init for reading from Database snapshot
@@ -40,6 +42,8 @@ struct UserModel {
         birthdayDate = snapshotValue["birthdayDate"] as! String
         institution = snapshotValue["institution"] as! String
         registerNumber = snapshotValue["registerNumber"] as! String
+        profileImageURL = snapshotValue["profileImageURL"] as! String
+        
     }
 
     // Func converting model for easier writing to database
@@ -51,7 +55,8 @@ struct UserModel {
             "memberName": memberName,
             "birthdayDate": birthdayDate,
             "institution": institution,
-            "registerNumber": registerNumber
+            "registerNumber": registerNumber,
+            "profileImageURL": profileImageURL
         ]
     }
 }
