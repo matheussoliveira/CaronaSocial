@@ -14,12 +14,11 @@ class HomeTableViewController: UITableViewController {
     
     var drivers: [DriverModel]?
     
-    // Get a reference to the storage service using the default Firebase App
-    let storage = Storage.storage()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Retrieving information from firestore and building
+        // drivers as objects
         FirestoreManager.shared.buildDrivers { (drivers) in
             self.drivers = drivers
             OperationQueue.main.addOperation {

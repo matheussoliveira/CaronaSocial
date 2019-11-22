@@ -67,7 +67,7 @@ class FirebaseManager {
     }
     
     static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
-        // Download image from database
+        // Downloading image from database
         let dataTask = URLSession.shared.dataTask(with: url) { data, url, error in
             var downloadedImage: UIImage?
             if let data = data {
@@ -84,7 +84,7 @@ class FirebaseManager {
     @objc static func uploadProfileImage(imageView: UIImageView) {
         
         guard  let image = imageView.image, let data = image.jpegData(compressionQuality: 0.75) else {
-            // TODO: Present an alert on view controler
+            // TODO: Present an alert on view controller
             return
         }
         
@@ -95,14 +95,14 @@ class FirebaseManager {
         
         imageReference.putData(data, metadata: nil) { (metada, err) in
             if let err = err {
-                // TODO: Present an alert on view controler
+                // TODO: Present an alert on view controller
                 print(err.localizedDescription)
                 return
             }
              
         imageReference.downloadURL(completion: { (url, err) in
             if let err = err {
-                // TODO: Present an aler on view controler
+                // TODO: Present an alert on view controller
                 print(err.localizedDescription)
                 return
             }
@@ -124,7 +124,7 @@ class FirebaseManager {
             
             dataReference.updateData(data, completion: { (err) in
                 if let err = err {
-                    // TODO: Present an aler on view controler
+                    // TODO: Present an aler on view controller
                     print(err.localizedDescription)
                     return
                 }
