@@ -11,6 +11,7 @@ import Foundation
 import FirebaseUI
 import FirebaseDatabase
 import Firebase
+import SkyFloatingLabelTextField
 
 class LoginViewController: UIViewController {
     
@@ -27,12 +28,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //#colorLiteral(red: 0.4392156863, green: 0.4392156863, blue: 0.4392156863, alpha: 1)
-        
-        emailField.setBottomBorder(color: .textFieldBottomLine)
-        passwordField.setBottomBorder(color: .textFieldBottomLine)
         
         hideKeyboardWhenTappedAround()
+        
+        //Text Fields Set Up
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {

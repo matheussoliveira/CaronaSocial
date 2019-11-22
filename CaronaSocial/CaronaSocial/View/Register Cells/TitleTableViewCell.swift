@@ -10,7 +10,8 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cellTitle: UILabel!
+    @IBOutlet weak var cellTitle: UITextField!
+    @IBOutlet weak var cellPlaceholder: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

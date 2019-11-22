@@ -123,9 +123,10 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.cellTitle.text = institutionName
                 
                 if institutionName == "Instituição" {
-                    cell.cellTitle.textColor = .placeholderText
+                    cell.cellPlaceholder.isHidden = false
                 } else {
                     cell.cellTitle.textColor = .black
+                    cell.cellPlaceholder.isHidden = true
                 }
 
                 cell.selectionStyle = .none
