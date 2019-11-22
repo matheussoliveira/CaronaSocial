@@ -16,14 +16,16 @@ class DriverModel {
     let age: Int
     let accessibility: Bool
     let location: String
+    let profileImageURL: String
     
     // Standard init
-    init(name: String, cpf: String, age: Int, accessibility: Bool, location: String) {
+    init(name: String, cpf: String, age: Int, accessibility: Bool, location: String, profileImageURL: String) {
         self.name = name
         self.cpf = cpf
         self.age = age
         self.accessibility = accessibility
         self.location = location
+        self.profileImageURL = profileImageURL
     }
     
     // Init for reading from Database snapshot
@@ -34,5 +36,6 @@ class DriverModel {
         self.age = snapshotValue["age"] as! Int
         self.accessibility = snapshotValue["accessibility"] as! Bool
         self.location = snapshotValue["location"] as! String
+        self.profileImageURL = snapshotValue["profileImageURL"] as! String
     }
 }

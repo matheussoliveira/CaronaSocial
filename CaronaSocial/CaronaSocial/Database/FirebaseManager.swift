@@ -7,64 +7,133 @@
 //
 
 import Foundation
+import UIKit
 import FirebaseAuth
 import KeychainSwift
 import Firebase
 import FirebaseDatabase
 
 
-class FirebaseAuthManager {
+class FirebaseManager {
 
-private var authUser : User? {
-    return Auth.auth().currentUser
-}
-
-private var _keyChain = KeychainSwift()
-
-var keyChain: KeychainSwift {
-    get {
-        return _keyChain
-    } set {
-        _keyChain = newValue
+    private var authUser : User? {
+        return Auth.auth().currentUser
     }
-}
 
-func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool) -> Void) {
-    Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
-        if let user = authResult?.user {
-            self.sendVerificationMail()
-            completionBlock(true)
-        } else {
-            completionBlock(false)
+    private var _keyChain = KeychainSwift()
+
+    var keyChain: KeychainSwift {
+        get {
+            return _keyChain
+        } set {
+            _keyChain = newValue
         }
     }
-}
 
-func completeSignIn(id: String){
-    keyChain.set(id, forKey: "uid")
-}
-
-public func sendVerificationMail() {
-    if self.authUser != nil && !self.authUser!.isEmailVerified {
-        self.authUser!.sendEmailVerification(completion: { (error) in
-            // Notify the user that the mail has sent or couldn't because of an error.
-        })
+    func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+            if let user = authResult?.user {
+                self.sendVerificationMail()
+                completionBlock(true)
+            } else {
+                completionBlock(false)
+            }
+        }
     }
-    else {
-        // Either the user is not available, or the user is already verified.
-    }
-}
 
-func handleError(_ error: Error) -> UIAlertController{
-    if let errorCode = AuthErrorCode(rawValue: error._code) {
-        print(errorCode.errorMessage)
-        let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
+    func completeSignIn(id: String) {
+        keyChain.set(id, forKey: "uid")
+    }
+
+    public func sendVerificationMail() {
+        if self.authUser != nil && !self.authUser!.isEmailVerified {
+            self.authUser!.sendEmailVerification(completion: { (error) in
+                // Notify the user that the mail has sent or couldn't because of an error.
+            })
+        }
+        else {
+            // Either the user is not available, or the user is already verified.
+        }
+    }
+
+    func handleError(_ error: Error) -> UIAlertController{
+        if let errorCode = AuthErrorCode(rawValue: error._code) {
+            print(errorCode.errorMessage)
+            let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            return alert
+        }
+        return UIAlertController()
+    }
+    
+    static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
+        // Downloading image from database
+        let dataTask = URLSession.shared.dataTask(with: url) { data, url, error in
+            var downloadedImage: UIImage?
+            if let data = data {
+                downloadedImage = UIImage(data: data)
+            }
+            DispatchQueue.main.async {
+                completion(downloadedImage)
+            }
+        }
+        dataTask.resume()
+    }
+    
+    
+    @objc static func uploadProfileImage(imageView: UIImageView) {
         
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        return alert
+        guard  let image = imageView.image, let data = image.jpegData(compressionQuality: 0.75) else {
+            // TODO: Present an alert on view controller
+            return
+        }
+        
+        let imageName =  UUID().uuidString // Random String
+        let imageReference = Storage.storage().reference()
+            .child("driversProfilePhoto")
+            .child(imageName)
+        
+        imageReference.putData(data, metadata: nil) { (metada, err) in
+            if let err = err {
+                // TODO: Present an alert on view controller
+                print(err.localizedDescription)
+                return
+            }
+             
+        imageReference.downloadURL(completion: { (url, err) in
+            if let err = err {
+                // TODO: Present an alert on view controller
+                print(err.localizedDescription)
+                return
+            }
+            
+            guard let url = url else {
+                print("URL error")
+                return
+            }
+            
+            // TODO: Get userID based com logged profile and insert in document
+            let dataReference = Firestore.firestore().collection("driver").document("userID")
+            let documentUID = dataReference.documentID
+            let urlString = url.absoluteString
+            
+            let data = [
+                "uid": documentUID,
+                "profileImageURL": urlString
+                ] as [String : Any]
+            
+            dataReference.updateData(data, completion: { (err) in
+                if let err = err {
+                    // TODO: Present an aler on view controller
+                    print(err.localizedDescription)
+                    return
+                }
+                print("Image has been successfully saved into Firebase")
+            })
+        })
+            
+        }
     }
-    return UIAlertController()
-}
 
 }
 
