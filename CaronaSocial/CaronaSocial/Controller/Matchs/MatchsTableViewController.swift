@@ -9,7 +9,8 @@
 import UIKit
 
 class MatchsTableViewController: UITableViewController {
-
+    
+    var name = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class MatchsTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
+            cell.period.text = name
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCell
@@ -47,14 +49,13 @@ class MatchsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //Condition for specific height
         if indexPath.row == 0 {
-            return 142
+            return 175
         } else if indexPath.row == 1 {
             return 54
         } else {
             return 140
         }
     }
-    
 
     /*
     // Override to support conditional editing of the table view.

@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return day.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,15 +35,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
     }
     
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        performSegue(withIdentifier: "rideDetail", sender: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        let vc = storyboard?.instantiateViewController(withIdentifier: "matchScreen") as? MatchsTableViewController
+        vc?.name = day[indexPath.row]
+        self.navigationController?.pushViewController(vc!, animated: true)
+//        performSegue(withIdentifier: "rideDetail", sender: self)
         
     }
     
-
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "rideDetail" {
+//            let cell = sender as! UITableViewCell
+//            let index = homeTableView.indexPath(for: cell)
+//            if let indexPath = index?.row {
+//                selectDay = day[indexPath]
+//            }
+//        }
+//    }
     
-
+//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
+//        if identifier == "rideDetail" {
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+//            let newVC = storyBoard.instantiateViewController(identifier: "rideDetail") as! MatchsTableViewController
+//            self.navigationController?.pushViewController(newVC, animated: true)
+//        }
+//    }
     /*
     // MARK: - Navigation
 
