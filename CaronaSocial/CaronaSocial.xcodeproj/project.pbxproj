@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		0D09783D7B6127CCE34DB794 /* Pods_CaronaSocial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */; };
+		2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F05EF112386D5D100BE1B10 /* TestViewController.swift */; };
 		2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F5423799FB90043B210 /* FirebaseManager.swift */; };
 		2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F59E81B23745BB600D45612 /* GoogleService-Info.plist */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		2F05EF112386D5D100BE1B10 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2FA541A2237C3605001B319F /* AppInfoViewController.swift */,
 				2FA541A4237C362D001B319F /* RegisterTableViewController.swift */,
+				2F05EF112386D5D100BE1B10 /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */,
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
 				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
 				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,

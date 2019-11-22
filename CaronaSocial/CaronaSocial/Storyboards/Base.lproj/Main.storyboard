@@ -17,6 +17,46 @@
             </objects>
             <point key="canvasLocation" x="2540" y="115"/>
         </scene>
+        <!--Test View Controller-->
+        <scene sceneID="XLZ-pJ-oaZ">
+            <objects>
+                <viewController id="yjA-YQ-6sR" customClass="TestViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xgN-3c-r2q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="V2W-TH-zNy">
+                                <rect key="frame" x="16" y="104" width="382" height="170"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGH-a6-NVA">
+                                <rect key="frame" x="16" y="290" width="382" height="556"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="teste:" destination="yjA-YQ-6sR" eventType="touchUpInside" id="EhA-KJ-3kn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="49k-u8-Dfm" firstAttribute="bottom" secondItem="SGH-a6-NVA" secondAttribute="bottom" constant="16" id="Fve-Yv-ync"/>
+                            <constraint firstItem="V2W-TH-zNy" firstAttribute="top" secondItem="49k-u8-Dfm" secondAttribute="top" constant="16" id="T4I-xH-y5s"/>
+                            <constraint firstItem="49k-u8-Dfm" firstAttribute="trailing" secondItem="V2W-TH-zNy" secondAttribute="trailing" constant="16" id="XcW-lo-PSk"/>
+                            <constraint firstItem="SGH-a6-NVA" firstAttribute="top" secondItem="V2W-TH-zNy" secondAttribute="bottom" constant="16" id="YxA-k3-uDt"/>
+                            <constraint firstItem="49k-u8-Dfm" firstAttribute="trailing" secondItem="SGH-a6-NVA" secondAttribute="trailing" constant="16" id="fUB-Ia-z4j"/>
+                            <constraint firstItem="SGH-a6-NVA" firstAttribute="leading" secondItem="49k-u8-Dfm" secondAttribute="leading" constant="16" id="nDF-9h-kwq"/>
+                            <constraint firstItem="V2W-TH-zNy" firstAttribute="leading" secondItem="49k-u8-Dfm" secondAttribute="leading" constant="16" id="wI4-QM-aWn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="49k-u8-Dfm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="lEk-LC-Mgm"/>
+                    <connections>
+                        <outlet property="logo" destination="V2W-TH-zNy" id="AEJ-Q1-tIG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bkV-Xg-3BP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="791.51785714285711"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="VdL-dF-nlL">
             <objects>
@@ -119,7 +159,7 @@
                                     <segue destination="wFb-Yd-8Ii" kind="show" id="lP2-20-cvA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWu-s6-APV">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWu-s6-APV">
                                 <rect key="frame" x="16" y="756" width="382" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Testar usuários">
@@ -134,6 +174,16 @@
                                     <action selector="usersTest:" destination="baH-tp-s1a" eventType="touchUpInside" id="H6q-EM-TX5"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZG-Y4-LAn">
+                                <rect key="frame" x="16" y="811" width="382" height="30"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="yjA-YQ-6sR" kind="show" id="fMR-hp-CE0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -144,6 +194,7 @@
                             <constraint firstItem="dOb-Fq-DUH" firstAttribute="top" secondItem="kxk-nb-HLx" secondAttribute="bottom" constant="64" id="6vy-g6-gRw"/>
                             <constraint firstItem="YLF-gR-aVK" firstAttribute="top" secondItem="095-23-Cts" secondAttribute="bottom" constant="32" id="8eh-QF-kep"/>
                             <constraint firstItem="YLF-gR-aVK" firstAttribute="leading" secondItem="Od6-d8-bWa" secondAttribute="trailing" constant="8" id="A0h-vX-gdr"/>
+                            <constraint firstItem="LZG-Y4-LAn" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="BQ2-u1-ojG"/>
                             <constraint firstItem="kxk-nb-HLx" firstAttribute="centerX" secondItem="2my-hz-vt1" secondAttribute="centerX" id="CQ8-gh-fQk"/>
                             <constraint firstItem="Yf0-sO-OzR" firstAttribute="leading" secondItem="3LB-4C-CVv" secondAttribute="trailing" constant="16" id="Cko-tX-YX3"/>
                             <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="NCK-S0-iYJ" secondAttribute="trailing" constant="16" id="DAG-ET-msn"/>
@@ -160,11 +211,14 @@
                             <constraint firstItem="lQc-J0-VxM" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="hsc-Mu-nvw"/>
                             <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="XWu-s6-APV" secondAttribute="trailing" constant="16" id="lHV-Gm-Dp2"/>
                             <constraint firstItem="kxk-nb-HLx" firstAttribute="top" secondItem="qlp-rt-tHS" secondAttribute="top" constant="160" id="lma-3O-jWf"/>
+                            <constraint firstItem="qlp-rt-tHS" firstAttribute="bottom" secondItem="LZG-Y4-LAn" secondAttribute="bottom" constant="16" id="muU-XM-Yqe"/>
                             <constraint firstItem="YLF-gR-aVK" firstAttribute="centerY" secondItem="Od6-d8-bWa" secondAttribute="centerY" id="mzr-0H-oLw"/>
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="leading" secondItem="KZ4-jR-Yyx" secondAttribute="trailing" constant="8" id="pzH-I2-ulS"/>
                             <constraint firstItem="dOb-Fq-DUH" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="q3f-UK-pej"/>
+                            <constraint firstItem="LZG-Y4-LAn" firstAttribute="top" secondItem="XWu-s6-APV" secondAttribute="bottom" constant="16" id="qAQ-5P-abc"/>
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="centerY" secondItem="KZ4-jR-Yyx" secondAttribute="centerY" id="qPw-RV-dFV"/>
                             <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="095-23-Cts" secondAttribute="trailing" constant="16" id="r9o-tM-PSy"/>
+                            <constraint firstItem="qlp-rt-tHS" firstAttribute="trailing" secondItem="LZG-Y4-LAn" secondAttribute="trailing" constant="16" id="ros-di-doc"/>
                             <constraint firstItem="Od6-d8-bWa" firstAttribute="centerX" secondItem="qlp-rt-tHS" secondAttribute="centerX" id="sFB-NH-FyY"/>
                             <constraint firstItem="XWu-s6-APV" firstAttribute="leading" secondItem="qlp-rt-tHS" secondAttribute="leading" constant="16" id="uwz-gF-cXX"/>
                             <constraint firstItem="lQc-J0-VxM" firstAttribute="top" secondItem="dOb-Fq-DUH" secondAttribute="bottom" constant="16" id="xfe-Tl-s2d"/>

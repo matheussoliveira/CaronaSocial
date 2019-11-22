@@ -16,14 +16,16 @@ class PassengerModel {
     let age: Int
     let wheelChair: Bool
     let location: String
+    let profileImageURL: String
     
     // Standard init
-    init(name: String, cpf: String, age: Int, wheelChair: Bool, location: String) {
+    init(name: String, cpf: String, age: Int, wheelChair: Bool, location: String, profileImageURL: String) {
         self.name = name
         self.cpf = cpf
         self.age = age
         self.wheelChair = wheelChair
         self.location = location
+        self.profileImageURL = profileImageURL
     }
     
     // Init for reading from Database snapshot
@@ -34,5 +36,6 @@ class PassengerModel {
         self.age = snapshotValue["age"] as! Int
         self.wheelChair = snapshotValue["wheelchair"] as! Bool
         self.location = snapshotValue["location"] as! String
+        self.profileImageURL = snapshotValue["profileImageURL"] as! String
     }
 }
