@@ -152,7 +152,7 @@
                                         <connections>
                                             <outlet property="cellPlaceholder" destination="W2n-Bv-QqL" id="4uk-Kz-RKE"/>
                                             <outlet property="cellTitle" destination="9Wv-On-TIB" id="Buo-dw-YOI"/>
-                                            <segue destination="zJW-Bn-qWu" kind="show" identifier="institution" id="cDj-Pa-O8E"/>
+                                            <segue destination="zJW-Bn-qWu" kind="modal" identifier="institution" modalPresentationStyle="fullScreen" id="cDj-Pa-O8E"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blank" rowHeight="62" id="Nf8-ap-gIm">
@@ -214,6 +214,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
+                                                        <action selector="continuePressed:" destination="aes-Br-m1k" eventType="touchUpInside" id="I9m-oi-mge"/>
                                                         <action selector="continuePressed:" destination="cf2-jS-Lkp" eventType="touchUpInside" id="VKQ-xd-BUz"/>
                                                     </connections>
                                                 </button>
@@ -389,7 +390,7 @@
             <objects>
                 <tableViewController id="zJW-Bn-qWu" customClass="InstitutionTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vQP-Hf-nMn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
