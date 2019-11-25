@@ -203,6 +203,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="home:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fZW-ck-Cmj"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -247,6 +250,7 @@
                     <connections>
                         <outlet property="emailField" destination="YfG-wL-xQS" id="J9e-V7-ezi"/>
                         <outlet property="passwordField" destination="7pY-Vu-ea8" id="wWC-ii-jXb"/>
+                        <segue destination="gZV-TW-Y6Z" kind="show" identifier="goHome" id="Vzg-ud-XVs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfb-9B-eec" sceneMemberID="firstResponder"/>
@@ -262,6 +266,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpJ-rh-wDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2557" y="130"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="AYu-Sl-XzU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="gZV-TW-Y6Z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WJv-oa-7rX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="brJ-nv-1fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2493" y="225"/>
         </scene>
         <!--AppInfo-->
         <scene sceneID="cJx-Rs-6XM">
