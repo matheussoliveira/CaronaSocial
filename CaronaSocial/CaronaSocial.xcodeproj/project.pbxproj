@@ -34,7 +34,7 @@
 		2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED90237D899F00D43349 /* DriverModel.swift */; };
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */; };
-		2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8ED96237D900F00D43349 /* Home.storyboard */; };
+		2FA8ED97237D900F00D43349 /* Home2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FA8ED96237D900F00D43349 /* Home2.storyboard */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 /* End PBXBuildFile section */
@@ -69,7 +69,7 @@
 		2FA8ED90237D899F00D43349 /* DriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
 		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
 		2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
-		2FA8ED96237D900F00D43349 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		2FA8ED96237D900F00D43349 /* Home2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home2.storyboard; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8126D2236AF608009294E2 /* Main.storyboard */,
-				2FA8ED96237D900F00D43349 /* Home.storyboard */,
+				2FA8ED96237D900F00D43349 /* Home2.storyboard */,
 				0BA29A1F238394E7003BA510 /* Register.storyboard */,
 				0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */,
 			);
@@ -295,7 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FA8ED97237D900F00D43349 /* Home.storyboard in Resources */,
+				2FA8ED97237D900F00D43349 /* Home2.storyboard in Resources */,
 				0BA29A20238394E7003BA510 /* Register.storyboard in Resources */,
 				2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */,
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
