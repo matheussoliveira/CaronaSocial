@@ -136,7 +136,6 @@
 				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 				2FA64926238C0CB300616185 /* Home2TableViewController.swift */,
-				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -146,6 +145,7 @@
 			children = (
 				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
 				0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */,
+				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 				0B4222092386B0AF00A89E5E /* Register Cells */,
 			);
 			path = View;
@@ -212,7 +212,6 @@
 		2F8126CB236AF608009294E2 /* CaronaSocial */ = {
 			isa = PBXGroup;
 			children = (
-				2FA541A1237C33C7001B319F /* Esse */,
 				0BD3DA9C2374581500FEFD3D /* Storyboards */,
 				0BD3DA9B2374580000FEFD3D /* View */,
 				2F399F5323799F890043B210 /* Database */,
@@ -227,13 +226,6 @@
 				2F7B599D23705A7600D7750B /* Resourses */,
 			);
 			path = CaronaSocial;
-			sourceTree = "<group>";
-		};
-		2FA541A1237C33C7001B319F /* Esse */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Esse;
 			sourceTree = "<group>";
 		};
 		9C1A9C552379B20900734AA7 /* Model */ = {

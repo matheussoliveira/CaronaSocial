@@ -7,26 +7,32 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseUI
 
 class MatchsTableViewController: UITableViewController {
     
     var name = ""
+    var drivers: [DriverModel]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+               
+        // Retrieving information from firestore and building
+        // drivers as objects
+        FirestoreManager.shared.buildDrivers { (drivers) in
+            self.drivers = drivers
+            OperationQueue.main.addOperation {
+               self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-      return 3
+        return (self.drivers?.count ?? 0) + 2
 
     }
 
@@ -41,7 +47,15 @@ class MatchsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
             return cell
         } else {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
+            if let driver = drivers?[(indexPath.row-2)] {
+                FirebaseManager.downloadImage(withURL:
+                URL(string: driver.profileImageURL)!) {
+                    image in cell.imageView?.image = image
+                    cell.textLabel?.text = driver.name
+                }
+            }
+            
             return cell
         }
     }
