@@ -31,20 +31,11 @@ class LoginViewController: UIViewController {
         
         hideKeyboardWhenTappedAround()
         
-        //Text Fields Set Up
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "register" {
-            registerScreen = 1
-        }
     }
     
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */; };
+		0B051A25238D458900837B6A /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B051A24238D458900837B6A /* OfferViewController.swift */; };
 		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */; };
 		0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */; };
@@ -40,8 +42,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeOrResponsableViewController.swift; sourceTree = "<group>"; };
+		0B051A24238D458900837B6A /* OfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
 		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
-		2F05EF112386D5D100BE1B10 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliary.swift; sourceTree = "<group>"; };
@@ -54,6 +57,7 @@
 		0BA29A232383A02A003BA510 /* TextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A252383A036003BA510 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		2F05EF112386D5D100BE1B10 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,10 +119,12 @@
 				2FA8ED94237D8E5200D43349 /* HomeTableViewController.swift */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
+				0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */,
 				2F05EF112386D5D100BE1B10 /* TestViewController.swift */,
 				0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */,
 				0BA29A2123839603003BA510 /* RegisterViewController.swift */,
 				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
+				0B051A24238D458900837B6A /* OfferViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 			);
 			path = Controller;
@@ -380,9 +386,11 @@
 				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
 				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
+				0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */,
 				0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */,
 				0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */,
 				0B4222042384083C00A89E5E /* ImageTableViewCell.swift in Sources */,
+				0B051A25238D458900837B6A /* OfferViewController.swift in Sources */,
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
 				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
