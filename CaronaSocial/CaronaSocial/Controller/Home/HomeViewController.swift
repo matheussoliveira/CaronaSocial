@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
         let vc = storyboard?.instantiateViewController(withIdentifier: "matchScreen") as? MatchsTableViewController
         vc?.name = day[indexPath.row]
+        
         self.navigationController?.pushViewController(vc!, animated: true)
 //        performSegue(withIdentifier: "rideDetail", sender: self)
         
