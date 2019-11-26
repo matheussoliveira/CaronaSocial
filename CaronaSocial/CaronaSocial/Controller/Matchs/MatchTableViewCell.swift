@@ -13,6 +13,7 @@ class MatchTableViewCell: UITableViewCell {
     @IBOutlet weak var driver: UILabel!
     @IBOutlet weak var vacantPlaces: UILabel!
     @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var driverImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

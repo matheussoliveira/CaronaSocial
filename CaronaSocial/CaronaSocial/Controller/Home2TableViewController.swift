@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Home2ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var day = ["Manhã", "Tarde", "Noite"]
     

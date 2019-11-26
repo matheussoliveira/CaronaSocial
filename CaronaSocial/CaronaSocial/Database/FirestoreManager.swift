@@ -40,9 +40,9 @@ class FirestoreManager {
                 for document in querySnapshot!.documents {
                     let driver = DriverModel(name: document.data()["name"] as! String,
                                              cpf: document.data()["cpf"] as! String,
-                                             age: document.data()["age"] as! Int,
+                                             age: document.data()["age"] as! String,
                                              accessibility: document.data()["accessibility"] as! Bool,
-                                             location: document.data()["location"] as! String,
+                                             //location: document.data()["location"] as! String,
                                              profileImageURL: document.data()["profileImageURL"] as! String)
                     self.driversArray.append(driver)
                     let drivers = self.driversArray

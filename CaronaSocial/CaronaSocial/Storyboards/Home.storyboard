@@ -10,7 +10,7 @@
         <!--Caronas-->
         <scene sceneID="kxf-5t-RkV">
             <objects>
-                <viewController storyboardIdentifier="Home" id="FUE-se-6CX" customClass="Home2ViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="FUE-se-6CX" customClass="HomeViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VOP-Cm-MN6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,6 +334,7 @@
         <!--Caronas-->
         <scene sceneID="YZA-Tm-pm3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="matchScreen" id="fnO-DD-ctb" customClass="MatchsTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9fi-ek-tLa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -492,37 +493,43 @@
                                     <outlet property="rideNumber" destination="bkS-9c-Sz0" id="Eil-tV-SCi"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="matchCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="matchCell" rowHeight="140" id="Qhd-N1-x9d" customClass="MatchTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="matchCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="matchCell" rowHeight="140" id="Qhd-N1-x9d" customClass="MatchTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="251" width="414" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qhd-N1-x9d" id="JkW-Lr-o67" customClass="MatchTableViewCell" customModule="Carona_Social" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EB5-nH-asp">
                                             <rect key="frame" x="16" y="0.0" width="382" height="129"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome do caronista" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP5-9k-om6">
-                                                    <rect key="frame" x="80" y="16" width="148" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HP5-9k-om6">
+                                                    <rect key="frame" x="80" y="16" width="230" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Numero de vagas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y4-e0-4RM">
-                                                    <rect key="frame" x="108" y="53" width="135" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9y4-e0-4RM">
+                                                    <rect key="frame" x="108" y="53" width="151" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Media - Circle" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-j1-sXY">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oKA-j1-sXY">
                                                     <rect key="frame" x="16" y="16" width="45" height="45"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="22"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distancia " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aW7-nS-m1k">
-                                                    <rect key="frame" x="80" y="92" width="75" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aW7-nS-m1k">
+                                                    <rect key="frame" x="80" y="92" width="134" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -561,8 +568,9 @@
                                 <connections>
                                     <outlet property="distance" destination="aW7-nS-m1k" id="FO7-Av-Pnj"/>
                                     <outlet property="driver" destination="HP5-9k-om6" id="rtc-MF-qYZ"/>
+                                    <outlet property="driverImage" destination="oKA-j1-sXY" id="aZi-mh-fSj"/>
                                     <outlet property="vacantPlaces" destination="9y4-e0-4RM" id="Lqz-Fv-K8i"/>
-                                    <segue destination="Qu2-IY-c9Q" kind="modal" modalPresentationStyle="fullScreen" id="Y65-JU-dkd"/>
+                                    <segue destination="Qu2-IY-c9Q" kind="push" id="Y65-JU-dkd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -573,20 +581,20 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Caronas" id="wXe-Qs-rkm"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="181"/>
+            <point key="canvasLocation" x="3026.0869565217395" y="180.80357142857142"/>
         </scene>
         <!--Motorista-->
         <scene sceneID="8oY-2p-fqK">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Qu2-IY-c9Q" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wfd-WK-J76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="GHY-vb-hYU">
-                                <rect key="frame" x="20" y="60" width="374" height="802"/>
+                                <rect key="frame" x="20" y="104" width="374" height="758"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="knW-wc-9TB">
                                         <rect key="frame" x="0.0" y="0.0" width="226" height="60"/>
@@ -779,10 +787,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="lNm-fv-xkk">
-                                        <rect key="frame" x="0.0" y="670.5" width="374" height="131.5"/>
+                                        <rect key="frame" x="0.0" y="670.5" width="374" height="87.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eul-Ne-wE5">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="85.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="41.5"/>
                                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Enviar mensagem">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -797,7 +805,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-KC-qI5">
-                                                <rect key="frame" x="0.0" y="101.5" width="374" height="30"/>
+                                                <rect key="frame" x="0.0" y="57.5" width="374" height="30"/>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Requisitar carona"/>
                                                 <userDefinedRuntimeAttributes>
@@ -829,9 +837,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Motorista" id="P2d-7A-VyF"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2862" y="181"/>
+            <point key="canvasLocation" x="3771.0144927536235" y="180.80357142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xwx-8T-Y8F">
@@ -850,6 +857,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mpb-Od-k0y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="115.94202898550725" y="180.80357142857142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="OcL-ni-neY">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBz-Qy-gou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBl-mV-wzb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PDQ-af-L1F">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="fnO-DD-ctb" kind="relationship" relationship="rootViewController" id="yvy-lI-eEh"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="2115.9420289855075" y="180.80357142857142"/>
         </scene>
     </scenes>
     <resources>
