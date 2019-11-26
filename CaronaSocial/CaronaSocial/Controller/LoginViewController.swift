@@ -76,6 +76,11 @@ class LoginViewController: UIViewController {
     }
     
     
+    @IBAction func home(_ sender: Any) {
+        performSegue(withIdentifier: "goHome", sender: nil)
+    }
+    
+    
 }
 
 // Put this piece of code anywhere you like
