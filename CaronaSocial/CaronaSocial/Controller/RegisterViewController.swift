@@ -261,16 +261,18 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func buildStudentInfo() {
-        let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
-        let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
-        let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
-        let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
-        let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
-        self.studentName = studentName.cellTextField.text ?? "Não pegou"
-        self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
-        self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
-        self.institution = institution.cellTitle.text ?? "Não pegou"
-        self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+        if registerScreen == 1{
+            let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+            let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+            let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+            let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
+            let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
+            self.studentName = studentName.cellTextField.text ?? "Não pegou"
+            self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
+            self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
+            self.institution = institution.cellTitle.text ?? "Não pegou"
+            self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+        }
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
