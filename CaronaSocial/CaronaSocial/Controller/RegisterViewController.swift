@@ -40,15 +40,19 @@ class RegisterViewController: UIViewController, ContinueDelegate {
 
         let footerView = UIView()
         registerTableView.tableFooterView = footerView
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if registerScreen == 1 {
-            self.title = "Cadastro Aluno"
+            self.title = "Cadastrar Aluno"
         } else if registerScreen == 2 {
-            self.title = "Cadastro Responsável"
+            self.title = "Cadastrar Responsável"
+        } else if registerScreen == 0 {
+            self.title = "Cadastrar Funcionário"
         }
         
     }
@@ -75,7 +79,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if registerScreen == 1 {
             return 8
-        } else if registerScreen == 2 {
+        } else if registerScreen == 2 || registerScreen == 0 {
             return 11
         }
         return 8
@@ -88,9 +92,12 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         if registerScreen == 1 {
             name = "Aluno"
             imageName = "progress1"
-        } else if registerScreen == 2{
+        } else if registerScreen == 2 {
             name = "Responsável"
             imageName = "progress2"
+        } else if registerScreen == 0 {
+            name = "Funcionário"
+            imageName = "progress21"
         }
         
         switch indexPath.row {
@@ -124,7 +131,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 {
+            } else if registerScreen == 2 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
                 cell.cellTextField.placeholder = "Telefone"
                 cell.cellTextField.keyboardType = .numberPad
@@ -147,7 +154,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 {
+            } else if registerScreen == 2 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "blank", for: indexPath)
                 // Remove the lines from the cell
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
@@ -163,7 +170,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 {
+            } else if registerScreen == 2 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelTableViewCell
                 cell.cellLabel.text = "Informações para Login"
                 cell.selectionStyle = .none
@@ -178,7 +185,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 {
+            } else if registerScreen == 2 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
                 cell.cellTextField.placeholder = "Email"
                 cell.cellTextField.keyboardType = .emailAddress
@@ -196,10 +203,11 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 {
+            } else if registerScreen == 2 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
                 cell.cellTextField.placeholder = "Senha"
                 cell.cellTextField.keyboardType = .default
+                cell.cellTextField.isSecureTextEntry = true
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
@@ -208,6 +216,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
             cell.cellTextField.placeholder = "Confirmar Senha"
             cell.cellTextField.keyboardType = .default
+            cell.cellTextField.isSecureTextEntry = true
             cell.selectionStyle = .none
             tableView.separatorColor = .darkGray
             return cell
@@ -243,6 +252,10 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         } else if registerScreen == 2 {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
             let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
+            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+        } else if registerScreen == 0 {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
             self.navigationController?.pushViewController(newRegisterViewController, animated: true)
         }
     }
@@ -280,10 +293,3 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 }
-
-
-
-/*
-- Back button - change register screen number
-- don't use global variable
-*/

@@ -13,6 +13,7 @@ import UIKit
 extension UIColor {
     static let textFieldBottomLine: UIColor = #colorLiteral(red: 0.6666666667, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
     static let customBlue: UIColor = #colorLiteral(red: 0.1137254902, green: 0.4470588235, blue: 1, alpha: 1)
+    static let customBackground: UIColor = #colorLiteral(red: 0.9599999785, green: 0.9599999785, blue: 0.9599999785, alpha: 1)
 }
 
 //Put bottom line in a text field
