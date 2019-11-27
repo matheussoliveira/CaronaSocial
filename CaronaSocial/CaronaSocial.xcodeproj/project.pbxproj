@@ -31,6 +31,7 @@
 		2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22779C238C10C000D5C939 /* RoteTableView.swift */; };
 		2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22779E238C10E200D5C939 /* TitleTableViewCellMatch.swift */; };
 		2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2277A0238C110700D5C939 /* MatchTableViewCell.swift */; };
+		2F2B15ED238EC7660024D8EA /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2B15EC238EC7660024D8EA /* DriverViewController.swift */; };
 		2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F5423799FB90043B210 /* FirebaseManager.swift */; };
 		2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F59E81B23745BB600D45612 /* GoogleService-Info.plist */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 		2F22779C238C10C000D5C939 /* RoteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoteTableView.swift; sourceTree = "<group>"; };
 		2F22779E238C10E200D5C939 /* TitleTableViewCellMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCellMatch.swift; sourceTree = "<group>"; };
 		2F2277A0238C110700D5C939 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		2F2B15EC238EC7660024D8EA /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 				2FA64926238C0CB300616185 /* HomeViewController.swift */,
+				2F2B15EC238EC7660024D8EA /* DriverViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */,
 				0B051A27238D5AFC00837B6A /* FixLocationsViewController.swift in Sources */,
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
+				2F2B15ED238EC7660024D8EA /* DriverViewController.swift in Sources */,
 				2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
 				9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */,

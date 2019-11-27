@@ -334,7 +334,6 @@
         <!--Caronas-->
         <scene sceneID="YZA-Tm-pm3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="matchScreen" id="fnO-DD-ctb" customClass="MatchsTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9fi-ek-tLa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -570,7 +569,6 @@
                                     <outlet property="driver" destination="HP5-9k-om6" id="rtc-MF-qYZ"/>
                                     <outlet property="driverImage" destination="oKA-j1-sXY" id="aZi-mh-fSj"/>
                                     <outlet property="vacantPlaces" destination="9y4-e0-4RM" id="Lqz-Fv-K8i"/>
-                                    <segue destination="Qu2-IY-c9Q" kind="push" id="Y65-JU-dkd"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -580,15 +578,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Caronas" id="wXe-Qs-rkm"/>
+                    <connections>
+                        <segue destination="Qu2-IY-c9Q" kind="show" identifier="goToDriversScreen" id="3lx-5f-rWw"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3026.0869565217395" y="180.80357142857142"/>
         </scene>
         <!--Motorista-->
         <scene sceneID="8oY-2p-fqK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="Qu2-IY-c9Q" sceneMemberID="viewController">
+                <viewController id="Qu2-IY-c9Q" customClass="DriverViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wfd-WK-J76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -836,7 +837,14 @@
                         <viewLayoutGuide key="safeArea" id="Js2-s4-m7X"/>
                     </view>
                     <navigationItem key="navigationItem" title="Motorista" id="P2d-7A-VyF"/>
+                    <connections>
+                        <outlet property="accessibility" destination="bkW-0X-sNe" id="ntk-m8-XjC"/>
+                        <outlet property="name" destination="DEl-th-lLQ" id="soz-x3-Ktt"/>
+                        <outlet property="profileImage" destination="Ol1-lR-jfj" id="r6P-XE-RlG"/>
+                        <outlet property="vacantyNumber" destination="eOj-0O-kkc" id="Kaq-Yx-myU"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3771.0144927536235" y="180.80357142857142"/>
         </scene>
@@ -861,7 +869,6 @@
         <!--Navigation Controller-->
         <scene sceneID="OcL-ni-neY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NBz-Qy-gou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBl-mV-wzb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PDQ-af-L1F">
@@ -873,6 +880,7 @@
                         <segue destination="fnO-DD-ctb" kind="relationship" relationship="rootViewController" id="yvy-lI-eEh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBz-Qy-gou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2115.9420289855075" y="180.80357142857142"/>
         </scene>

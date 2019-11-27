@@ -14,6 +14,7 @@ class MatchsTableViewController: UITableViewController {
     
     var name = ""
     var drivers: [DriverModel]?
+    var driver: DriverModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,19 @@ class MatchsTableViewController: UITableViewController {
             }
             
             return cell
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? DriverViewController {
+            destinationVC.driver = self.driver
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 2) {
+            self.driver = drivers?[indexPath.row-2]
+            performSegue(withIdentifier: "goToDriversScreen", sender: drivers?[indexPath.row-2])
         }
     }
     
