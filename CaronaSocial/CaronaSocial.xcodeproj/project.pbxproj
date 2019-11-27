@@ -47,7 +47,7 @@
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 		9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7047A238EA3FB0044CA8E /* RideModel.swift */; };
-		9CF7047D238EA84E0044CA8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF7047C238EA84E0044CA8E /* Main.storyboard */; };
+		9CF7047F238EACCC0044CA8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF7047E238EACCC0044CA8E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +95,7 @@
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9CF7047A238EA3FB0044CA8E /* RideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideModel.swift; sourceTree = "<group>"; };
-		9CF7047C238EA84E0044CA8E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ../../../../../../Downloads/Main.storyboard; sourceTree = "<group>"; };
+		9CF7047E238EACCC0044CA8E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FE3F24C18CB762C038DBD642 /* Pods-CaronaSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.debug.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,7 +168,7 @@
 			children = (
 				0BA29A1F238394E7003BA510 /* Register.storyboard */,
 				0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */,
-				9CF7047C238EA84E0044CA8E /* Main.storyboard */,
+				9CF7047E238EACCC0044CA8E /* Main.storyboard */,
 				2FA64924238C09CF00616185 /* Home.storyboard */,
 			);
 			path = Storyboards;
@@ -328,9 +328,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9CF7047D238EA84E0044CA8E /* Main.storyboard in Resources */,
 				0BA29A20238394E7003BA510 /* Register.storyboard in Resources */,
 				2F8126D9236AF60A009294E2 /* LaunchScreen.storyboard in Resources */,
+				9CF7047F238EACCC0044CA8E /* Main.storyboard in Resources */,
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */,
 				0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */,
