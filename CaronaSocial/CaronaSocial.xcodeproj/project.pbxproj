@@ -45,6 +45,10 @@
 		2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED90237D899F00D43349 /* DriverModel.swift */; };
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
+		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
+		3AF88BC1238EB6B1004EC2AD /* AddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */; };
+		3AF88BC3238EB6FE004EC2AD /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */; };
+		3AF88BC5238EB737004EC2AD /* NewAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 		9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7047A238EA3FB0044CA8E /* RideModel.swift */; };
 		9CF7047F238EACCC0044CA8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9CF7047E238EACCC0044CA8E /* Main.storyboard */; };
@@ -91,6 +95,10 @@
 		2FA8ED90237D899F00D43349 /* DriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
 		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3AF88BBE238EB568004EC2AD /* Route.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Route.storyboard; sourceTree = "<group>"; };
+		3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewController.swift; sourceTree = "<group>"; };
+		3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddressTableViewController.swift; sourceTree = "<group>"; };
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -148,6 +156,9 @@
 				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 				2FA64926238C0CB300616185 /* HomeViewController.swift */,
+				3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */,
+				3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */,
+				3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -170,6 +181,7 @@
 				0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */,
 				9CF7047E238EACCC0044CA8E /* Main.storyboard */,
 				2FA64924238C09CF00616185 /* Home.storyboard */,
+				3AF88BBE238EB568004EC2AD /* Route.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -334,6 +346,7 @@
 				2F8126D6236AF60A009294E2 /* Assets.xcassets in Resources */,
 				2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */,
 				0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */,
+				3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */,
 				2FA64925238C09CF00616185 /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +426,7 @@
 				2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
 				9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */,
+				3AF88BC5238EB737004EC2AD /* NewAddressTableViewController.swift in Sources */,
 				2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */,
 				2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */,
 				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,
@@ -421,6 +435,7 @@
 				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
 				2FA64927238C0CB300616185 /* HomeViewController.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
+				3AF88BC3238EB6FE004EC2AD /* AddressTableViewCell.swift in Sources */,
 				0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */,
 				0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */,
 				0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */,
@@ -432,6 +447,7 @@
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
+				3AF88BC1238EB6B1004EC2AD /* AddressTableViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
 				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
 				0B1DA0AC238EA03300E4AAA7 /* PickerTableViewCell.swift in Sources */,
