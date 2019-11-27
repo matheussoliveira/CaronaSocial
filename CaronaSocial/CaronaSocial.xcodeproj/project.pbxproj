@@ -14,6 +14,8 @@
 		0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */; };
 		0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */; };
 		0B0B4A8A2382C68B00DAE5C7 /* Auxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */; };
+		0B1DA0AC238EA03300E4AAA7 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1DA0AB238EA03300E4AAA7 /* PickerTableViewCell.swift */; };
+		0B1DA0AE238EA1A900E4AAA7 /* RegisterLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */; };
 		0B4222042384083C00A89E5E /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222032384083C00A89E5E /* ImageTableViewCell.swift */; };
 		0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222052386A53400A89E5E /* LabelTableViewCell.swift */; };
 		0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */; };
@@ -50,6 +52,8 @@
 		0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
 		0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auxiliary.swift; sourceTree = "<group>"; };
+		0B1DA0AB238EA03300E4AAA7 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterLocationViewController.swift; sourceTree = "<group>"; };
 		0B4222032384083C00A89E5E /* ImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		0B4222052386A53400A89E5E /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeekOrOfferViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				0BA29A272383A03F003BA510 /* ButtonTableViewCell.swift */,
 				0B4222032384083C00A89E5E /* ImageTableViewCell.swift */,
 				0B4222052386A53400A89E5E /* LabelTableViewCell.swift */,
+				0B1DA0AB238EA03300E4AAA7 /* PickerTableViewCell.swift */,
 			);
 			path = "Register Cells";
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
 				0B051A24238D458900837B6A /* OfferViewController.swift */,
 				0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */,
+				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 			);
 			path = Controller;
@@ -397,12 +403,14 @@
 				0B051A25238D458900837B6A /* OfferViewController.swift in Sources */,
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
 				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
+				0B1DA0AE238EA1A900E4AAA7 /* RegisterLocationViewController.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
 				2FA8ED95237D8E5200D43349 /* HomeTableViewController.swift in Sources */,
 				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
+				0B1DA0AC238EA03300E4AAA7 /* PickerTableViewCell.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
 			);
