@@ -1,17 +1,16 @@
 //
-//  ImageTableViewCell.swiftButtonTableViewCell
+//  PickerTableViewCell.swift
 //  CaronaSocial
 //
-//  Created by Julia Conti Mestre on 19/11/19.
+//  Created by Julia Conti Mestre on 27/11/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
 
 import UIKit
 
-class ImageTableViewCell: UITableViewCell {
+class PickerTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var cellImage: UIImageView!
-    
+    @IBOutlet weak var cellPicker: UIPickerView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

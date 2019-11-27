@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class TitleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cellTitle: UITextField!
     @IBOutlet weak var cellPlaceholder: UILabel!
+    @IBOutlet weak var cellSkyTextField: SkyFloatingLabelTextFieldWithIcon!
+    @IBOutlet weak var cellIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
