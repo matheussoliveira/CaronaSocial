@@ -42,6 +42,7 @@
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
+		9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7047A238EA3FB0044CA8E /* RideModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,7 @@
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9CF7047A238EA3FB0044CA8E /* RideModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideModel.swift; sourceTree = "<group>"; };
 		FE3F24C18CB762C038DBD642 /* Pods-CaronaSocial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.debug.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 				9C1A9C532379B1FB00734AA7 /* UserModel.swift */,
 				2FA8ED90237D899F00D43349 /* DriverModel.swift */,
 				2FA8ED92237D8B3400D43349 /* PassengerModel.swift */,
+				9CF7047A238EA3FB0044CA8E /* RideModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
 				2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
+				9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */,
 				2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */,
 				2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */,
 				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,
