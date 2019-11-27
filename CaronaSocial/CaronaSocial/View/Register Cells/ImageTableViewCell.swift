@@ -12,6 +12,7 @@ class ImageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellImage: UIImageView!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */; };
 		0B051A25238D458900837B6A /* OfferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B051A24238D458900837B6A /* OfferViewController.swift */; };
+		0B051A27238D5AFC00837B6A /* FixLocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */; };
 		0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0A3A4F23743F87004EB061 /* StyleGuide.swift */; };
 		0B0B4A86237A329700DAE5C7 /* AppInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */; };
 		0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeOrResponsableViewController.swift; sourceTree = "<group>"; };
 		0B051A24238D458900837B6A /* OfferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferViewController.swift; sourceTree = "<group>"; };
+		0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixLocationsViewController.swift; sourceTree = "<group>"; };
 		0B0A3A4F23743F87004EB061 /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
 		0B0B4A85237A329700DAE5C7 /* AppInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppInfo.storyboard; sourceTree = "<group>"; };
 		0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				0BA29A2123839603003BA510 /* RegisterViewController.swift */,
 				0B4222072386A85800A89E5E /* SeekOrOfferViewController.swift */,
 				0B051A24238D458900837B6A /* OfferViewController.swift */,
+				0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
 			);
 			path = Controller;
@@ -380,6 +383,7 @@
 				2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */,
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
 				0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */,
+				0B051A27238D5AFC00837B6A /* FixLocationsViewController.swift in Sources */,
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
 				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,

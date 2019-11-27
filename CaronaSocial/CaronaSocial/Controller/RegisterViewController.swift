@@ -25,17 +25,19 @@ class RegisterViewController: UIViewController, ContinueDelegate {
 
         let footerView = UIView()
         registerTableView.tableFooterView = footerView
+        
+        hideKeyboardWhenTappedAround()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if registerScreen == 1 {
-            self.title = "Cadastro Aluno"
+            self.title = "Cadastrar Aluno"
         } else if registerScreen == 2 {
-            self.title = "Cadastro Responsável"
+            self.title = "Cadastrar Responsável"
         } else if registerScreen == 0 {
-            self.title = "Cadastro Funcionário"
+            self.title = "Cadastrar Funcionário"
         }
         
     }

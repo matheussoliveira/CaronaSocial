@@ -24,13 +24,14 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        
+        UIApplication.shared.statusBarStyle = .darkContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         hideKeyboardWhenTappedAround()
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
