@@ -15,6 +15,7 @@ class MatchsTableViewController: UITableViewController {
     var name = ""
     var drivers: [DriverModel]?
     var driver: DriverModel?
+    var profileImage: UIImageView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +52,10 @@ class MatchsTableViewController: UITableViewController {
                 FirebaseManager.downloadImage(withURL:
                 URL(string: driver.profileImageURL)!) {
                     image in cell.driverImage.image = image
+                    self.profileImage = cell.driverImage
+                    cell.driverImage.makeRounded()
                     cell.driver.text = driver.name
-                    cell.vacantPlaces.text = "2"
+                    cell.vacantPlaces.text = driver.vacantPlaces
                     cell.distance.text = "Distância: 10km"
                 }
             }
@@ -64,6 +67,7 @@ class MatchsTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destinationVC = segue.destination as? DriverViewController {
             destinationVC.driver = self.driver
+            destinationVC.newImage = self.profileImage?.image
         }
     }
     

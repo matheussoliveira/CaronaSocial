@@ -46,7 +46,9 @@ class FirestoreManager{
                                              age: document.data()["age"] as! String,
                                              accessibility: document.data()["accessibility"] as! Bool,
                                              //location: document.data()["location"] as! String,
-                                             profileImageURL: document.data()["profileImageURL"] as! String)
+                                             profileImageURL: document.data()["profileImageURL"] as! String,
+                                             vacantPlaces: document.data()["vacantPlaces"] as! String,
+                                             observation: document.data()["observation"] as! String)
                     self.driversArray.append(driver)
                     let drivers = self.driversArray
                     completion(drivers)

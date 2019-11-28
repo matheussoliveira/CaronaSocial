@@ -15,14 +15,18 @@ class DriverViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var vacantyNumber: UILabel!
     @IBOutlet weak var accessibility: UILabel!
+    @IBOutlet weak var observation: UITextView!
     
     var driver: DriverModel?
+    var newImage: UIImage?
     
     override func viewWillAppear(_ animated: Bool) {
-        //profileImage.image = driver?.profileImageURL
+        profileImage.image = newImage
+        profileImage.makeRounded()
         name.text = driver?.name
-        //vacantyNumber.text = driver?.vacantyNumber
+        vacantyNumber.text = driver?.vacantPlaces
         accessibility.text = driver?.accessibility ?? false ? "Sim" : "Não"
+        observation.text = driver?.observation ?? "Sem informações"
     }
 
     override func viewDidLoad() {
