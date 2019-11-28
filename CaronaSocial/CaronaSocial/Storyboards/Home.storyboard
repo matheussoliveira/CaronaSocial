@@ -334,7 +334,6 @@
         <!--Caronas-->
         <scene sceneID="YZA-Tm-pm3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="matchScreen" id="fnO-DD-ctb" customClass="MatchsTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9fi-ek-tLa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -350,6 +349,13 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1st-TR-4JP">
                                             <rect key="frame" x="16" y="16" width="382" height="143"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOb-hc-lvA">
+                                                    <rect key="frame" x="-16" y="-64" width="414" height="826"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
+                                            </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -401,8 +407,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="horario de chegada" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWG-VI-8yd">
-                                            <rect key="frame" x="229" y="129" width="149" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWG-VI-8yd">
+                                            <rect key="frame" x="378" y="139.5" width="0.0" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -464,7 +470,7 @@
                                 <connections>
                                     <outlet property="arrivalTime" destination="uWG-VI-8yd" id="Izs-9s-Hnp"/>
                                     <outlet property="departureTime" destination="9fb-eY-2kF" id="aR3-gT-Nu8"/>
-                                    <outlet property="destiny" destination="9bK-N6-lmU" id="ivJ-ba-rvg"/>
+                                    <outlet property="destiny" destination="AbN-tU-ftt" id="lYU-rh-t3V"/>
                                     <outlet property="period" destination="aqw-bS-V99" id="2Ug-jd-337"/>
                                     <outlet property="start" destination="9bK-N6-lmU" id="ybk-51-urX"/>
                                 </connections>
@@ -581,13 +587,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Caronas" id="wXe-Qs-rkm"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kHs-X3-1M8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3026.0869565217395" y="180.80357142857142"/>
         </scene>
         <!--Motorista-->
         <scene sceneID="8oY-2p-fqK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Qu2-IY-c9Q" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wfd-WK-J76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -837,6 +843,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Motorista" id="P2d-7A-VyF"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3771.0144927536235" y="180.80357142857142"/>
         </scene>
@@ -861,7 +868,6 @@
         <!--Navigation Controller-->
         <scene sceneID="OcL-ni-neY">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NBz-Qy-gou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBl-mV-wzb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PDQ-af-L1F">
@@ -873,6 +879,7 @@
                         <segue destination="fnO-DD-ctb" kind="relationship" relationship="rootViewController" id="yvy-lI-eEh"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NBz-Qy-gou" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2115.9420289855075" y="180.80357142857142"/>
         </scene>

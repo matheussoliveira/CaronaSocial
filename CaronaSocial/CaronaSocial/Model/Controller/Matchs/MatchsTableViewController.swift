@@ -15,6 +15,7 @@ class MatchsTableViewController: UITableViewController {
     var name = ""
     var drivers: [DriverModel]?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                
@@ -26,6 +27,8 @@ class MatchsTableViewController: UITableViewController {
                self.tableView.reloadData()
             }
         }
+        self.tableView.reloadData()
+        
     }
 
     // MARK: - Table view data source
@@ -39,6 +42,20 @@ class MatchsTableViewController: UITableViewController {
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
             cell.period.text = name
+            FirestoreManager.shared.fetchDailyRide(weekDay: "monday", period: name){ result in
+                
+                //split address
+                let delimiter = ","
+                var address = result.destiny.components(separatedBy: delimiter)
+                
+                cell.destiny.text = address[0] + "," + address[1]
+                address = result.origin.components(separatedBy: delimiter)
+                cell.start.text = address[0] + "," + address[1]
+                cell.departureTime.text = result.time
+                self.tableView.reloadData()
+
+            }
+            
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch

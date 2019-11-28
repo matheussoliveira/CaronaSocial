@@ -83,17 +83,18 @@ class FirestoreManager{
             }
         }
         
-    //    func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
-    //        var userId = "tNgfVIgCcUlI4fn1IAiw"
-    //
-    //        db.collection("users").document(userId).collection("rides").document(weekDay).getDocument() { (document, err) in
-    //            if let document = document, document.exists {
-    //                let object = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("time") as! String, destiny: <#T##String#>, originPoint: <#T##Point#>, destinyPoint: <#T##Point#>)
-    //            } else {
-    //                print("Document does not exist")
-    //            }
-    //        }
-    //    }
+        func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
+            var userId = "tNgfVIgCcUlI4fn1IAiw"
+            print("")
+            db.collection("users").document(userId).collection("rides").document("seg").getDocument() { (document, err) in
+                if let document = document, document.exists {
+                    var ride = RideModel(userID: userId, time: document.get(period + "Time") as! String, origin: document.get(period + "Origin") as! String, destiny: document.get(period + "Destiny") as! String, originPoint: Point(latitude: document.get(period + "OriginLati") as! String, longitude: document.get(period + "OriginLong") as! String), destinyPoint: Point(latitude: document.get(period + "DestinyLati") as! String, longitude: document.get(period + "DestinyLong") as! String))
+                    completion(ride)
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        }
     
 //    func getCoordinate( addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
 //        

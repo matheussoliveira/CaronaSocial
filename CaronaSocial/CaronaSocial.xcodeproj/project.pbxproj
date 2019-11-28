@@ -227,7 +227,6 @@
 				0BD3DA9B2374580000FEFD3D /* View */,
 				2F399F5323799F890043B210 /* Database */,
 				9C1A9C552379B20900734AA7 /* Model */,
-				0BD3DA9A237457F700FEFD3D /* Controller */,
 				2F8126CC236AF608009294E2 /* AppDelegate.swift */,
 				2F8126CE236AF608009294E2 /* SceneDelegate.swift */,
 				2F8126D5236AF60A009294E2 /* Assets.xcassets */,
@@ -242,6 +241,7 @@
 		9C1A9C552379B20900734AA7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0BD3DA9A237457F700FEFD3D /* Controller */,
 				9C1A9C532379B1FB00734AA7 /* UserModel.swift */,
 				2FA8ED90237D899F00D43349 /* DriverModel.swift */,
 				2FA8ED92237D8B3400D43349 /* PassengerModel.swift */,
