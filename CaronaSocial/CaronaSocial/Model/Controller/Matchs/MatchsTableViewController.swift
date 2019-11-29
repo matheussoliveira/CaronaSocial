@@ -12,26 +12,91 @@ import FirebaseUI
 
 class MatchsTableViewController: UITableViewController {
     
+    var activityIndicatorView: UIActivityIndicatorView!
+    var rows: [String]?
+    let dispatchQueue = DispatchQueue(label: "Example Queue")
     var name = ""
     var drivers: [DriverModel]?
+    var dailyRide: RideModel?
+    var driversImage: [UIImage]?
+    
+    override func loadView() {
+        super.loadView()
+    
+        activityIndicatorView = UIActivityIndicatorView(style: .gray)
+    
+        tableView.backgroundView = activityIndicatorView
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Activity Indicator"
                
         // Retrieving information from firestore and building
         // drivers as objects
-        FirestoreManager.shared.buildDrivers { (drivers) in
-            self.drivers = drivers
-            OperationQueue.main.addOperation {
-               self.tableView.reloadData()
+//        FirestoreManager.shared.buildDrivers { (drivers) in
+//            self.drivers = drivers
+//            OperationQueue.main.addOperation {
+//               self.tableView.reloadData()
+//            }
+//        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let group = DispatchGroup()
+
+
+        if (rows == nil) {
+            activityIndicatorView.startAnimating()
+
+            tableView.separatorStyle = .none
+
+            dispatchQueue.async {
+
+
+                OperationQueue.main.addOperation() {
+                    group.enter()
+                    FirestoreManager.shared.fetchDailyRide(weekDay: "monday", period: self.name){ result in
+                        self.dailyRide = result
+                        group.leave()
+
+                    }
+                    group.enter()
+                    FirestoreManager.shared.buildDrivers { (drivers) in
+                        self.drivers = drivers
+                        
+                        group.enter()
+                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
+                            self.driversImage = images
+                            group.leave()
+                        }
+                        
+                        group.leave()
+                    }
+                    
+                    group.notify(queue: .main) {
+                        self.rows = ["One", "Two"]
+
+                        self.activityIndicatorView.stopAnimating()
+
+                        self.tableView.separatorStyle = .singleLine
+                        self.tableView.reloadData()
+                    }
+                    
+                }
             }
         }
-        self.tableView.reloadData()
-        
     }
 
     // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return (rows == nil) ? 0 : 1
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.drivers?.count ?? 0) + 2
@@ -42,19 +107,16 @@ class MatchsTableViewController: UITableViewController {
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
             cell.period.text = name
-            FirestoreManager.shared.fetchDailyRide(weekDay: "monday", period: name){ result in
+            
                 
-                //split address
-                let delimiter = ","
-                var address = result.destiny.components(separatedBy: delimiter)
-                
-                cell.destiny.text = address[0] + "," + address[1]
-                address = result.origin.components(separatedBy: delimiter)
-                cell.start.text = address[0] + "," + address[1]
-                cell.departureTime.text = result.time
-                self.tableView.reloadData()
-
-            }
+            //split address
+            let delimiter = ","
+            var address = self.dailyRide!.destiny.components(separatedBy: delimiter)
+            
+            cell.destiny.text = address[0] + "," + address[1]
+            address = self.dailyRide!.origin.components(separatedBy: delimiter)
+            cell.start.text = address[0] + "," + address[1]
+            cell.departureTime.text = self.dailyRide?.time
             
             return cell
         } else if indexPath.row == 1 {
@@ -64,13 +126,19 @@ class MatchsTableViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
             if let driver = drivers?[(indexPath.row-2)] {
-                FirebaseManager.downloadImage(withURL:
-                URL(string: driver.profileImageURL)!) {
-                    image in cell.driverImage.image = image
-                    cell.driver.text = driver.name
-                    cell.vacantPlaces.text = "2"
-                    cell.distance.text = "Distância: 10km"
-                }
+//                FirebaseManager.downloadImage(withURL:
+//                URL(string: driver.profileImageURL)!) {
+//                    image in cell.driverImage.image = image
+//                    cell.driver.text = driver.name
+//                    cell.vacantPlaces.text = "2"
+//                    cell.distance.text = "Distância: 10km"
+//                }
+                print(driversImage)
+                cell.driverImage.image = driversImage![(indexPath.row-2)]
+                cell.driver.text = driver.name
+                cell.vacantPlaces.text = "2"
+                cell.distance.text = "Distância: 10km"
+//
             }
             
             return cell

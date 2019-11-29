@@ -15,6 +15,7 @@ import FirebaseDatabase
 
 
 class FirebaseManager {
+    
 
     private var authUser : User? {
         return Auth.auth().currentUser
@@ -68,6 +69,7 @@ class FirebaseManager {
     
     static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
         // Downloading image from database
+        print(url)
         let dataTask = URLSession.shared.dataTask(with: url) { data, url, error in
             var downloadedImage: UIImage?
             if let data = data {
@@ -78,6 +80,28 @@ class FirebaseManager {
             }
         }
         dataTask.resume()
+    }
+    
+    static func downloadImages(drivers: [DriverModel], completion: @escaping ([UIImage]) -> Void){
+        // Downloading image from database
+        var images: [UIImage] = []
+        let group = DispatchGroup()
+
+        
+        for driver in drivers{
+            print(driver.profileImageURL)
+            group.enter()
+            FirebaseManager.self.downloadImage(withURL: URL(string: driver.profileImageURL)!){ result in
+                if (result != nil){
+                    images.append(result!)
+                    group.leave()
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            print(images)
+            completion(images)
+        }
     }
     
     
