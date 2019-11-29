@@ -37,4 +37,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         vc?.name = day[indexPath.row]
         self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    
 }

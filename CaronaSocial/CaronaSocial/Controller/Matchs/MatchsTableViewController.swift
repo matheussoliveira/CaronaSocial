@@ -10,7 +10,20 @@ import UIKit
 import Firebase
 import FirebaseUI
 
+struct Rote {
+    var start: String
+    var destiny: String
+    var departure: String
+    var arrival: String
+}
+
 class MatchsTableViewController: UITableViewController {
+    
+    var roteCard:[Rote] = []
+        
+    func addRote(rote: Rote)  {
+        roteCard.append(rote)
+    }
     
     var name = ""
     var drivers: [DriverModel]?
@@ -27,6 +40,13 @@ class MatchsTableViewController: UITableViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+        
+    }
 
     // MARK: - Table view data source
     
@@ -38,12 +58,24 @@ class MatchsTableViewController: UITableViewController {
         
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
+            
+            if roteCard.count != 0 {
+                let rote = roteCard[indexPath.row]
+                
+                cell.start.text = rote.start
+                cell.destiny.text = rote.destiny
+                cell.departureTime.text = rote.departure
+                cell.arrivalTime.text = rote.arrival
+            }
             cell.period.text = name
+            
             return cell
+            
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
             cell.rideNumber.text = "Numero de pessoas oferecendo carona: \(drivers?.count ?? 0)"
             return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
             if let driver = drivers?[(indexPath.row-2)] {
@@ -58,6 +90,15 @@ class MatchsTableViewController: UITableViewController {
             
             return cell
         }
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editRote" {
+            if let editRoteVC  = segue.destination as? EditRoteTableViewController {
+                editRoteVC.rote = self
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -70,4 +111,9 @@ class MatchsTableViewController: UITableViewController {
             return 140
         }
     }
+    
+    @IBAction func backToMatch(_ segue: UIStoryboardSegue) {
+        
+    }
+    
 }

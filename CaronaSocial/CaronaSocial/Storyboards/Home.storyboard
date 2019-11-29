@@ -388,7 +388,7 @@
                                             <rect key="frame" x="346" y="25.5" width="40" height="30"/>
                                             <state key="normal" title="Editar"/>
                                             <connections>
-                                                <segue destination="rta-qP-O1s" kind="show" id="Ycs-yx-3o2"/>
+                                                <segue destination="rta-qP-O1s" kind="show" identifier="editRote" id="Ycs-yx-3o2"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periodo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqw-bS-V99">
@@ -466,7 +466,7 @@
                                 <connections>
                                     <outlet property="arrivalTime" destination="uWG-VI-8yd" id="Izs-9s-Hnp"/>
                                     <outlet property="departureTime" destination="9fb-eY-2kF" id="aR3-gT-Nu8"/>
-                                    <outlet property="destiny" destination="9bK-N6-lmU" id="ivJ-ba-rvg"/>
+                                    <outlet property="destiny" destination="AbN-tU-ftt" id="jnZ-WY-ic9"/>
                                     <outlet property="period" destination="aqw-bS-V99" id="2Ug-jd-337"/>
                                     <outlet property="start" destination="9bK-N6-lmU" id="ybk-51-urX"/>
                                 </connections>

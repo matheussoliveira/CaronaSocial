@@ -45,6 +45,7 @@
 		2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED90237D899F00D43349 /* DriverModel.swift */; };
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
+		3A4D8B87238EC02A006431B3 /* EditRoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */; };
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
 		3AF88BC1238EB6B1004EC2AD /* AddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */; };
 		3AF88BC3238EB6FE004EC2AD /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		2FA8ED90237D899F00D43349 /* DriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverModel.swift; sourceTree = "<group>"; };
 		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoteTableViewController.swift; sourceTree = "<group>"; };
 		3AF88BBE238EB568004EC2AD /* Route.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Route.storyboard; sourceTree = "<group>"; };
 		3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewController.swift; sourceTree = "<group>"; };
 		3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				2F227799238C107000D5C939 /* Matchs */,
+				3A7E958D2390055800F61947 /* Home */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				0B051A22238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift */,
@@ -155,10 +158,10 @@
 				0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */,
 				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
-				2FA64926238C0CB300616185 /* HomeViewController.swift */,
 				3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */,
 				3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */,
 				3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */,
+				3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,7 +171,6 @@
 			children = (
 				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
 				0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */,
-				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 				0B4222092386B0AF00A89E5E /* Register Cells */,
 			);
 			path = View;
@@ -249,6 +251,15 @@
 				2F7B599D23705A7600D7750B /* Resourses */,
 			);
 			path = CaronaSocial;
+			sourceTree = "<group>";
+		};
+		3A7E958D2390055800F61947 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2FA64926238C0CB300616185 /* HomeViewController.swift */,
+				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		9C1A9C552379B20900734AA7 /* Model */ = {
@@ -447,6 +458,7 @@
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
+				3A4D8B87238EC02A006431B3 /* EditRoteTableViewController.swift in Sources */,
 				3AF88BC1238EB6B1004EC2AD /* AddressTableViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
 				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
