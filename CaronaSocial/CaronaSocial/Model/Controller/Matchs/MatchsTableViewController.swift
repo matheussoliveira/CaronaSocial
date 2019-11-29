@@ -17,8 +17,10 @@ class MatchsTableViewController: UITableViewController {
     let dispatchQueue = DispatchQueue(label: "Example Queue")
     var name = ""
     var drivers: [DriverModel]?
+    var driver: DriverModel?
     var dailyRide: RideModel?
     var driversImage: [UIImage]?
+    var profileImage: UIImage?
     
     override func loadView() {
         super.loadView()
@@ -153,6 +155,21 @@ class MatchsTableViewController: UITableViewController {
             return 54
         } else {
             return 140
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 2) {
+            self.driver = drivers?[indexPath.row-2]
+            self.profileImage = driversImage![(indexPath.row-2)]
+            performSegue(withIdentifier: "goToDriversScreen", sender: drivers?[indexPath.row-2])
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? DriverViewController {
+            destinationVC.driver = self.driver
+            destinationVC.newImage = self.profileImage
         }
     }
 }

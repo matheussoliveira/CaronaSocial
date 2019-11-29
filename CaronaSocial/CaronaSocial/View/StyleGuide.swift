@@ -66,3 +66,16 @@ extension UIButton {
     
 }
 
+extension UIImageView {
+
+    func makeRounded() {
+        // This function allow us to
+        // make a round UIImageView
+        
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+    }
+}
+
