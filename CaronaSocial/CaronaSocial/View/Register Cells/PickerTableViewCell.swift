@@ -8,19 +8,46 @@
 
 import UIKit
 
+protocol PickerSelectedDelegate: NSObjectProtocol {
+    func selectedState(state: String)
+}
+
 class PickerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellPicker: UIPickerView!
     
+    let states = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
+    var selectedState: String = ""
+    weak var pickerDelegate: PickerSelectedDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        cellPicker.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
+}
+
+extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return states.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return states[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        selectedState = states[row]
+        pickerDelegate?.selectedState(state: selectedState)
+    }
+    
 }

@@ -13,9 +13,8 @@ class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
     
-    var houseAdress: String = "Casa"
-    var institutionAdress: String = "Instituição"
-    var workAdress: String = "Trabalho"
+    var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
+    var registerLocationTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +23,14 @@ class FixLocationsViewController: UIViewController {
         locationsTableView.tableFooterView = footerView
     }
     
+    @IBAction func backToFixLocations(segue: UIStoryboardSegue) {
+        
+    }
 }
 
 extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,18 +42,16 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             } else if registerScreen == 1 || registerScreen == 2 {
                 cell.cellImage.image = UIImage(named: "progress4")
             }
-            // Remove the lines from the cell
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
-            cell.selectionStyle = .none
+            removeCellSeparatorLines(cell)
             return cell
         case 1: //House
             let cell = tableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "house.fill")
             cell.cellIcon.image = UIImage.init(systemName: "house.fill")
             cell.cellPlaceholder.text = "Casa"
-            cell.cellSkyTextField.text = houseAdress
+            cell.cellSkyTextField.text = cellTitle[0]
             
-            if houseAdress == "Casa" {
+            if cellTitle[0] == "Casa" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {
@@ -66,9 +66,9 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage(named: "building")
             cell.cellIcon.image = UIImage(named: "building")
             cell.cellPlaceholder.text = "Instituição"
-            cell.cellSkyTextField.text = institutionAdress
+            cell.cellSkyTextField.text = cellTitle[1]
             
-            if institutionAdress == "Instituição" {
+            if cellTitle[1] == "Instituição" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {
@@ -82,9 +82,9 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "briefcase.fill")
             cell.cellIcon.image = UIImage.init(systemName: "briefcase.fill")
             cell.cellPlaceholder.text = "Trabalho (Opcional)"
-            cell.cellSkyTextField.text = workAdress
+            cell.cellSkyTextField.text = cellTitle[2]
             
-            if workAdress == "Trabalho" {
+            if cellTitle[2] == "Trabalho" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {
@@ -93,10 +93,28 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
                 cell.cellIcon.isHidden = true
             }
             return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "title", for: indexPath)
+        case 5: //Button continue
+            let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! ButtonTableViewCell
+            removeCellSeparatorLines(cell)
+            return cell
+        default: //Blank
+            let cell = tableView.dequeueReusableCell(withIdentifier: "blank", for: indexPath)
+            removeCellSeparatorLines(cell)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3 {
+            registerLocationTitle = cellTitle[indexPath.row - 1]
+        
+            //Move to RegisterLocationViewController
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "registerLocation") as! RegisterLocationViewController
+            vc.navigationTitle = "Cadastrar \(registerLocationTitle)"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
 }

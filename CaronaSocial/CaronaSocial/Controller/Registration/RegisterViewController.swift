@@ -42,6 +42,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         registerTableView.tableFooterView = footerView
         
         hideKeyboardWhenTappedAround()
+        keyboardEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,12 +56,18 @@ class RegisterViewController: UIViewController, ContinueDelegate {
             self.title = "Cadastrar Funcionário"
         }
         
+        
+    }
+    
+    override func keyboardWillShow(_ notification: Notification, tableView: UITableView) {
+        super.keyboardWillShow(notification, tableView: registerTableView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParent { //when the back button is tapped
+        //when the back button is tapped
+        if self.isMovingFromParent {
             registerScreen -= 1
         }
     }
@@ -261,16 +268,18 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func buildStudentInfo() {
-        let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
-        let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
-        let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
-        let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
-        let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
-        self.studentName = studentName.cellTextField.text ?? "Não pegou"
-        self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
-        self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
-        self.institution = institution.cellTitle.text ?? "Não pegou"
-        self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+        if registerScreen == 1 {
+            let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+            let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+            let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+            let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
+            let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
+            self.studentName = studentName.cellTextField.text ?? "Não pegou"
+            self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
+            self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
+            self.institution = institution.cellTitle.text ?? "Não pegou"
+            self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+        }
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
@@ -279,7 +288,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             // Student informations screen
             buildStudentInfo()
-           print(studentName, studentCPF, studentAge, institution, matriculation)
+            print(studentName, studentCPF, studentAge, institution, matriculation)
         case 1:
             //  Parents information screen
             print(registerScreen)
