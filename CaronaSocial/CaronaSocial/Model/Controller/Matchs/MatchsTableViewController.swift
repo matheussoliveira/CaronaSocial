@@ -99,9 +99,11 @@ class MatchsTableViewController: UITableViewController {
             let delimiter = ","
             var address = self.dailyRide!.destiny.components(separatedBy: delimiter)
             
-            cell.destiny.text = address[0] + "," + address[1]
-            address = self.dailyRide!.origin.components(separatedBy: delimiter)
-            cell.start.text = address[0] + "," + address[1]
+//            cell.destiny.text = address[0] + "," + address[1]
+//            address = self.dailyRide!.origin.components(separatedBy: delimiter)
+//            cell.start.text = address[0] + "," + address[1]
+            cell.destiny.text = self.dailyRide?.destiny
+            cell.start.text = self.dailyRide?.origin
             cell.departureTime.text = self.dailyRide?.time
             
             return cell

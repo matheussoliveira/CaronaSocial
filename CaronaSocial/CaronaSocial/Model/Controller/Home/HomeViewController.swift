@@ -98,12 +98,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 period = self.rideNoite!
             }
             
-            let delimiter = ","
-            let addressD = period!.destiny.components(separatedBy: delimiter)
-            let addressO = period!.origin.components(separatedBy: delimiter)
+//            let delimiter = ","
+//            let addressD = period!.destiny.components(separatedBy: delimiter)
+//            let addressO = period!.origin.components(separatedBy: delimiter)
+//            cell.rote.text = addressO[0] + "," + addressO[1] + "-" + addressD[0] + "," + addressD[1]
             
+            cell.rote.text = period!.origin + " - " + period!.destiny
             cell.schudle.text = period!.time
-            cell.rote.text = addressO[0] + "," + addressO[1] + "-" + addressD[0] + "," + addressD[1]
+
         }
         
         return cell
