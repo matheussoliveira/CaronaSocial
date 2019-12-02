@@ -137,6 +137,7 @@
 		0BD3DA9A237457F700FEFD3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9CEB56EA2395600C0082D29E /* Home */,
 				2F227799238C107000D5C939 /* Matchs */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
@@ -149,7 +150,6 @@
 				0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */,
 				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
-				2FA64926238C0CB300616185 /* HomeViewController.swift */,
 				9C4DF8D62391455300C193DD /* DriverViewController.swift */,
 			);
 			path = Controller;
@@ -160,7 +160,6 @@
 			children = (
 				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
 				0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */,
-				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 				0B4222092386B0AF00A89E5E /* Register Cells */,
 			);
 			path = View;
@@ -251,6 +250,15 @@
 				9CF7047A238EA3FB0044CA8E /* RideModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9CEB56EA2395600C0082D29E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				2FA64926238C0CB300616185 /* HomeViewController.swift */,
+				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		A3AD63500461D1E560500AAA /* Frameworks */ = {
