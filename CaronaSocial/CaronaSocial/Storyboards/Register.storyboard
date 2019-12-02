@@ -783,7 +783,6 @@
         <!--Aditional Info View Controller-->
         <scene sceneID="1VO-sO-Vc4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RB0-2n-czp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="U8Q-lD-mLA" customClass="AditionalInfoViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7tQ-cg-Bga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -802,15 +801,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jc9-Px-U41">
-                                <rect key="frame" x="20" y="384" width="374" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -821,7 +811,11 @@
                         <viewLayoutGuide key="safeArea" id="UCg-JW-3qd"/>
                     </view>
                     <navigationItem key="navigationItem" id="3D9-Ju-Hzn"/>
+                    <connections>
+                        <outlet property="progressImage" destination="cNv-c2-NpF" id="I2S-cB-aHS"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RB0-2n-czp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4419" y="380"/>
         </scene>
@@ -951,7 +945,6 @@
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="registerLocationButton:" destination="9gS-7V-UnB" eventType="touchUpInside" id="6lw-xe-fUC"/>
-                                                        <segue destination="Ty0-6o-pNp" kind="unwind" unwindAction="backToFixLocationsWithSegue:" id="5YP-ic-Ou0"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -984,6 +977,7 @@
                     <navigationItem key="navigationItem" title="Cadastrar" id="bQi-sC-9qi"/>
                     <connections>
                         <outlet property="locationTableView" destination="ya0-N1-h0g" id="8SK-oX-PCb"/>
+                        <segue destination="Ty0-6o-pNp" kind="unwind" identifier="backToFixLocation" unwindAction="backToFixLocationsWithSegue:" id="E7F-bS-WYt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z76-PE-KMD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -16,11 +16,21 @@ class FixLocationsViewController: UIViewController {
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
     var registerLocationTitle: String = ""
     
+    var houseAddress: String = ""
+    var institutionAddress: String = ""
+    var workAddress: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let footerView = UIView()
         locationsTableView.tableFooterView = footerView
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        locationsTableView.reloadData()
     }
     
     @IBAction func backToFixLocations(segue: UIStoryboardSegue) {
@@ -49,9 +59,9 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "house.fill")
             cell.cellIcon.image = UIImage.init(systemName: "house.fill")
             cell.cellPlaceholder.text = "Casa"
-            cell.cellSkyTextField.text = cellTitle[0]
+            cell.cellSkyTextField.text = houseAddress
             
-            if cellTitle[0] == "Casa" {
+            if houseAddress == "" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {
@@ -66,9 +76,9 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage(named: "building")
             cell.cellIcon.image = UIImage(named: "building")
             cell.cellPlaceholder.text = "Instituição"
-            cell.cellSkyTextField.text = cellTitle[1]
+            cell.cellSkyTextField.text = institutionAddress
             
-            if cellTitle[1] == "Instituição" {
+            if institutionAddress == "" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {
@@ -82,9 +92,9 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "briefcase.fill")
             cell.cellIcon.image = UIImage.init(systemName: "briefcase.fill")
             cell.cellPlaceholder.text = "Trabalho (Opcional)"
-            cell.cellSkyTextField.text = cellTitle[2]
+            cell.cellSkyTextField.text = workAddress
             
-            if cellTitle[2] == "Trabalho" {
+            if workAddress == "" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
             } else {

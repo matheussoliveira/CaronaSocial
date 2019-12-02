@@ -9,10 +9,22 @@
 import UIKit
 
 class AditionalInfoViewController: UIViewController {
-
+    
+    @IBOutlet weak var progressImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if registerScreen == 0 {
+            progressImage.image = UIImage(named: "progress24")
+        } else {
+            progressImage.image = UIImage(named: "progress5")
+        }
+    }
 
 }

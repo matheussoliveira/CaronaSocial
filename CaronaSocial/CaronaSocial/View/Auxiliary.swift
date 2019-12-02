@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -104,5 +105,89 @@ extension UIView {
         }
         
         return totalTextFields
+    }
+}
+
+//Vibrate the device
+extension UIDevice {
+    static func vibrate() {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+    }
+}
+
+extension UIViewController {
+    // Lack of input feedback
+    //Shake a textField when detect an error input
+    func shakeTextField(textField: UITextField, for duration: TimeInterval, placeholder: String) {
+        let normalColor = textField.textColor
+        
+        let translation: CGFloat = 10
+        
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            textField.transform = CGAffineTransform(translationX: translation, y: 0)
+            textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+            textField.textColor = .red
+        }
+        
+        propertyAnimator.addAnimations({textField.transform = CGAffineTransform(translationX: 0, y: 0)}, delayFactor: 0.2)
+        
+        propertyAnimator.addCompletion { (_) in
+            textField.layer.borderWidth = 0
+            textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+            textField.textColor = normalColor
+        }
+        
+        propertyAnimator.startAnimation()
+        
+        //Vibrate
+        UIDevice.vibrate()
+    }
+    
+    //Shake a label when detect an error input
+    func shakeLabel(label: UILabel, for duration: TimeInterval) {
+        let normalColor = label.textColor
+        
+        let translation: CGFloat = 10
+        
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            label.transform = CGAffineTransform(translationX: translation, y: 0)
+            label.textColor = .red
+        }
+        
+        propertyAnimator.addAnimations({label.transform = CGAffineTransform(translationX: 0, y: 0)}, delayFactor: 0.2)
+        
+        propertyAnimator.addCompletion { (_) in
+            label.layer.borderWidth = 0
+            label.textColor = normalColor
+        }
+        
+        propertyAnimator.startAnimation()
+        
+        //Vibrate
+        UIDevice.vibrate()
+    }
+    
+    //Shake a button when detect an error input
+    func shakeButton(button: UIButton, for duration: TimeInterval) {
+        let normalColor = button.tintColor
+        
+        let translation: CGFloat = 10
+        
+        let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
+            button.transform = CGAffineTransform(translationX: translation, y: 0)
+            button.tintColor = .red
+        }
+        
+        propertyAnimator.addAnimations({button.transform = CGAffineTransform(translationX: 0, y: 0)}, delayFactor: 0.2)
+        
+        propertyAnimator.addCompletion { (_) in
+            button.layer.borderWidth = 0
+            button.tintColor = normalColor
+        }
+        
+        propertyAnimator.startAnimation()
+        
+        //Vibrate
+        UIDevice.vibrate()
     }
 }

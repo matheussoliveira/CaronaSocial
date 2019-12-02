@@ -24,7 +24,12 @@ class RegisterLocationViewController: UIViewController {
     var pickerCell: PickerTableViewCell!
     
     var navigationTitle: String = ""
-    var address: String = ""
+    var houseAddress: String = ""
+    var institutionAddress: String = ""
+    var workAddress: String = ""
+    
+    
+    var inputErrorDetected: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,35 @@ class RegisterLocationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationItem.title = navigationTitle
+    }
+    
+    func checkLocationInputs() {
+        var row: Int = 0
+        
+        for i in 1...5 {
+            row = i
+            let cell = locationTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldTableViewCell
+            var placeholder: String = ""
+            
+            if row == 1 {
+                placeholder = "Rua"
+            } else if row == 2 {
+                placeholder = "Número"
+            } else if row == 3 {
+                placeholder = "Bairro"
+            } else if row == 4 {
+                placeholder = "Cidade"
+            } else if row == 5 {
+                placeholder = "Estado"
+            }
+    
+            if cell.cellTextField.text?.isEmpty ?? false {
+                shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder)
+                inputErrorDetected = true
+            } else {
+                inputErrorDetected = false
+            }
+        }
     }
 }
 
@@ -133,7 +167,7 @@ extension RegisterLocationViewController: UITableViewDelegate, UITableViewDataSo
     func getLocationInfos() {
         var infos: [String] = ["street", "number", "neighborhood", "city", "state"]
         
-        var row: Int = 0
+        var row: Int = 0c
         
         for i in 1...5 {
             row = i
@@ -141,12 +175,33 @@ extension RegisterLocationViewController: UITableViewDelegate, UITableViewDataSo
             infos[i - 1] = cell.cellTextField.text ?? ""
         }
         
-        address = "\(infos[0]), \(infos[1]), \(infos[2]), \(infos[3]), \(infos[4])"
+        if navigationTitle == "Cadastrar Casa" {
+            houseAddress = "\(infos[0]), \(infos[1]), \(infos[2]), \(infos[3]), \(infos[4])"
+        } else if navigationTitle == "Cadastrar Instituição" {
+            institutionAddress = "\(infos[0]), \(infos[1]), \(infos[2]), \(infos[3]), \(infos[4])"
+        } else if navigationTitle == "Cadastrar Trabalho" {
+            workAddress = "\(infos[0]), \(infos[1]), \(infos[2]), \(infos[3]), \(infos[4])"
+        }
+        
     }
     
     @IBAction func registerLocationButton(_ sender: UIButton) {
+        checkLocationInputs()
         getLocationInfos()
-        print(address)
+        
+        if inputErrorDetected == false {
+            performSegue(withIdentifier: "backToFixLocation", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToFixLocation" {
+            if let vc = segue.destination as? FixLocationsViewController {
+                vc.houseAddress = houseAddress
+                vc.institutionAddress = institutionAddress
+                vc.workAddress = workAddress
+            }
+        }
     }
 
 }
