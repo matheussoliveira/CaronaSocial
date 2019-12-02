@@ -14,7 +14,7 @@ class MatchsTableViewController: UITableViewController {
     
     var activityIndicatorView: UIActivityIndicatorView!
     var rows: [String]?
-    let dispatchQueue = DispatchQueue(label: "Example Queue")
+    let dispatchQueue = DispatchQueue(label: "Queue")
     var name = ""
     var drivers: [DriverModel]?
     var driver: DriverModel?
@@ -34,17 +34,6 @@ class MatchsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Activity Indicator"
-               
-        // Retrieving information from firestore and building
-        // drivers as objects
-//        FirestoreManager.shared.buildDrivers { (drivers) in
-//            self.drivers = drivers
-//            OperationQueue.main.addOperation {
-//               self.tableView.reloadData()
-//            }
-//        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,12 +50,7 @@ class MatchsTableViewController: UITableViewController {
 
 
                 OperationQueue.main.addOperation() {
-                    group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: "monday", period: self.name){ result in
-                        self.dailyRide = result
-                        group.leave()
-
-                    }
+        
                     group.enter()
                     FirestoreManager.shared.buildDrivers { (drivers) in
                         self.drivers = drivers
@@ -128,19 +112,10 @@ class MatchsTableViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
             if let driver = drivers?[(indexPath.row-2)] {
-//                FirebaseManager.downloadImage(withURL:
-//                URL(string: driver.profileImageURL)!) {
-//                    image in cell.driverImage.image = image
-//                    cell.driver.text = driver.name
-//                    cell.vacantPlaces.text = "2"
-//                    cell.distance.text = "Distância: 10km"
-//                }
-                print(driversImage)
                 cell.driverImage.image = driversImage![(indexPath.row-2)]
                 cell.driver.text = driver.name
                 cell.vacantPlaces.text = "2"
                 cell.distance.text = "Distância: 10km"
-//
             }
             
             return cell
