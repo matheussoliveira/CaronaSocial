@@ -394,6 +394,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dS5-nj-mVu">
                                             <rect key="frame" x="346" y="25.5" width="40" height="30"/>
                                             <state key="normal" title="Editar"/>
+                                            <connections>
+                                                <segue destination="rta-qP-O1s" kind="show" identifier="editRote" id="Ycs-yx-3o2"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periodo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqw-bS-V99">
                                             <rect key="frame" x="36" y="27" width="73" height="27"/>
@@ -470,7 +473,7 @@
                                 <connections>
                                     <outlet property="arrivalTime" destination="uWG-VI-8yd" id="Izs-9s-Hnp"/>
                                     <outlet property="departureTime" destination="9fb-eY-2kF" id="aR3-gT-Nu8"/>
-                                    <outlet property="destiny" destination="AbN-tU-ftt" id="lYU-rh-t3V"/>
+                                    <outlet property="destiny" destination="AbN-tU-ftt" id="jnZ-WY-ic9"/>
                                     <outlet property="period" destination="aqw-bS-V99" id="2Ug-jd-337"/>
                                     <outlet property="start" destination="9bK-N6-lmU" id="ybk-51-urX"/>
                                 </connections>
@@ -587,10 +590,20 @@
             </objects>
             <point key="canvasLocation" x="3026.0869565217395" y="180.80357142857142"/>
         </scene>
+        <!--Route-->
+        <scene sceneID="tYR-RT-HvQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Route" id="rta-qP-O1s" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="thn-MB-Ucn"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aeL-lg-Ztc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3540" y="-56"/>
+        </scene>
         <!--Motorista-->
         <scene sceneID="8oY-2p-fqK">
             <objects>
-                <viewController id="Qu2-IY-c9Q" customClass="DriverViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Qu2-IY-c9Q" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wfd-WK-J76">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -847,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2i9-VC-3vN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3762" y="181"/>
+            <point key="canvasLocation" x="4013" y="181"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xwx-8T-Y8F">
