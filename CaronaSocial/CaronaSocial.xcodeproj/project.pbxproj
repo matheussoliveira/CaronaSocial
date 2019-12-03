@@ -47,8 +47,8 @@
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		3A4D8B87238EC02A006431B3 /* EditRoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */; };
 		3A7E958F2391A88900F61947 /* Requested.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7E958E2391A88900F61947 /* Requested.storyboard */; };
-		3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */; };
 		3A7E95952391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95942391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift */; };
+		3A7E95992395537000F61947 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95982395537000F61947 /* RequestedTableViewController.swift */; };
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
 		3AF88BC1238EB6B1004EC2AD /* AddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */; };
 		3AF88BC3238EB6FE004EC2AD /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */; };
@@ -101,8 +101,8 @@
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoteTableViewController.swift; sourceTree = "<group>"; };
 		3A7E958E2391A88900F61947 /* Requested.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requested.storyboard; sourceTree = "<group>"; };
-		3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestedTableViewController.swift; path = CaronaSocial/Storyboards/RequestedTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3A7E95942391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleRequestedConfirmedTableViewCell.swift; sourceTree = "<group>"; };
+		3A7E95982395537000F61947 /* RequestedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestedTableViewController.swift; sourceTree = "<group>"; };
 		3AF88BBE238EB568004EC2AD /* Route.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Route.storyboard; sourceTree = "<group>"; };
 		3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewController.swift; sourceTree = "<group>"; };
 		3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,9 +151,9 @@
 		0BD3DA9A237457F700FEFD3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */,
-				3A7E95942391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift */,
+				3A7E95972395533A00F61947 /* Requested */,
 				2F227799238C107000D5C939 /* Matchs */,
+				3A7E95962395532000F61947 /* Adress */,
 				3A7E958D2390055800F61947 /* Home */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
@@ -166,9 +166,6 @@
 				0B051A26238D5AFC00837B6A /* FixLocationsViewController.swift */,
 				0B1DA0AD238EA1A900E4AAA7 /* RegisterLocationViewController.swift */,
 				0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */,
-				3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */,
-				3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */,
-				3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */,
 				3A4D8B86238EC02A006431B3 /* EditRoteTableViewController.swift */,
 			);
 			path = Controller;
@@ -269,6 +266,25 @@
 				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		3A7E95962395532000F61947 /* Adress */ = {
+			isa = PBXGroup;
+			children = (
+				3AF88BC0238EB6B1004EC2AD /* AddressTableViewController.swift */,
+				3AF88BC2238EB6FE004EC2AD /* AddressTableViewCell.swift */,
+				3AF88BC4238EB737004EC2AD /* NewAddressTableViewController.swift */,
+			);
+			path = Adress;
+			sourceTree = "<group>";
+		};
+		3A7E95972395533A00F61947 /* Requested */ = {
+			isa = PBXGroup;
+			children = (
+				3A7E95982395537000F61947 /* RequestedTableViewController.swift */,
+				3A7E95942391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift */,
+			);
+			path = Requested;
 			sourceTree = "<group>";
 		};
 		9C1A9C552379B20900734AA7 /* Model */ = {
@@ -438,7 +454,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */,
 				2F22779B238C108500D5C939 /* MatchsTableViewController.swift in Sources */,
 				2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */,
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
@@ -466,6 +481,7 @@
 				0BA29A242383A02A003BA510 /* TextFieldTableViewCell.swift in Sources */,
 				2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */,
 				3A7E95952391BE7B00F61947 /* TitleRequestedConfirmedTableViewCell.swift in Sources */,
+				3A7E95992395537000F61947 /* RequestedTableViewController.swift in Sources */,
 				0B1DA0AE238EA1A900E4AAA7 /* RegisterLocationViewController.swift in Sources */,
 				2F8126D1236AF608009294E2 /* ViewController.swift in Sources */,
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,

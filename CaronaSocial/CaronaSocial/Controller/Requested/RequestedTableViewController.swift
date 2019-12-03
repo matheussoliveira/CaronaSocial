@@ -2,14 +2,14 @@
 //  RequestedTableViewController.swift
 //  CaronaSocial
 //
-//  Created by Felipe Luna Tersi on 29/11/19.
+//  Created by Felipe Luna Tersi on 02/12/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
 
 import UIKit
 
 class RequestedTableViewController: UITableViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
