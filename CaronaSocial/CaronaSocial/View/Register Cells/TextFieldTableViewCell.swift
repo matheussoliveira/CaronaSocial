@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextFieldTableViewCell: UITableViewCell {
+class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var cellTextField: UITextField!
     
@@ -16,6 +16,8 @@ class TextFieldTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        cellTextField.delegate = self
         
 //        cellTextField.addTarget(self, action: #selector(textFieldTapped), for: .touchDown)
     }
@@ -25,6 +27,11 @@ class TextFieldTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
@@ -32,5 +39,7 @@ extension TextFieldTableViewCell: PickerSelectedDelegate {
     func selectedState(state: String) {
         cellTextField.text = state
     }
+    
+    
 }
 

@@ -5,7 +5,6 @@
 //  Created by Julia Conti Mestre on 19/11/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
-
 import UIKit
 
 protocol ContinueDelegate: NSObjectProtocol {
@@ -30,10 +29,9 @@ class RegisterViewController: UIViewController, ContinueDelegate {
     var email: String = ""
     var passaword: String = ""
     var passwordConfirmation: String = ""
-          
-      
 
     var institutionName: String = "Instituição"
+    var inputErrorDetected: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +40,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         registerTableView.tableFooterView = footerView
         
         hideKeyboardWhenTappedAround()
+        keyboardEvents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,12 +54,18 @@ class RegisterViewController: UIViewController, ContinueDelegate {
             self.title = "Cadastrar Funcionário"
         }
         
+        
+    }
+    
+    override func keyboardWillShow(_ notification: Notification, tableView: UITableView) {
+        super.keyboardWillShow(notification, tableView: registerTableView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        if self.isMovingFromParent { //when the back button is tapped
+        //when the back button is tapped
+        if self.isMovingFromParent {
             registerScreen -= 1
         }
     }
@@ -71,6 +76,89 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         let selectedInstitution = selectedInstitutionViewController.selectedInstitution
         institutionName = selectedInstitution
         registerTableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .automatic)
+    }
+    
+    func checkStudentInputs() {
+        var row: Int = 0
+        for i in 1...5 {
+            row = i
+            if row == 4 {
+                let studentCell = registerTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
+                
+                if institutionName == "Instituição" {
+                    studentCell.cellPlaceholder.text = "Instituição"
+                    studentCell.cellSkyTextField.isHidden = true
+                    shakeLabel(label: studentCell.cellPlaceholder, for: 1.0, labelColor: UIColor.placeholderText)
+                    inputErrorDetected = true
+                }
+                
+            } else {
+                let studentCell = registerTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldTableViewCell
+
+                if studentCell.cellTextField.text?.isEmpty ?? false {
+                    var name: String = ""
+
+                    if row == 1 {
+                        name = "Nome do Aluno"
+                    } else if row == 2 {
+                        name = "CPF do Aluno"
+                    } else if row == 3 {
+                        name = "Idade do Aluno"
+                    } else if row == 5 {
+                        name = "Matrícula do Aluno"
+                    }
+
+                    shakeTextField(textField: studentCell.cellTextField, for: 1.0, placeholder: name, textColor: .black)
+                    inputErrorDetected = true
+                } else {
+                    if institutionName != "Instituição" {
+                        inputErrorDetected = false
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    func checkResponsableOrEmployeeInputs() {
+        var row: Int = 0
+        for i in 1...8 {
+            row = i
+            if row != 4 && row != 5 {
+                var name: String = ""
+                
+                if registerScreen == 2 {
+                    name = "Responsável"
+                } else if registerScreen == 0 {
+                    name = "Funcionário"
+                }
+                
+                let cell = registerTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldTableViewCell
+                if cell.cellTextField.text?.isEmpty ?? false {
+                    var placeholder: String = ""
+                    
+                    if row == 1 {
+                        placeholder = "Nome do \(name)"
+                    } else if row == 2 {
+                        placeholder = "CPF do \(name)"
+                    } else if row == 3 {
+                        placeholder = "Telefone"
+                    } else if row == 6 {
+                        placeholder = "Email"
+                    } else if row == 7 {
+                        placeholder = "Senha"
+                    } else if row == 8 {
+                        placeholder = "Confirmar Senha"
+                    }
+                    
+                    shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder, textColor: .black)
+                    inputErrorDetected = true
+                } else {
+                    inputErrorDetected = false
+                }
+            }
+        }
+
     }
 
 }
@@ -142,12 +230,12 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
-                cell.cellTitle.text = institutionName
+                cell.cellSkyTextField.text = institutionName
                 
                 if institutionName == "Instituição" {
                     cell.cellPlaceholder.isHidden = false
                 } else {
-                    cell.cellTitle.textColor = .black
+                    cell.cellSkyTextField.textColor = .black
                     cell.cellPlaceholder.isHidden = true
                 }
 
@@ -245,23 +333,32 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     
     func continueButton() {
         if registerScreen == 1 {
-            registerScreen = 2
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
-            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
-        } else if registerScreen == 2 {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
-            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
-        } else if registerScreen == 0 {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
-            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            checkStudentInputs()
+        } else if registerScreen == 2 || registerScreen == 0 {
+            checkResponsableOrEmployeeInputs()
         }
+        
+        if inputErrorDetected == false {
+            if registerScreen == 1 {
+                registerScreen = 2
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+                self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            } else if registerScreen == 2 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
+                self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            } else if registerScreen == 0 {
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
+                self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            }
+        }
+
     }
     
     func buildStudentInfo() {
-        if registerScreen == 1{
+        if registerScreen == 1 {
             let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
             let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
             let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
@@ -270,7 +367,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             self.studentName = studentName.cellTextField.text ?? "Não pegou"
             self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
             self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
-            self.institution = institution.cellTitle.text ?? "Não pegou"
+            self.institution = institution.cellSkyTextField.text ?? "Não pegou"
             self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
         }
     }
@@ -281,7 +378,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             // Student informations screen
             buildStudentInfo()
-           print(studentName, studentCPF, studentAge, institution, matriculation)
+            print(studentName, studentCPF, studentAge, institution, matriculation)
         case 1:
             //  Parents information screen
             print(registerScreen)

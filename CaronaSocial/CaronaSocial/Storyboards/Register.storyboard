@@ -98,7 +98,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-On-TIB" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Wv-On-TIB" customClass="SkyFloatingLabelTextFieldWithIcon" customModule="SkyFloatingLabelTextField">
                                                     <rect key="frame" x="20" y="18" width="395" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="EGn-9w-fIh"/>
@@ -155,7 +155,7 @@
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cellPlaceholder" destination="W2n-Bv-QqL" id="4uk-Kz-RKE"/>
-                                            <outlet property="cellTitle" destination="9Wv-On-TIB" id="Buo-dw-YOI"/>
+                                            <outlet property="cellSkyTextField" destination="9Wv-On-TIB" id="1Du-x4-nl7"/>
                                             <segue destination="zJW-Bn-qWu" kind="show" identifier="institution" id="G7F-qs-Lls"/>
                                         </connections>
                                     </tableViewCell>
