@@ -729,6 +729,9 @@
                                                             <real key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="continuePressed:" destination="ief-x0-kSb" eventType="touchUpInside" id="aax-wn-AJt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -780,7 +783,7 @@
         <!--Aditional Info View Controller-->
         <scene sceneID="1VO-sO-Vc4">
             <objects>
-                <viewController id="U8Q-lD-mLA" customClass="AditionalInfoViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infos" id="U8Q-lD-mLA" customClass="AditionalInfoViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7tQ-cg-Bga">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -791,30 +794,66 @@
                                     <constraint firstAttribute="height" constant="56" id="HOk-ye-c3B"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Deseja acrescentar alguma informação?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9N-PL-xOs">
-                                <rect key="frame" x="34" y="336" width="347" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja acrescentar alguma informação?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9N-PL-xOs">
+                                <rect key="frame" x="34" y="335" width="347" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jov-Nx-I5r">
+                                <rect key="frame" x="34" y="389" width="347" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Qpx-GV-VPj"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-C9-ce7">
+                                <rect key="frame" x="20" y="597" width="374" height="40"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="0eR-Yv-tS7"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="HHc-SN-BC5"/>
+                                    <constraint firstAttribute="width" constant="374" id="fPb-8d-x6E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Finalizar cadastro">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finishPressed:" destination="U8Q-lD-mLA" eventType="touchUpInside" id="etE-lV-oGr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aDI-C9-ce7" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="20" id="1nK-lj-hOH"/>
                             <constraint firstItem="cNv-c2-NpF" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="20" id="5iA-kP-JzX"/>
+                            <constraint firstItem="jov-Nx-I5r" firstAttribute="centerY" secondItem="UCg-JW-3qd" secondAttribute="centerY" id="6xt-0M-sSO"/>
+                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="aDI-C9-ce7" secondAttribute="trailing" constant="20" id="8ou-SW-ZNJ"/>
+                            <constraint firstItem="aDI-C9-ce7" firstAttribute="top" secondItem="jov-Nx-I5r" secondAttribute="bottom" constant="80" id="Gdy-6Z-g4e"/>
+                            <constraint firstItem="jov-Nx-I5r" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="34" id="HYC-EW-cQh"/>
+                            <constraint firstItem="p9N-PL-xOs" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="34" id="avc-h8-IXt"/>
+                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="p9N-PL-xOs" secondAttribute="trailing" constant="33" id="fWu-pi-0Of"/>
                             <constraint firstItem="cNv-c2-NpF" firstAttribute="top" secondItem="UCg-JW-3qd" secondAttribute="top" id="lOU-FV-xCR"/>
+                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="jov-Nx-I5r" secondAttribute="trailing" constant="33" id="lbt-VX-OXa"/>
+                            <constraint firstItem="jov-Nx-I5r" firstAttribute="top" secondItem="p9N-PL-xOs" secondAttribute="bottom" constant="30" id="w6G-6F-Shx"/>
                             <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="cNv-c2-NpF" secondAttribute="trailing" constant="19" id="zNq-bu-jKK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UCg-JW-3qd"/>
                     </view>
                     <navigationItem key="navigationItem" id="3D9-Ju-Hzn"/>
                     <connections>
+                        <outlet property="finishButton" destination="aDI-C9-ce7" id="GIs-Kk-AyJ"/>
                         <outlet property="progressImage" destination="cNv-c2-NpF" id="I2S-cB-aHS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RB0-2n-czp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4419" y="380"/>
+            <point key="canvasLocation" x="4418.840579710145" y="379.6875"/>
         </scene>
         <!--Cadastrar-->
         <scene sceneID="UUW-Z5-8sl">

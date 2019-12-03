@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9MH-g6-TMM">
-                                <rect key="frame" x="158" y="120" width="98" height="85"/>
+                                <rect key="frame" x="158" y="120" width="98.000000000000028" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="XvI-Da-WLO"/>
                                     <constraint firstAttribute="height" constant="85" id="mkn-5q-UQR"/>
@@ -286,6 +286,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kVZ-LF-rEl">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="soo-rI-dKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gTj-uU-CnK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="IWo-e6-dnf">
@@ -306,7 +307,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2bk-oP-PVx"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="soo-rI-dKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="114.50892857142857"/>
         </scene>
