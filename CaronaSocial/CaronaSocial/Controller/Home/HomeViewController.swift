@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var day = ["Manhã", "Tarde", "Noite"]
+    let imageArray = [UIImage(named: "morning"), UIImage(named: "evening"), UIImage(named: "moon")]
     var rideTarde: RideModel?
     var rideManha: RideModel?
     var rideNoite: RideModel?
@@ -88,6 +89,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = homeTableView.dequeueReusableCell(withIdentifier: "cell") as! HomeTableViewCell
         cell.title.text = day[indexPath.row]
+        cell.imageDay.image = imageArray[indexPath.row]
         
         if rows != nil{
             if day[indexPath.row] == "Manhã"{
