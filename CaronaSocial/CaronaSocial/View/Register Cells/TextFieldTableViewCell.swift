@@ -12,10 +12,12 @@ class TextFieldTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellTextField: UITextField!
     
+//    weak var delegate: CellTextField?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
+//        cellTextField.addTarget(self, action: #selector(textFieldTapped), for: .touchDown)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -25,3 +27,10 @@ class TextFieldTableViewCell: UITableViewCell {
     }
 
 }
+
+extension TextFieldTableViewCell: PickerSelectedDelegate {
+    func selectedState(state: String) {
+        cellTextField.text = state
+    }
+}
+

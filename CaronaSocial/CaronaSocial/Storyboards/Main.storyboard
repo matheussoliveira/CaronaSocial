@@ -201,7 +201,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Main"/>
                                 <connections>
-                                    <segue destination="cnX-3T-Vif" kind="show" id="aaD-9D-xLC"/>
+                                    <segue destination="cnX-3T-Vif" kind="show" identifier="goHome" id="8ku-CL-fdU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -266,7 +266,7 @@
         <!--Home-->
         <scene sceneID="xqF-Hq-fzS">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="cnX-3T-Vif" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="Home" storyboardName="Home" referencedIdentifier="Home" id="cnX-3T-Vif" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="7kw-1X-3q8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqd-of-HRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
