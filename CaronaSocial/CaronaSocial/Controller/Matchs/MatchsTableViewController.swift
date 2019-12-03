@@ -108,7 +108,7 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
-            cell.rideNumber.text = "Numero de pessoas oferecendo carona: \(drivers?.count ?? 0)"
+            cell.rideNumber.text = "Pessoas oferecendo carona: \(drivers?.count ?? 0)"
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
@@ -136,16 +136,15 @@ class MatchsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 2) {
-            self.driver = drivers?[indexPath.row-2]
-            self.profileImage = driversImage![(indexPath.row-2)]
-            performSegue(withIdentifier: "goToDriversScreen", sender: drivers?[indexPath.row-2])
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "driverScreen") as? DriverViewController
+            vc?.driver = drivers?[indexPath.row-2]
+            vc?.newImage = driversImage![(indexPath.row-2)]
+            vc?.ride = self.dailyRide
+
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? DriverViewController {
-            destinationVC.driver = self.driver
-            destinationVC.newImage = self.profileImage
-        }
-    }
 }
