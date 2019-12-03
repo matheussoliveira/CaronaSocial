@@ -29,8 +29,18 @@ class RegisterViewController: UIViewController, ContinueDelegate {
     var email: String = ""
     var passaword: String = ""
     var passwordConfirmation: String = ""
-
     var institutionName: String = "Instituição"
+    
+    // Employee data
+    var employeeName: String = ""
+    var employeeCPF: String = ""
+    var telephone: String = ""
+    var employeeEmail: String = ""
+    var employeePassaword: String = ""
+    var employeePassawordConfirmation: String = ""
+    var user: EmplyeeDriverModel?
+    
+    
     var inputErrorDetected: Bool = false
 
     override func viewDidLoad() {
@@ -336,6 +346,14 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             checkStudentInputs()
         } else if registerScreen == 2 || registerScreen == 0 {
             checkResponsableOrEmployeeInputs()
+            buildStudentInfo()
+        
+            self.user = EmplyeeDriverModel(type: "driver", name: employeeName,
+                                          cpf: employeeCPF, telephone: telephone,
+                                          email: employeeEmail)
+            
+            // TODO: Send this object to next view
+            
         }
         
         if inputErrorDetected == false {
@@ -347,6 +365,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             } else if registerScreen == 2 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
+                newRegisterViewController.user = self.user
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             } else if registerScreen == 0 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
@@ -369,6 +388,19 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
             self.institution = institution.cellSkyTextField.text ?? "Não pegou"
             self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+        } else if registerScreen == 2 || registerScreen == 0 {
+            let employeeName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+            let employeeCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+            let telephone = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+            let employeeEmail = registerTableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! TextFieldTableViewCell
+            let employeePassaword = registerTableView.cellForRow(at: IndexPath(row: 7, section: 0)) as! TextFieldTableViewCell
+            let employeePassawordConfirmation = registerTableView.cellForRow(at: IndexPath(row: 8, section: 0)) as! TextFieldTableViewCell
+            self.employeeName = employeeName.cellTextField.text ?? "Nome inválido"
+            self.employeeCPF = employeeCPF.cellTextField.text ?? "Nome inválido"
+            self.telephone = telephone.cellTextField.text ?? "Nome inválido"
+            self.employeeEmail = employeeEmail.cellTextField.text ?? "Nome inválido"
+            self.employeePassaword = employeePassaword.cellTextField.text ?? "Nome inválido"
+            self.employeePassawordConfirmation = employeePassawordConfirmation.cellTextField.text ?? "Nome inválido"
         }
     }
     
@@ -381,7 +413,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             print(studentName, studentCPF, studentAge, institution, matriculation)
         case 1:
             //  Parents information screen
-            print(registerScreen)
+            print(employeeName, employeeCPF, telephone, employeeEmail, employeePassaword, employeePassawordConfirmation)
         case 2:
             // Seek or offer ride screen
             print(registerScreen)

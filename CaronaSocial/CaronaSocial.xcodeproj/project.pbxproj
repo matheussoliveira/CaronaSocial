@@ -48,9 +48,7 @@
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		2FFB9BDB23969A110002BA3C /* EmployeeDriverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB9BDA23969A110002BA3C /* EmployeeDriverModel.swift */; };
-		2FFB9BDD23969B850002BA3C /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB9BDC23969B850002BA3C /* Location.swift */; };
-		2FFB9BDF23969DDF0002BA3C /* ResponsableDriver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB9BDE23969DDF0002BA3C /* ResponsableDriver.swift */; };
-		2FFB9BE12396A2440002BA3C /* ResponsablePassenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB9BE02396A2440002BA3C /* ResponsablePassenger.swift */; };
+		2FFB9BE32396D0440002BA3C /* ResponsableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB9BE22396D0440002BA3C /* ResponsableModel.swift */; };
 		3A7E958F2391A88900F61947 /* Requested.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7E958E2391A88900F61947 /* Requested.storyboard */; };
 		3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */; };
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
@@ -112,9 +110,7 @@
 		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		2FFB9BDA23969A110002BA3C /* EmployeeDriverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeDriverModel.swift; sourceTree = "<group>"; };
-		2FFB9BDC23969B850002BA3C /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		2FFB9BDE23969DDF0002BA3C /* ResponsableDriver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsableDriver.swift; sourceTree = "<group>"; };
-		2FFB9BE02396A2440002BA3C /* ResponsablePassenger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsablePassenger.swift; sourceTree = "<group>"; };
+		2FFB9BE22396D0440002BA3C /* ResponsableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsableModel.swift; sourceTree = "<group>"; };
 		3A7E958E2391A88900F61947 /* Requested.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requested.storyboard; sourceTree = "<group>"; };
 		3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestedTableViewController.swift; path = CaronaSocial/Storyboards/RequestedTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		3AF88BBE238EB568004EC2AD /* Route.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Route.storyboard; sourceTree = "<group>"; };
@@ -314,9 +310,7 @@
 				2FA8ED92237D8B3400D43349 /* PassengerModel.swift */,
 				9CF7047A238EA3FB0044CA8E /* RideModel.swift */,
 				2FFB9BDA23969A110002BA3C /* EmployeeDriverModel.swift */,
-				2FFB9BDC23969B850002BA3C /* Location.swift */,
-				2FFB9BDE23969DDF0002BA3C /* ResponsableDriver.swift */,
-				2FFB9BE02396A2440002BA3C /* ResponsablePassenger.swift */,
+				2FFB9BE22396D0440002BA3C /* ResponsableModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -500,9 +494,8 @@
 				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
 				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
-				2FFB9BDD23969B850002BA3C /* Location.swift in Sources */,
-				2FFB9BDF23969DDF0002BA3C /* ResponsableDriver.swift in Sources */,
 				9C6EE0C92395DE000070A42E /* AditionalInfoViewController.swift in Sources */,
+				2FFB9BE32396D0440002BA3C /* ResponsableModel.swift in Sources */,
 				0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */,
 				0BA29A262383A036003BA510 /* TitleTableViewCell.swift in Sources */,
 				9C6EE0BD2395D2680070A42E /* AddressTableViewCell.swift in Sources */,
@@ -516,7 +509,6 @@
 				0B4222062386A53400A89E5E /* LabelTableViewCell.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
-				2FFB9BE12396A2440002BA3C /* ResponsablePassenger.swift in Sources */,
 				9C6EE0C12395D31F0070A42E /* EditRoteTableViewController.swift in Sources */,
 				9C6EE0CD2395DFB40070A42E /* MatchsTableViewController.swift in Sources */,
 				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,

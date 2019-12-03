@@ -729,6 +729,9 @@
                                                             <real key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="continuePressed:" destination="ief-x0-kSb" eventType="touchUpInside" id="mNu-Nx-Tzm"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

@@ -21,6 +21,15 @@ class FixLocationsViewController: UIViewController {
     
     var inputErrorDetect: Bool = false
     
+    // Employee data
+       var employeeName: String = ""
+       var employeeCPF: String = ""
+       var telephone: String = ""
+       var employeeEmail: String = ""
+       var employeePassaword: String = ""
+       var employeePassawordConfirmation: String = ""
+       
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,9 +71,10 @@ class FixLocationsViewController: UIViewController {
         checkLocationsInput()
         
         if inputErrorDetect == false {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
-            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            // If all inputs are ok, perform segue
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+//            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
+//            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
         }
     }
 }

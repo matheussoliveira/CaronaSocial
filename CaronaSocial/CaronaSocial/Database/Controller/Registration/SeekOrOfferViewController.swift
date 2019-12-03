@@ -9,6 +9,9 @@
 import UIKit
 
 class SeekOrOfferViewController: UIViewController {
+    
+    // Employee data
+    var user: EmplyeeDriverModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

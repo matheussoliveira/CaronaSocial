@@ -8,7 +8,8 @@
 
 import Foundation
 
-// Used to define user location
+// Used to define user locations,
+// like home, institution or work.
 struct Location {
     let street: String
     let number: String

@@ -18,18 +18,16 @@ class EmplyeeDriverModel {
     let cpf: String
     let telephone: String
     let email: String
-    let home: Location
     
     // Standard init
     init(type: String, name: String, cpf: String,
-         telephone: String, email: String, home: Location) {
+         telephone: String, email: String) {
         
         self.type = type
         self.name = name
         self.cpf = cpf
         self.telephone = telephone
         self.email = email
-        self.home = home
     }
     
     // Init for reading from Database snapshot
@@ -40,8 +38,5 @@ class EmplyeeDriverModel {
         self.cpf = snapshotValue["cpf"] as! String
         self.telephone = snapshotValue["telephone"] as! String
         self.email = snapshotValue["email"] as! String
-        // TODO: fix this
-        self.home = snapshotValue["home"] as! Location
     }
-    
 }

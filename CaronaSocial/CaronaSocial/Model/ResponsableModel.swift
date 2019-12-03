@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
-class ReponsableDriver {
+class ReponsableModel {
     // Defines a "resposável" who is also
     // a driver in app
     
@@ -23,15 +23,15 @@ class ReponsableDriver {
     let responsableCPF: String
     let telephone: String
     let email: String
-    let home: Location
-    let institution: Location
-    let work: Location
+    let home: String
+    let institution: String
+    let work: String
     
     // Standard init
     init(type: String, studentName: String, studentCPF: String,
          studentAge: String, studentInstitution: String, matriculation: String,
          responsableName: String, responsableCPF: String, telephone: String,
-         email: String, home: Location, institution: Location, work: Location) {
+         email: String, home: String, institution: String, work: String) {
         
         self.type = type
         self.studentName = studentName
@@ -62,10 +62,10 @@ class ReponsableDriver {
         self.responsableCPF = snapshotValue["responsableCPF"] as! String
         self.telephone = snapshotValue["telephone"] as! String
         self.email = snapshotValue["email"] as! String
-        // Fix locations
-        self.home = snapshotValue["home"] as! Location
-        self.institution = snapshotValue["institution"] as! Location
-        self.work = snapshotValue["work"] as! Location
+        // Fix Strings
+        self.home = snapshotValue["home"] as! String
+        self.institution = snapshotValue["institution"] as! String
+        self.work = snapshotValue["work"] as! String
     }
     
 }
