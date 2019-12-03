@@ -69,7 +69,6 @@ class MatchsTableViewController: UITableViewController {
 
                         self.activityIndicatorView.stopAnimating()
 
-                        self.tableView.separatorStyle = .singleLine
                         self.tableView.reloadData()
                     }
                     

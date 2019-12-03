@@ -67,7 +67,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     group.notify(queue: .main) {
                         self.rows = 1
                         self.activityIndicatorView.stopAnimating()
-                        self.homeTableView.separatorStyle = .singleLine
                         self.homeTableView.reloadData()
                     }
                 }
