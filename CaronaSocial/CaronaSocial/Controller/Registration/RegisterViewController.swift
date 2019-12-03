@@ -88,8 +88,8 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                 
                 if institutionName == "Instituição" {
                     studentCell.cellPlaceholder.text = "Instituição"
-                    studentCell.cellTitle.isHidden = true
-                    shakeLabel(label: studentCell.cellPlaceholder, for: 1.0)
+                    studentCell.cellSkyTextField.isHidden = true
+                    shakeLabel(label: studentCell.cellPlaceholder, for: 1.0, labelColor: UIColor.placeholderText)
                     inputErrorDetected = true
                 }
                 
@@ -109,7 +109,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                         name = "Matrícula do Aluno"
                     }
 
-                    shakeTextField(textField: studentCell.cellTextField, for: 1.0, placeholder: name)
+                    shakeTextField(textField: studentCell.cellTextField, for: 1.0, placeholder: name, textColor: .black)
                     inputErrorDetected = true
                 } else {
                     if institutionName != "Instituição" {
@@ -152,7 +152,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                         placeholder = "Confirmar Senha"
                     }
                     
-                    shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder)
+                    shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder, textColor: .black)
                     inputErrorDetected = true
                 } else {
                     inputErrorDetected = false
@@ -231,12 +231,12 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         case 4:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
-                cell.cellTitle.text = institutionName
+                cell.cellSkyTextField.text = institutionName
                 
                 if institutionName == "Instituição" {
                     cell.cellPlaceholder.isHidden = false
                 } else {
-                    cell.cellTitle.textColor = .black
+                    cell.cellSkyTextField.textColor = .black
                     cell.cellPlaceholder.isHidden = true
                 }
 
@@ -368,7 +368,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             self.studentName = studentName.cellTextField.text ?? "Não pegou"
             self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
             self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
-            self.institution = institution.cellTitle.text ?? "Não pegou"
+            self.institution = institution.cellSkyTextField.text ?? "Não pegou"
             self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
         }
     }

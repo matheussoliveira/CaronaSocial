@@ -118,8 +118,7 @@ extension UIDevice {
 extension UIViewController {
     // Lack of input feedback
     //Shake a textField when detect an error input
-    func shakeTextField(textField: UITextField, for duration: TimeInterval, placeholder: String) {
-        let normalColor = textField.textColor
+    func shakeTextField(textField: UITextField, for duration: TimeInterval, placeholder: String, textColor: UIColor) {
         
         let translation: CGFloat = 10
         
@@ -134,7 +133,7 @@ extension UIViewController {
         propertyAnimator.addCompletion { (_) in
             textField.layer.borderWidth = 0
             textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-            textField.textColor = normalColor
+            textField.textColor = textColor
         }
         
         propertyAnimator.startAnimation()
@@ -143,10 +142,8 @@ extension UIViewController {
         UIDevice.vibrate()
     }
     
-    //Shake a label when detect an error input
-    func shakeLabel(label: UILabel, for duration: TimeInterval) {
-        let normalColor = label.textColor
-        
+    //Shake a textView when detect an error input
+    func shakeLabel(label: UILabel, for duration: TimeInterval, labelColor: UIColor) {
         let translation: CGFloat = 10
         
         let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
@@ -158,7 +155,7 @@ extension UIViewController {
         
         propertyAnimator.addCompletion { (_) in
             label.layer.borderWidth = 0
-            label.textColor = normalColor
+            label.textColor = labelColor
         }
         
         propertyAnimator.startAnimation()
@@ -168,9 +165,8 @@ extension UIViewController {
     }
     
     //Shake a button when detect an error input
-    func shakeButton(button: UIButton, for duration: TimeInterval) {
-        let normalColor = button.tintColor
-        
+    func shakeButton(button: UIButton, for duration: TimeInterval, buttonColor: UIColor) {
+       
         let translation: CGFloat = 10
         
         let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.3) {
@@ -182,7 +178,7 @@ extension UIViewController {
         
         propertyAnimator.addCompletion { (_) in
             button.layer.borderWidth = 0
-            button.tintColor = normalColor
+            button.tintColor = buttonColor
         }
         
         propertyAnimator.startAnimation()

@@ -20,6 +20,8 @@ class FixLocationsViewController: UIViewController {
     var institutionAddress: String = ""
     var workAddress: String = ""
     
+    var inputErrorDetect: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,8 +35,38 @@ class FixLocationsViewController: UIViewController {
         locationsTableView.reloadData()
     }
     
+    func checkLocationsInput() {
+        var row: Int = 0
+        
+        for i in 1...2 {
+            row = i
+            let cell = locationsTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
+            if cell.cellSkyTextField.text?.isEmpty ?? false {
+                shakeLabel(label: cell.cellPlaceholder, for: 1.0, labelColor: .placeholderText)
+                inputErrorDetect = true
+            } else {
+                inputErrorDetect = false
+            }
+        }
+    }
+    
     @IBAction func backToFixLocations(segue: UIStoryboardSegue) {
         
+    }
+    
+    @IBAction func continuePressed(_ sender: UIButton) {
+        //Send info to firebase
+        print(houseAddress)
+        print(institutionAddress)
+        print(workAddress)
+        
+        checkLocationsInput()
+        
+        if inputErrorDetect == false {
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
+            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+        }
     }
 }
 
@@ -59,13 +91,16 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "house.fill")
             cell.cellIcon.image = UIImage.init(systemName: "house.fill")
             cell.cellPlaceholder.text = "Casa"
+            cell.cellSkyTextField.title = "Casa"
             cell.cellSkyTextField.text = houseAddress
             
             if houseAddress == "" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
+                cell.cellSkyTextField.isHidden = true
             } else {
                 cell.cellSkyTextField.textColor = .black
+                cell.cellSkyTextField.isHidden = false
                 cell.cellPlaceholder.isHidden = true
                 cell.cellIcon.isHidden = true
             }
@@ -76,14 +111,17 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage(named: "building")
             cell.cellIcon.image = UIImage(named: "building")
             cell.cellPlaceholder.text = "Instituição"
+            cell.cellSkyTextField.title = "Instituição"
             cell.cellSkyTextField.text = institutionAddress
             
             if institutionAddress == "" {
                 cell.cellPlaceholder.isHidden = false
                 cell.cellIcon.isHidden = false
+                cell.cellSkyTextField.isHidden = true
             } else {
                 cell.cellSkyTextField.textColor = .black
                 cell.cellPlaceholder.isHidden = true
+                cell.cellSkyTextField.isHidden = false
                 cell.cellIcon.isHidden = true
             }
             return cell
@@ -92,6 +130,7 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellSkyTextField.iconImage = UIImage.init(systemName: "briefcase.fill")
             cell.cellIcon.image = UIImage.init(systemName: "briefcase.fill")
             cell.cellPlaceholder.text = "Trabalho (Opcional)"
+            cell.cellSkyTextField.title = "Trabalho"
             cell.cellSkyTextField.text = workAddress
             
             if workAddress == "" {

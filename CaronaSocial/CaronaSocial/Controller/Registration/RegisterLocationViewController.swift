@@ -66,7 +66,7 @@ class RegisterLocationViewController: UIViewController {
             }
     
             if cell.cellTextField.text?.isEmpty ?? false {
-                shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder)
+                shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder, textColor: .black)
                 inputErrorDetected = true
             } else {
                 inputErrorDetected = false
@@ -167,7 +167,7 @@ extension RegisterLocationViewController: UITableViewDelegate, UITableViewDataSo
     func getLocationInfos() {
         var infos: [String] = ["street", "number", "neighborhood", "city", "state"]
         
-        var row: Int = 0c
+        var row: Int = 0
         
         for i in 1...5 {
             row = i
@@ -197,9 +197,15 @@ extension RegisterLocationViewController: UITableViewDelegate, UITableViewDataSo
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "backToFixLocation" {
             if let vc = segue.destination as? FixLocationsViewController {
-                vc.houseAddress = houseAddress
-                vc.institutionAddress = institutionAddress
-                vc.workAddress = workAddress
+                if houseAddress != "" {
+                    vc.houseAddress = houseAddress
+                }
+                if institutionAddress != "" {
+                    vc.institutionAddress = institutionAddress
+                }
+                if workAddress != "" {
+                    vc.workAddress = workAddress
+                }
             }
         }
     }
