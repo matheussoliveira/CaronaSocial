@@ -14,5 +14,6 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var schudle: UILabel!
     @IBOutlet weak var rote: UILabel!
     @IBOutlet weak var background: UIView!
+    @IBOutlet weak var imageDay: UIImageView!
     
 }

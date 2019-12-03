@@ -178,7 +178,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
         if (indexPath.row == 0) {
             self.selectedField = "start"
             performSegue(withIdentifier: "selectDestiny", sender: nil)
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 1) {
             self.selectedField = "destiny"
             performSegue(withIdentifier: "selectDestiny", sender: nil)
         }
