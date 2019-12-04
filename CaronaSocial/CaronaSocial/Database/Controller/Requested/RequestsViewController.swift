@@ -37,31 +37,43 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        if selectedSegment == 1,
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "requestTitle") as? RequestTitleTableViewCell {
+        if indexPath.row == 0{
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "requestTitle") as? RequestTitleTableViewCell
             
-            cell1.titleRequest.text = "Caronas confirmadas"
-            
-            return cell1
-            
-            
-        } else if selectedSegment == 2,
-            
-            let cell1 = tableView.dequeueReusableCell(withIdentifier: "requestTitle") as? RequestTitleTableViewCell {
-            
-            cell1.titleRequest.text = "Caronas pendentes"
-            
-            return cell1
-            
+            if selectedSegment == 1{
+                
+                cell!.titleRequest.text = "Caronas pendentes"
+                
+                return cell!
+                
+                
+            } else {
+                
+                cell!.titleRequest.text = "Caronas confirmadas"
+                
+                return cell!
+                
+            }
+        } else {
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: "rideCell") as? RideTableViewCell
+            cell?.places.text = "Teste"
+            cell?.riderName.text = "Teste"
+            return cell!
         }
-        
-         return UITableViewCell()
-        
+   }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //Condition for specific height
+        if indexPath.row == 0 {
+            return 54
+        } else {
+            return 140
+        }
     }
 
 }
