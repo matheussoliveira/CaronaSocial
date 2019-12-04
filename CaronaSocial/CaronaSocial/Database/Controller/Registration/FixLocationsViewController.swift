@@ -26,6 +26,8 @@ class FixLocationsViewController: UIViewController {
 
         let footerView = UIView()
         locationsTableView.tableFooterView = footerView
+        
+        setCancelButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {

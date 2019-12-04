@@ -26,6 +26,9 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
         
         UIApplication.shared.statusBarStyle = .darkContent
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.navigationController?.navigationItem.leftBarButtonItems = []
+        self.navigationController?.navigationItem.hidesBackButton = true
     }
     
     override func viewDidLoad() {
@@ -70,6 +73,9 @@ class LoginViewController: UIViewController {
     
     @IBAction func home(_ sender: Any) {
         performSegue(withIdentifier: "goHome", sender: nil)
+    }
+    
+    @IBAction func backToLogin(_ sender: UIStoryboardSegue) {
     }
     
     

@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9MH-g6-TMM">
-                                <rect key="frame" x="158" y="120" width="98.000000000000028" height="85"/>
+                                <rect key="frame" x="158" y="120" width="98" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="98" id="XvI-Da-WLO"/>
                                     <constraint firstAttribute="height" constant="85" id="mkn-5q-UQR"/>
@@ -241,9 +241,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e6u-0M-ocQ"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="lE1-8w-kHg">
-                        <barButtonItem key="backBarButtonItem" title="Início" id="jxJ-BT-Oe2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="lE1-8w-kHg"/>
                     <connections>
                         <outlet property="emailField" destination="YfG-wL-xQS" id="J9e-V7-ezi"/>
                         <outlet property="passwordField" destination="7pY-Vu-ea8" id="wWC-ii-jXb"/>

@@ -35,11 +35,20 @@ class TextFieldTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 }
 
-extension TextFieldTableViewCell: PickerSelectedDelegate {
+extension TextFieldTableViewCell: StatePickerSelectedDelegate {
     func selectedState(state: String) {
         cellTextField.text = state
     }
-    
-    
 }
 
+extension TextFieldTableViewCell: SeatsPickerSelectedDelegate {
+    func selectedSeat(seat: String) {
+        cellTextField.text = seat
+    }
+}
+
+extension TextFieldTableViewCell: WheelchairPickerSelectedDelegate {
+    func selectedWheelchair(wheelchair: String) {
+        cellTextField.text = wheelchair
+    }
+}

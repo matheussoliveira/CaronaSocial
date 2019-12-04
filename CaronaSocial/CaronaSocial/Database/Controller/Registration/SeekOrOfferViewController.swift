@@ -13,7 +13,15 @@ class SeekOrOfferViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        setCancelButton()
+    }
+    
+    @IBAction func offerPressed(_ sender: UIButton) {
+        isOffering = true
+    }
+    
+    @IBAction func seekPressed(_ sender: UIButton) {
+        isOffering = false
     }
 
 }

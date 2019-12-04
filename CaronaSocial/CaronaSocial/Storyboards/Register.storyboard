@@ -256,9 +256,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="registerTableView" destination="TrS-za-Rbk" id="R9G-s4-24a"/>
+                        <segue destination="6Al-qi-yL1" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="qGh-c5-6eP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQQ-YK-CEi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="6Al-qi-yL1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="992.75362318840587" y="52.901785714285715"/>
         </scene>
@@ -302,6 +304,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="seekPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="br1-Vy-FKD"/>
                                             <segue destination="ief-x0-kSb" kind="show" id="XB9-n1-jL9"/>
                                         </connections>
                                     </button>
@@ -334,6 +337,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="offerPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="cmc-mg-HN9"/>
                                             <segue destination="ief-x0-kSb" kind="show" id="Fdo-GP-Aj1"/>
                                         </connections>
                                     </button>
@@ -372,8 +376,12 @@
                     <navigationItem key="navigationItem" title="Buscar ou Oferecer" largeTitleDisplayMode="always" id="zF4-Ph-4ad">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="KRU-Un-kd5"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="Fy9-ey-GjL" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="xyM-kH-FPu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGS-lC-ryU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Fy9-ey-GjL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2687" y="427"/>
         </scene>
@@ -517,10 +525,14 @@
                         <viewLayoutGuide key="safeArea" id="RX8-mI-45n"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quem é você?" largeTitleDisplayMode="always" id="ylY-p2-WM7">
-                        <barButtonItem key="backBarButtonItem" title="Voltar" id="jVs-Et-pep"/>
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="YM6-Pj-FNS"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="w4y-hY-7la" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="Y7b-J3-jUJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m0b-aW-RrP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="w4y-hY-7la" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="145" y="53"/>
         </scene>
@@ -574,6 +586,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="offerPressed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="EJC-XL-DcX"/>
                                     <segue destination="ief-x0-kSb" kind="show" id="Dek-Ul-rKx"/>
                                 </connections>
                             </button>
@@ -595,8 +608,12 @@
                     <navigationItem key="navigationItem" title="Oferecer Carona" largeTitleDisplayMode="always" id="fPd-ls-Lye">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="ZwA-VU-Z0k"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="K6d-Ge-fWU" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="Hg8-Rr-fqv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGg-7r-7g4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="K6d-Ge-fWU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2687" y="-256"/>
         </scene>
@@ -774,86 +791,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="locationsTableView" destination="nPr-tB-4j8" id="9RN-ZR-fLI"/>
+                        <segue destination="YSb-rl-5ev" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="Lps-NE-hq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5wX-pJ-HfU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="YSb-rl-5ev" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3586.9565217391305" y="52.901785714285715"/>
-        </scene>
-        <!--Aditional Info View Controller-->
-        <scene sceneID="1VO-sO-Vc4">
-            <objects>
-                <viewController storyboardIdentifier="infos" id="U8Q-lD-mLA" customClass="AditionalInfoViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7tQ-cg-Bga">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progress3" translatesAutoresizingMaskIntoConstraints="NO" id="cNv-c2-NpF">
-                                <rect key="frame" x="20" y="44" width="375" height="56"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="HOk-ye-c3B"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deseja acrescentar alguma informação?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9N-PL-xOs">
-                                <rect key="frame" x="34" y="335" width="347" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jov-Nx-I5r">
-                                <rect key="frame" x="34" y="389" width="347" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Qpx-GV-VPj"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-C9-ce7">
-                                <rect key="frame" x="20" y="597" width="374" height="40"/>
-                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0eR-Yv-tS7"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="HHc-SN-BC5"/>
-                                    <constraint firstAttribute="width" constant="374" id="fPb-8d-x6E"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Finalizar cadastro">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="finishPressed:" destination="U8Q-lD-mLA" eventType="touchUpInside" id="etE-lV-oGr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="aDI-C9-ce7" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="20" id="1nK-lj-hOH"/>
-                            <constraint firstItem="cNv-c2-NpF" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="20" id="5iA-kP-JzX"/>
-                            <constraint firstItem="jov-Nx-I5r" firstAttribute="centerY" secondItem="UCg-JW-3qd" secondAttribute="centerY" id="6xt-0M-sSO"/>
-                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="aDI-C9-ce7" secondAttribute="trailing" constant="20" id="8ou-SW-ZNJ"/>
-                            <constraint firstItem="aDI-C9-ce7" firstAttribute="top" secondItem="jov-Nx-I5r" secondAttribute="bottom" constant="80" id="Gdy-6Z-g4e"/>
-                            <constraint firstItem="jov-Nx-I5r" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="34" id="HYC-EW-cQh"/>
-                            <constraint firstItem="p9N-PL-xOs" firstAttribute="leading" secondItem="UCg-JW-3qd" secondAttribute="leading" constant="34" id="avc-h8-IXt"/>
-                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="p9N-PL-xOs" secondAttribute="trailing" constant="33" id="fWu-pi-0Of"/>
-                            <constraint firstItem="cNv-c2-NpF" firstAttribute="top" secondItem="UCg-JW-3qd" secondAttribute="top" id="lOU-FV-xCR"/>
-                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="jov-Nx-I5r" secondAttribute="trailing" constant="33" id="lbt-VX-OXa"/>
-                            <constraint firstItem="jov-Nx-I5r" firstAttribute="top" secondItem="p9N-PL-xOs" secondAttribute="bottom" constant="30" id="w6G-6F-Shx"/>
-                            <constraint firstItem="UCg-JW-3qd" firstAttribute="trailing" secondItem="cNv-c2-NpF" secondAttribute="trailing" constant="19" id="zNq-bu-jKK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="UCg-JW-3qd"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="3D9-Ju-Hzn"/>
-                    <connections>
-                        <outlet property="finishButton" destination="aDI-C9-ce7" id="GIs-Kk-AyJ"/>
-                        <outlet property="progressImage" destination="cNv-c2-NpF" id="I2S-cB-aHS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RB0-2n-czp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4418.840579710145" y="379.6875"/>
         </scene>
         <!--Cadastrar-->
         <scene sceneID="UUW-Z5-8sl">
@@ -922,7 +866,7 @@
                                             <outlet property="cellTextField" destination="qab-ZO-L8k" id="v6c-Nb-f16"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="picker" rowHeight="62" id="YnP-kj-XL1" customClass="PickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="picker" rowHeight="62" id="YnP-kj-XL1" customClass="StatePickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="90" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YnP-kj-XL1" id="tRO-In-Nfw">
@@ -1021,6 +965,219 @@
             </objects>
             <point key="canvasLocation" x="4420" y="-392"/>
         </scene>
+        <!--Informações Adicionais-->
+        <scene sceneID="Hlh-tw-EVt">
+            <objects>
+                <viewController storyboardIdentifier="infos" id="eT2-Sd-0cF" customClass="AditionalInfoViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="csI-kT-BP4">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hh2-A1-ztx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progress" rowHeight="62" id="N9h-1Y-ojA" customClass="ImageTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N9h-1Y-ojA" id="Sqw-J2-mvA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="progress3" translatesAutoresizingMaskIntoConstraints="NO" id="cNv-c2-NpF">
+                                                    <rect key="frame" x="20" y="3" width="375" height="56"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellImage" destination="cNv-c2-NpF" id="7VS-gX-QLK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textField" rowHeight="62" id="Ree-QF-G55" customClass="TextFieldTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="90" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ree-QF-G55" id="uxd-h2-I2w">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ezc-xd-3LS" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                                    <rect key="frame" x="20" y="18" width="394" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                                            <color key="value" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineColor">
+                                                            <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="lineErrorColor">
+                                                            <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="titleErrorColor">
+                                                            <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedTitleColor">
+                                                            <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="selectedLineColor">
+                                                            <color key="value" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconWidth">
+                                                            <real key="value" value="24"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconMarginLeft">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconTypeValue">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellTextField" destination="ezc-xd-3LS" id="skZ-c4-6CU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="seatsPicker" rowHeight="62" id="jgd-dw-kNP" customClass="SeatsPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="152" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgd-dw-kNP" id="oJl-Jc-fPF">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lps-Sx-mxq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                </pickerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellPicker" destination="lps-Sx-mxq" id="pnE-df-dGL"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wheelchairPicker" rowHeight="62" id="pPt-1h-4Us" customClass="WheelchairPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="214" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pPt-1h-4Us" id="uFo-8C-0kP">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNP-0v-3Qj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                </pickerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellPicker" destination="kNP-0v-3Qj" id="89L-Za-Pgk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="label" rowHeight="62" id="xer-es-c4A" customClass="LabelTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="276" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xer-es-c4A" id="D5V-fL-yOo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5s-ce-gDa">
+                                                    <rect key="frame" x="20" y="34" width="45" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="npN-lg-DJK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="S5s-ce-gDa" firstAttribute="leading" secondItem="D5V-fL-yOo" secondAttribute="leading" constant="20" id="eAY-e8-Yrf"/>
+                                                <constraint firstAttribute="bottom" secondItem="S5s-ce-gDa" secondAttribute="bottom" id="fb0-vb-LwE"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellLabel" destination="S5s-ce-gDa" id="xHv-KK-aAA"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textView" rowHeight="62" id="3JQ-Q1-ysd" customClass="TextViewTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="338" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3JQ-Q1-ysd" id="lqc-VB-xtR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blank" rowHeight="62" id="lV4-Rk-K5M">
+                                        <rect key="frame" x="0.0" y="400" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lV4-Rk-K5M" id="ty0-Hd-dwf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="button" rowHeight="62" id="AHb-Vn-xSo" customClass="ButtonTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="462" width="414" height="62"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AHb-Vn-xSo" id="WFR-Ap-hXT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDI-C9-ce7">
+                                                    <rect key="frame" x="20" y="11" width="374" height="40"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Finalizar cadastro">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="cellButton" destination="aDI-C9-ce7" id="WDQ-VF-cea"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eT2-Sd-0cF" id="PgW-V9-Zuc"/>
+                                    <outlet property="delegate" destination="eT2-Sd-0cF" id="ahg-wW-2Pe"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cQL-dz-hVq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Informações Adicionais" id="UaC-0R-lZw"/>
+                    <connections>
+                        <segue destination="dsw-Zc-Pxn" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="obf-Y1-0bQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcm-Qz-xud" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="dsw-Zc-Pxn" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4418.840579710145" y="341.51785714285711"/>
+        </scene>
     </scenes>
     <resources>
         <image name="progress1" width="375" height="11"/>
@@ -1029,7 +1186,7 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dek-Ul-rKx"/>
+        <segue reference="Fdo-GP-Aj1"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>
