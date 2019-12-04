@@ -574,7 +574,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="ief-x0-kSb" kind="show" id="Dek-Ul-rKx"/>
+                                    <action selector="continue:" destination="GId-91-2w3" eventType="touchUpInside" id="Ac0-6z-m3f"/>
+                                    <action selector="proceed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="uBI-Tr-8IZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -595,15 +596,19 @@
                     <navigationItem key="navigationItem" title="Oferecer Carona" largeTitleDisplayMode="always" id="fPd-ls-Lye">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="ZwA-VU-Z0k"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ief-x0-kSb" kind="show" identifier="goToLocations" id="K5P-8S-B7i"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGg-7r-7g4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GId-91-2w3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2687" y="-256"/>
         </scene>
         <!--Cadastrar Locais-->
         <scene sceneID="JzB-lH-MYq">
             <objects>
-                <viewController id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixLocations" id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPj-jm-g27">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -993,7 +998,7 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dek-Ul-rKx"/>
+        <segue reference="K5P-8S-B7i"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>

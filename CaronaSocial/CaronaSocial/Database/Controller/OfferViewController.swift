@@ -9,22 +9,19 @@
 import UIKit
 
 class OfferViewController: UIViewController {
+    
+    var user: EmplyeeDriverModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print("Oooo eu aqui \(user?.name)")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func proceed(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+        let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "FixLocations") as! FixLocationsViewController
+        newRegisterViewController.user = self.user // Sending user to next view to proceed with registration
+        self.navigationController?.pushViewController(newRegisterViewController, animated: true)
     }
-    */
 
 }

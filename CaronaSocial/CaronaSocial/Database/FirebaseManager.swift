@@ -16,6 +16,9 @@ import FirebaseDatabase
 
 class FirebaseManager {
     
+    static let shared = FirebaseManager()
+    var userID: String?
+    
 
     private var authUser : User? {
         return Auth.auth().currentUser
@@ -30,6 +33,13 @@ class FirebaseManager {
             _keyChain = newValue
         }
     }
+    
+    func singIn(email: String, password: String) {
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+            guard let strongSelf = self else { return }
+                
+            }
+    }
 
     func createUser(email: String, password: String, completionBlock: @escaping (_ success: Bool) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
@@ -41,6 +51,11 @@ class FirebaseManager {
             }
         }
     }
+    
+    func getUserID() -> String {
+        return Auth.auth().currentUser?.uid ?? "none"
+    }
+    
 
     func completeSignIn(id: String) {
         keyChain.set(id, forKey: "uid")

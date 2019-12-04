@@ -350,9 +350,8 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         
             self.user = EmplyeeDriverModel(type: "driver", name: employeeName,
                                           cpf: employeeCPF, telephone: telephone,
-                                          email: employeeEmail)
-            
-            // TODO: Send this object to next view
+                                          email: employeeEmail,
+                                          password: employeePassaword)
             
         }
         
@@ -364,12 +363,13 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             } else if registerScreen == 2 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
-                newRegisterViewController.user = self.user
+                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
+                newRegisterViewController.user = self.user // Sending user to next view to proceed with registration
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             } else if registerScreen == 0 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
+                newRegisterViewController.user = self.user
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             }
         }

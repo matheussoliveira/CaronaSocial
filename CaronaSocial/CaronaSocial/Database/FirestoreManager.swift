@@ -47,6 +47,20 @@ class FirestoreManager{
         }
     }
     
+    func sendLocation(userID: String, home: String, institution: String, work: String) {
+        db.collection("users").document().collection("locations").addDocument(data: [
+            "casa": home,
+            "instituição": institution,
+            "trabalho": work
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
     func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {
         // Take all drivers from our Firestore databse and
         // transform it into a DriverModel object

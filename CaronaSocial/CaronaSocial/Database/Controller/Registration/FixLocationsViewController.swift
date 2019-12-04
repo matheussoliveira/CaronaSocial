@@ -11,6 +11,8 @@ import SkyFloatingLabelTextField
 class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
+    var user: EmplyeeDriverModel?
+    var userID: String?
     
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
     var registerLocationTitle: String = ""
@@ -20,15 +22,6 @@ class FixLocationsViewController: UIViewController {
     var workAddress: String = ""
     
     var inputErrorDetect: Bool = false
-    
-    // Employee data
-       var employeeName: String = ""
-       var employeeCPF: String = ""
-       var telephone: String = ""
-       var employeeEmail: String = ""
-       var employeePassaword: String = ""
-       var employeePassawordConfirmation: String = ""
-       
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +64,30 @@ class FixLocationsViewController: UIViewController {
         checkLocationsInput()
         
         if inputErrorDetect == false {
+            
+            FirebaseManager.shared.createUser(email: user!.email, password: user!.password) { result in
+                if (result) {
+                    
+                    FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
+                    if (FirebaseManager.shared.getUserID() != "none") {
+                        self.userID = FirebaseManager.shared.getUserID()
+                        FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, institution: self.institutionAddress, work: self.workAddress)
+                    }
+                    FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
+                                                               cpf: self.user!.cpf,
+                                                               telephone: self.user!.telephone,
+                                                               email: self.user!.email)
+                    
+                } else {
+                    print("ERROOOOUUUUU")
+                }
+                
+            }
+            // TODO: Send to Firestore
+            
+            
+            
+            
             // If all inputs are ok, perform segue
 //            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
 //            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
