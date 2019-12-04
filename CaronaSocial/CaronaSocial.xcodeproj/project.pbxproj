@@ -48,7 +48,9 @@
 		2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA8ED92237D8B3400D43349 /* PassengerModel.swift */; };
 		2FF57D08237063240021732B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF57D07237063240021732B /* LoginViewController.swift */; };
 		3A7E958F2391A88900F61947 /* Requested.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A7E958E2391A88900F61947 /* Requested.storyboard */; };
-		3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */; };
+		3AD2497C2397F56800C6A076 /* RequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2497B2397F56800C6A076 /* RequestsViewController.swift */; };
+		3AD249802398000100C6A076 /* RequestTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2497F2398000100C6A076 /* RequestTitleTableViewCell.swift */; };
+		3AD249822398004F00C6A076 /* RideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD249812398004F00C6A076 /* RideTableViewCell.swift */; };
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
 		9C3C70082397E1DC0075E096 /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C70072397E1DC0075E096 /* ButtonManager.swift */; };
@@ -57,7 +59,6 @@
 		9C6EE0BD2395D2680070A42E /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */; };
 		9C6EE0BF2395D2A80070A42E /* NewAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BE2395D2A80070A42E /* NewAddressTableViewController.swift */; };
 		9C6EE0C12395D31F0070A42E /* EditRoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0C02395D31F0070A42E /* EditRoteTableViewController.swift */; };
-		9C6EE0C32395D32E0070A42E /* TitleRequestedConfirmedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0C22395D32E0070A42E /* TitleRequestedConfirmedTableViewCell.swift */; };
 		9C6EE0C92395DE000070A42E /* AditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0C82395DE000070A42E /* AditionalInfoViewController.swift */; };
 		9C6EE0CB2395DF1F0070A42E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0CA2395DF1F0070A42E /* HomeViewController.swift */; };
 		9C6EE0CD2395DFB40070A42E /* MatchsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0CC2395DFB40070A42E /* MatchsTableViewController.swift */; };
@@ -109,18 +110,19 @@
 		2FA8ED92237D8B3400D43349 /* PassengerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerModel.swift; sourceTree = "<group>"; };
 		2FF57D07237063240021732B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3A7E958E2391A88900F61947 /* Requested.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Requested.storyboard; sourceTree = "<group>"; };
-		3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestedTableViewController.swift; path = CaronaSocial/Storyboards/RequestedTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AD2497B2397F56800C6A076 /* RequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestsViewController.swift; path = CaronaSocial/Database/Controller/Requested/RequestsViewController.swift; sourceTree = SOURCE_ROOT; };
+		3AD2497F2398000100C6A076 /* RequestTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTitleTableViewCell.swift; sourceTree = "<group>"; };
+		3AD249812398004F00C6A076 /* RideTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideTableViewCell.swift; sourceTree = "<group>"; };
 		3AF88BBE238EB568004EC2AD /* Route.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Route.storyboard; sourceTree = "<group>"; };
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		9C3C70072397E1DC0075E096 /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		9C4DF8D62391455300C193DD /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
-		9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewController.swift; path = CaronaSocial/Controller/AddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewCell.swift; path = CaronaSocial/Controller/AddressTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		9C6EE0BE2395D2A80070A42E /* NewAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewAddressTableViewController.swift; path = CaronaSocial/Controller/NewAddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		9C6EE0C02395D31F0070A42E /* EditRoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditRoteTableViewController.swift; path = CaronaSocial/Controller/EditRoteTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		9C6EE0C22395D32E0070A42E /* TitleRequestedConfirmedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleRequestedConfirmedTableViewCell.swift; path = CaronaSocial/Controller/TitleRequestedConfirmedTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewController.swift; path = CaronaSocial/Database/Controller/Adress/AddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewCell.swift; path = CaronaSocial/Database/Controller/Adress/AddressTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		9C6EE0BE2395D2A80070A42E /* NewAddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewAddressTableViewController.swift; path = CaronaSocial/Database/Controller/Adress/NewAddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		9C6EE0C02395D31F0070A42E /* EditRoteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditRoteTableViewController.swift; path = CaronaSocial/Database/Controller/Adress/EditRoteTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		9C6EE0C82395DE000070A42E /* AditionalInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AditionalInfoViewController.swift; path = CaronaSocial/Controller/Registration/AditionalInfoViewController.swift; sourceTree = SOURCE_ROOT; };
 		9C6EE0CA2395DF1F0070A42E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = CaronaSocial/Controller/Home/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
 		9C6EE0CC2395DFB40070A42E /* MatchsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchsTableViewController.swift; path = CaronaSocial/Controller/Matchs/MatchsTableViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -182,14 +184,10 @@
 				2F227799238C107000D5C939 /* Matchs */,
 				0B1DA0B9239145A400E4AAA7 /* Registration */,
 				3A7E958D2390055800F61947 /* Home */,
-				3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */,
-				9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */,
-				9C6EE0BE2395D2A80070A42E /* NewAddressTableViewController.swift */,
-				9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */,
-				9C6EE0C02395D31F0070A42E /* EditRoteTableViewController.swift */,
+				3AD249752397E09300C6A076 /* Adress */,
+				3AD249762397E0A300C6A076 /* Requested */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
-				9C6EE0C22395D32E0070A42E /* TitleRequestedConfirmedTableViewCell.swift */,
 				2F05EF112386D5D100BE1B10 /* TestViewController.swift */,
 				0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */,
 				0B051A24238D458900837B6A /* OfferViewController.swift */,
@@ -299,6 +297,27 @@
 				2FA64928238C0CDD00616185 /* HomeTableViewCell.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		3AD249752397E09300C6A076 /* Adress */ = {
+			isa = PBXGroup;
+			children = (
+				9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */,
+				9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */,
+				9C6EE0BE2395D2A80070A42E /* NewAddressTableViewController.swift */,
+				9C6EE0C02395D31F0070A42E /* EditRoteTableViewController.swift */,
+			);
+			path = Adress;
+			sourceTree = "<group>";
+		};
+		3AD249762397E0A300C6A076 /* Requested */ = {
+			isa = PBXGroup;
+			children = (
+				3AD2497B2397F56800C6A076 /* RequestsViewController.swift */,
+				3AD2497F2398000100C6A076 /* RequestTitleTableViewCell.swift */,
+				3AD249812398004F00C6A076 /* RideTableViewCell.swift */,
+			);
+			path = Requested;
 			sourceTree = "<group>";
 		};
 		9C1A9C552379B20900734AA7 /* Model */ = {
@@ -473,7 +492,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C6EE0BF2395D2A80070A42E /* NewAddressTableViewController.swift in Sources */,
-				3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */,
 				2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */,
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
 				0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */,
@@ -491,6 +509,7 @@
 				2FA64929238C0CDD00616185 /* HomeTableViewCell.swift in Sources */,
 				2FA8ED8F237D86FA00D43349 /* FirestoreManager.swift in Sources */,
 				2FA8ED91237D899F00D43349 /* DriverModel.swift in Sources */,
+				3AD249802398000100C6A076 /* RequestTitleTableViewCell.swift in Sources */,
 				2FF57D08237063240021732B /* LoginViewController.swift in Sources */,
 				9C6EE0C92395DE000070A42E /* AditionalInfoViewController.swift in Sources */,
 				0B051A23238D3EBB00837B6A /* EmployeeOrResponsableViewController.swift in Sources */,
@@ -510,8 +529,9 @@
 				9C6EE0CD2395DFB40070A42E /* MatchsTableViewController.swift in Sources */,
 				2FA8ED93237D8B3400D43349 /* PassengerModel.swift in Sources */,
 				9C6EE0CB2395DF1F0070A42E /* HomeViewController.swift in Sources */,
+				3AD2497C2397F56800C6A076 /* RequestsViewController.swift in Sources */,
 				0B1DA0AC238EA03300E4AAA7 /* PickerTableViewCell.swift in Sources */,
-				9C6EE0C32395D32E0070A42E /* TitleRequestedConfirmedTableViewCell.swift in Sources */,
+				3AD249822398004F00C6A076 /* RideTableViewCell.swift in Sources */,
 				2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */,
 				2F8126CF236AF608009294E2 /* SceneDelegate.swift in Sources */,
 			);
