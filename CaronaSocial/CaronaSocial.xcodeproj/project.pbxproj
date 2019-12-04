@@ -51,6 +51,7 @@
 		3A7E95912391BDCE00F61947 /* RequestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7E95902391BDCE00F61947 /* RequestedTableViewController.swift */; };
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
+		9C3C70082397E1DC0075E096 /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C70072397E1DC0075E096 /* ButtonManager.swift */; };
 		9C4DF8D72391455300C193DD /* DriverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C4DF8D62391455300C193DD /* DriverViewController.swift */; };
 		9C6EE0BB2395D2600070A42E /* AddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */; };
 		9C6EE0BD2395D2680070A42E /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */; };
@@ -113,6 +114,7 @@
 		6C2AF1EA7ECA0F6FFE3BB2EB /* Pods-CaronaSocial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CaronaSocial.release.xcconfig"; path = "Target Support Files/Pods-CaronaSocial/Pods-CaronaSocial.release.xcconfig"; sourceTree = "<group>"; };
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9C3C70072397E1DC0075E096 /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		9C4DF8D62391455300C193DD /* DriverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverViewController.swift; sourceTree = "<group>"; };
 		9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewController.swift; path = CaronaSocial/Controller/AddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewCell.swift; path = CaronaSocial/Controller/AddressTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				0B0A3A4F23743F87004EB061 /* StyleGuide.swift */,
+				9C3C70072397E1DC0075E096 /* ButtonManager.swift */,
 				0B0B4A892382C68B00DAE5C7 /* Auxiliary.swift */,
 				0B4222092386B0AF00A89E5E /* Register Cells */,
 			);
@@ -480,6 +483,7 @@
 				2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */,
 				9C6EE0BB2395D2600070A42E /* AddressTableViewController.swift in Sources */,
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
+				9C3C70082397E1DC0075E096 /* ButtonManager.swift in Sources */,
 				9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */,
 				2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */,
 				2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */,

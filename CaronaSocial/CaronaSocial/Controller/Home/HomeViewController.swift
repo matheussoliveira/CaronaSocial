@@ -19,8 +19,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var activityIndicatorView: UIActivityIndicatorView!
     let dispatchQueue = DispatchQueue(label: "Queue")
     var period: RideModel?
+    var buttonManager = ButtonManager()
+    var weekDay: String?
 
-
+    @IBOutlet var dayButtons: [UIButton]!
+    
     @IBOutlet weak var homeTableView: UITableView!
     
     //view for activity indicator
@@ -32,8 +35,95 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         homeTableView.backgroundView = activityIndicatorView
     }
     
+    @IBAction func dayButtonsPressed(_ sender: UIButton) {
+        let group = DispatchGroup()
+        sender.isSelected = !sender.isSelected
+        var weekDay: String = ""
+        var numNotSelectedButtons: Int = 0
+        
+        switch sender.tag {
+        case 1:
+            weekDay = "seg"
+        case 2:
+            weekDay = "ter"
+        case 3:
+            weekDay = "qua"
+        case 4:
+            weekDay = "qui"
+        case 5:
+            weekDay = "sex"
+        default:
+            print("ERROR")
+        }
+        
+        self.weekDay = weekDay
+        
+        activityIndicatorView.startAnimating()
+        homeTableView.separatorStyle = .none
+        
+        dispatchQueue.async {
+            OperationQueue.main.addOperation() {
+                group.enter()
+                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Manhã"){ result in
+                    self.rideManha = result
+                    group.leave()
+                }
+                
+                group.enter()
+                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Tarde"){ result in
+                    self.rideTarde = result
+                    group.leave()
+                }
+                
+                group.enter()
+                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Noite"){ result in
+                    self.rideNoite = result
+                    group.leave()
+                }
+        
+        
+        
+                for button in self.dayButtons {
+
+                    
+                    // Handle single button selection
+                    if button.tag != sender.tag && button.isSelected && sender.isSelected {
+                        self.buttonManager.notSelectedButtonDesign(button: button)
+                    }
+                }
+                
+                // Set pressed button design
+                if sender.isSelected {
+                    self.buttonManager.selectedButtonDesign(button: sender)
+                } else {
+                    self.buttonManager.notSelectedButtonDesign(button: sender)
+                }
+                
+                group.notify(queue: .main) {
+                    self.activityIndicatorView.stopAnimating()
+                    self.homeTableView.reloadData()
+                }
+            }
+        }
+        
+}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Day buttons not selected
+        for button in dayButtons {
+            button.isSelected = false
+        }
+        dayButtons[0].isSelected = true
+        buttonManager.selectedButtonDesign(button: dayButtons[0])
+        self.weekDay = "seg"
+        
+        
+        // Button corner radius
+        for button in dayButtons {
+            button.layer.cornerRadius = 6
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,19 +138,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             dispatchQueue.async {
                 OperationQueue.main.addOperation() {
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: "seg", period: "Manhã"){ result in
+                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Manhã"){ result in
                         self.rideManha = result
                         group.leave()
                     }
                     
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: "seg", period: "Tarde"){ result in
+                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Tarde"){ result in
                         self.rideTarde = result
                         group.leave()
                     }
                     
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: "seg", period: "Noite"){ result in
+                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Noite"){ result in
                         self.rideNoite = result
                         group.leave()
                     }

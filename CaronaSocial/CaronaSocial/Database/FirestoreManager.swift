@@ -87,8 +87,7 @@ class FirestoreManager{
         
         func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
             var userId = "tNgfVIgCcUlI4fn1IAiw"
-            print("")
-            db.collection("users").document(userId).collection("rides").document("seg").collection(period).document("infos").getDocument() { (document, err) in
+            db.collection("users").document(userId).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
                     var ride = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
                     completion(ride)
