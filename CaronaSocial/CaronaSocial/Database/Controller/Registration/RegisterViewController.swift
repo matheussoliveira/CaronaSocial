@@ -12,6 +12,7 @@ protocol ContinueDelegate: NSObjectProtocol {
 }
 
 var registerScreen: Int = 0
+var isOffering: Bool = false
 
 class RegisterViewController: UIViewController, ContinueDelegate {
     
@@ -41,6 +42,8 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         
         hideKeyboardWhenTappedAround()
         keyboardEvents()
+        
+        setCancelButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {

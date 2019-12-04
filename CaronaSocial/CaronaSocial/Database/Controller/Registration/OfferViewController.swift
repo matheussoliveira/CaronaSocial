@@ -1,14 +1,14 @@
 //
-//  SeekOrOfferViewController.swift
+//  OfferViewController.swift
 //  CaronaSocial
 //
-//  Created by Julia Conti Mestre on 21/11/19.
+//  Created by Julia Conti Mestre on 26/11/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
 
 import UIKit
 
-class SeekOrOfferViewController: UIViewController {
+class OfferViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +20,4 @@ class SeekOrOfferViewController: UIViewController {
         isOffering = true
     }
     
-    @IBAction func seekPressed(_ sender: UIButton) {
-        isOffering = false
-    }
-
 }

@@ -7,9 +7,6 @@
 //
 import UIKit
 
-//protocol CellTextField: NSObjectProtocol {
-//    func textFieldTapped()
-//}
 class RegisterLocationViewController: UIViewController {
     
     @IBOutlet weak var locationTableView: UITableView!
@@ -19,7 +16,7 @@ class RegisterLocationViewController: UIViewController {
     var pickerCellHeight: CGFloat = 0
     
     var stateCell: TextFieldTableViewCell!
-    var pickerCell: PickerTableViewCell!
+    var pickerCell: StatePickerTableViewCell!
     
     var navigationTitle: String = ""
     var houseAddress: String = ""
@@ -108,7 +105,7 @@ extension RegisterLocationViewController: UITableViewDelegate, UITableViewDataSo
             cell?.cellTextField.isUserInteractionEnabled = false
             return cell!
         case 6: //Picker
-            self.pickerCell = tableView.dequeueReusableCell(withIdentifier: "picker", for: indexPath) as? PickerTableViewCell
+            self.pickerCell = tableView.dequeueReusableCell(withIdentifier: "picker", for: indexPath) as? StatePickerTableViewCell
             let cell = self.pickerCell
             
             //Picker delegate

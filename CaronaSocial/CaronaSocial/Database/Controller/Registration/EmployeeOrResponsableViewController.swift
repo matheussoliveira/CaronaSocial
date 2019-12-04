@@ -8,7 +8,7 @@
 import UIKit
 
 class EmployeeOrResponsableViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +24,15 @@ class EmployeeOrResponsableViewController: UIViewController {
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
             UIApplication.shared.statusBarStyle = .lightContent
         }
+        
+        //Remove back button
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        setCancelButton()
     }
+    
+    
+    
+    
     
     @IBAction func employeeButton(_ sender: UIButton) {
         registerScreen = 0

@@ -74,6 +74,37 @@ extension UIViewController {
         cell.selectionStyle = .none
     }
     
+    func setCancelButton() {
+        //Set right bar button as cancel
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(cancelButton))
+    }
+    
+    @objc func cancelButton() {
+        displayCancelMsg(title: "Cancelar cadastro", msg: "Deseja cancelar o cadastro?")
+    }
+    
+    func displayCancelMsg(title : String, msg : String, style: UIAlertController.Style = .alert) {
+        
+        let ac = UIAlertController.init(title: title,
+                                        message: msg,
+                                        preferredStyle: style)
+        
+        ac.addAction(UIAlertAction.init(title: "Cancelar",
+                                        style: .destructive,
+                                        handler: {(action: UIAlertAction!) in
+                                            self.performSegue(withIdentifier: "backToLogin", sender: self)
+                                            
+        }))
+        
+        ac.addAction(UIAlertAction.init(title: "Continuar",
+                                        style: .default,
+                                        handler: nil))
+
+        DispatchQueue.main.async {
+            self.present(ac, animated: true, completion: nil)
+        }
+    }
+    
 }
 
 extension UIView {

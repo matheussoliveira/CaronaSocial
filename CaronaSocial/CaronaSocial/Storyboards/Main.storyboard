@@ -241,9 +241,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="e6u-0M-ocQ"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="lE1-8w-kHg">
-                        <barButtonItem key="backBarButtonItem" title="Início" id="jxJ-BT-Oe2"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="lE1-8w-kHg"/>
                     <connections>
                         <outlet property="emailField" destination="YfG-wL-xQS" id="J9e-V7-ezi"/>
                         <outlet property="passwordField" destination="7pY-Vu-ea8" id="wWC-ii-jXb"/>

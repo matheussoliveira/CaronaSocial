@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol PickerSelectedDelegate: NSObjectProtocol {
+protocol StatePickerSelectedDelegate: NSObjectProtocol {
     func selectedState(state: String)
 }
 
-class PickerTableViewCell: UITableViewCell {
+class StatePickerTableViewCell: UITableViewCell {
     
     @IBOutlet weak var cellPicker: UIPickerView!
     
     let states = ["AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"]
     var selectedState: String = ""
-    weak var pickerDelegate: PickerSelectedDelegate?
+    weak var pickerDelegate: StatePickerSelectedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +31,7 @@ class PickerTableViewCell: UITableViewCell {
 
 }
 
-extension PickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
+extension StatePickerTableViewCell: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
