@@ -39,16 +39,7 @@ class InstitutionTableViewController: UITableViewController, UISearchBarDelegate
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        let selectedInstitution = institutionNames[indexPath.row]
-////
-////        let destinationVC = RegisterViewController()
-////        destinationVC.institutionName = selectedInstitution
-////
-////        destinationVC.performSegue(withIdentifier: "institution", sender: self)
-//    }
-//
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "selectedInstitution" {
             let cell = sender as! UITableViewCell

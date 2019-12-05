@@ -235,6 +235,54 @@
                                             <outlet property="cellButton" destination="1yJ-lY-fRG" id="QOq-Mi-kwD"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profilePic" rowHeight="150" id="xeX-Mr-eWP" customClass="ProfilePicTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="400" width="414" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xeX-Mr-eWP" id="cqr-0n-BWf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9d-QN-xk9">
+                                                    <rect key="frame" x="159" y="120" width="96" height="29"/>
+                                                    <state key="normal" title="Adicionar foto"/>
+                                                    <connections>
+                                                        <action selector="addPhoto:" destination="aes-Br-m1k" eventType="touchUpInside" id="9XZ-HH-CJW"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CLG-4F-vD6">
+                                                    <rect key="frame" x="147" y="0.5" width="120" height="119"/>
+                                                    <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="4gr-ez-1r2"/>
+                                                        <constraint firstAttribute="width" secondItem="CLG-4F-vD6" secondAttribute="height" multiplier="1:1" id="YN7-zK-bnJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KeU-BN-fnT">
+                                                    <rect key="frame" x="147" y="0.0" width="120" height="120"/>
+                                                    <connections>
+                                                        <action selector="addPhoto:" destination="aes-Br-m1k" eventType="touchUpInside" id="gFS-Y6-r2Q"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="s9d-QN-xk9" firstAttribute="centerX" secondItem="cqr-0n-BWf" secondAttribute="centerX" id="3NW-qz-Xt1"/>
+                                                <constraint firstItem="KeU-BN-fnT" firstAttribute="centerY" secondItem="CLG-4F-vD6" secondAttribute="centerY" id="7cM-Fp-Ldd"/>
+                                                <constraint firstItem="CLG-4F-vD6" firstAttribute="centerX" secondItem="cqr-0n-BWf" secondAttribute="centerX" id="IOD-Go-qhw"/>
+                                                <constraint firstItem="CLG-4F-vD6" firstAttribute="top" secondItem="cqr-0n-BWf" secondAttribute="topMargin" constant="-11" id="Obg-S1-6vB"/>
+                                                <constraint firstItem="KeU-BN-fnT" firstAttribute="centerX" secondItem="CLG-4F-vD6" secondAttribute="centerX" id="S1I-NJ-RkU"/>
+                                                <constraint firstItem="KeU-BN-fnT" firstAttribute="height" secondItem="CLG-4F-vD6" secondAttribute="height" id="aKY-1O-M9P"/>
+                                                <constraint firstItem="s9d-QN-xk9" firstAttribute="top" secondItem="CLG-4F-vD6" secondAttribute="bottom" id="mWZ-o6-Kit"/>
+                                                <constraint firstAttribute="bottom" secondItem="s9d-QN-xk9" secondAttribute="bottom" constant="1" id="pIl-ri-aiq"/>
+                                                <constraint firstItem="KeU-BN-fnT" firstAttribute="width" secondItem="CLG-4F-vD6" secondAttribute="width" id="uea-fA-vVD"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="addPictureButton" destination="s9d-QN-xk9" id="s9x-T0-gjz"/>
+                                            <outlet property="profileImageView" destination="CLG-4F-vD6" id="8OV-7v-HS9"/>
+                                            <outlet property="profilePicButton" destination="KeU-BN-fnT" id="3tw-jh-w9h"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="aes-Br-m1k" id="C0P-x0-KUL"/>
@@ -978,7 +1026,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progress" rowHeight="62" id="N9h-1Y-ojA" customClass="ImageTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progress" rowHeight="62" id="N9h-1Y-ojA" customClass="ImageTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="N9h-1Y-ojA" id="Sqw-J2-mvA">
@@ -996,7 +1044,7 @@
                                             <outlet property="cellImage" destination="cNv-c2-NpF" id="7VS-gX-QLK"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textField" rowHeight="62" id="Ree-QF-G55" customClass="TextFieldTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textField" rowHeight="62" id="Ree-QF-G55" customClass="TextFieldTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="90" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ree-QF-G55" id="uxd-h2-I2w">
@@ -1049,43 +1097,53 @@
                                             <outlet property="cellTextField" destination="ezc-xd-3LS" id="skZ-c4-6CU"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="seatsPicker" rowHeight="62" id="jgd-dw-kNP" customClass="SeatsPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="seatsPicker" rowHeight="62" id="jgd-dw-kNP" customClass="SeatsPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="152" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgd-dw-kNP" id="oJl-Jc-fPF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lps-Sx-mxq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lps-Sx-mxq">
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="62"/>
                                                 </pickerView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lps-Sx-mxq" firstAttribute="leading" secondItem="oJl-Jc-fPF" secondAttribute="leading" id="7bK-Ey-evm"/>
+                                                <constraint firstAttribute="trailing" secondItem="lps-Sx-mxq" secondAttribute="trailing" id="XLT-Xf-dcJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="lps-Sx-mxq" secondAttribute="bottom" id="ZDF-YY-hTF"/>
+                                                <constraint firstItem="lps-Sx-mxq" firstAttribute="top" secondItem="oJl-Jc-fPF" secondAttribute="top" id="e4j-Bg-LH3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cellPicker" destination="lps-Sx-mxq" id="pnE-df-dGL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wheelchairPicker" rowHeight="62" id="pPt-1h-4Us" customClass="WheelchairPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="wheelchairPicker" rowHeight="62" id="pPt-1h-4Us" customClass="WheelchairPickerTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="214" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pPt-1h-4Us" id="uFo-8C-0kP">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNP-0v-3Qj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNP-0v-3Qj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="0.0" height="62"/>
                                                 </pickerView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="kNP-0v-3Qj" secondAttribute="trailing" id="3Qx-kX-2J3"/>
+                                                <constraint firstItem="kNP-0v-3Qj" firstAttribute="top" secondItem="uFo-8C-0kP" secondAttribute="top" id="87i-iw-D7R"/>
+                                                <constraint firstAttribute="bottom" secondItem="kNP-0v-3Qj" secondAttribute="bottom" id="AWd-HW-PoB"/>
+                                                <constraint firstItem="kNP-0v-3Qj" firstAttribute="leading" secondItem="uFo-8C-0kP" secondAttribute="leading" id="hcg-b4-znm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="cellPicker" destination="kNP-0v-3Qj" id="89L-Za-Pgk"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="label" rowHeight="62" id="xer-es-c4A" customClass="LabelTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="label" rowHeight="62" id="xer-es-c4A" customClass="LabelTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="276" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xer-es-c4A" id="D5V-fL-yOo">
@@ -1112,16 +1170,33 @@
                                             <outlet property="cellLabel" destination="S5s-ce-gDa" id="xHv-KK-aAA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textView" rowHeight="62" id="3JQ-Q1-ysd" customClass="TextViewTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textView" rowHeight="62" id="3JQ-Q1-ysd" customClass="TextViewTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="338" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3JQ-Q1-ysd" id="lqc-VB-xtR">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Inserir observações (máx 150 caracteres)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D8X-cb-MgM">
+                                                    <rect key="frame" x="16" y="11" width="0.0" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="D8X-cb-MgM" firstAttribute="top" secondItem="lqc-VB-xtR" secondAttribute="topMargin" id="4dE-9T-diN"/>
+                                                <constraint firstItem="D8X-cb-MgM" firstAttribute="leading" secondItem="lqc-VB-xtR" secondAttribute="leadingMargin" id="ROJ-S8-OvO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="D8X-cb-MgM" secondAttribute="bottom" id="hqG-73-wXV"/>
+                                                <constraint firstItem="D8X-cb-MgM" firstAttribute="trailing" secondItem="lqc-VB-xtR" secondAttribute="trailingMargin" id="o4i-3y-UI0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="temporaryTextField" destination="D8X-cb-MgM" id="XFJ-Jg-dcC"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blank" rowHeight="62" id="lV4-Rk-K5M">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="blank" rowHeight="62" id="lV4-Rk-K5M">
                                         <rect key="frame" x="0.0" y="400" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lV4-Rk-K5M" id="ty0-Hd-dwf">
@@ -1130,7 +1205,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="button" rowHeight="62" id="AHb-Vn-xSo" customClass="ButtonTableViewCell" customModule="Carona_Social" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="button" rowHeight="62" id="AHb-Vn-xSo" customClass="ButtonTableViewCell" customModule="Carona_Social" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="462" width="414" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AHb-Vn-xSo" id="WFR-Ap-hXT">
@@ -1150,13 +1225,13 @@
                                                             <real key="value" value="8"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="finishPressed:" destination="eT2-Sd-0cF" eventType="touchUpInside" id="alq-Ha-Flq"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="cellButton" destination="aDI-C9-ce7" id="WDQ-VF-cea"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1170,6 +1245,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Informações Adicionais" id="UaC-0R-lZw"/>
                     <connections>
+                        <outlet property="infosTableView" destination="Hh2-A1-ztx" id="04o-nU-ZDK"/>
                         <segue destination="dsw-Zc-Pxn" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="obf-Y1-0bQ"/>
                     </connections>
                 </viewController>
@@ -1180,6 +1256,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
         <image name="progress1" width="375" height="11"/>
         <image name="progress22" width="375" height="11"/>
         <image name="progress23" width="375" height="11"/>

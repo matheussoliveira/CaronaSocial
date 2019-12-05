@@ -26,6 +26,7 @@
 		0B59908C2397E8CB00BF68C8 /* SeatsPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B59908B2397E8CB00BF68C8 /* SeatsPickerTableViewCell.swift */; };
 		0B59908E2397E8DB00BF68C8 /* WheelchairPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B59908D2397E8DB00BF68C8 /* WheelchairPickerTableViewCell.swift */; };
 		0B5990902397EFB300BF68C8 /* TextViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B59908F2397EFB300BF68C8 /* TextViewTableViewCell.swift */; };
+		0B59909223992FCD00BF68C8 /* ProfilePicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B59909123992FCD00BF68C8 /* ProfilePicTableViewCell.swift */; };
 		0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */; };
 		0BA29A20238394E7003BA510 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BA29A1F238394E7003BA510 /* Register.storyboard */; };
 		0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA29A2123839603003BA510 /* RegisterViewController.swift */; };
@@ -86,6 +87,7 @@
 		0B59908B2397E8CB00BF68C8 /* SeatsPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeatsPickerTableViewCell.swift; sourceTree = "<group>"; };
 		0B59908D2397E8DB00BF68C8 /* WheelchairPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelchairPickerTableViewCell.swift; sourceTree = "<group>"; };
 		0B59908F2397EFB300BF68C8 /* TextViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTableViewCell.swift; sourceTree = "<group>"; };
+		0B59909123992FCD00BF68C8 /* ProfilePicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicTableViewCell.swift; sourceTree = "<group>"; };
 		0BA299B82382DD8B003BA510 /* InstitutionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutionTableViewController.swift; sourceTree = "<group>"; };
 		0BA29A1F238394E7003BA510 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		0BA29A2123839603003BA510 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				0B59908B2397E8CB00BF68C8 /* SeatsPickerTableViewCell.swift */,
 				0B59908D2397E8DB00BF68C8 /* WheelchairPickerTableViewCell.swift */,
 				0B59908F2397EFB300BF68C8 /* TextViewTableViewCell.swift */,
+				0B59909123992FCD00BF68C8 /* ProfilePicTableViewCell.swift */,
 			);
 			path = "Register Cells";
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				0BA299B92382DD8B003BA510 /* InstitutionTableViewController.swift in Sources */,
 				9CF7047B238EA3FB0044CA8E /* RideModel.swift in Sources */,
 				2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */,
+				0B59909223992FCD00BF68C8 /* ProfilePicTableViewCell.swift in Sources */,
 				2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */,
 				0B4222082386A85800A89E5E /* SeekOrOfferViewController.swift in Sources */,
 				2FA64929238C0CDD00616185 /* HomeTableViewCell.swift in Sources */,

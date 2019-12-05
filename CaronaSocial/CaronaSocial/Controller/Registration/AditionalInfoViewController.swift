@@ -11,6 +11,7 @@ import UIKit
 class AditionalInfoViewController: UIViewController {
     
     @IBOutlet weak var finishButton: UIButton!
+    @IBOutlet weak var infosTableView: UITableView!
     
     var seatsCell: TextFieldTableViewCell!
     var seatsPickerCell: SeatsPickerTableViewCell!
@@ -26,10 +27,16 @@ class AditionalInfoViewController: UIViewController {
     
     var isSeatsPicker: Bool = false
     
+    var inputErrorDetected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setCancelButton()
+        hideKeyboardWhenTappedAround()
+        
+        let footerView = UIView()
+        infosTableView.tableFooterView = footerView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,10 +45,15 @@ class AditionalInfoViewController: UIViewController {
     }
     
     @IBAction func finishPressed(_ sender: UIButton) {
-        let title = "Cadastro finalizado!"
-        let msg = "Para entrar no aplicativo é preciso verificar seu endereço de email. Por favor confira sua caixa de entrada e siga as instruções no email que enviamos."
+        checkInfoInputs()
         
-        displayMsg(title : title, msg : msg, style: .alert)
+        if inputErrorDetected == false {
+            let title = "Cadastro finalizado!"
+            let msg = "Para entrar no aplicativo é preciso verificar seu endereço de email. Por favor confira sua caixa de entrada e siga as instruções no email que enviamos."
+            
+            displayMsg(title : title, msg : msg, style: .alert)
+        }
+        
     }
     
     //Alert message
@@ -63,13 +75,46 @@ class AditionalInfoViewController: UIViewController {
             self.present(ac, animated: true, completion: nil)
         }
     }
+    
+    func checkInfoInputs() {
+        var row: Int = 0
+        
+        for i in 1...3 {
+            row = i
+            if row != 2 {
+                let cell = infosTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldTableViewCell
+                var placeholder: String = ""
+                
+                if row == 1 {
+                    if isOffering == true {
+                        placeholder = "Número de lugares disponíveis"
+                    } else {
+                        placeholder = "Número de passageiros"
+                    }
+                } else if row == 3 {
+                    if isOffering == true {
+                        placeholder = "Existe espaço para cadeirante?"
+                    } else {
+                        placeholder = "Algum passageiro é cadeirante?"
+                    }
+                }
+                
+                if cell.cellTextField.text?.isEmpty ?? false {
+                    shakeTextField(textField: cell.cellTextField, for: 1.0, placeholder: placeholder, textColor: .black)
+                    inputErrorDetected = true
+                } else {
+                    inputErrorDetected = false
+                }
+            }
+        }
+    }
 
 }
 
 extension AditionalInfoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -127,14 +172,14 @@ extension AditionalInfoViewController: UITableViewDelegate, UITableViewDataSourc
             self.wheelchairPickerCell.pickerDelegate = self.wheelchairCell
             
             return cell!
-        case 5: //label add info
+        case 6: //label add info
             let cell = tableView.dequeueReusableCell(withIdentifier: "label", for: indexPath) as! LabelTableViewCell
             cell.cellLabel.text = "Acrescentar observações (opcional)"
             return cell
-        case 6: //textview add info
+        case 7: //textview add info
             let cell = tableView.dequeueReusableCell(withIdentifier: "textView", for: indexPath) as! TextViewTableViewCell
             return cell
-        case 8: //finish registration button
+        case 9: //finish registration button
             let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! ButtonTableViewCell
             removeCellSeparatorLines(cell)
             return cell
@@ -174,6 +219,22 @@ extension AditionalInfoViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .fade)
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 0
+        
+        if indexPath.row == 2 {
+            height = seatPickerCellHeight
+        } else if indexPath.row == 4 {
+            height = wheelchairPickerCellHeight
+        } else {
+            height = 62
+        }
+        
+        tableView.reloadRows(at: [IndexPath(row: 2, section: 0)], with: .fade)
+        tableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .fade)
+        return height
     }
     
 

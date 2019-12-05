@@ -33,9 +33,13 @@ class RegisterViewController: UIViewController, ContinueDelegate {
 
     var institutionName: String = "Instituição"
     var inputErrorDetected: Bool = false
+    
+    var imagePicker = UIImagePickerController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
 
         let footerView = UIView()
         registerTableView.tableFooterView = footerView
@@ -78,14 +82,14 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         
         let selectedInstitution = selectedInstitutionViewController.selectedInstitution
         institutionName = selectedInstitution
-        registerTableView.reloadRows(at: [IndexPath(row: 4, section: 0)], with: .automatic)
+        registerTableView.reloadRows(at: [IndexPath(row: 5, section: 0)], with: .automatic)
     }
     
     func checkStudentInputs() {
         var row: Int = 0
-        for i in 1...5 {
+        for i in 2...6 {
             row = i
-            if row == 4 {
+            if row == 5 {
                 let studentCell = registerTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
                 
                 if institutionName == "Instituição" {
@@ -101,13 +105,13 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                 if studentCell.cellTextField.text?.isEmpty ?? false {
                     var name: String = ""
 
-                    if row == 1 {
+                    if row == 2 {
                         name = "Nome do Aluno"
-                    } else if row == 2 {
-                        name = "CPF do Aluno"
                     } else if row == 3 {
+                        name = "CPF do Aluno"
+                    } else if row == 4 {
                         name = "Idade do Aluno"
-                    } else if row == 5 {
+                    } else if row == 6 {
                         name = "Matrícula do Aluno"
                     }
 
@@ -125,9 +129,9 @@ class RegisterViewController: UIViewController, ContinueDelegate {
     
     func checkResponsableOrEmployeeInputs() {
         var row: Int = 0
-        for i in 1...8 {
+        for i in 2...9 {
             row = i
-            if row != 4 && row != 5 {
+            if row != 5 && row != 6 {
                 var name: String = ""
                 
                 if registerScreen == 2 {
@@ -140,17 +144,17 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                 if cell.cellTextField.text?.isEmpty ?? false {
                     var placeholder: String = ""
                     
-                    if row == 1 {
+                    if row == 2 {
                         placeholder = "Nome do \(name)"
-                    } else if row == 2 {
-                        placeholder = "CPF do \(name)"
                     } else if row == 3 {
+                        placeholder = "CPF do \(name)"
+                    } else if row == 4 {
                         placeholder = "Telefone"
-                    } else if row == 6 {
-                        placeholder = "Email"
                     } else if row == 7 {
-                        placeholder = "Senha"
+                        placeholder = "Email"
                     } else if row == 8 {
+                        placeholder = "Senha"
+                    } else if row == 9 {
                         placeholder = "Confirmar Senha"
                     }
                     
@@ -163,17 +167,23 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         }
 
     }
+    
+    @IBAction func addPhoto(_ sender: UIButton) {
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        present(imagePicker, animated: true, completion: nil)
+    }
 
 }
 
 extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if registerScreen == 1 {
-            return 8
+            return 9
         } else if registerScreen == 2 || registerScreen == 0 {
-            return 11
+            return 12
         }
-        return 8
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -195,26 +205,34 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "progress", for: indexPath) as! ImageTableViewCell
             cell.cellImage.image = UIImage(named: imageName)
-            // Remove the lines from the cell
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
+            removeCellSeparatorLines(cell)
             cell.selectionStyle = .none
-            tableView.separatorColor = .darkGray
             return cell
         case 1:
+            if registerScreen == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "blank", for: indexPath)
+                cell.selectionStyle = .none
+                removeCellSeparatorLines(cell)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "profilePic", for: indexPath) as! ProfilePicTableViewCell
+                return cell
+            }
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
             cell.cellTextField.placeholder = "Nome do \(name)"
             cell.cellTextField.keyboardType = .default
             cell.selectionStyle = .none
             tableView.separatorColor = .darkGray
             return cell
-        case 2:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
             cell.cellTextField.placeholder = "CPF do \(name)"
             cell.cellTextField.keyboardType = .numberPad
             cell.selectionStyle = .none
             tableView.separatorColor = .darkGray
             return cell
-        case 3:
+        case 4:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
                 cell.cellTextField.placeholder = "Idade do Aluno"
@@ -230,8 +248,8 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.separatorColor = .darkGray
                 return cell
             }
-        case 4:
-            if registerScreen == 1 {
+        case 5:
+            if registerScreen == 1 || registerScreen == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "title", for: indexPath) as! TitleTableViewCell
                 cell.cellSkyTextField.text = institutionName
                 
@@ -245,7 +263,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
-            } else if registerScreen == 2 || registerScreen == 0 {
+            } else if registerScreen == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "blank", for: indexPath)
                 // Remove the lines from the cell
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
@@ -253,7 +271,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.separatorColor = .darkGray
                 return cell
             }
-        case 5:
+        case 6:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
                 cell.cellTextField.placeholder = "Matrícula"
@@ -268,7 +286,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.separatorColor = .darkGray
                 return cell
             }
-        case 6:
+        case 7:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "blank", for: indexPath)
                 // Remove the lines from the cell
@@ -285,7 +303,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 return cell
             }
             
-        case 7:
+        case 8:
             if registerScreen == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! ButtonTableViewCell
                 cell.delegate = self
@@ -303,7 +321,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.separatorColor = .darkGray
                 return cell
             }
-        case 8:
+        case 9:
             let cell = tableView.dequeueReusableCell(withIdentifier: "textField", for: indexPath) as! TextFieldTableViewCell
             cell.cellTextField.placeholder = "Confirmar Senha"
             cell.cellTextField.keyboardType = .default
@@ -311,7 +329,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             cell.selectionStyle = .none
             tableView.separatorColor = .darkGray
             return cell
-        case 10:
+        case 11:
             let cell = tableView.dequeueReusableCell(withIdentifier: "button", for: indexPath) as! ButtonTableViewCell
             cell.delegate = self
             // Remove the lines from the cell
@@ -360,13 +378,41 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = 0
+        
+        if registerScreen == 1 { //student
+            if indexPath.row == 1 {
+                height = 0
+            } else {
+                height = 62
+            }
+        } else if registerScreen == 2 {
+            if indexPath.row == 1 {
+                height = 150
+            } else if indexPath.row == 5 {
+                height = 20
+            } else {
+                height = 62
+            }
+        } else if registerScreen == 0 {
+            if indexPath.row == 1 {
+                height = 150
+            } else {
+                height = 62
+            }
+        }
+        
+        return height
+    }
+    
     func buildStudentInfo() {
         if registerScreen == 1 {
-            let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
-            let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
-            let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
-            let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
-            let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
+            let studentName = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+            let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+            let studentAge = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TextFieldTableViewCell
+            let institution = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TitleTableViewCell
+            let matriculation = registerTableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! TextFieldTableViewCell
             self.studentName = studentName.cellTextField.text ?? "Não pegou"
             self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
             self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
@@ -394,4 +440,18 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            let cell = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ProfilePicTableViewCell
+            cell.profileImageView.image = image
+            
+            registerTableView.reloadInputViews()
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
 }

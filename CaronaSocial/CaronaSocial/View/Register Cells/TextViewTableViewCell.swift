@@ -8,19 +8,26 @@
 
 import UIKit
 
-class TextViewTableViewCell: UITableViewCell {
+class TextViewTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     @IBOutlet weak var cellTextView: UITextView!
+    @IBOutlet weak var temporaryTextField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        temporaryTextField.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool{
+        textField.resignFirstResponder()
+        return true
     }
 
 }

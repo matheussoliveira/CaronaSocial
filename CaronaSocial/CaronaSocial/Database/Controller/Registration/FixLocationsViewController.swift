@@ -164,7 +164,6 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             vc.navigationTitle = "Cadastrar \(registerLocationTitle)"
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        
     }
     
 }
