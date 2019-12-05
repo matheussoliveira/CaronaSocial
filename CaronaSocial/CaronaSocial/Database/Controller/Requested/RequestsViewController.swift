@@ -14,7 +14,20 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    @IBAction func indexChanged(_ sender: Any) {
+
+    @IBAction func switchSegmented(_ sender: UISegmentedControl) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            
+            selectedSegment = 1
+            
+        } else {
+            
+            selectedSegment = 2
+        
+        }
+        
+        self.tableView.reloadData()
         
     }
     
@@ -61,9 +74,22 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         } else {
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "rideCell") as? RideTableViewCell
-            cell?.places.text = "Teste"
-            cell?.riderName.text = "Teste"
-            return cell!
+            
+            if selectedSegment == 1 {
+                
+                cell?.places.text = "Teste"
+                cell?.riderName.text = "Teste"
+                cell?.distance.text = "Teste"
+                return cell!
+                
+            } else {
+                
+                cell?.places.text = "Teste1"
+                cell?.riderName.text = "Teste1"
+                cell?.distance.text = "Teste1"
+                return cell!
+                
+            }
         }
    }
     
@@ -73,6 +99,18 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             return 54
         } else {
             return 140
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.row == 1) {
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "driverRequested") as? DriverRequestedTableViewController
+//            vc?.driver = drivers?[indexPath.row-2]
+//            vc?.newImage = driversImage![(indexPath.row-2)]
+//            vc?.ride = self.dailyRide
+            
+            self.navigationController?.pushViewController(vc!, animated: true)
         }
     }
 
