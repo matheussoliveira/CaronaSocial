@@ -50,6 +50,11 @@ class MatchsTableViewController: UITableViewController {
 
 
                 OperationQueue.main.addOperation() {
+                    
+//                    group.enter()
+                    //checar se o usuario esta oferencendo ou requisitando
+                    //fetch todas as rides de tipo oposto
+                    //comparar com endereço de destino, origem e horário
         
                     group.enter()
                     FirestoreManager.shared.buildDrivers { (drivers) in
