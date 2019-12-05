@@ -10,7 +10,7 @@ import UIKit
 
 class OfferViewController: UIViewController {
     
-    var user: EmplyeeDriverModel?
+    var user: EmployeeDriverModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

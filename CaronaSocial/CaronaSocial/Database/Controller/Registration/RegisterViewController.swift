@@ -38,7 +38,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
     var employeeEmail: String = ""
     var employeePassaword: String = ""
     var employeePassawordConfirmation: String = ""
-    var user: EmplyeeDriverModel?
+    var user: EmployeeDriverModel?
     
     
     var inputErrorDetected: Bool = false
@@ -348,7 +348,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             checkResponsableOrEmployeeInputs()
             buildStudentInfo()
         
-            self.user = EmplyeeDriverModel(type: "driver", name: employeeName,
+            self.user = EmployeeDriverModel(type: "driver", name: employeeName,
                                           cpf: employeeCPF, telephone: telephone,
                                           email: employeeEmail,
                                           password: employeePassaword)

@@ -11,7 +11,7 @@ import SkyFloatingLabelTextField
 class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
-    var user: EmplyeeDriverModel?
+    var user: EmployeeDriverModel?
     var userID: String?
     
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]

@@ -9,7 +9,7 @@
 import Foundation
 import FirebaseDatabase
 
-class EmplyeeDriverModel {
+class EmployeeDriverModel {
     // Defines a employee who is also
     // a driver in app
     
