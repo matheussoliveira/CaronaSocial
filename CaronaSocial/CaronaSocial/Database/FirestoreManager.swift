@@ -32,8 +32,13 @@ class FirestoreManager{
         }
     }
     
-    func sendEmployeeDriver(name: String, cpf: String, telephone: String, email: String) {
-        db.collection("users").document().setData( [
+    func sendEmployeeDriver(name: String,
+                            cpf: String,
+                            telephone: String,
+                            email: String,
+                            userID: String) {
+        // Sends a employee object to Firestore.
+        db.collection("users").document(userID).setData( [
             "name": name,
             "cpf": cpf,
             "telephone": telephone,
@@ -48,16 +53,51 @@ class FirestoreManager{
     }
     
     func sendLocation(userID: String, home: String, institution: String, work: String) {
-        db.collection("users").document().collection("locations").addDocument(data: [
-            "casa": home,
-            "instituição": institution,
-            "trabalho": work
-        ]) { err in
-            if let err = err {
-                print("Error writing document: \(err)")
-            } else {
-                print("Document successfully written!")
-            }
+        // Sends all addresses and coordinates registered to Firestore.
+        sendHomeLocation(home: home, userID: userID)
+        sendWorkLocation(work: work, userID: userID)
+        sendInstitutionLocation(institution: institution, userID: userID)
+    }
+    
+    func sendHomeLocation(home: String, userID: String) {
+        // Send home adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("home").setData([
+            "location": home,
+            "latitude": "",
+            "longitude": ""]) { err in
+                if let err = err {
+                    print("Error writing home adress: \(err)")
+                } else {
+                    print("Home sucessefuly written!")
+                }
+        }
+    }
+    
+    func sendWorkLocation(work: String, userID: String) {
+        // Sends work adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("work").setData([
+            "location": work,
+            "latitude": "",
+            "longitude": ""]) { err in
+                if let err = err {
+                    print("Error writing work adress: \(err)")
+                } else {
+                    print("Home sucessefuly written!")
+                }
+        }
+    }
+    
+    func sendInstitutionLocation(institution: String, userID: String) {
+        // Sends institution adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("institution").setData([
+            "location": institution,
+            "latitude": "",
+            "longitude": ""]) { err in
+                if let err = err {
+                    print("Error writing institution adress: \(err)")
+                } else {
+                    print("Home sucessefuly written!")
+                }
         }
     }
     

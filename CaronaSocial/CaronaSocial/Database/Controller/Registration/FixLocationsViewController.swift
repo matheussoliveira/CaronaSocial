@@ -56,37 +56,36 @@ class FixLocationsViewController: UIViewController {
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
-        //Send info to firebase
-        print(houseAddress)
-        print(institutionAddress)
-        print(workAddress)
+        //Sends all register information to firebase
         
         checkLocationsInput()
         
         if inputErrorDetect == false {
             
             FirebaseManager.shared.createUser(email: user!.email, password: user!.password) { result in
-                if (result) {
+                
+                if (result) {// User did created a account on Carona Social
+                    
+                    // TODO: Needs to send user back to login screen (?)
                     
                     FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
                     if (FirebaseManager.shared.getUserID() != "none") {
                         self.userID = FirebaseManager.shared.getUserID()
+                        
+                        FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
+                                                                  cpf: self.user!.cpf,
+                                                                  telephone: self.user!.telephone,
+                                                                  email: self.user!.email,
+                                                                  userID: self.userID!)
+                        
                         FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, institution: self.institutionAddress, work: self.workAddress)
                     }
-                    FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
-                                                               cpf: self.user!.cpf,
-                                                               telephone: self.user!.telephone,
-                                                               email: self.user!.email)
                     
-                } else {
-                    print("ERROOOOUUUUU")
+                } else { // Account creation failed
+                    print("Failed to create a user!")
                 }
                 
             }
-            // TODO: Send to Firestore
-            
-            
-            
             
             // If all inputs are ok, perform segue
 //            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
