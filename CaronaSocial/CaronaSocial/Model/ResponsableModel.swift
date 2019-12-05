@@ -9,11 +9,11 @@
 import Foundation
 import FirebaseDatabase
 
-class ReponsableModel {
+class ResponsableModel {
     // Defines a "resposável" who is also
     // a driver in app
     
-    let type: String
+    var type: String
     let studentName: String
     let studentCPF: String
     let studentAge: String
@@ -23,15 +23,13 @@ class ReponsableModel {
     let responsableCPF: String
     let telephone: String
     let email: String
-    let home: String
-    let institution: String
-    let work: String
+    let password: String
     
     // Standard init
     init(type: String, studentName: String, studentCPF: String,
          studentAge: String, studentInstitution: String, matriculation: String,
          responsableName: String, responsableCPF: String, telephone: String,
-         email: String, home: String, institution: String, work: String) {
+         email: String, password: String) {
         
         self.type = type
         self.studentName = studentName
@@ -43,10 +41,7 @@ class ReponsableModel {
         self.responsableCPF = responsableCPF
         self.telephone = telephone
         self.email = email
-        self.home = home
-        self.institution = institution
-        self.work = work
-        
+        self.password = password
     }
     
     // Init for reading from Database snapshot
@@ -62,10 +57,6 @@ class ReponsableModel {
         self.responsableCPF = snapshotValue["responsableCPF"] as! String
         self.telephone = snapshotValue["telephone"] as! String
         self.email = snapshotValue["email"] as! String
-        // Fix Strings
-        self.home = snapshotValue["home"] as! String
-        self.institution = snapshotValue["institution"] as! String
-        self.work = snapshotValue["work"] as! String
-    }
-    
+        self.password = "unkown"
+        }
 }

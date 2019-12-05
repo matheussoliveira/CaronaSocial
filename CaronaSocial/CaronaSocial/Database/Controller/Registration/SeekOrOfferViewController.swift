@@ -11,11 +11,32 @@ import UIKit
 class SeekOrOfferViewController: UIViewController {
     
     // Employee data
-    var user: EmployeeDriverModel?
+    var responsable: ResponsableModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Seek or offer: \(responsable?.responsableName)")
 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func offerButton(_ sender: Any) {
+        self.responsable?.type = "driver"
+       performSegue(withIdentifier: "goToFixLocations", sender: nil)
+    }
+    
+    @IBAction func seekButton(_ sender: Any) {
+        self.responsable?.type = "passenger"
+        performSegue(withIdentifier: "goToFixLocations", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToFixLocations" {
+            if let newVC = segue.destination as? FixLocationsViewController {
+                newVC.responsable = self.responsable
+            }
+        }
     }
 }

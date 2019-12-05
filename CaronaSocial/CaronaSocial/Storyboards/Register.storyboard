@@ -302,7 +302,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="ief-x0-kSb" kind="show" id="XB9-n1-jL9"/>
+                                            <action selector="seekButton:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="NoH-wb-gH1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOg-Mm-3nL">
@@ -334,7 +334,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="ief-x0-kSb" kind="show" id="Fdo-GP-Aj1"/>
+                                            <action selector="offerButton:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="iJk-aS-v9b"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -372,6 +372,9 @@
                     <navigationItem key="navigationItem" title="Buscar ou Oferecer" largeTitleDisplayMode="always" id="zF4-Ph-4ad">
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="KRU-Un-kd5"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="ief-x0-kSb" kind="show" identifier="goToFixLocations" id="fPx-fA-iyZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGS-lC-ryU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -998,7 +1001,7 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K5P-8S-B7i"/>
+        <segue reference="fPx-fA-iyZ"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>

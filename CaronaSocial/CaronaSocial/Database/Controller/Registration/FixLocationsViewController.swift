@@ -12,6 +12,7 @@ class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
     var user: EmployeeDriverModel?
+    var responsable: ResponsableModel?
     var userID: String?
     
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
@@ -25,6 +26,8 @@ class FixLocationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Fix locations: \(responsable)")
 
         let footerView = UIView()
         locationsTableView.tableFooterView = footerView
@@ -62,28 +65,68 @@ class FixLocationsViewController: UIViewController {
         
         if inputErrorDetect == false {
             
-            FirebaseManager.shared.createUser(email: user!.email, password: user!.password) { result in
+            if user != nil {
                 
-                if (result) {// User did created a account on Carona Social
+                FirebaseManager.shared.createUser(email: user!.email,
+                                                  password: user!.password) { result in
                     
-                    // TODO: Needs to send user back to login screen (?)
-                    
-                    FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
-                    if (FirebaseManager.shared.getUserID() != "none") {
-                        self.userID = FirebaseManager.shared.getUserID()
+                    if (result) {// User did created a account on Carona Social
                         
-                        FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
-                                                                  cpf: self.user!.cpf,
-                                                                  telephone: self.user!.telephone,
-                                                                  email: self.user!.email,
-                                                                  userID: self.userID!)
+                        // TODO: Needs to send user back to login screen (?)
                         
-                        FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, institution: self.institutionAddress, work: self.workAddress)
+                        FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
+                        if (FirebaseManager.shared.getUserID() != "none") {
+                            self.userID = FirebaseManager.shared.getUserID()
+                            
+                            FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
+                                                                      cpf: self.user!.cpf,
+                                                                      telephone: self.user!.telephone,
+                                                                      email: self.user!.email,
+                                                                      userID: self.userID!)
+                            
+                            FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, institution: self.institutionAddress, work: self.workAddress)
+                        }
+                        
+                    } else { // Account creation failed
+                        print("Failed to create a user!")
                     }
-                    
-                } else { // Account creation failed
-                    print("Failed to create a user!")
                 }
+            } else if responsable != nil {
+                
+                FirebaseManager.shared.createUser(email: responsable!.email,
+                                                  password: responsable!.password) { result in
+                    
+                    if (result) {// Responsable did created a account on Carona Social
+                        
+                        // TODO: Needs to send user back to login screen (?)
+                        
+                        FirebaseManager.shared.singIn(email: self.responsable!.email, password: self.responsable!.password)
+                        if (FirebaseManager.shared.getUserID() != "none") {
+                            self.userID = FirebaseManager.shared.getUserID()
+                            
+                            FirestoreManager.shared.sendResponsable(
+                                responsableName: self.responsable!.responsableName,
+                                responsableCPF: self.responsable!.responsableCPF,
+                                telephone: self.responsable!.telephone,
+                                email: self.responsable!.email,
+                                userID: self.userID!)
+                            
+                            FirestoreManager.shared.sendStudent(
+                                institution: self.responsable!.studentInstitution,
+                                studentName: self.responsable!.studentName,
+                                studentCPF: self.responsable!.studentCPF,
+                                studentAge: self.responsable!.studentAge,
+                                matriculation: self.responsable!.matriculation,
+                                userID: self.userID!)
+                            
+                            FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, institution: self.institutionAddress, work: self.workAddress)
+                        }
+                        
+                    } else { // Account creation failed
+                        print("Failed to create a user!")
+                    }
+                }
+                
                 
             }
             

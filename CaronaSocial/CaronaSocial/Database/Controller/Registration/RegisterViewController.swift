@@ -11,6 +11,14 @@ protocol ContinueDelegate: NSObjectProtocol {
     func continueButton()
 }
 
+struct Student {
+    var name: String
+    var cpf: String
+    var age: String
+    var intitution: String
+    var matriculation: String
+}
+
 // if registerScreen == 0 -> employee data
 // else if registerScreen == 1 -> student data
 // else if registerScreen == 2 -> responsable data
@@ -26,13 +34,17 @@ class RegisterViewController: UIViewController, ContinueDelegate {
     var studentAge: String = ""
     var institution: String = ""
     var matriculation: String = ""
+    var student: Student?
+    
+    // Responsable data
     var responsableName: String = ""
     var responsableCPF: String = ""
     var responsableTelephone: String = ""
     var email: String = ""
-    var passaword: String = ""
+    var password: String = ""
     var passwordConfirmation: String = ""
     var institutionName: String = "Instituição"
+    var responsable: ResponsableModel?
     
     // Employee data
     var employeeName: String = ""
@@ -352,7 +364,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             // Building information of employee
             
             checkResponsableOrEmployeeInputs()
-            buildInformation()
+            buildEmployee()
                
             self.user = EmployeeDriverModel(type: "driver", name: employeeName,
                                             cpf: employeeCPF, telephone: telephone,
@@ -363,25 +375,54 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             // Building student data
             
             checkStudentInputs()
+            buildStudent()
+            
+            self.student = Student(name: self.studentName,
+                                   cpf: self.studentCPF,
+                                   age: self.studentAge,
+                                   intitution: self.institution,
+                                   matriculation: self.matriculation)
             
         } else if registerScreen == 2 {
             // Building responsable data
+            buildResponsable()
             
+            self.responsable = ResponsableModel(type: "",
+                                                studentName: self.student!.name,
+                                                studentCPF: self.student!.cpf,
+                                                studentAge: self.student!.age,
+                                                studentInstitution: self.student!.intitution,
+                                                matriculation: self.student!.matriculation,
+                                                responsableName: self.responsableName,
+                                                responsableCPF: self.responsableCPF,
+                                                telephone: self.telephone,
+                                                email: self.email,
+                                                password: self.password)
         }
         
         if inputErrorDetected == false {
             // Sending information to next screen
+            
             if registerScreen == 1 {
+                // Uses the same screen to get responsable information
+                
                 registerScreen = 2
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+                newRegisterViewController.student = self.student
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+                
             } else if registerScreen == 2 {
+                // Proceeds to a new screen to know if responsable is seeking or offering a ride
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
-                newRegisterViewController.user = self.user // Sending user to next view to proceed with registration
+                let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
+                newRegisterViewController.responsable = self.responsable // Sending user to next view to proceed with registration
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+                
             } else if registerScreen == 0 {
+                // Proceeds to a new screen to know if employee is seeking or offering a ride
+                
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
                 newRegisterViewController.user = self.user
@@ -389,6 +430,49 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
 
+    }
+    
+    func buildStudent() {
+        let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+        let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+        let studentAge = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+        let institution = registerTableView.cellForRow(at: IndexPath(row: 4, section: 0)) as! TitleTableViewCell
+        let matriculation = registerTableView.cellForRow(at: IndexPath(row: 5, section: 0)) as! TextFieldTableViewCell
+        self.studentName = studentName.cellTextField.text ?? "Não pegou"
+        self.studentCPF = studentCPF.cellTextField.text ?? "Não pegou"
+        self.studentAge = studentAge.cellTextField.text ?? "Não pegou"
+        self.institution = institution.cellSkyTextField.text ?? "Não pegou"
+        self.matriculation = matriculation.cellTextField.text ?? "Não pegou"
+    }
+    
+    func buildResponsable() {
+        let responsableName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+        let responsableCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+        let telephone = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+        let email = registerTableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! TextFieldTableViewCell
+        let password = registerTableView.cellForRow(at: IndexPath(row: 7, section: 0)) as! TextFieldTableViewCell
+        let passwordConfirmation = registerTableView.cellForRow(at: IndexPath(row: 8, section: 0)) as! TextFieldTableViewCell
+        self.responsableName = responsableName.cellTextField.text ?? "Não pegou"
+        self.responsableCPF = responsableCPF.cellTextField.text ?? "Não pegou"
+        self.telephone = telephone.cellTextField.text ?? "Não pegou"
+        self.email = email.cellTextField.text ?? "Não pegou"
+        self.password = password.cellTextField.text ?? "Nome inválido"
+        self.passwordConfirmation = passwordConfirmation.cellTextField.text ?? "Não pegou"
+    }
+    
+    func buildEmployee() {
+        let employeeName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
+        let employeeCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
+        let telephone = registerTableView.cellForRow(at: IndexPath(row: 3, section: 0)) as! TextFieldTableViewCell
+        let employeeEmail = registerTableView.cellForRow(at: IndexPath(row: 6, section: 0)) as! TextFieldTableViewCell
+        let employeePassaword = registerTableView.cellForRow(at: IndexPath(row: 7, section: 0)) as! TextFieldTableViewCell
+        let employeePassawordConfirmation = registerTableView.cellForRow(at: IndexPath(row: 8, section: 0)) as! TextFieldTableViewCell
+        self.employeeName = employeeName.cellTextField.text ?? "Nome inválido"
+        self.employeeCPF = employeeCPF.cellTextField.text ?? "Nome inválido"
+        self.telephone = telephone.cellTextField.text ?? "Nome inválido"
+        self.employeeEmail = employeeEmail.cellTextField.text ?? "Nome inválido"
+        self.employeePassaword = employeePassaword.cellTextField.text ?? "Nome inválido"
+        self.employeePassawordConfirmation = employeePassawordConfirmation.cellTextField.text ?? "Nome inválido"
     }
     
     func buildInformation() {
