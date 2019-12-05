@@ -11,6 +11,9 @@ protocol ContinueDelegate: NSObjectProtocol {
     func continueButton()
 }
 
+// if registerScreen == 0 -> employee data
+// else if registerScreen == 1 -> student data
+// else if registerScreen == 2 -> responsable data
 var registerScreen: Int = 0
 
 class RegisterViewController: UIViewController, ContinueDelegate {
@@ -341,21 +344,33 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    // MARK: - Building users informaton
+    
     func continueButton() {
-        if registerScreen == 1 {
-            checkStudentInputs()
-        } else if registerScreen == 2 || registerScreen == 0 {
-            checkResponsableOrEmployeeInputs()
-            buildStudentInfo()
         
+        if registerScreen == 0 {
+            // Building information of employee
+            
+            checkResponsableOrEmployeeInputs()
+            buildInformation()
+               
             self.user = EmployeeDriverModel(type: "driver", name: employeeName,
-                                          cpf: employeeCPF, telephone: telephone,
-                                          email: employeeEmail,
-                                          password: employeePassaword)
+                                            cpf: employeeCPF, telephone: telephone,
+                                            email: employeeEmail,
+                                           password: employeePassaword)
+                   
+        } else if registerScreen == 1 {
+            // Building student data
+            
+            checkStudentInputs()
+            
+        } else if registerScreen == 2 {
+            // Building responsable data
             
         }
         
         if inputErrorDetected == false {
+            // Sending information to next screen
             if registerScreen == 1 {
                 registerScreen = 2
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
@@ -376,7 +391,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
     
-    func buildStudentInfo() {
+    func buildInformation() {
         if registerScreen == 1 {
             let studentName = registerTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! TextFieldTableViewCell
             let studentCPF = registerTableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! TextFieldTableViewCell
@@ -409,7 +424,7 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
         switch registerScreen {
         case 0:
             // Student informations screen
-            buildStudentInfo()
+            buildInformation()
             print(studentName, studentCPF, studentAge, institution, matriculation)
         case 1:
             //  Parents information screen
