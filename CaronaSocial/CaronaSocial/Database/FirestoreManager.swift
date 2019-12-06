@@ -269,7 +269,23 @@ class FirestoreManager{
     //create default values for daily rides
     func createDefaultRides(userID: String, type: String, house: String, institution: String, houseCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D){
         
-        db.collection(type).document(userID).collection("rides").document("Manhã").setData([
+        let weekDays = ["Seg", "Ter", "Qua", "Qui", "Sex"]
+        
+        for weekDay in weekDays{
+            
+            var path = db.collection(type).document(userID).collection("rides").document(weekDay)
+            createDefaultRideDay(path: path, userID: userID, type: type, house: house, institution: institution, houseCoord: houseCoord, institutionCoord: institutionCoord)
+            
+        }
+
+    }
+    
+    //create default values for daily rides
+    func createDefaultRideDay(path: DocumentReference, userID: String, type: String, house: String, institution: String, houseCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D){
+        
+        
+        
+        path.collection("Manhã").document("infos").setData([
             "origin": house,
             "originLat": "\(houseCoord.latitude)",
             "originLong": "\(houseCoord.longitude)",
@@ -284,7 +300,7 @@ class FirestoreManager{
                 }
         }
         
-        db.collection(type).document(userID).collection("rides").document("Tarde").setData([
+        path.collection("Tarde").document("infos").setData([
             "origin": institution,
             "originLat": "\(institutionCoord.latitude)",
             "originLong": "\(institutionCoord.longitude)",
@@ -299,7 +315,7 @@ class FirestoreManager{
                 }
         }
         
-        db.collection(type).document(userID).collection("rides").document("Noite").setData([
+        path.collection("Noite").document("infos").setData([
             "origin": institution,
             "originLat": "\(institutionCoord.latitude)",
             "originLong": "\(institutionCoord.longitude)",
