@@ -123,7 +123,7 @@ class MatchsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //Condition for specific height
         if indexPath.row == 0 {
-            return 175
+            return 216
         } else if indexPath.row == 1 {
             return 54
         } else {

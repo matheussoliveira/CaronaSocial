@@ -184,10 +184,10 @@
 			isa = PBXGroup;
 			children = (
 				2F227799238C107000D5C939 /* Matchs */,
+				3AD249762397E0A300C6A076 /* Requested */,
+				3AD249752397E09300C6A076 /* Adress */,
 				0B1DA0B9239145A400E4AAA7 /* Registration */,
 				3A7E958D2390055800F61947 /* Home */,
-				3AD249752397E09300C6A076 /* Adress */,
-				3AD249762397E0A300C6A076 /* Requested */,
 				2F8126D0236AF608009294E2 /* ViewController.swift */,
 				2FF57D07237063240021732B /* LoginViewController.swift */,
 				2F05EF112386D5D100BE1B10 /* TestViewController.swift */,
@@ -675,7 +675,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FH5Q2A622;
+				DEVELOPMENT_TEAM = SRXXZJ8JG5;
 				INFOPLIST_FILE = CaronaSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,7 +694,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FH5Q2A622;
+				DEVELOPMENT_TEAM = SRXXZJ8JG5;
 				INFOPLIST_FILE = CaronaSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
