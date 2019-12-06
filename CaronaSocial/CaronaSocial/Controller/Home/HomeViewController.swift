@@ -207,7 +207,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            let addressO = period!.origin.components(separatedBy: delimiter)
 //            cell.rote.text = addressO[0] + "," + addressO[1] + "-" + addressD[0] + "," + addressD[1]
             
-            cell.rote.text = period!.origin + " - " + period!.destiny
+            cell.rote.text = period!.originType + " - " + period!.destinyType
             cell.schudle.text = period!.time
 
         }

@@ -111,8 +111,8 @@ class MatchsTableViewController: UITableViewController {
 //            cell.destiny.text = address[0] + "," + address[1]
 //            address = self.dailyRide!.origin.components(separatedBy: delimiter)
 //            cell.start.text = address[0] + "," + address[1]
-            cell.destiny.text = self.dailyRide?.destiny
-            cell.start.text = self.dailyRide?.origin
+            cell.destiny.text = self.dailyRide?.destinyType
+            cell.start.text = self.dailyRide?.originType
             cell.departureTime.text = self.dailyRide?.time
             
             return cell

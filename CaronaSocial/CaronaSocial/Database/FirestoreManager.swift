@@ -197,40 +197,40 @@ class FirestoreManager{
         }
     }
     
-    func fetchRides(type: String, completion: @escaping ([RideModel]) -> Void){
-            let date = Date()
-            let formatter = DateFormatter()
-            
-            ridesArray = []
-            
-            //get todays date and transform into database date model field
-            formatter.dateFormat = "dd-MM-yyyy"
-            let result = formatter.string(from: date)
-            
-            //fetch offering rides
-            db.collection("rides").document("19-11-2019").collection(type).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("No rides registered today: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                        let object = RideModel(userID: document.get("user-id") as! String, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant:"", accessibility: "", observation: "")
-                        
-                        self.ridesArray.append(object)
-                        
-                        print("Coord: \(object.originPoint)")
-                    }
-                    completion(self.ridesArray)
-                }
-            }
-        }
+//    func fetchRides(type: String, completion: @escaping ([RideModel]) -> Void){
+//            let date = Date()
+//            let formatter = DateFormatter()
+//            
+//            ridesArray = []
+//            
+//            //get todays date and transform into database date model field
+//            formatter.dateFormat = "dd-MM-yyyy"
+//            let result = formatter.string(from: date)
+//            
+//            //fetch offering rides
+//            db.collection("rides").document("19-11-2019").collection(type).getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("No rides registered today: \(err)")
+//                } else {
+//                    for document in querySnapshot!.documents {
+////                        print("\(document.documentID) => \(document.data())")
+////                        let object = RideModel(userID: document.get("user-id") as! String, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant:"", accessibility: "", observation: "")
+//                        
+//                        self.ridesArray.append(object)
+//                        
+//                        print("Coord: \(object.originPoint)")
+//                    }
+//                    completion(self.ridesArray)
+//                }
+//            }
+//        }
         
     func fetchDailyRide(type: String, userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
 
             db.collection(type).document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
                     
-                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "")
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -287,6 +287,8 @@ class FirestoreManager{
         
         
         path.collection("Manhã").document("infos").setData([
+            "originType": "Casa",
+            "destinyType": "Instituição",
             "origin": house,
             "originLat": "\(houseCoord.latitude)",
             "originLong": "\(houseCoord.longitude)",
@@ -302,6 +304,8 @@ class FirestoreManager{
         }
         
         path.collection("Tarde").document("infos").setData([
+            "originType": "Instituição",
+            "destinyType": "Casa",
             "origin": institution,
             "originLat": "\(institutionCoord.latitude)",
             "originLong": "\(institutionCoord.longitude)",
@@ -317,6 +321,8 @@ class FirestoreManager{
         }
         
         path.collection("Noite").document("infos").setData([
+            "originType": "Instituição",
+            "destinyType": "Casa",
             "origin": institution,
             "originLat": "\(institutionCoord.latitude)",
             "originLong": "\(institutionCoord.longitude)",
