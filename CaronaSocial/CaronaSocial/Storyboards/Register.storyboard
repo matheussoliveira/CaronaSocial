@@ -304,8 +304,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="seekPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="br1-Vy-FKD"/>
-                                            <segue destination="ief-x0-kSb" kind="show" id="XB9-n1-jL9"/>
+                                            <action selector="seekButton:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="NoH-wb-gH1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOg-Mm-3nL">
@@ -337,8 +336,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="offerPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="cmc-mg-HN9"/>
-                                            <segue destination="ief-x0-kSb" kind="show" id="Fdo-GP-Aj1"/>
+                                            <action selector="offerButton:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="iJk-aS-v9b"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -377,7 +375,7 @@
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="KRU-Un-kd5"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="Fy9-ey-GjL" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="xyM-kH-FPu"/>
+                        <segue destination="ief-x0-kSb" kind="show" identifier="goToFixLocations" id="fPx-fA-iyZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGS-lC-ryU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1184,7 +1182,7 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K5P-8S-B7i"/>
+        <segue reference="fPx-fA-iyZ"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>

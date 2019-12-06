@@ -32,6 +32,47 @@ class FirestoreManager{
         }
     }
     
+    func sendResponsable(responsableName: String,
+                         responsableCPF: String,
+                         telephone: String,
+                         email: String,
+                         userID: String) {
+        
+        db.collection("users").document(userID).setData( [
+            "name": responsableName,
+            "cpf": responsableCPF,
+            "telephone": telephone,
+            "email": email,
+        ]) { err in
+            if let err = err {
+                print("Error writing responsable: \(err)")
+            } else {
+                print("Responsable successfully written!")
+            }
+        }
+    }
+    
+    func sendStudent(institution: String,
+                     studentName: String,
+                     studentCPF: String,
+                     studentAge: String,
+                     matriculation: String,
+                     userID: String) {
+        
+        db.collection("users").document(userID).collection("student").document("information").setData([
+            "name": studentName,
+            "cpf": studentCPF,
+            "age": studentAge,
+            "institution": institution,
+            "matriculation": matriculation]) { err in
+                if let err = err {
+                    print("Error writing student adress: \(err)")
+                } else {
+                    print("Student sucessefuly written!")
+                }
+        }
+    }
+    
     func sendEmployeeDriver(name: String,
                             cpf: String,
                             telephone: String,
@@ -99,6 +140,18 @@ class FirestoreManager{
                     print("Institution sucessefuly written!")
                 }
         }
+    }
+    
+    func sendDriverUserID(userID: String) {
+        // Send userID to drivers list
+        db.collection("drivers").document(userID).setData([
+            "userID": userID])
+    }
+    
+    func sendPassengerUserID(userID: String) {
+        // Send userID to passenger list
+        db.collection("passengers").document(userID).setData([
+            "userID": userID])
     }
     
     func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {

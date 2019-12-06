@@ -13,7 +13,7 @@ class EmployeeDriverModel {
     // Defines a employee who is also
     // a driver in app
     
-    let type: String
+    var type: String
     let name: String
     let cpf: String
     let telephone: String
