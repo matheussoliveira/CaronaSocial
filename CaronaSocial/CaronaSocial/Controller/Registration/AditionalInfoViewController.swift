@@ -81,6 +81,7 @@ class AditionalInfoViewController: UIViewController {
         
         for i in 1...3 {
             row = i
+            
             if row != 2 {
                 let cell = infosTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TextFieldTableViewCell
                 var placeholder: String = ""
@@ -107,6 +108,7 @@ class AditionalInfoViewController: UIViewController {
                 }
             }
         }
+        
     }
 
 }

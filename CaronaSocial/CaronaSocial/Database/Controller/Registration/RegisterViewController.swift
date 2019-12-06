@@ -163,6 +163,14 @@ class RegisterViewController: UIViewController, ContinueDelegate {
                 } else {
                     inputErrorDetected = false
                 }
+            } else if row == 5 && registerScreen == 0 {
+                let cell = registerTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
+                if cell.cellSkyTextField.text == "Instituição" {
+                    shakeLabel(label: cell.cellPlaceholder, for: 1.0, labelColor: .placeholderText)
+                    inputErrorDetected = true
+                } else {
+                    inputErrorDetected = false
+                }
             }
         }
 
@@ -255,11 +263,13 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if institutionName == "Instituição" {
                     cell.cellPlaceholder.isHidden = false
+                    cell.cellSkyTextField.isHidden = true
                 } else {
                     cell.cellSkyTextField.textColor = .black
                     cell.cellPlaceholder.isHidden = true
+                    cell.cellSkyTextField.isHidden = false
                 }
-
+            
                 cell.selectionStyle = .none
                 tableView.separatorColor = .darkGray
                 return cell
@@ -364,14 +374,17 @@ extension RegisterViewController: UITableViewDelegate, UITableViewDataSource {
                 registerScreen = 2
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Register") as! RegisterViewController
+                newRegisterViewController.institutionName = self.institutionName
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             } else if registerScreen == 2 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "SeekOrOffer") as! SeekOrOfferViewController
+                newRegisterViewController.institutionName = institutionName
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             } else if registerScreen == 0 {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
                 let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "Offer") as! OfferViewController
+                newRegisterViewController.institutionName = institutionName
                 self.navigationController?.pushViewController(newRegisterViewController, animated: true)
             }
         }

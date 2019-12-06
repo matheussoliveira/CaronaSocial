@@ -352,8 +352,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="seekPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="br1-Vy-FKD"/>
-                                            <segue destination="ief-x0-kSb" kind="show" id="XB9-n1-jL9"/>
+                                            <action selector="seekPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="3Uf-XO-e8D"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lOg-Mm-3nL">
@@ -385,8 +384,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="offerPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="cmc-mg-HN9"/>
-                                            <segue destination="ief-x0-kSb" kind="show" id="Fdo-GP-Aj1"/>
+                                            <action selector="offerPressed:" destination="uGk-Sm-DXW" eventType="touchUpInside" id="IkP-9Y-toO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -634,8 +632,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="offerPressed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="EJC-XL-DcX"/>
-                                    <segue destination="ief-x0-kSb" kind="show" id="Dek-Ul-rKx"/>
+                                    <action selector="offerPressed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="Mj5-yV-ecu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -668,13 +665,13 @@
         <!--Cadastrar Locais-->
         <scene sceneID="JzB-lH-MYq">
             <objects>
-                <viewController id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixLocation" id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPj-jm-g27">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nPr-tB-4j8">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="progress" rowHeight="62" id="Dvz-Lr-PKJ" customClass="ImageTableViewCell" customModule="Carona_Social" customModuleProvider="target">
@@ -1263,7 +1260,6 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fdo-GP-Aj1"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>

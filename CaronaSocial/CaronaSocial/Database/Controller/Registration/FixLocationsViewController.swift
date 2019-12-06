@@ -8,6 +8,8 @@
 import UIKit
 import SkyFloatingLabelTextField
 
+
+
 class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
@@ -20,6 +22,8 @@ class FixLocationsViewController: UIViewController {
     var workAddress: String = ""
     
     var inputErrorDetect: Bool = false
+    
+    var institutionView = InstitutionTableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +41,19 @@ class FixLocationsViewController: UIViewController {
     }
     
     func checkLocationsInput() {
-        var row: Int = 0
+        let row: Int = 1
         
-        for i in 1...2 {
-            row = i
-            let cell = locationsTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
-            if cell.cellSkyTextField.text?.isEmpty ?? false {
-                shakeLabel(label: cell.cellPlaceholder, for: 1.0, labelColor: .placeholderText)
-                inputErrorDetect = true
-            } else {
-                inputErrorDetect = false
-            }
+        let cell = locationsTableView.cellForRow(at: IndexPath(row: row, section: 0)) as! TitleTableViewCell
+        if cell.cellSkyTextField.text?.isEmpty ?? false {
+            shakeLabel(label: cell.cellPlaceholder, for: 1.0, labelColor: .placeholderText)
+            inputErrorDetect = true
+        } else {
+            inputErrorDetect = false
         }
+        
     }
     
     @IBAction func backToFixLocations(segue: UIStoryboardSegue) {
-        
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
@@ -68,6 +69,10 @@ class FixLocationsViewController: UIViewController {
             let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
             self.navigationController?.pushViewController(newRegisterViewController, animated: true)
         }
+    }
+    
+    func selectedInstitution(institution: String) {
+        institutionAddress = institution
     }
 }
 
@@ -114,6 +119,8 @@ extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource
             cell.cellPlaceholder.text = "Instituição"
             cell.cellSkyTextField.title = "Instituição"
             cell.cellSkyTextField.text = institutionAddress
+            cell.isUserInteractionEnabled = false
+            cell.accessoryType = .none
             
             if institutionAddress == "" {
                 cell.cellPlaceholder.isHidden = false
