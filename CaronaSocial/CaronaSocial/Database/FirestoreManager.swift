@@ -207,11 +207,11 @@ class FirestoreManager{
             }
         }
         
-        func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
-            let userId = "tNgfVIgCcUlI4fn1IAiw"
-            db.collection("users").document(userId).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
+    func fetchDailyRide(userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
+//                let userId = "tNgfVIgCcUlI4fn1IAiw"
+            db.collection("users").document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
-                    let ride = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -235,6 +235,68 @@ class FirestoreManager{
             completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
         }
     }
+    
+    //returns if user is driver or passenger
+    func checkUserType(userID: String, completion: @escaping (String) -> Void){
+        
+        db.collection("drivers").document(userID).getDocument() { (document, err) in
+            if document!.exists{
+                completion("driver")
+            } else {
+                completion("passenger")
+            }
+        }
+    }
+    
+    //create default values for daily rides
+    func createDefaultRides(userID: String, type: String, house: String, institution: String, houseCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D){
+        
+        db.collection(type).document(userID).collection("rides").document("Manhã").setData([
+            "origin": house,
+            "originLat": "\(houseCoord.latitude)",
+            "originLong": "\(houseCoord.longitude)",
+            "destiny": institution,
+            "destinyLat": "\(institutionCoord.latitude)",
+            "destinyLong": "\(institutionCoord.longitude)",
+            "time": "8h-9h"]){ err in
+                if let err = err {
+                    print("Error writing morning ride: \(err)")
+                } else {
+                    print("Morning ride sucessefuly written!")
+                }
+        }
+        
+        db.collection(type).document(userID).collection("rides").document("Tarde").setData([
+            "origin": institution,
+            "originLat": "\(institutionCoord.latitude)",
+            "originLong": "\(institutionCoord.longitude)",
+            "destiny": house,
+            "destinyLat": "\(houseCoord.latitude)",
+            "destinyLong": "\(houseCoord.longitude)",
+            "time": "15h-16h"]){ err in
+                if let err = err {
+                    print("Error writing afternoon ride: \(err)")
+                } else {
+                    print("Afternoon ride sucessefuly written!")
+                }
+        }
+        
+        db.collection(type).document(userID).collection("rides").document("Noite").setData([
+            "origin": institution,
+            "originLat": "\(institutionCoord.latitude)",
+            "originLong": "\(institutionCoord.longitude)",
+            "destiny": house,
+            "destinyLat": "\(houseCoord.latitude)",
+            "destinyLong": "\(houseCoord.longitude)",
+            "time": "19h-20h"]){ err in
+                if let err = err {
+                    print("Error writing night ride: \(err)")
+                } else {
+                    print("Night ride sucessefuly written!")
+                }
+        }
+    }
+    
     
 //    func match() {
 //
@@ -269,6 +331,5 @@ class FirestoreManager{
 //        }
 //
 //    }
-    
     
 }

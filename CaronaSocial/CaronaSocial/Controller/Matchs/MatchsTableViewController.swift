@@ -52,6 +52,10 @@ class MatchsTableViewController: UITableViewController {
                 OperationQueue.main.addOperation() {
                     
 //                    group.enter()
+                    let userID = Auth.auth().currentUser!.uid
+                    FirestoreManager.shared.checkUserType(userID: "4CHxFKPIaVgI6CIHQPxLFuH7X7w2"){ result in
+                        print(result)
+                    }
                     //checar se o usuario esta oferencendo ou requisitando
                     //fetch todas as rides de tipo oposto
                     //comparar com endereço de destino, origem e horário

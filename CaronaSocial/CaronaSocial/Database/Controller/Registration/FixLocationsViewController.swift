@@ -15,7 +15,7 @@ class FixLocationsViewController: UIViewController {
     var user: EmployeeDriverModel?
     var responsable: ResponsableModel?
     var userID: String?
-    
+    var type: String?
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
     var registerLocationTitle: String = ""
     
@@ -70,6 +70,11 @@ class FixLocationsViewController: UIViewController {
         //Sends all register information to firebase
         let group = DispatchGroup()
         
+        if user != nil{
+            self.type = "employee"
+        } else {
+            self.type = "responsable"
+        }
         checkLocationsInput()
         
         if inputErrorDetect == false {
@@ -90,6 +95,7 @@ class FixLocationsViewController: UIViewController {
                 self.workCoord = result
                 group.leave()
             }
+            
             
             group.notify(queue: .main) {
 
@@ -112,6 +118,9 @@ class FixLocationsViewController: UIViewController {
                                                                   userID: self.userID!)
 
                                     FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
+                                    
+                                    FirestoreManager.shared.createDefaultRides(userID: self.userID!, type: "drivers", house: self.houseAddress, institution: self.institutionAddress, houseCoord: self.houseCoord!, institutionCoord: self.institutionCoord!)
+                                    
                                 }
 
                             } else { // Account creation failed
@@ -130,8 +139,10 @@ class FixLocationsViewController: UIViewController {
 
                                         if self.responsable!.type == "driver" {
                                             FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
+                                            FirestoreManager.shared.createDefaultRides(userID: self.userID!, type: "drivers", house: self.houseAddress, institution: self.institutionAddress, houseCoord: self.houseCoord!, institutionCoord: self.institutionCoord!)
                                         } else if self.responsable!.type == "passenger" {
                                             FirestoreManager.shared.sendPassengerUserID(userID: self.userID!)
+                                            FirestoreManager.shared.createDefaultRides(userID: self.userID!, type: "passengers", house: self.houseAddress, institution: self.institutionAddress, houseCoord: self.houseCoord!, institutionCoord: self.institutionCoord!)
                                         }
 
                                     FirestoreManager.shared.sendResponsable(

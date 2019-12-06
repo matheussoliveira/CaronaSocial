@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -21,6 +22,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var period: RideModel?
     var buttonManager = ButtonManager()
     var weekDay: String?
+    var userID: String?
 
     @IBOutlet var dayButtons: [UIButton]!
     
@@ -57,26 +59,28 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         self.weekDay = weekDay
+
         
         activityIndicatorView.startAnimating()
         homeTableView.separatorStyle = .none
+        self.userID = Auth.auth().currentUser!.uid
         
         dispatchQueue.async {
             OperationQueue.main.addOperation() {
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Manhã"){ result in
+                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
                     self.rideManha = result
                     group.leave()
                 }
                 
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Tarde"){ result in
+                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
                     self.rideTarde = result
                     group.leave()
                 }
                 
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Noite"){ result in
+                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
                     self.rideNoite = result
                     group.leave()
                 }
@@ -138,19 +142,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             dispatchQueue.async {
                 OperationQueue.main.addOperation() {
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Manhã"){ result in
+                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
                         self.rideManha = result
                         group.leave()
                     }
                     
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Tarde"){ result in
+                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
                         self.rideTarde = result
                         group.leave()
                     }
                     
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(weekDay: self.weekDay!, period: "Noite"){ result in
+                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
                         self.rideNoite = result
                         group.leave()
                     }
