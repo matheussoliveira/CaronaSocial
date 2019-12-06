@@ -32,6 +32,24 @@ class FirestoreManager{
         }
     }
     
+    func addListener(userID: String) {
+        // Let us know if there was any change on selected
+        // user document in Firestore
+        
+        db.collection("users").document(userID)
+        .addSnapshotListener { documentSnapshot, error in
+          guard let document = documentSnapshot else {
+            print("Error fetching document: \(error!)")
+            return
+          }
+          guard let data = document.data() else {
+            print("Document data was empty.")
+            return
+          }
+          print("Current data: \(data)")
+        }
+    }
+    
     func sendResponsable(responsableName: String,
                          responsableCPF: String,
                          telephone: String,
