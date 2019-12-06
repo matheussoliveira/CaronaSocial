@@ -92,82 +92,80 @@ class FixLocationsViewController: UIViewController {
             }
             
             group.notify(queue: .main) {
-                FirebaseManager.shared.createUser(email: self.user!.email, password: self.user!.password) { result in
-                    if self.user != nil {
-                        if (result) {// User did created a account on Carona Social
-                        
-                        // TODO: Needs to send user back to login screen (?)
-                        
-                        FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
-                        if (FirebaseManager.shared.getUserID() != "none") {
-                            self.userID = FirebaseManager.shared.getUserID()
-                            
-                            FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
-                            
-                            FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
-                                                                      cpf: self.user!.cpf,
-                                                                      telephone: self.user!.telephone,
-                                                                      email: self.user!.email,
-                                                                      userID: self.userID!)
-                            
-                            FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
-                        }
-                        
-                    } else { // Account creation failed
-                        print("Failed to create a user!")
-                    }
-                    } else if self.responsable != nil {
-                
-                        FirebaseManager.shared.createUser(email: self.responsable!.email, password: self.responsable!.password) { result in
-                    
-                                if (result) {// Responsable did created a account on Carona Social
-                        
-                        // TODO: Needs to send user back to login screen (?)
-                        
-                        FirebaseManager.shared.singIn(email: self.responsable!.email, password: self.responsable!.password)
-                        if (FirebaseManager.shared.getUserID() != "none") {
-                            self.userID = FirebaseManager.shared.getUserID()
-                            
-                            if self.responsable!.type == "driver" {
-                                FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
-                            } else if self.responsable!.type == "passenger" {
-                                FirestoreManager.shared.sendPassengerUserID(userID: self.userID!)
-                            }
-                            
-                            FirestoreManager.shared.sendResponsable(
-                                responsableName: self.responsable!.responsableName,
-                                responsableCPF: self.responsable!.responsableCPF,
-                                telephone: self.responsable!.telephone,
-                                email: self.responsable!.email,
-                                userID: self.userID!)
-                            
-                            FirestoreManager.shared.sendStudent(
-                                institution: self.responsable!.studentInstitution,
-                                studentName: self.responsable!.studentName,
-                                studentCPF: self.responsable!.studentCPF,
-                                studentAge: self.responsable!.studentAge,
-                                matriculation: self.responsable!.matriculation,
-                                userID: self.userID!)
-                            
-                           FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
-                        }
-                        
-                    } else { // Account creation failed
-                        print("Failed to create a user!")
-                    }
-                }
-                    }
-                }
-            
-            // If all inputs are ok, perform segue
-//            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-//            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
-//            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
-        }
-    }
-}
 
-}
+                    if self.user != nil {
+                        FirebaseManager.shared.createUser(email: self.user!.email, password: self.user!.password) { result in
+
+                            if (result) {// User did created a account on Carona Social
+
+                                FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
+
+                                if (FirebaseManager.shared.getUserID() != "none") {
+                                    self.userID = FirebaseManager.shared.getUserID()
+
+                                    FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
+
+                                    FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
+                                                                  cpf: self.user!.cpf,
+                                                                  telephone: self.user!.telephone,
+                                                                  email: self.user!.email,
+                                                                  userID: self.userID!)
+
+                                    FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
+                                }
+
+                            } else { // Account creation failed
+                                print("Failed to create a user!")
+                             }
+                           }
+                        } else if self.responsable != nil {
+
+                            FirebaseManager.shared.createUser(email: self.responsable!.email, password: self.responsable!.password) { result in
+
+                                if (result) {// Responsable did created a account on Carona Social
+
+                                    FirebaseManager.shared.singIn(email: self.responsable!.email, password: self.responsable!.password)
+                                    if (FirebaseManager.shared.getUserID() != "none") {
+                                        self.userID = FirebaseManager.shared.getUserID()
+
+                                        if self.responsable!.type == "driver" {
+                                            FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
+                                        } else if self.responsable!.type == "passenger" {
+                                            FirestoreManager.shared.sendPassengerUserID(userID: self.userID!)
+                                        }
+
+                                    FirestoreManager.shared.sendResponsable(
+                                        responsableName: self.responsable!.responsableName,
+                                        responsableCPF: self.responsable!.responsableCPF,
+                                        telephone: self.responsable!.telephone,
+                                        email: self.responsable!.email,
+                                        userID: self.userID!)
+
+                                    FirestoreManager.shared.sendStudent(
+                                        institution: self.responsable!.studentInstitution,
+                                        studentName: self.responsable!.studentName,
+                                        studentCPF: self.responsable!.studentCPF,
+                                        studentAge: self.responsable!.studentAge,
+                                        matriculation: self.responsable!.matriculation,
+                                        userID: self.userID!)
+
+                                   FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
+                                }
+
+                        } else { // Account creation failed
+                            print("Failed to create a user!")
+                        }
+        
+                    }
+                } //responsable != nil
+                
+            } //group notify
+        } //input error detected
+    }//buttonPressed
+    
+    
+} //class
+
 extension FixLocationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
