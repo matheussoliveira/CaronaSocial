@@ -78,6 +78,8 @@ class FixLocationsViewController: UIViewController {
                         if (FirebaseManager.shared.getUserID() != "none") {
                             self.userID = FirebaseManager.shared.getUserID()
                             
+                            FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
+                            
                             FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
                                                                       cpf: self.user!.cpf,
                                                                       telephone: self.user!.telephone,
@@ -103,6 +105,12 @@ class FixLocationsViewController: UIViewController {
                         FirebaseManager.shared.singIn(email: self.responsable!.email, password: self.responsable!.password)
                         if (FirebaseManager.shared.getUserID() != "none") {
                             self.userID = FirebaseManager.shared.getUserID()
+                            
+                            if self.responsable!.type == "driver" {
+                                FirestoreManager.shared.sendDriverUserID(userID: self.userID!)
+                            } else if self.responsable!.type == "passenger" {
+                                FirestoreManager.shared.sendPassengerUserID(userID: self.userID!)
+                            }
                             
                             FirestoreManager.shared.sendResponsable(
                                 responsableName: self.responsable!.responsableName,

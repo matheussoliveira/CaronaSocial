@@ -142,6 +142,18 @@ class FirestoreManager{
         }
     }
     
+    func sendDriverUserID(userID: String) {
+        // Send userID to drivers list
+        db.collection("drivers").document(userID).setData([
+            "userID": userID])
+    }
+    
+    func sendPassengerUserID(userID: String) {
+        // Send userID to passenger list
+        db.collection("passengers").document(userID).setData([
+            "userID": userID])
+    }
+    
     func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {
         // Take all drivers from our Firestore databse and
         // transform it into a DriverModel object
