@@ -61,15 +61,22 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: Any) {
+        
         if ( ( emailField.text != nil) && (passwordField.text != nil)) {
             // TODO: Handle login error
-            FirebaseManager.shared.singIn(email: self.emailField!.text!,
-                                          password: self.passwordField!.text!)
-            performSegue(withIdentifier: "goToHome", sender: nil)
-            } else {
-            // TODO: Handle empty fields
-            print("Fields vazios!")
             
+            Auth.auth().signIn(withEmail: self.emailField.text!,
+                               password: self.passwordField.text!) { (user, error) in
+                if error == nil {
+                    self.performSegue(withIdentifier: "goToHome", sender: nil)
+                } else {
+                    print(error!.localizedDescription)
+                }
+            }
+        } else {
+            // TODO: Handle empty fields
+            
+            print("Fields vazios!")
         }
     }
     

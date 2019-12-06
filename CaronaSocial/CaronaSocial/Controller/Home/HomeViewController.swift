@@ -111,6 +111,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("Meu id é: \(FirebaseManager.shared.getUserID())")
+        
         // Day buttons not selected
         for button in dayButtons {
             button.isSelected = false
