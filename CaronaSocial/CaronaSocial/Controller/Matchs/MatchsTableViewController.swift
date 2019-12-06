@@ -60,18 +60,19 @@ class MatchsTableViewController: UITableViewController {
                     //fetch todas as rides de tipo oposto
                     //comparar com endereço de destino, origem e horário
         
-                    group.enter()
-                    FirestoreManager.shared.buildDrivers { (drivers) in
-                        self.drivers = drivers
-                        
-                        group.enter()
-                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
-                            self.driversImage = images
-                            group.leave()
-                        }
-                        
-                        group.leave()
-                    }
+//                    group.enter()
+//                    FirestoreManager.shared.buildDrivers { (drivers) in
+//                        self.drivers = drivers
+//
+//                        group.enter()
+//                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
+//                            self.driversImage = images
+//                            group.leave()
+//                        }
+//
+//                        group.leave()
+//                    }
+                    self.drivers = []
                     
                     group.notify(queue: .main) {
                         self.rows = ["One", "Two"]

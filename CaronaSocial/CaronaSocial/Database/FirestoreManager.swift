@@ -225,11 +225,12 @@ class FirestoreManager{
             }
         }
         
-    func fetchDailyRide(userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
-//                let userId = "tNgfVIgCcUlI4fn1IAiw"
-            db.collection("users").document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
+    func fetchDailyRide(type: String, userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
+
+            db.collection(type).document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
-                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
+                    
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "")
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -259,9 +260,9 @@ class FirestoreManager{
         
         db.collection("drivers").document(userID).getDocument() { (document, err) in
             if document!.exists{
-                completion("driver")
+                completion("drivers")
             } else {
-                completion("passenger")
+                completion("passengers")
             }
         }
     }

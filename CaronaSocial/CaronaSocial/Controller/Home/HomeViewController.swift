@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var buttonManager = ButtonManager()
     var weekDay: String?
     var userID: String?
+    var type: String!
 
     @IBOutlet var dayButtons: [UIButton]!
     
@@ -45,15 +46,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         switch sender.tag {
         case 1:
-            weekDay = "seg"
+            weekDay = "Seg"
         case 2:
-            weekDay = "ter"
+            weekDay = "Ter"
         case 3:
-            weekDay = "qua"
+            weekDay = "Qua"
         case 4:
-            weekDay = "qui"
+            weekDay = "Qui"
         case 5:
-            weekDay = "sex"
+            weekDay = "Sex"
         default:
             print("ERROR")
         }
@@ -68,19 +69,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         dispatchQueue.async {
             OperationQueue.main.addOperation() {
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
+                FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
                     self.rideManha = result
                     group.leave()
                 }
                 
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
+                FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
                     self.rideTarde = result
                     group.leave()
                 }
                 
                 group.enter()
-                FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
+                FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
                     self.rideNoite = result
                     group.leave()
                 }
@@ -123,7 +124,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         dayButtons[0].isSelected = true
         buttonManager.selectedButtonDesign(button: dayButtons[0])
-        self.weekDay = "seg"
+        self.weekDay = "Seg"
         
         
         // Button corner radius
@@ -135,7 +136,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillAppear(_ animated: Bool) {
         let group = DispatchGroup()
         super.viewWillAppear(animated)
-        
+        self.userID = FirebaseManager.shared.getUserID()
         //fetch daily rides to populate cards
         if self.rows == nil{
             activityIndicatorView.startAnimating()
@@ -144,22 +145,28 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             dispatchQueue.async {
                 OperationQueue.main.addOperation() {
                     group.enter()
-                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
-                        self.rideManha = result
+                    FirestoreManager.shared.checkUserType(userID: self.userID!){ result in
+                        self.type = result
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
+                            self.rideManha = result
+                            group.leave()
+                        }
+                        
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
+                            self.rideTarde = result
+                            group.leave()
+                        }
+                        
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
+                            self.rideNoite = result
+                            group.leave()
+                        }
                         group.leave()
                     }
                     
-                    group.enter()
-                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
-                        self.rideTarde = result
-                        group.leave()
-                    }
-                    
-                    group.enter()
-                    FirestoreManager.shared.fetchDailyRide(userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
-                        self.rideNoite = result
-                        group.leave()
-                    }
                     
                     group.notify(queue: .main) {
                         self.rows = 1
