@@ -9,6 +9,9 @@
 import UIKit
 
 class SeekOrOfferViewController: UIViewController {
+    
+    // Employee data
+    var user: EmployeeDriverModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +26,4 @@ class SeekOrOfferViewController: UIViewController {
     @IBAction func seekPressed(_ sender: UIButton) {
         isOffering = false
     }
-
 }

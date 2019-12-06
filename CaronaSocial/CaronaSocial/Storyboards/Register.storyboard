@@ -586,8 +586,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="offerPressed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="EJC-XL-DcX"/>
-                                    <segue destination="ief-x0-kSb" kind="show" id="Dek-Ul-rKx"/>
+                                    <action selector="offerPressed:" destination="Z7f-7w-8Qs" eventType="touchUpInside" id="Dte-cv-D8w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -609,18 +608,17 @@
                         <barButtonItem key="backBarButtonItem" title="Voltar" id="ZwA-VU-Z0k"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="K6d-Ge-fWU" kind="unwind" identifier="backToLogin" unwindAction="backToLogin:" id="Hg8-Rr-fqv"/>
+                        <segue destination="ief-x0-kSb" kind="show" identifier="goToLocations" id="K5P-8S-B7i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aGg-7r-7g4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="K6d-Ge-fWU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2687" y="-256"/>
         </scene>
         <!--Cadastrar Locais-->
         <scene sceneID="JzB-lH-MYq">
             <objects>
-                <viewController id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FixLocations" id="ief-x0-kSb" customClass="FixLocationsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qPj-jm-g27">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -747,7 +745,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="continuePressed:" destination="ief-x0-kSb" eventType="touchUpInside" id="aax-wn-AJt"/>
+                                                        <action selector="continuePressed:" destination="ief-x0-kSb" eventType="touchUpInside" id="mNu-Nx-Tzm"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1057,7 +1055,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lps-Sx-mxq">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="414" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </pickerView>
                                             </subviews>
@@ -1075,7 +1073,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kNP-0v-3Qj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                                    <rect key="frame" x="-1" y="0.0" width="414" height="62"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </pickerView>
                                             </subviews>
@@ -1186,7 +1184,7 @@
         <image name="progress3" width="375" height="11"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Dek-Ul-rKx"/>
+        <segue reference="K5P-8S-B7i"/>
         <segue reference="BMf-mN-OXj"/>
     </inferredMetricsTieBreakers>
 </document>

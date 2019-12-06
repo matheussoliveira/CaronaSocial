@@ -7,10 +7,13 @@
 //
 import UIKit
 import SkyFloatingLabelTextField
+import CoreLocation
 
 class FixLocationsViewController: UIViewController {
     
     @IBOutlet weak var locationsTableView: UITableView!
+    var user: EmployeeDriverModel?
+    var userID: String?
     
     var cellTitle: [String] = ["Casa", "Instituição", "Trabalho"]
     var registerLocationTitle: String = ""
@@ -18,6 +21,11 @@ class FixLocationsViewController: UIViewController {
     var houseAddress: String = ""
     var institutionAddress: String = ""
     var workAddress: String = ""
+    
+    var houseCoord: CLLocationCoordinate2D?
+    var institutionCoord: CLLocationCoordinate2D?
+    var workCoord: CLLocationCoordinate2D?
+    
     
     var inputErrorDetect: Bool = false
     
@@ -56,17 +64,66 @@ class FixLocationsViewController: UIViewController {
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
-        //Send info to firebase
-        print(houseAddress)
-        print(institutionAddress)
-        print(workAddress)
+        //Sends all register information to firebase
+        let group = DispatchGroup()
         
         checkLocationsInput()
         
         if inputErrorDetect == false {
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
-            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
-            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
+            group.enter()
+            FirestoreManager.shared.getCoordinate(addressString: self.houseAddress){ result, error in
+                self.houseCoord = result
+                group.leave()
+            }
+            
+            group.enter()
+            FirestoreManager.shared.getCoordinate(addressString: self.institutionAddress){ result, error in
+                self.institutionCoord = result
+                group.leave()
+            }
+            
+            group.enter()
+            FirestoreManager.shared.getCoordinate(addressString: self.workAddress){ result, error in
+                self.workCoord = result
+                group.leave()
+            }
+            
+            group.notify(queue: .main) {
+                FirebaseManager.shared.createUser(email: self.user!.email, password: self.user!.password) { result in
+                    
+                    if (result) {// User did created a account on Carona Social
+                        
+                        // TODO: Needs to send user back to login screen (?)
+                        
+                        FirebaseManager.shared.singIn(email: self.user!.email, password: self.user!.password)
+                        if (FirebaseManager.shared.getUserID() != "none") {
+                            self.userID = FirebaseManager.shared.getUserID()
+                            
+                            FirestoreManager.shared.sendEmployeeDriver(name: self.user!.name,
+                                                                      cpf: self.user!.cpf,
+                                                                      telephone: self.user!.telephone,
+                                                                      email: self.user!.email,
+                                                                      userID: self.userID!)
+                            
+                            
+                            FirestoreManager.shared.sendLocation(userID: self.userID!, home: self.houseAddress, work: self.workAddress, institution: self.institutionAddress, homeCoord: self.houseCoord!, institutionCoord: self.institutionCoord!, workCoord: self.workCoord!)
+                        }
+                        
+                        
+                        
+                        
+                        
+                    } else { // Account creation failed
+                        print("Failed to create user.")
+                    }
+                    
+                }
+            }
+            
+            // If all inputs are ok, perform segue
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
+//            let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "infos") as! AditionalInfoViewController
+//            self.navigationController?.pushViewController(newRegisterViewController, animated: true)
         }
     }
 }

@@ -10,20 +10,18 @@ import UIKit
 
 class OfferViewController: UIViewController {
     
-    var user: EmployeeDriverModel?
+    var user: EmplyeeDriverModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setCancelButton()
+        print("Oooo eu aqui \(user?.name)")
     }
     
-    @IBAction func offerPressed(_ sender: UIButton) {
+    @IBAction func proceed(_ sender: Any) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Register", bundle: nil)
         let newRegisterViewController = storyBoard.instantiateViewController(withIdentifier: "FixLocations") as! FixLocationsViewController
         newRegisterViewController.user = self.user // Sending user to next view to proceed with registration
         self.navigationController?.pushViewController(newRegisterViewController, animated: true)
-        
     }
-    
+
 }

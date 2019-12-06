@@ -11,6 +11,7 @@ import Firebase
 
 class DriverModel {
     
+    
     let name: String
     let cpf: String
     let age: String

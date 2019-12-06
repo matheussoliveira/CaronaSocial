@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-//import CoreLocation
+import CoreLocation
 
 class FirestoreManager{
     
@@ -29,6 +29,75 @@ class FirestoreManager{
                     print("\(document.documentID) => \(document.data()["name"])")
                 }
             }
+        }
+    }
+    
+    func sendEmployeeDriver(name: String,
+                            cpf: String,
+                            telephone: String,
+                            email: String,
+                            userID: String) {
+        // Sends a employee object to Firestore.
+        db.collection("users").document(userID).setData( [
+            "name": name,
+            "cpf": cpf,
+            "telephone": telephone,
+            "email": email
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func sendLocation(userID: String, home: String, work: String, institution: String, homeCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D, workCoord: CLLocationCoordinate2D) {
+        // Sends all addresses and coordinates registered to Firestore.
+        sendHomeLocation(home: home, coord: homeCoord, userID: userID)
+        sendWorkLocation(work: work, coord: workCoord, userID: userID)
+        sendInstitutionLocation(institution: institution, coord: institutionCoord, userID: userID)
+    }
+    
+    func sendHomeLocation(home: String, coord: CLLocationCoordinate2D, userID: String) {
+        // Send home adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("home").setData([
+            "location": home,
+            "latitude": "\(coord.latitude)",
+            "longitude": "\(coord.longitude)"]) { err in
+                if let err = err {
+                    print("Error writing home adress: \(err)")
+                } else {
+                    print("Home sucessefuly written!")
+                }
+        }
+    }
+    
+    func sendWorkLocation(work: String, coord: CLLocationCoordinate2D, userID: String) {
+        // Sends work adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("work").setData([
+            "location": work,
+            "latitude": "\(coord.latitude)",
+            "longitude": "\(coord.longitude)"]) { err in
+                if let err = err {
+                    print("Error writing work adress: \(err)")
+                } else {
+                    print("Work sucessefuly written!")
+                }
+        }
+    }
+    
+    func sendInstitutionLocation(institution: String, coord: CLLocationCoordinate2D, userID: String) {
+        // Sends institution adress and coodinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document("institution").setData([
+            "location": institution,
+            "latitude": "\(coord.latitude)",
+            "longitude": "\(coord.longitude)"]) { err in
+                if let err = err {
+                    print("Error writing institution adress: \(err)")
+                } else {
+                    print("Institution sucessefuly written!")
+                }
         }
     }
     
@@ -86,10 +155,10 @@ class FirestoreManager{
         }
         
         func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
-            var userId = "tNgfVIgCcUlI4fn1IAiw"
+            let userId = "tNgfVIgCcUlI4fn1IAiw"
             db.collection("users").document(userId).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
-                    var ride = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
+                    let ride = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -97,22 +166,22 @@ class FirestoreManager{
             }
         }
     
-//    func getCoordinate( addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
-//        
-//        let geocoder = CLGeocoder()
-//        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
-//            if error == nil {
-//                if let placemark = placemarks?[0] {
-//                    let location = placemark.location!
-//                        
-//                    completionHandler(location.coordinate, nil)
-//                    return
-//                }
-//            }
-//                
-//            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
-//        }
-//    }
+    func getCoordinate(addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                        
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+                
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+        }
+    }
     
 //    func match() {
 //
