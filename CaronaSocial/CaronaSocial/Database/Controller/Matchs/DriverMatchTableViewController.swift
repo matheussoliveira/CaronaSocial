@@ -1,27 +1,32 @@
-
 //
-//  DriverViewController.swift
+//  DriverMatchTableViewController.swift
 //  CaronaSocial
 //
-//  Created by Matheus Oliveira on 27/11/19.
+//  Created by Felipe Luna Tersi on 05/12/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
+
 import UIKit
 
-class DriverViewController: UIViewController {
+class DriverMatchTableViewController: UITableViewController {
     
-    
+    var driver: DriverModel?
+    var newImage: UIImage?
+    var ride: RideModel?
+
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var vacantyNumber: UILabel!
     @IBOutlet weak var accessibility: UILabel!
-    @IBOutlet weak var observation: UITextView!
     @IBOutlet weak var origin: UILabel!
-    var driver: DriverModel?
-    var newImage: UIImage?
-    var ride: RideModel?
-    
     @IBOutlet weak var destiny: UILabel!
+    @IBOutlet weak var observation: UITextView!
+    
+    override func viewDidLoad() {
+      super.viewDidLoad()
+        print("Teste: \(driver?.name)")
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         profileImage.image = newImage
         profileImage.makeRounded()
@@ -37,10 +42,16 @@ class DriverViewController: UIViewController {
         
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("Teste: \(driver?.name)")
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
-    
-    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 6
+    }
+
 }

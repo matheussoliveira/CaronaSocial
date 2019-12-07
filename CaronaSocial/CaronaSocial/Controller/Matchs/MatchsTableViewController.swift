@@ -136,7 +136,7 @@ class MatchsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //Condition for specific height
         if indexPath.row == 0 {
-            return 175
+            return 216
         } else if indexPath.row == 1 {
             return 54
         } else {
@@ -147,7 +147,8 @@ class MatchsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 2) {
             
-            let vc = storyboard?.instantiateViewController(withIdentifier: "driverScreen") as? DriverViewController
+            let vc = storyboard?.instantiateViewController(withIdentifier: "driverScreen") as? DriverMatchTableViewController
+            
             vc?.driver = drivers?[indexPath.row-2]
             vc?.newImage = driversImage![(indexPath.row-2)]
             vc?.ride = self.dailyRide
