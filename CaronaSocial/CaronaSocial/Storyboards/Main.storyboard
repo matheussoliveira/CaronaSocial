@@ -204,6 +204,14 @@
                                     <segue destination="cnX-3T-Vif" kind="show" identifier="goHome" id="8ku-CL-fdU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wq4-wW-k4A">
+                                <rect key="frame" x="187" y="696" width="40" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Route"/>
+                                <connections>
+                                    <segue destination="Tgl-ZW-Tei" kind="show" id="zzW-AG-2WC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -270,6 +278,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqd-of-HRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2529" y="322"/>
+        </scene>
+        <!--route-->
+        <scene sceneID="3WG-Ll-Exr">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="route" storyboardName="Route" referencedIdentifier="route" id="Tgl-ZW-Tei" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dHV-El-kyQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ah2-zv-PE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2529" y="409"/>
         </scene>
         <!--AppInfo-->
         <scene sceneID="cJx-Rs-6XM">

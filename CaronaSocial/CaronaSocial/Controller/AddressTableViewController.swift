@@ -22,6 +22,9 @@ class AddressTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         name = ["Casa", "Trabalho", "Institutição"]
+        
+        let footerView = UIView()
+        tableView.tableFooterView = footerView
     }
     
     override func viewWillAppear(_ animated: Bool) {

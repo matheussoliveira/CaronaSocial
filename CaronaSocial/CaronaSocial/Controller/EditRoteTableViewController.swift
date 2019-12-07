@@ -7,13 +7,20 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
 class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
-    @IBOutlet weak var start: UITextField!
-    @IBOutlet weak var departureTime: UITextField!
-    @IBOutlet weak var destiny: UITextField!
-    @IBOutlet weak var arrivalTime: UITextField!
+    @IBOutlet weak var start: SkyFloatingLabelTextField!
+    @IBOutlet weak var departureTime: SkyFloatingLabelTextField!
+    @IBOutlet weak var destiny: SkyFloatingLabelTextField!
+    @IBOutlet weak var arrivalTime: SkyFloatingLabelTextField!
+    @IBOutlet weak var seats: SkyFloatingLabelTextField!
+    @IBOutlet weak var wheelchair: SkyFloatingLabelTextField!
+    @IBOutlet weak var aditionalInfo: UITextView!
+    @IBOutlet weak var aditionalInfoPlaceholder: UILabel!
+    
+    var isOffering: Bool = true
     
     var startText: String?
     var destinyText: String?
@@ -44,6 +51,19 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
         departureTime.inputView = datePicker
         arrivalTime.inputView = datePicker
         showDatePicker()
+        
+        //Changing status bar color
+        if #available(iOS 13.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor.customBlue
+            navigationController?.navigationBar.standardAppearance = navBarAppearance
+            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +71,14 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
         start.text = startText
         destiny.text = destinyText
         
+        departureTime.title = ""
+        arrivalTime.title = ""
+        departureTime.textAlignment = .center
+        arrivalTime.textAlignment = .center
+        
+        if isOffering == true {
+            
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -166,7 +194,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
