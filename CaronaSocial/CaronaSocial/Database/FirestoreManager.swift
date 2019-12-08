@@ -173,20 +173,18 @@ class FirestoreManager{
     }
     
     //get driver given an ID
-    func fetchDriver(userID: String, completion: @escaping (DriverModel) -> Void) {
+    func fetchDriver(userID: String, completion: @escaping (UserModel) -> Void) {
         
         db.collection("users").document(userID).getDocument() { (document, err) in
             if let err = err {
                 print("Error getting user document: \(err)")
             } else {
-                let driver = DriverModel(name: document?.data()?["name"] as! String,
-                                         cpf: document?.data()?["cpf"] as! String,
-                                         age: document?.data()?["age"] as! String,
-                                         accessibility: document?.data()?["accessibility"] as! Bool,
-                                         //location: document.data()["location"] as! String,
-                                         profileImageURL: document?.data()?["profileImageURL"] as! String,
-                                         vacantPlaces: document?.data()?["vacantPlaces"] as! String,
-                                         observation: document?.data()?["observation"] as! String)
+                let driver = UserModel(email: document?.data()?["email"] as! String,
+                                       name: document?.data()?["name"] as! String,
+                                       cpf: document?.data()?["cpf"] as! String,
+                                       telephone: document?.data()?["telephone"] as! String,
+                                       profileImageURL: document?.data()?["profileImageURL"] as! String)
+                    
                 completion(driver)
             }
         }

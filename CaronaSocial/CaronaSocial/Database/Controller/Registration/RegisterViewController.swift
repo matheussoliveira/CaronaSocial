@@ -72,6 +72,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         setCancelButton()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

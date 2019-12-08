@@ -14,37 +14,18 @@ struct UserModel {
     let email: String
     let name: String
     let cpf: String
-    let memberName: String
-    let birthdayDate: String
-    let institution: String
-    let registerNumber: String
+    let telephone: String
     let profileImageURL: String
 
     // Standard init
-    init(email: String, name: String, cpf: String, memberName: String, birthdayDate: String, institution: String, registerNumber: String, profileImageURL: String) {
+    init(email: String, name: String, cpf: String, telephone: String, profileImageURL: String) {
         self.email = email
         self.name = name
         self.cpf = cpf
-        self.memberName = memberName
-        self.birthdayDate = birthdayDate
-        self.institution = institution
-        self.registerNumber = registerNumber
+        self.telephone = telephone
         self.profileImageURL = profileImageURL
     }
 
-    // Init for reading from Database snapshot
-    init(snapshot: DataSnapshot) {
-        let snapshotValue = snapshot.value as! [String: AnyObject]
-        email = snapshotValue["email"] as! String
-        name = snapshotValue["name"] as! String
-        cpf = snapshotValue["cpf"] as! String
-        memberName = snapshotValue["memberName"] as! String
-        birthdayDate = snapshotValue["birthdayDate"] as! String
-        institution = snapshotValue["institution"] as! String
-        registerNumber = snapshotValue["registerNumber"] as! String
-        profileImageURL = snapshotValue["profileImageURL"] as! String
-        
-    }
 
     // Func converting model for easier writing to database
     func toAnyObject() -> Any {
@@ -52,10 +33,7 @@ struct UserModel {
             "email": email,
             "name": name,
             "cpf": cpf,
-            "memberName": memberName,
-            "birthdayDate": birthdayDate,
-            "institution": institution,
-            "registerNumber": registerNumber,
+            "telephone": telephone,
             "profileImageURL": profileImageURL
         ]
     }

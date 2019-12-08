@@ -97,7 +97,7 @@ class FirebaseManager {
         dataTask.resume()
     }
     
-    static func downloadImages(drivers: [DriverModel], completion: @escaping ([UIImage]) -> Void){
+    static func downloadImages(drivers: [UserModel], completion: @escaping ([UIImage]) -> Void){
         // Downloading image from database
         var images: [UIImage] = []
         let group = DispatchGroup()

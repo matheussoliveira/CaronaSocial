@@ -10,7 +10,7 @@ import UIKit
 
 class DriverMatchTableViewController: UITableViewController {
     
-    var driver: DriverModel?
+    var driver: UserModel?
     var newImage: UIImage?
     var ride: RideModel?
 
@@ -31,9 +31,9 @@ class DriverMatchTableViewController: UITableViewController {
         profileImage.image = newImage
         profileImage.makeRounded()
         name.text = driver?.name
-        vacantyNumber.text = driver?.vacantPlaces
-        accessibility.text = driver?.accessibility ?? false ? "Sim" : "Não"
-        observation.text = driver?.observation ?? "Sem informações"
+//        vacantyNumber.text = driver?.vacantPlaces
+//        accessibility.text = driver?.accessibility ?? false ? "Sim" : "Não"
+//        observation.text = driver?.observation ?? "Sem informações"
         vacantyNumber.text = self.ride?.vacant
         accessibility.text = self.ride?.accessibility
         observation.text = self.ride?.observation

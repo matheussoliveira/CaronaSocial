@@ -16,8 +16,8 @@ class MatchsTableViewController: UITableViewController {
     var rows: [String]?
     let dispatchQueue = DispatchQueue(label: "Queue")
     var name = ""
-    var drivers: [DriverModel]?
-    var driver: DriverModel?
+    var drivers: [UserModel]?
+//    var driver: DriverModel?
     var dailyRide: RideModel?
     var driversImage: [UIImage]?
     var profileImage: UIImage?
@@ -56,18 +56,22 @@ class MatchsTableViewController: UITableViewController {
 
                 OperationQueue.main.addOperation() {
                     
-                    //get rides, perfom match and build match drivers
-//                    group.enter()
-//                    FirestoreManager.shared.fetchRides(type: "passengers", day: self.day!, period: self.period!){ result in
-//                        rides = result
-//                        self.match(rides: rides)
-//                        group.enter()
-//                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
-//                            self.driversImage = images
-//                            group.leave()
-//                        }
-//                        group.leave()
-//                    }
+//                    get rides, perfom match and build match drivers
+                    group.enter()
+                    FirestoreManager.shared.fetchRides(type: "passengers", day: self.day!, period: self.period!){ result in
+                        rides = result
+                        group.enter()
+                        self.match(rides: rides){ result in
+                            self.drivers = result
+                            group.enter()
+                            FirebaseManager.downloadImages(drivers: self.drivers!) { images in
+                                self.driversImage = images
+                                group.leave()
+                            }
+                            group.leave()
+                        }
+                        group.leave()
+                    }
                     
                     
                     
@@ -86,7 +90,7 @@ class MatchsTableViewController: UITableViewController {
 //
 //                        group.leave()
 //                    }
-                    self.drivers = []
+//                    self.drivers = []
                     
                     group.notify(queue: .main) {
                         self.rows = ["One", "Two"]
@@ -101,9 +105,9 @@ class MatchsTableViewController: UITableViewController {
         }
     }
     
-    func match(rides: [RideModel]){
+    func match(rides: [RideModel], completion: @escaping ([UserModel]) -> Void){
         let group = DispatchGroup()
-        var matchDrivers: [DriverModel] = []
+        var matchDrivers: [UserModel] = []
         
         //search for match rides
         for ride in rides{
@@ -127,7 +131,7 @@ class MatchsTableViewController: UITableViewController {
         }
         
         group.notify(queue: .main) {
-            self.drivers = matchDrivers
+            completion(matchDrivers)
         }
         
     }

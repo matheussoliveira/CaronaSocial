@@ -136,6 +136,36 @@ extension UIView {
         
         return totalTextFields
     }
+    
+    // TEXT VIEW
+    func getSelectedTextView() -> UITextView? {
+        
+        let totalTextViews = getTextViewInView(view: self)
+        
+        for textView in totalTextViews {
+            if textView.isFirstResponder{
+                return textView
+            }
+        }
+        
+        return nil
+        
+    }
+    
+    func getTextViewInView(view: UIView) -> [UITextView] {
+        
+        var totalTextViews = [UITextView]()
+        
+        for subview in view.subviews as [UIView] {
+            if let textView = subview as? UITextView {
+                totalTextViews += [textView]
+            } else {
+                totalTextViews += getTextViewInView(view: subview)
+            }
+        }
+        
+        return totalTextViews
+    }
 }
 
 //Vibrate the device
