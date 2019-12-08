@@ -21,7 +21,7 @@ class SeekOrOfferViewController: UIViewController {
         setCancelButton()
     }
     
-    
+
     @IBAction func offerButton(_ sender: Any) {
         self.responsable?.type = "driver"
        performSegue(withIdentifier: "goToFixLocations", sender: nil)

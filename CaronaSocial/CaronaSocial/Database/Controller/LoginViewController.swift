@@ -61,13 +61,23 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButton(_ sender: Any) {
+        
         if ( ( emailField.text != nil) && (passwordField.text != nil)) {
-            Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) { [weak self] authResult, error in
-              guard let strongSelf = self else { return }
-              // ...
-                print("Funcionou")
+            // TODO: Handle login error
+            
+            Auth.auth().signIn(withEmail: self.emailField.text!,
+                               password: self.passwordField.text!) { (user, error) in
+                if error == nil {
+                    self.performSegue(withIdentifier: "goToHome", sender: nil)
+                } else {
+                    print(error!.localizedDescription)
+                }
             }
-        } else { print("Oloko") }
+        } else {
+            // TODO: Handle empty fields
+            
+            print("Fields vazios!")
+        }
     }
     
     

@@ -14,7 +14,6 @@ class OfferViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Oooo eu aqui \(user?.name)")
     }
     
     @IBAction func proceed(_ sender: Any) {

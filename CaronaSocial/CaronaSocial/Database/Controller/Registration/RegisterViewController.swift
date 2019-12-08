@@ -83,8 +83,7 @@ class RegisterViewController: UIViewController, ContinueDelegate {
         } else if registerScreen == 0 {
             self.title = "Cadastrar Funcionário"
         }
-        
-        
+    
     }
     
     override func keyboardWillShow(_ notification: Notification, tableView: UITableView) {

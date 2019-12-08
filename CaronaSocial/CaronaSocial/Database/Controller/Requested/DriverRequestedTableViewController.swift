@@ -1,15 +1,15 @@
 //
-//  RequestedTableViewController.swift
+//  DriverRequestedTableViewController.swift
 //  CaronaSocial
 //
-//  Created by Felipe Luna Tersi on 29/11/19.
+//  Created by Felipe Luna Tersi on 05/12/19.
 //  Copyright © 2019 Matheus Oliveira. All rights reserved.
 //
 
 import UIKit
 
-class RequestedTableViewController: UITableViewController {
-    
+class DriverRequestedTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,12 +24,12 @@ class RequestedTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 6
     }
 
     /*

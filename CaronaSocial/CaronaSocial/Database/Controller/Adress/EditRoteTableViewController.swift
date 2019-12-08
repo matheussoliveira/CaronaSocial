@@ -162,7 +162,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     }
     
     func checkInputInfo() {
-        if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false || aditionalInfo.text.isEmpty {
+        if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false {
             
             inputErrorDetected = true
         } else {
@@ -176,10 +176,6 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
             if textField?.text?.isEmpty ?? false {
                 shakeTextField(textField: textField!, for: 1.0, placeholder: placeholder, textColor: .black)
             }
-        }
-        
-        if aditionalInfo.text.isEmpty {
-            shakeLabel(label: aditionalInfoPlaceholder, for: 1.0, labelColor: .placeholderText)
         }
     }
     

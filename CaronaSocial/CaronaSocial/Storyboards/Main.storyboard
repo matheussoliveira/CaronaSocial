@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gTj-uU-CnK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -149,6 +149,9 @@
                                         <real key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xbp-YK-dql"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qme-73-0UL">
                                 <rect key="frame" x="16" y="507" width="171.5" height="1"/>
@@ -253,6 +256,7 @@
                     <connections>
                         <outlet property="emailField" destination="YfG-wL-xQS" id="J9e-V7-ezi"/>
                         <outlet property="passwordField" destination="7pY-Vu-ea8" id="wWC-ii-jXb"/>
+                        <segue destination="cnX-3T-Vif" kind="show" identifier="goToHome" id="vVN-iv-Hau"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lfb-9B-eec" sceneMemberID="firstResponder"/>
@@ -267,7 +271,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dpJ-rh-wDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2557" y="130"/>
+            <point key="canvasLocation" x="2573" y="148"/>
         </scene>
         <!--Home-->
         <scene sceneID="xqF-Hq-fzS">
@@ -277,7 +281,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tqd-of-HRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2529" y="322"/>
+            <point key="canvasLocation" x="2490" y="323"/>
         </scene>
         <!--route-->
         <scene sceneID="3WG-Ll-Exr">
@@ -297,7 +301,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yLJ-Ip-4Vq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2481.1594202898555" y="-135.26785714285714"/>
+            <point key="canvasLocation" x="2490" y="-123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kVZ-LF-rEl">
@@ -332,4 +336,7 @@
         <image name="lock.fill" catalog="system" width="64" height="64"/>
         <image name="logo" width="98" height="85"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8ku-CL-fdU"/>
+    </inferredMetricsTieBreakers>
 </document>

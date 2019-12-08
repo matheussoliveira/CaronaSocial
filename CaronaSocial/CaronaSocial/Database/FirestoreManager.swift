@@ -32,6 +32,24 @@ class FirestoreManager{
         }
     }
     
+    func addListener(userID: String) {
+        // Let us know if there was any change on selected
+        // user document in Firestore
+        
+        db.collection("users").document(userID)
+        .addSnapshotListener { documentSnapshot, error in
+          guard let document = documentSnapshot else {
+            print("Error fetching document: \(error!)")
+            return
+          }
+          guard let data = document.data() else {
+            print("Document data was empty.")
+            return
+          }
+          print("Current data: \(data)")
+        }
+    }
+    
     func sendResponsable(responsableName: String,
                          responsableCPF: String,
                          telephone: String,
@@ -43,6 +61,7 @@ class FirestoreManager{
             "cpf": responsableCPF,
             "telephone": telephone,
             "email": email,
+            "profileImageURL": "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12"
         ]) { err in
             if let err = err {
                 print("Error writing responsable: \(err)")
@@ -83,7 +102,8 @@ class FirestoreManager{
             "name": name,
             "cpf": cpf,
             "telephone": telephone,
-            "email": email
+            "email": email,
+            "profileImageURL": "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12"
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -154,64 +174,58 @@ class FirestoreManager{
             "userID": userID])
     }
     
-    func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {
-        // Take all drivers from our Firestore databse and
-        // transform it into a DriverModel object
-        self.driversArray = []
-        db.collection("driver").getDocuments() { (querySnapshot, err) in
+    //get driver given an ID
+    func fetchDriver(userID: String, completion: @escaping (UserModel) -> Void) {
+        
+        db.collection("users").document(userID).getDocument() { (document, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error getting user document: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    let driver = DriverModel(name: document.data()["name"] as! String,
-                                             cpf: document.data()["cpf"] as! String,
-                                             age: document.data()["age"] as! String,
-                                             accessibility: document.data()["accessibility"] as! Bool,
-                                             //location: document.data()["location"] as! String,
-                                             profileImageURL: document.data()["profileImageURL"] as! String,
-                                             vacantPlaces: document.data()["vacantPlaces"] as! String,
-                                             observation: document.data()["observation"] as! String)
-                    self.driversArray.append(driver)
-                    let drivers = self.driversArray
-                    completion(drivers)
-                }
+                let driver = UserModel(email: document?.data()?["email"] as! String,
+                                       name: document?.data()?["name"] as! String,
+                                       cpf: document?.data()?["cpf"] as! String,
+                                       telephone: document?.data()?["telephone"] as! String,
+                                       profileImageURL: document?.data()?["profileImageURL"] as! String)
+                    
+                completion(driver)
             }
         }
     }
     
-    func fetchRides(type: String, completion: @escaping ([RideModel]) -> Void){
-            let date = Date()
-            let formatter = DateFormatter()
-            
-            ridesArray = []
-            
-            //get todays date and transform into database date model field
-            formatter.dateFormat = "dd-MM-yyyy"
-            let result = formatter.string(from: date)
-            
-            //fetch offering rides
-            db.collection("rides").document("19-11-2019").collection(type).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("No rides registered today: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
-                        let object = RideModel(userID: document.get("user-id") as! String, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant:"", accessibility: "", observation: "")
-                        
-                        self.ridesArray.append(object)
-                        
-                        print("Coord: \(object.originPoint)")
-                    }
-                    completion(self.ridesArray)
-                }
-            }
-        }
+//    func fetchRides(type: String, completion: @escaping ([RideModel]) -> Void){
+//            let date = Date()
+//            let formatter = DateFormatter()
+//            
+//            ridesArray = []
+//            
+//            //get todays date and transform into database date model field
+//            formatter.dateFormat = "dd-MM-yyyy"
+//            let result = formatter.string(from: date)
+//            
+//            //fetch offering rides
+//            db.collection("rides").document("19-11-2019").collection(type).getDocuments() { (querySnapshot, err) in
+//                if let err = err {
+//                    print("No rides registered today: \(err)")
+//                } else {
+//                    for document in querySnapshot!.documents {
+////                        print("\(document.documentID) => \(document.data())")
+////                        let object = RideModel(userID: document.get("user-id") as! String, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant:"", accessibility: "", observation: "")
+//                        
+//                        self.ridesArray.append(object)
+//                        
+//                        print("Coord: \(object.originPoint)")
+//                    }
+//                    completion(self.ridesArray)
+//                }
+//            }
+//        }
         
-        func fetchDailyRide(weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
-            let userId = "tNgfVIgCcUlI4fn1IAiw"
-            db.collection("users").document(userId).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
+    func fetchDailyRide(type: String, userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
+
+            db.collection(type).document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
-                    let ride = RideModel(userID: userId, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLatitude") as! String, longitude: document.get("originLongitude") as! String), destinyPoint: Point(latitude: document.get("destinyLatitude") as! String, longitude: document.get("destinyLongitude") as! String), vacant: "", accessibility: "", observation: "")
+                    
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -219,6 +233,7 @@ class FirestoreManager{
             }
         }
     
+    //transform address into coordinates
     func getCoordinate(addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
         
         let geocoder = CLGeocoder()
@@ -235,6 +250,131 @@ class FirestoreManager{
             completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
         }
     }
+    
+    //returns if user is driver or passenger
+    func checkUserType(userID: String, completion: @escaping (String) -> Void){
+        
+        db.collection("drivers").document(userID).getDocument() { (document, err) in
+            if document!.exists{
+                completion("drivers")
+            } else {
+                completion("passengers")
+            }
+        }
+    }
+    
+    //create default values for daily rides
+    func createDefaultRides(userID: String, type: String, house: String, institution: String, houseCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D){
+        
+        let weekDays = ["Seg", "Ter", "Qua", "Qui", "Sex"]
+        
+        for weekDay in weekDays{
+            
+            var path = db.collection(type).document(userID).collection("rides").document(weekDay)
+            createDefaultRideDay(path: path, userID: userID, type: type, house: house, institution: institution, houseCoord: houseCoord, institutionCoord: institutionCoord)
+            
+        }
+
+    }
+    
+    //create default values for daily rides
+    func createDefaultRideDay(path: DocumentReference, userID: String, type: String, house: String, institution: String, houseCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D){
+        
+        
+        
+        path.collection("Manhã").document("infos").setData([
+            "originType": "Casa",
+            "destinyType": "Instituição",
+            "origin": house,
+            "originLat": "\(houseCoord.latitude)",
+            "originLong": "\(houseCoord.longitude)",
+            "destiny": institution,
+            "destinyLat": "\(institutionCoord.latitude)",
+            "destinyLong": "\(institutionCoord.longitude)",
+            "time": "8h-9h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""]){ err in
+                if let err = err {
+                    print("Error writing morning ride: \(err)")
+                } else {
+                    print("Morning ride sucessefuly written!")
+                }
+        }
+        
+        path.collection("Tarde").document("infos").setData([
+            "originType": "Instituição",
+            "destinyType": "Casa",
+            "origin": institution,
+            "originLat": "\(institutionCoord.latitude)",
+            "originLong": "\(institutionCoord.longitude)",
+            "destiny": house,
+            "destinyLat": "\(houseCoord.latitude)",
+            "destinyLong": "\(houseCoord.longitude)",
+            "time": "15h-16h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""
+            ]){ err in
+                if let err = err {
+                    print("Error writing afternoon ride: \(err)")
+                } else {
+                    print("Afternoon ride sucessefuly written!")
+                }
+        }
+        
+        path.collection("Noite").document("infos").setData([
+            "originType": "Instituição",
+            "destinyType": "Casa",
+            "origin": institution,
+            "originLat": "\(institutionCoord.latitude)",
+            "originLong": "\(institutionCoord.longitude)",
+            "destiny": house,
+            "destinyLat": "\(houseCoord.latitude)",
+            "destinyLong": "\(houseCoord.longitude)",
+            "time": "19h-20h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""]){ err in
+                if let err = err {
+                    print("Error writing night ride: \(err)")
+                } else {
+                    print("Night ride sucessefuly written!")
+                }
+        }
+    }
+    
+    func fetchRides(type : String, day: String, period: String, completionHandler: @escaping([RideModel]) -> Void){
+        let group = DispatchGroup()
+        var rides: [RideModel] = []
+        db.collection(type).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("No rides registered today: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    group.enter()
+                    self.db.collection(type).document(doc.documentID).collection("rides").document(day).collection(period).document("infos").getDocument(){
+                        (document, err) in
+                        if let err = err{
+                            print("No rides registered today: \(err)")
+                        } else{
+                            if let document = document, document.exists {
+                                let ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                                
+                                rides.append(ride)
+                                group.leave()
+                            }
+                        }
+                        
+                    }
+                }
+                group.notify(queue: .main) {
+                    completionHandler(rides)
+                }
+            }
+        }
+    }
+    
     
 //    func match() {
 //
@@ -269,6 +409,5 @@ class FirestoreManager{
 //        }
 //
 //    }
-    
     
 }
