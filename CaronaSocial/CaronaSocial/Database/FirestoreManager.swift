@@ -16,6 +16,7 @@ class FirestoreManager{
     static let shared = FirestoreManager()
     var driversArray: [DriverModel] = []
     var ridesArray: [RideModel] = []
+    var requestedArray: [String] = []
 
 
     func observeUsers() {
@@ -225,7 +226,7 @@ class FirestoreManager{
             db.collection(type).document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
                     
-                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String, requestedArray: document.get("requested") as! [String])
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -359,7 +360,7 @@ class FirestoreManager{
                             print("No rides registered today: \(err)")
                         } else{
                             if let document = document, document.exists {
-                                let ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                                let ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String, requestedArray: document.get("requested") as! [String])
                                 
                                 rides.append(ride)
                                 group.leave()
@@ -373,6 +374,47 @@ class FirestoreManager{
                 }
             }
         }
+    }
+    
+    func sendRideRequest(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of requested rides on Firestore
+        
+        print(driverID, requestedUserID, weekday, period)
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "requested": FieldValue.arrayUnion([requestedUserID])])
+        
+        print("entrou")
+    }
+    
+    func checkResquestedRide(driverID: String, requestedUserID: String, weekday: String, period: String) -> [String] {
+        
+        db.collection("drivers").document(driverID).collection("rides")
+            .document(weekday).collection(period).document("infos").getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            self.requestedArray = document.get("requested") as? [String] ?? [""]
+                        } else {
+                            print("Document does not exist")
+                    }
+            }
+        
+        return requestedArray
+        
+//        db.collection("Fruits")
+//        .whereField("vitamins", arrayContains: "B6")
+//        .whereField("vitamins", arrayContains: "C")
+        
+    }
+    
+    func addConfirmedRide(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of confirmed rides on Firestore
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "confirmedRides": requestedUserID])
     }
     
     

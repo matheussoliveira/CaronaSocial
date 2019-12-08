@@ -904,6 +904,10 @@
                                                     <state key="normal" title="Requisitar Carona">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="resquestButton:" destination="1b7-nh-CYz" eventType="touchUpInside" id="1Zz-ks-hAw"/>
+                                                        <action selector="resquestButton:" destination="mUJ-mM-EBZ" eventType="touchUpInside" id="Zsm-xs-Azw"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -929,10 +933,12 @@
                         <outlet property="observation" destination="SXV-kg-G0Y" id="MA6-M3-yli"/>
                         <outlet property="origin" destination="ZAO-fa-x8H" id="MLh-6y-7l5"/>
                         <outlet property="profileImage" destination="3Dl-cI-sWg" id="5sD-8y-DvC"/>
+                        <outlet property="requestedButton" destination="hbi-kn-9jw" id="aZh-Xu-nFA"/>
                         <outlet property="vacantyNumber" destination="5tq-K7-BoS" id="Iz0-70-znr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv8-vz-vF6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1b7-nh-CYz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3870" y="181"/>
         </scene>

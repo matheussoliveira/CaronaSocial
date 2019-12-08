@@ -213,7 +213,9 @@ class MatchsTableViewController: UITableViewController {
             vc?.driver = drivers?[indexPath.row-2]
             vc?.newImage = driversImage![(indexPath.row-2)]
             vc?.ride = self.dailyRide
-
+            vc?.day = self.period
+            vc?.period = self.day
+            vc?.selectedDriver = self.matchRides[indexPath.row-2]
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
