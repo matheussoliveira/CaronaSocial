@@ -31,6 +31,8 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     
     var selectedNumberofSeats: String = ""
     var selectedWheelchair: String = ""
+    
+    var newRide: RideModel?
 
     var hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08",
                  "09", "10", "11", "12", "13", "14", "15", "16",
@@ -51,7 +53,9 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     let datePicker = UIPickerView()
     let seatsPicker = UIPickerView()
     let wheelchairPicker = UIPickerView()
-    
+    var userType: String?
+    var period: String?
+    var day: String?
     var inputErrorDetected: Bool = false
     
     override func viewDidLoad() {
@@ -152,6 +156,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     @IBAction func confirmButton(_ sender: Any) {
         checkInputInfo()
         
+        
         if inputErrorDetected == false {
             //        rote?.addRote(rote: Rote(start: start.text ?? "",
             //                                 destiny: destiny.text ?? "",
@@ -162,6 +167,9 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     }
     
     func checkInputInfo() {
+        let group = DispatchGroup()
+        var userID: String?
+        
         if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false {
             
             inputErrorDetected = true
@@ -170,6 +178,31 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
         }
         
         let textFields = [start, destiny, departureTime, arrivalTime, seats, wheelchair]
+        var originInfo: LocationModel?
+        var destinyInfo: LocationModel?
+
+        
+        group.enter()
+        FirestoreManager.shared.fetchLocation(location: start.text!) { result in
+            originInfo = result
+            group.enter()
+            FirestoreManager.shared.fetchLocation(location: self.destiny.text!) { result in
+                destinyInfo = result
+                userID = FirebaseManager.shared.getUserID()
+                group.leave()
+            }
+            group.leave()
+        }
+        
+        let timeFormat = "\(textFields[2]!.text!)" + "-" + "\(textFields[3]!.text!)"
+        
+        group.notify(queue: .main) {
+            
+            self.newRide = RideModel(userID: userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!)
+            
+            
+            FirestoreManager.shared.setDailyRide(userID: userID!, userType: self.userType!, period: self.period!, day: self.day!, newRide: self.newRide!)
+        }
         
         for textField in textFields {
             let placeholder = textField?.placeholder ?? ""

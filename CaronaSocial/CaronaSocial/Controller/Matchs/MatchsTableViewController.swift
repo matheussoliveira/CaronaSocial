@@ -219,4 +219,11 @@ class MatchsTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func editButton(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "route") as? EditRoteTableViewController
+        vc?.userType = self.userType
+        vc?.day = self.day
+        vc?.period = self.period
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
 }

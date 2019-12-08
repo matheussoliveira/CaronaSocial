@@ -344,6 +344,29 @@ class FirestoreManager{
         }
     }
     
+    func setDailyRide(userID: String, userType:String, period: String, day: String, newRide: RideModel){
+        db.collection(userType).document(userID).collection("rides").document(day).collection(period).document("infos").setData([
+            "originType": newRide.originType,
+            "destinyType": newRide.destinyType,
+            "origin": newRide.origin,
+            "originLat": "\(newRide.originPoint.latitude)",
+            "originLong": "\(newRide.originPoint.longitude)",
+            "destiny": newRide.destiny,
+            "destinyLat": "\(newRide.destinyPoint.latitude)",
+            "destinyLong": "\(newRide.destinyPoint.longitude)",
+            "time": newRide.time,
+            "accessibility": newRide.accessibility,
+            "vacant": newRide.vacant,
+            "observation": newRide.observation
+            ]){ err in
+                if let err = err {
+                    print("Error writing afternoon ride: \(err)")
+                } else {
+                    print("Afternoon ride sucessefuly written!")
+                }
+        }
+    }
+    
     func fetchRides(type : String, day: String, period: String, completionHandler: @escaping([RideModel]) -> Void){
         let group = DispatchGroup()
         var rides: [RideModel] = []
@@ -374,6 +397,27 @@ class FirestoreManager{
             }
         }
     }
+    
+    func fetchLocation(location: String, completionHandler: @escaping (LocationModel) -> Void){
+        let userID = FirebaseManager.shared.getUserID()
+        var dbLocation: String?
+        
+        if location == "Casa"{
+            dbLocation = "home"
+        } else if location == "Trabalho"{
+            dbLocation = "work"
+        } else {
+            dbLocation = "institution"
+        }
+        
+        db.collection("users").document(userID).collection("locations").document(dbLocation!).getDocument(){
+            (doc, err) in
+            let local = LocationModel(locationType: location, latitude: doc!.get("latitude") as! String, longitude: doc!.get("latitude") as! String, address: doc!.get("location") as! String)
+            completionHandler(local)
+        }
+    }
+    
+    
     
     
 //    func match() {

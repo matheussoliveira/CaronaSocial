@@ -495,7 +495,7 @@
                                             <rect key="frame" x="306" y="24" width="72" height="30"/>
                                             <state key="normal" title="Editar rota"/>
                                             <connections>
-                                                <segue destination="1bo-4w-XCr" kind="show" identifier="editRote" id="jYm-Tr-8yH"/>
+                                                <action selector="editButton:" destination="RMQ-uY-NJX" eventType="touchUpInside" id="5t9-2P-iMc"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Periodo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xee-Ui-pWG">
@@ -680,7 +680,7 @@
         <!--Route-->
         <scene sceneID="dFS-SH-0Pt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Route" id="1bo-4w-XCr" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="route" storyboardName="Route" id="1bo-4w-XCr" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="CkO-Ea-MvX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wjS-i2-e9K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
