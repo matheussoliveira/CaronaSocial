@@ -24,7 +24,6 @@ class DriverMatchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
       super.viewDidLoad()
-        print("Teste: \(driver?.name)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

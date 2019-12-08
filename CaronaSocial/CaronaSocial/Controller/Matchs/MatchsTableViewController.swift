@@ -25,6 +25,7 @@ class MatchsTableViewController: UITableViewController {
     var day: String?
     var period: String?
     var matchRides: [RideModel] = []
+
     
     override func loadView() {
         super.loadView()
@@ -55,10 +56,17 @@ class MatchsTableViewController: UITableViewController {
 
 
                 OperationQueue.main.addOperation() {
+                    var fetchType: String?
                     
-//                    get rides, perfom match and build match drivers
+                    if self.userType == "drivers"{
+                        fetchType = "passengers"
+                    } else {
+                        fetchType = "drivers"
+                    }
+                    
+                    //get rides, perfom match and build match drivers
                     group.enter()
-                    FirestoreManager.shared.fetchRides(type: "passengers", day: self.day!, period: self.period!){ result in
+                    FirestoreManager.shared.fetchRides(type: fetchType!, day: self.day!, period: self.period!){ result in
                         rides = result
                         group.enter()
                         self.match(rides: rides){ result in
@@ -167,7 +175,11 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
-            cell.rideNumber.text = "Pessoas oferecendo carona: \(drivers?.count ?? 0)"
+            if self.userType == "drivers"{
+                cell.rideNumber.text = "Pessoas requisitando carona: \(drivers?.count ?? 0)"
+            } else {
+                cell.rideNumber.text = "Pessoas oferecendo carona: \(drivers?.count ?? 0)"
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell

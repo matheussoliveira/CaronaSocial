@@ -61,6 +61,7 @@ class FirestoreManager{
             "cpf": responsableCPF,
             "telephone": telephone,
             "email": email,
+            "profileImageURL": "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12"
         ]) { err in
             if let err = err {
                 print("Error writing responsable: \(err)")
@@ -101,7 +102,8 @@ class FirestoreManager{
             "name": name,
             "cpf": cpf,
             "telephone": telephone,
-            "email": email
+            "email": email,
+            "profileImageURL": "https://firebasestorage.googleapis.com/v0/b/caronasocial-4ffa6.appspot.com/o/Images%2FLipinho.jpg?alt=media&token=5f6e41fc-264d-4a8e-8202-6067772b6d12"
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")
@@ -289,7 +291,10 @@ class FirestoreManager{
             "destiny": institution,
             "destinyLat": "\(institutionCoord.latitude)",
             "destinyLong": "\(institutionCoord.longitude)",
-            "time": "8h-9h"]){ err in
+            "time": "8h-9h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""]){ err in
                 if let err = err {
                     print("Error writing morning ride: \(err)")
                 } else {
@@ -306,7 +311,11 @@ class FirestoreManager{
             "destiny": house,
             "destinyLat": "\(houseCoord.latitude)",
             "destinyLong": "\(houseCoord.longitude)",
-            "time": "15h-16h"]){ err in
+            "time": "15h-16h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""
+            ]){ err in
                 if let err = err {
                     print("Error writing afternoon ride: \(err)")
                 } else {
@@ -323,7 +332,10 @@ class FirestoreManager{
             "destiny": house,
             "destinyLat": "\(houseCoord.latitude)",
             "destinyLong": "\(houseCoord.longitude)",
-            "time": "19h-20h"]){ err in
+            "time": "19h-20h",
+            "accessibility": "Não",
+            "vacant": "1",
+            "observation": ""]){ err in
                 if let err = err {
                     print("Error writing night ride: \(err)")
                 } else {
