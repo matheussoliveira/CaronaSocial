@@ -52,6 +52,8 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     let seatsPicker = UIPickerView()
     let wheelchairPicker = UIPickerView()
     
+    var inputErrorDetected: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -148,11 +150,37 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     }
     
     @IBAction func confirmButton(_ sender: Any) {
-//        rote?.addRote(rote: Rote(start: start.text ?? "",
-//                                 destiny: destiny.text ?? "",
-//                                 departure: departureTime.text ?? "",
-//                                 arrival: arrivalTime.text ?? "" ))
-        performSegue(withIdentifier: "backToMatch", sender: self)
+        checkInputInfo()
+        
+        if inputErrorDetected == false {
+            //        rote?.addRote(rote: Rote(start: start.text ?? "",
+            //                                 destiny: destiny.text ?? "",
+            //                                 departure: departureTime.text ?? "",
+            //                                 arrival: arrivalTime.text ?? "" ))
+            performSegue(withIdentifier: "backToMatch", sender: self)
+        }
+    }
+    
+    func checkInputInfo() {
+        if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false || aditionalInfo.text.isEmpty {
+            
+            inputErrorDetected = true
+        } else {
+            inputErrorDetected = false
+        }
+        
+        let textFields = [start, destiny, departureTime, arrivalTime, seats, wheelchair]
+        
+        for textField in textFields {
+            let placeholder = textField?.placeholder ?? ""
+            if textField?.text?.isEmpty ?? false {
+                shakeTextField(textField: textField!, for: 1.0, placeholder: placeholder, textColor: .black)
+            }
+        }
+        
+        if aditionalInfo.text.isEmpty {
+            shakeLabel(label: aditionalInfoPlaceholder, for: 1.0, labelColor: .placeholderText)
+        }
     }
     
     // MARK: -  Picker view
