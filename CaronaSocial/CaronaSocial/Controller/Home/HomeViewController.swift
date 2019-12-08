@@ -206,7 +206,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //            let addressD = period!.destiny.components(separatedBy: delimiter)
 //            let addressO = period!.origin.components(separatedBy: delimiter)
 //            cell.rote.text = addressO[0] + "," + addressO[1] + "-" + addressD[0] + "," + addressD[1]
-            
             cell.rote.text = period!.originType + " - " + period!.destinyType
             cell.schudle.text = period!.time
 
@@ -230,6 +229,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         vc?.dailyRide = period
+        vc?.userType = self.type
+        vc?.period = day[indexPath.row]
+        vc?.day = self.weekDay
         
         self.navigationController?.pushViewController(vc!, animated: true)
     }

@@ -172,27 +172,22 @@ class FirestoreManager{
             "userID": userID])
     }
     
-    func buildDrivers(completion: @escaping ([DriverModel]) -> Void) {
-        // Take all drivers from our Firestore databse and
-        // transform it into a DriverModel object
-        self.driversArray = []
-        db.collection("driver").getDocuments() { (querySnapshot, err) in
+    //get driver given an ID
+    func fetchDriver(userID: String, completion: @escaping (DriverModel) -> Void) {
+        
+        db.collection("users").document(userID).getDocument() { (document, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
+                print("Error getting user document: \(err)")
             } else {
-                for document in querySnapshot!.documents {
-                    let driver = DriverModel(name: document.data()["name"] as! String,
-                                             cpf: document.data()["cpf"] as! String,
-                                             age: document.data()["age"] as! String,
-                                             accessibility: document.data()["accessibility"] as! Bool,
-                                             //location: document.data()["location"] as! String,
-                                             profileImageURL: document.data()["profileImageURL"] as! String,
-                                             vacantPlaces: document.data()["vacantPlaces"] as! String,
-                                             observation: document.data()["observation"] as! String)
-                    self.driversArray.append(driver)
-                    let drivers = self.driversArray
-                    completion(drivers)
-                }
+                let driver = DriverModel(name: document?.data()?["name"] as! String,
+                                         cpf: document?.data()?["cpf"] as! String,
+                                         age: document?.data()?["age"] as! String,
+                                         accessibility: document?.data()?["accessibility"] as! Bool,
+                                         //location: document.data()["location"] as! String,
+                                         profileImageURL: document?.data()?["profileImageURL"] as! String,
+                                         vacantPlaces: document?.data()?["vacantPlaces"] as! String,
+                                         observation: document?.data()?["observation"] as! String)
+                completion(driver)
             }
         }
     }
@@ -238,6 +233,7 @@ class FirestoreManager{
             }
         }
     
+    //transform address into coordinates
     func getCoordinate(addressString : String, completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
         
         let geocoder = CLGeocoder()
@@ -335,6 +331,37 @@ class FirestoreManager{
                 } else {
                     print("Night ride sucessefuly written!")
                 }
+        }
+    }
+    
+    func fetchRides(type : String, day: String, period: String, completionHandler: @escaping([RideModel]) -> Void){
+        let group = DispatchGroup()
+        var rides: [RideModel] = []
+        db.collection(type).getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("No rides registered today: \(err)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    group.enter()
+                    self.db.collection(type).document(doc.documentID).collection("rides").document(day).collection(period).document("infos").getDocument(){
+                        (document, err) in
+                        if let err = err{
+                            print("No rides registered today: \(err)")
+                        } else{
+                            if let document = document, document.exists {
+                                let ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                                
+                                rides.append(ride)
+                                group.leave()
+                            }
+                        }
+                        
+                    }
+                }
+                group.notify(queue: .main) {
+                    completionHandler(rides)
+                }
+            }
         }
     }
     

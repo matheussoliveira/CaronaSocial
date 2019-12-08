@@ -21,6 +21,10 @@ class MatchsTableViewController: UITableViewController {
     var dailyRide: RideModel?
     var driversImage: [UIImage]?
     var profileImage: UIImage?
+    var userType: String?
+    var day: String?
+    var period: String?
+    var matchRides: [RideModel] = []
     
     override func loadView() {
         super.loadView()
@@ -39,7 +43,8 @@ class MatchsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let group = DispatchGroup()
-
+        
+        var rides: [RideModel] = []
 
         if (rows == nil) {
             activityIndicatorView.startAnimating()
@@ -51,12 +56,21 @@ class MatchsTableViewController: UITableViewController {
 
                 OperationQueue.main.addOperation() {
                     
+                    //get rides, perfom match and build match drivers
 //                    group.enter()
-                    let userID = Auth.auth().currentUser!.uid
-                    FirestoreManager.shared.checkUserType(userID: "4CHxFKPIaVgI6CIHQPxLFuH7X7w2"){ result in
-                        print(result)
-                    }
-                    //checar se o usuario esta oferencendo ou requisitando
+//                    FirestoreManager.shared.fetchRides(type: "passengers", day: self.day!, period: self.period!){ result in
+//                        rides = result
+//                        self.match(rides: rides)
+//                        group.enter()
+//                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
+//                            self.driversImage = images
+//                            group.leave()
+//                        }
+//                        group.leave()
+//                    }
+                    
+                    
+                    
                     //fetch todas as rides de tipo oposto
                     //comparar com endereço de destino, origem e horário
         
@@ -86,6 +100,37 @@ class MatchsTableViewController: UITableViewController {
             }
         }
     }
+    
+    func match(rides: [RideModel]){
+        let group = DispatchGroup()
+        var matchDrivers: [DriverModel] = []
+        
+        //search for match rides
+        for ride in rides{
+            if (ride.destinyPoint.latitude == self.dailyRide?.destinyPoint.latitude &&
+                ride.destinyPoint.longitude == self.dailyRide?.destinyPoint.longitude &&
+                ride.originPoint.latitude == self.dailyRide?.originPoint.latitude &&
+                ride.originPoint.longitude == self.dailyRide?.originPoint.longitude){
+                if ride.time == self.dailyRide?.time{
+                    self.matchRides.append(ride)
+                }
+            }
+        }
+        
+        //get match drivers
+        for matchRide in self.matchRides{
+            group.enter()
+            FirestoreManager.shared.fetchDriver(userID: matchRide.userID){ result in
+                matchDrivers.append(result)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.drivers = matchDrivers
+        }
+        
+    }
 
     // MARK: - Table view data source
     
@@ -106,7 +151,7 @@ class MatchsTableViewController: UITableViewController {
                 
             //split address
             let delimiter = ","
-            var address = self.dailyRide!.destiny.components(separatedBy: delimiter)
+//            var address = self.dailyRide!.destiny.components(separatedBy: delimiter)
             
 //            cell.destiny.text = address[0] + "," + address[1]
 //            address = self.dailyRide!.origin.components(separatedBy: delimiter)
