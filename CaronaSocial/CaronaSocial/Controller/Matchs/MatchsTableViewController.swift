@@ -159,6 +159,7 @@ class MatchsTableViewController: UITableViewController {
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
             cell.period.text = name
+            cell.selectionStyle = .none
             
                 
             //split address
@@ -175,6 +176,7 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
+            cell.selectionStyle = .none
             if self.userType == "drivers"{
                 cell.rideNumber.text = "Pessoas requisitando carona: \(drivers?.count ?? 0)"
             } else {
@@ -183,6 +185,7 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
+            cell.selectionStyle = .none
             if let driver = drivers?[(indexPath.row-2)] {
                 cell.driverImage.image = driversImage![(indexPath.row-2)]
                 cell.driver.text = driver.name

@@ -24,7 +24,6 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-        
         UIApplication.shared.statusBarStyle = .darkContent
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationItem.leftBarButtonItems = []
@@ -33,7 +32,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         hideKeyboardWhenTappedAround()
     }
 
