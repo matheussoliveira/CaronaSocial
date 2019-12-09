@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NewAddressTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -16,6 +17,7 @@ class NewAddressTableViewController: UITableViewController, UIPickerViewDelegate
     @IBOutlet weak var neighborhood: UITextField!
     @IBOutlet weak var state: UITextField!
     
+    var newAdressLocation: CLLocationCoordinate2D?
     var adressList: AddressTableViewController?
     
     var statePicker = UIPickerView()
@@ -27,9 +29,28 @@ class NewAddressTableViewController: UITableViewController, UIPickerViewDelegate
         checkInputInfo()
         
         if inputErrorDetected == false {
-            adress = "\(street.text ?? ""), \(number.text ?? ""), \(neighborhood.text ?? ""), \(city.text ?? ""), \(state.text ?? "")"
+            self.adress = "\(street.text ?? ""), \(number.text ?? ""), \(neighborhood.text ?? ""), \(city.text ?? ""), \(state.text ?? "")"
             
             adressList?.addAdress(adress: adress)
+            
+            let group = DispatchGroup()
+            let userID = FirebaseManager.shared.getUserID()
+            
+            group.enter()
+               FirestoreManager.shared.getCoordinate(addressString: self.adress){ result, error in
+                   self.newAdressLocation = result
+                   group.leave()
+               }
+            
+            group.notify(queue: .main) {
+                
+                FirestoreManager.shared.sendNewAddress(userID: userID, address: self.adress, coordinates: self.newAdressLocation!)
+                
+            }
+            
+            
+            
+            
             
             performSegue(withIdentifier: "backToAdress", sender: nil)
         }

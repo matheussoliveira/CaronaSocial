@@ -114,6 +114,21 @@ class FirestoreManager{
         }
     }
     
+    func sendNewAddress(userID: String, address: String, coordinates: CLLocationCoordinate2D) {
+        // Send new adress and coordinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document(address).setData([
+            "location": address,
+            "latitude": "\(coordinates.latitude)",
+            "longitude": "\(coordinates.longitude)"]) { err in
+                if let err = err {
+                    print("Error writing new adress: \(err)")
+                } else {
+                    print("New address sucessefuly written!")
+                }
+        }
+        
+    }
+    
     func sendLocation(userID: String, home: String, work: String, institution: String, homeCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D, workCoord: CLLocationCoordinate2D) {
         // Sends all addresses and coordinates registered to Firestore.
         sendHomeLocation(home: home, coord: homeCoord, userID: userID)
