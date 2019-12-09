@@ -455,6 +455,15 @@ class FirestoreManager{
         print("entrou")
     }
     
+    func removeRideRequest(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of requested rides on Firestore
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "requested": FieldValue.arrayRemove([requestedUserID])])
+    }
+    
     func checkResquestedRide(driverID: String, requestedUserID: String, weekday: String, period: String) -> [String] {
         
         db.collection("drivers").document(driverID).collection("rides")

@@ -916,6 +916,11 @@
                                                     <state key="normal" title="Requisitar Carona">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="resquestButton:" destination="1b7-nh-CYz" eventType="touchUpInside" id="1Zz-ks-hAw"/>
                                                         <action selector="resquestButton:" destination="mUJ-mM-EBZ" eventType="touchUpInside" id="Zsm-xs-Azw"/>
