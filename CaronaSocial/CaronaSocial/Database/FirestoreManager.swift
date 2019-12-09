@@ -344,7 +344,7 @@ class FirestoreManager{
         }
     }
     
-    func setDailyRide(userID: String, userType:String, period: String, day: String, newRide: RideModel){
+    func setDailyRide(userID: String, userType:String, period: String, day: String, newRide: RideModel, completionHandler: @escaping(String) -> Void){
         db.collection(userType).document(userID).collection("rides").document(day).collection(period).document("infos").setData([
             "originType": newRide.originType,
             "destinyType": newRide.destinyType,
@@ -361,8 +361,10 @@ class FirestoreManager{
             ]){ err in
                 if let err = err {
                     print("Error writing afternoon ride: \(err)")
+                    completionHandler("Error")
                 } else {
                     print("Afternoon ride sucessefuly written!")
+                    completionHandler("Success")
                 }
         }
     }
@@ -416,42 +418,6 @@ class FirestoreManager{
             completionHandler(local)
         }
     }
-    
-    
-    
-    
-//    func match() {
-//
-//        let group = DispatchGroup()
-//
-//        var driversLocation = "Av. Albert Einstein, 251, Cidade Universitária, Campinas - SP"
-//        var passengerLocation = "Dr Mario de Nucci, 81, Cidade Universitária, Campinas - SP"
-//
-//        group.enter()
-//        getCoordinate(addressString: driversLocation) { placemark, error in
-//            if placemark != nil {
-//                self.coordDriver = placemark
-//                self.getCoordinate(addressString: passengerLocation) { placemark, error in
-//                    if placemark != nil {
-//                        self.coordPassenger = placemark
-//                        group.leave()
-//                    }
-//                }
-//            }
-//        }
-//
-//        group.notify(queue: DispatchQueue.main) {
-//            print("-------------------")
-//            print("Driver \(self.coordDriver!)");
-//            print("Passenger \(self.coordPassenger!)");
-//
-//            if self.coordPassenger?.latitude == self.coordDriver?.latitude && self.coordPassenger?.longitude == self.coordDriver?.longitude{
-//                print("IT`S A MATCH")
-//            } else {
-//                print("IT`S NOT A MATCH")
-//            }
-//        }
-//
-//    }
+
     
 }

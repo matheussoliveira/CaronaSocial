@@ -259,8 +259,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Caronas" id="hMd-4b-VXY"/>
+                    <connections>
+                        <segue destination="pkv-DD-mXl" kind="unwind" identifier="backToHome" unwindAction="backToHome:" id="zun-qZ-TUi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kez-5h-Uau" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="pkv-DD-mXl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3026.0869565217395" y="180.80357142857142"/>
         </scene>

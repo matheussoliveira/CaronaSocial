@@ -24,6 +24,7 @@ class DriverMatchTableViewController: UITableViewController {
     
     override func viewDidLoad() {
       super.viewDidLoad()
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

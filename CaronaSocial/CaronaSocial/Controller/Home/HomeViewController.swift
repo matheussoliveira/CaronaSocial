@@ -246,4 +246,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.navigationController?.pushViewController(vc!, animated: true)
     }
+    
+    @IBAction func backToHome(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        self.reloadInputViews()
+        // Use data from the view controller which initiated the unwind segue
+    }
 }

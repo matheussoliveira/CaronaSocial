@@ -39,7 +39,24 @@ class MatchsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        let backbutton = UIButton(type: .custom)
+        backbutton.setImage(UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backbutton.setTitle(" Back", for: .normal)
+        backbutton.tintColor = .white
+        backbutton.setTitleColor(.white, for: .normal)
+        backbutton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+        
+        self.tableView.reloadData()
+
+        
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -225,5 +242,17 @@ class MatchsTableViewController: UITableViewController {
         vc?.day = self.day
         vc?.period = self.period
         self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func backTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "backToHome", sender: self)
+    }
+    
+    @IBAction func backToMatch(_ unwindSegue: UIStoryboardSegue) {
+        let sourceViewController = unwindSegue.source
+        self.reloadInputViews()
+        self.tableView.reloadData()
+        self.viewWillAppear(true)
     }
 }

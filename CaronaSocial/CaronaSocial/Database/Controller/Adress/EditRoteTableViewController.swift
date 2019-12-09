@@ -33,6 +33,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     var selectedWheelchair: String = ""
     
     var newRide: RideModel?
+    var userID: String?
 
     var hours = ["00", "01", "02", "03", "04", "05", "06", "07", "08",
                  "09", "10", "11", "12", "13", "14", "15", "16",
@@ -154,55 +155,29 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
     }
     
     @IBAction func confirmButton(_ sender: Any) {
-        checkInputInfo()
+        let group = DispatchGroup()
         
-        
-        if inputErrorDetected == false {
-            //        rote?.addRote(rote: Rote(start: start.text ?? "",
-            //                                 destiny: destiny.text ?? "",
-            //                                 departure: departureTime.text ?? "",
-            //                                 arrival: arrivalTime.text ?? "" ))
-            performSegue(withIdentifier: "backToMatch", sender: self)
+        checkInputInfo() { result in
+            if self.inputErrorDetected == false {
+
+                group.enter()
+                FirestoreManager.shared.setDailyRide(userID: self.userID!, userType: self.userType!, period: self.period!, day: self.day!, newRide: self.newRide!){ result in
+                    group.leave()
+                }
+                
+                group.notify(queue: .main){
+                    print("Finish")
+                    self.performSegue(withIdentifier: "backToMatch", sender: self)
+                }
+                //            navigationController?.popViewController(animated: true)
+            }
         }
+
     }
     
-    func checkInputInfo() {
+    func checkInputInfo(completionHandler: @escaping (String) -> Void) {
         let group = DispatchGroup()
-        var userID: String?
-        
-        if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false {
-            
-            inputErrorDetected = true
-        } else {
-            inputErrorDetected = false
-        }
-        
         let textFields = [start, destiny, departureTime, arrivalTime, seats, wheelchair]
-        var originInfo: LocationModel?
-        var destinyInfo: LocationModel?
-
-        
-        group.enter()
-        FirestoreManager.shared.fetchLocation(location: start.text!) { result in
-            originInfo = result
-            group.enter()
-            FirestoreManager.shared.fetchLocation(location: self.destiny.text!) { result in
-                destinyInfo = result
-                userID = FirebaseManager.shared.getUserID()
-                group.leave()
-            }
-            group.leave()
-        }
-        
-        let timeFormat = "\(textFields[2]!.text!)" + "-" + "\(textFields[3]!.text!)"
-        
-        group.notify(queue: .main) {
-            
-            self.newRide = RideModel(userID: userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!)
-            
-            
-            FirestoreManager.shared.setDailyRide(userID: userID!, userType: self.userType!, period: self.period!, day: self.day!, newRide: self.newRide!)
-        }
         
         for textField in textFields {
             let placeholder = textField?.placeholder ?? ""
@@ -210,6 +185,39 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
                 shakeTextField(textField: textField!, for: 1.0, placeholder: placeholder, textColor: .black)
             }
         }
+        
+        if start.text?.isEmpty ?? false || destiny.text?.isEmpty ?? false || departureTime.text?.isEmpty ?? false || arrivalTime.text?.isEmpty ?? false || seats.text?.isEmpty ?? false || wheelchair.text?.isEmpty ?? false {
+            inputErrorDetected = true
+            completionHandler("False")
+            
+        } else {
+            inputErrorDetected = false
+            
+            var originInfo: LocationModel?
+            var destinyInfo: LocationModel?
+            
+            group.enter()
+            FirestoreManager.shared.fetchLocation(location: start.text!) { result in
+                originInfo = result
+                group.enter()
+                FirestoreManager.shared.fetchLocation(location: self.destiny.text!) { result in
+                    destinyInfo = result
+                    self.userID = FirebaseManager.shared.getUserID()
+                    group.leave()
+                }
+                group.leave()
+            }
+            
+            let timeFormat = "\(textFields[2]!.text!)" + "-" + "\(textFields[3]!.text!)"
+            
+            group.notify(queue: .main) {
+                
+                self.newRide = RideModel(userID: self.userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!)
+                 completionHandler("Done")
+                
+            }
+        }
+        
     }
     
     // MARK: -  Picker view
