@@ -12,6 +12,7 @@ import FirebaseUI
 
 class MatchsTableViewController: UITableViewController {
     
+    @IBOutlet weak var backButton: UINavigationItem!
     var activityIndicatorView: UIActivityIndicatorView!
     var rows: [String]?
     let dispatchQueue = DispatchQueue(label: "Queue")
@@ -43,14 +44,15 @@ class MatchsTableViewController: UITableViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        let backbutton = UIButton(type: .custom)
-        backbutton.setImage(UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        backbutton.setTitle(" Back", for: .normal)
-        backbutton.tintColor = .white
-        backbutton.setTitleColor(.white, for: .normal)
-        backbutton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
+//        let backbutton = UIButton(type: .custom)
+//        backbutton.setImage(UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate), for: .normal)
+//        backbutton.setTitle(" Back", for: .normal)
+//        backbutton.tintColor = .white
+//        backbutton.setTitleColor(.white, for: .normal)
 
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backbutton)
+
+//        self.navigationItem.leftBarButtonItem
+        
         
         self.tableView.reloadData()
 
@@ -130,6 +132,13 @@ class MatchsTableViewController: UITableViewController {
                     
                 }
             }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if isMovingFromParent{
+            performSegue(withIdentifier: "backToHome", sender: self)
         }
     }
     
@@ -252,10 +261,10 @@ class MatchsTableViewController: UITableViewController {
         self.navigationController?.pushViewController(vc!, animated: true)
     }
     
-    @IBAction func backTapped(_ sender: Any) {
-        
-        performSegue(withIdentifier: "backToHome", sender: self)
-    }
+//    @IBAction func backTapped(_ sender: UIBarButtonItem) {
+//
+//        performSegue(withIdentifier: "backToHome", sender: self)
+//    }
     
     @IBAction func backToMatch(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source

@@ -673,6 +673,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Caronas" id="ple-df-plS"/>
                     <connections>
+                        <outlet property="backButton" destination="ple-df-plS" id="3No-Wd-eZz"/>
                         <segue destination="Kan-V2-8Gg" kind="unwind" identifier="backToHome" unwindAction="backToHome:" id="yKi-qL-z7O"/>
                     </connections>
                 </tableViewController>
@@ -931,7 +932,9 @@
                             <outlet property="delegate" destination="mUJ-mM-EBZ" id="qGp-Zj-Xpj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Corrida" id="ax2-Eb-lkl"/>
+                    <navigationItem key="navigationItem" title="Corrida" id="ax2-Eb-lkl">
+                        <barButtonItem key="backBarButtonItem" title="Caronas" id="CXz-UV-dUa"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="accessibility" destination="epD-Ma-nkI" id="h2c-Mn-Nhf"/>
                         <outlet property="destiny" destination="zk0-HX-oQA" id="XEX-X5-qEB"/>

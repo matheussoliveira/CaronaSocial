@@ -208,11 +208,20 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
                 group.leave()
             }
             
-            let timeFormat = "\(textFields[2]!.text!)" + "-" + "\(textFields[3]!.text!)"
+            var time1 = ""
+            var time2 = ""
             
+            time1.append(textFields[2]!.text![0..<2])
+            time1.append("h")
+            time1.append(textFields[2]!.text![3..<5])
+            
+            time2.append(textFields[3]!.text![0..<2])
+            time2.append("h")
+            time2.append(textFields[3]!.text![3..<5])
+                        
             group.notify(queue: .main) {
-                
-                self.newRide = RideModel(userID: self.userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!, requestedArray: [])
+                                
+                self.newRide = RideModel(userID: self.userID!, time: time1 + " - " + time2, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!, requestedArray: [])
                  completionHandler("Done")
                 
             }
@@ -469,4 +478,32 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
             tableView.allowsSelection = true
         }
     }
+}
+
+extension String {
+
+  var length: Int {
+    return count
+  }
+
+  subscript (i: Int) -> String {
+    return self[i ..< i + 1]
+  }
+
+  func substring(fromIndex: Int) -> String {
+    return self[min(fromIndex, length) ..< length]
+  }
+
+  func substring(toIndex: Int) -> String {
+    return self[0 ..< max(0, toIndex)]
+  }
+
+  subscript (r: Range<Int>) -> String {
+    let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                        upper: min(length, max(0, r.upperBound))))
+    let start = index(startIndex, offsetBy: range.lowerBound)
+    let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+    return String(self[start ..< end])
+  }
+
 }

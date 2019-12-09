@@ -253,8 +253,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let group = DispatchGroup()
         let sourceViewController = unwindSegue.source
         self.userID = FirebaseManager.shared.getUserID()
-        //fetch daily rides to populate cards
-        if self.rows == nil{
+        //fetch daily rides
             activityIndicatorView.startAnimating()
             homeTableView.separatorStyle = .none
             
@@ -288,12 +287,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         self.rows = 1
                         self.activityIndicatorView.stopAnimating()
                         self.homeTableView.reloadData()
+                        self.reloadInputViews()
                     }
                 }
             }
-        }
-        self.homeTableView.reloadData()
-        self.reloadInputViews()
     
         // Use data from the view controller which initiated the unwind segue
     }

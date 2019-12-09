@@ -192,34 +192,7 @@ class FirestoreManager{
             }
         }
     }
-    
-//    func fetchRides(type: String, completion: @escaping ([RideModel]) -> Void){
-//            let date = Date()
-//            let formatter = DateFormatter()
-//            
-//            ridesArray = []
-//            
-//            //get todays date and transform into database date model field
-//            formatter.dateFormat = "dd-MM-yyyy"
-//            let result = formatter.string(from: date)
-//            
-//            //fetch offering rides
-//            db.collection("rides").document("19-11-2019").collection(type).getDocuments() { (querySnapshot, err) in
-//                if let err = err {
-//                    print("No rides registered today: \(err)")
-//                } else {
-//                    for document in querySnapshot!.documents {
-////                        print("\(document.documentID) => \(document.data())")
-////                        let object = RideModel(userID: document.get("user-id") as! String, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant:"", accessibility: "", observation: "")
-//                        
-//                        self.ridesArray.append(object)
-//                        
-//                        print("Coord: \(object.originPoint)")
-//                    }
-//                    completion(self.ridesArray)
-//                }
-//            }
-//        }
+
         
     func fetchDailyRide(type: String, userID: String, weekDay: String, period: String, completion: @escaping (RideModel) -> Void){
 
@@ -292,7 +265,7 @@ class FirestoreManager{
             "destiny": institution,
             "destinyLat": "\(institutionCoord.latitude)",
             "destinyLong": "\(institutionCoord.longitude)",
-            "time": "8h-9h",
+            "time": "08h00-09h00",
             "accessibility": "Não",
             "vacant": "1",
             "observation": ""]){ err in
@@ -312,7 +285,7 @@ class FirestoreManager{
             "destiny": house,
             "destinyLat": "\(houseCoord.latitude)",
             "destinyLong": "\(houseCoord.longitude)",
-            "time": "15h-16h",
+            "time": "15h00-16h00",
             "accessibility": "Não",
             "vacant": "1",
             "observation": ""
@@ -333,7 +306,7 @@ class FirestoreManager{
             "destiny": house,
             "destinyLat": "\(houseCoord.latitude)",
             "destinyLong": "\(houseCoord.longitude)",
-            "time": "19h-20h",
+            "time": "19h00-20h00",
             "accessibility": "Não",
             "vacant": "1",
             "observation": ""]){ err in
@@ -467,40 +440,5 @@ class FirestoreManager{
         .document(weekday).collection(period).document("infos").updateData([
             "confirmedRides": requestedUserID])
     }
-    
-    
-//    func match() {
-//
-//        let group = DispatchGroup()
-//
-//        var driversLocation = "Av. Albert Einstein, 251, Cidade Universitária, Campinas - SP"
-//        var passengerLocation = "Dr Mario de Nucci, 81, Cidade Universitária, Campinas - SP"
-//
-//        group.enter()
-//        getCoordinate(addressString: driversLocation) { placemark, error in
-//            if placemark != nil {
-//                self.coordDriver = placemark
-//                self.getCoordinate(addressString: passengerLocation) { placemark, error in
-//                    if placemark != nil {
-//                        self.coordPassenger = placemark
-//                        group.leave()
-//                    }
-//                }
-//            }
-//        }
-//
-//        group.notify(queue: DispatchQueue.main) {
-//            print("-------------------")
-//            print("Driver \(self.coordDriver!)");
-//            print("Passenger \(self.coordPassenger!)");
-//
-//            if self.coordPassenger?.latitude == self.coordDriver?.latitude && self.coordPassenger?.longitude == self.coordDriver?.longitude{
-//                print("IT`S A MATCH")
-//            } else {
-//                print("IT`S NOT A MATCH")
-//            }
-//        }
-//
-//    }
     
 }
