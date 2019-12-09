@@ -209,7 +209,8 @@ class MatchsTableViewController: UITableViewController {
             if let driver = drivers?[(indexPath.row-2)] {
                 cell.driverImage.image = driversImage![(indexPath.row-2)]
                 cell.driver.text = driver.name
-                cell.vacantPlaces.text = "2"
+                cell.vacantPlaces.text = "2 vagas"
+                cell.wheel.text = "Não"
                 cell.distance.text = "Distância: 10km"
             }
             
