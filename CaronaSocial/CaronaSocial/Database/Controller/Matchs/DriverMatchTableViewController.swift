@@ -40,8 +40,10 @@ class DriverMatchTableViewController: UITableViewController {
         profileImage.image = newImage
         profileImage.makeRounded()
         name.text = driver?.name
-        vacantyNumber.text = self.ride?.vacant
-        accessibility.text = self.ride?.accessibility
+//        vacantyNumber.text = self.ride?.vacant
+        vacantyNumber.text = "2"
+
+        accessibility.text = "Não"
         observation.text = self.ride?.observation
         origin.text = self.ride?.origin
         destiny.text = self.ride?.destiny
