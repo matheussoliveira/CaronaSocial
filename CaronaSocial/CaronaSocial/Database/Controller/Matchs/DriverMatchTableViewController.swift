@@ -82,6 +82,13 @@ class DriverMatchTableViewController: UITableViewController {
                                                     period: self.day!)
             self.requestedButton.setTitle("Cancelar pedido", for: .normal)
             self.state = true
+            
+            let alert = UIAlertController(title: "Carona solicitada!", message: "", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: nil))
+
+            self.present(alert, animated: true)
+            
         } else {
             // Still needs to remove it from Firestore
             self.requestedButton.setTitle("Requisitar carona", for: .normal)
