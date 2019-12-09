@@ -37,6 +37,7 @@
 		2F22779D238C10C000D5C939 /* RoteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22779C238C10C000D5C939 /* RoteTableView.swift */; };
 		2F22779F238C10E200D5C939 /* TitleTableViewCellMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F22779E238C10E200D5C939 /* TitleTableViewCellMatch.swift */; };
 		2F2277A1238C110700D5C939 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2277A0238C110700D5C939 /* MatchTableViewCell.swift */; };
+		2F274A9F239EB34F004E88F3 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F274A9E239EB34F004E88F3 /* TabBarController.swift */; };
 		2F399F5523799FB90043B210 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F399F5423799FB90043B210 /* FirebaseManager.swift */; };
 		2F59E81C23745BB700D45612 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F59E81B23745BB600D45612 /* GoogleService-Info.plist */; };
 		2F8126CD236AF608009294E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8126CC236AF608009294E2 /* AppDelegate.swift */; };
@@ -102,6 +103,7 @@
 		2F22779C238C10C000D5C939 /* RoteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoteTableView.swift; sourceTree = "<group>"; };
 		2F22779E238C10E200D5C939 /* TitleTableViewCellMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCellMatch.swift; sourceTree = "<group>"; };
 		2F2277A0238C110700D5C939 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		2F274A9E239EB34F004E88F3 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		2F399F5423799FB90043B210 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		2F59E81B23745BB600D45612 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F8126C9236AF608009294E2 /* Carona Social.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Carona Social.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,6 +208,7 @@
 				2F05EF112386D5D100BE1B10 /* TestViewController.swift */,
 				0B0B4A87237A337800DAE5C7 /* AppInfoViewController.swift */,
 				0B051A24238D458900837B6A /* OfferViewController.swift */,
+				2F274A9E239EB34F004E88F3 /* TabBarController.swift */,
 			);
 			name = Controller;
 			path = Database/Controller;
@@ -511,6 +514,7 @@
 				9C6EE0BF2395D2A80070A42E /* NewAddressTableViewController.swift in Sources */,
 				2F05EF122386D5D100BE1B10 /* TestViewController.swift in Sources */,
 				0B0A3A5023743F87004EB061 /* StyleGuide.swift in Sources */,
+				2F274A9F239EB34F004E88F3 /* TabBarController.swift in Sources */,
 				0BA29A2223839603003BA510 /* RegisterViewController.swift in Sources */,
 				0B051A27238D5AFC00837B6A /* FixLocationsViewController.swift in Sources */,
 				0BA29A282383A03F003BA510 /* ButtonTableViewCell.swift in Sources */,
@@ -697,7 +701,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7FH5Q2A622;
+				DEVELOPMENT_TEAM = VZ4Y7Q4FJ2;
 				INFOPLIST_FILE = CaronaSocial/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
