@@ -950,7 +950,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ddW-nF-kRn">
-                                <rect key="frame" x="20" y="96" width="374" height="32"/>
+                                <rect key="frame" x="20" y="52" width="374" height="32"/>
                                 <segments>
                                     <segment title="Pendentes"/>
                                     <segment title="Confirmadas"/>
@@ -960,7 +960,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gj6-9G-Tgc">
-                                <rect key="frame" x="0.0" y="135" width="414" height="761"/>
+                                <rect key="frame" x="0.0" y="91" width="414" height="805"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="requestTitle" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="requestTitle" id="VyN-mM-0j8" customClass="RequestTitleTableViewCell" customModule="Carona_Social" customModuleProvider="target">
@@ -1354,11 +1354,11 @@
         <!--Minhas caronas-->
         <scene sceneID="Ps1-Ed-Ctm">
             <objects>
-                <navigationController title="Minhas caronas" automaticallyAdjustsScrollViewInsets="NO" id="9Ng-gr-2Kx" sceneMemberID="viewController">
+                <navigationController title="Minhas caronas" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="9Ng-gr-2Kx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Minhas caronas" image="wheel-icon" id="suN-z0-Npv"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="17O-cL-wXO">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="17O-cL-wXO">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
