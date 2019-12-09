@@ -116,6 +116,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true  
+        
         //Changing status bar color
         if #available(iOS 13.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -248,8 +250,51 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func backToHome(_ unwindSegue: UIStoryboardSegue) {
+        let group = DispatchGroup()
         let sourceViewController = unwindSegue.source
+        self.userID = FirebaseManager.shared.getUserID()
+        //fetch daily rides to populate cards
+        if self.rows == nil{
+            activityIndicatorView.startAnimating()
+            homeTableView.separatorStyle = .none
+            
+            dispatchQueue.async {
+                OperationQueue.main.addOperation() {
+                    group.enter()
+                    FirestoreManager.shared.checkUserType(userID: self.userID!){ result in
+                        self.type = result
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Manhã"){ result in
+                            self.rideManha = result
+                            group.leave()
+                        }
+                        
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Tarde"){ result in
+                            self.rideTarde = result
+                            group.leave()
+                        }
+                        
+                        group.enter()
+                        FirestoreManager.shared.fetchDailyRide(type: self.type, userID: self.userID!, weekDay: self.weekDay!, period: "Noite"){ result in
+                            self.rideNoite = result
+                            group.leave()
+                        }
+                        group.leave()
+                    }
+                    
+                    
+                    group.notify(queue: .main) {
+                        self.rows = 1
+                        self.activityIndicatorView.stopAnimating()
+                        self.homeTableView.reloadData()
+                    }
+                }
+            }
+        }
+        self.homeTableView.reloadData()
         self.reloadInputViews()
+    
         // Use data from the view controller which initiated the unwind segue
     }
 }

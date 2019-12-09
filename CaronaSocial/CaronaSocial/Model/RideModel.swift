@@ -26,10 +26,11 @@ struct RideModel {
     let observation: String
     let originType: String
     let destinyType: String
+    let requestedArray: [String]
     
 
     // Standard init
-    init(userID: String, time: String, origin: String, destiny: String, originPoint: Point, destinyPoint: Point, vacant: String, accessibility: String, observation: String, originType: String, destinyType: String) {
+    init(userID: String, time: String, origin: String, destiny: String, originPoint: Point, destinyPoint: Point, vacant: String, accessibility: String, observation: String, originType: String, destinyType: String, requestedArray: [String]) {
         self.userID = userID
         self.time = time
         self.origin = origin
@@ -41,6 +42,7 @@ struct RideModel {
         self.observation = observation
         self.originType = originType
         self.destinyType = destinyType
+        self.requestedArray = requestedArray
     }
 
     // Func converting model for easier writing to database
@@ -56,7 +58,8 @@ struct RideModel {
             "accessibility": accessibility,
             "observation": observation,
             "originType": originType,
-            "destinyType": destinyType
+            "destinyType": destinyType,
+            "requested": requestedArray
         ]
     }
 }

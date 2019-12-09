@@ -212,7 +212,7 @@ class EditRoteTableViewController: UITableViewController, UIPickerViewDelegate, 
             
             group.notify(queue: .main) {
                 
-                self.newRide = RideModel(userID: self.userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!)
+                self.newRide = RideModel(userID: self.userID!, time: timeFormat, origin: originInfo!.address, destiny: destinyInfo!.address, originPoint: Point(latitude: originInfo!.latitude, longitude: originInfo!.longitude), destinyPoint: Point(latitude: destinyInfo!.latitude, longitude: destinyInfo!.longitude), vacant: textFields[4]!.text!, accessibility: (textFields[5]?.text!)!, observation: "", originType: (textFields[0]?.text!)!, destinyType: (textFields[1]?.text!)!, requestedArray: [])
                  completionHandler("Done")
                 
             }

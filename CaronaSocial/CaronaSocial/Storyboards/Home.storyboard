@@ -695,7 +695,7 @@
         <scene sceneID="YYE-ad-E4I">
             <objects>
                 <tableViewController storyboardIdentifier="driverScreen" id="mUJ-mM-EBZ" customClass="DriverMatchTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zBp-SJ-JsF">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zBp-SJ-JsF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -746,6 +746,7 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vagas" translatesAutoresizingMaskIntoConstraints="NO" id="a1J-33-0yV">
                                                     <rect key="frame" x="20" y="48" width="20" height="20"/>
+                                                    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="j0N-nN-8Wj"/>
                                                         <constraint firstAttribute="width" constant="20" id="qjs-zm-n7i"/>
@@ -783,6 +784,7 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cadeirante" translatesAutoresizingMaskIntoConstraints="NO" id="pMl-fj-et9">
                                                     <rect key="frame" x="20" y="48" width="20" height="20"/>
+                                                    <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="HjW-EW-Y3e"/>
                                                         <constraint firstAttribute="width" constant="20" id="Vq6-nz-MOA"/>
@@ -908,6 +910,10 @@
                                                     <state key="normal" title="Requisitar Carona">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="resquestButton:" destination="1b7-nh-CYz" eventType="touchUpInside" id="1Zz-ks-hAw"/>
+                                                        <action selector="resquestButton:" destination="mUJ-mM-EBZ" eventType="touchUpInside" id="Zsm-xs-Azw"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -933,10 +939,12 @@
                         <outlet property="observation" destination="SXV-kg-G0Y" id="MA6-M3-yli"/>
                         <outlet property="origin" destination="ZAO-fa-x8H" id="MLh-6y-7l5"/>
                         <outlet property="profileImage" destination="3Dl-cI-sWg" id="5sD-8y-DvC"/>
+                        <outlet property="requestedButton" destination="hbi-kn-9jw" id="aZh-Xu-nFA"/>
                         <outlet property="vacantyNumber" destination="5tq-K7-BoS" id="Iz0-70-znr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cv8-vz-vF6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="1b7-nh-CYz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3870" y="181"/>
         </scene>

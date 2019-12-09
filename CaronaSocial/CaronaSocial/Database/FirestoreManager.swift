@@ -16,6 +16,7 @@ class FirestoreManager{
     static let shared = FirestoreManager()
     var driversArray: [DriverModel] = []
     var ridesArray: [RideModel] = []
+    var requestedArray: [String] = []
 
 
     func observeUsers() {
@@ -225,7 +226,7 @@ class FirestoreManager{
             db.collection(type).document(userID).collection("rides").document(weekDay).collection(period).document("infos").getDocument() { (document, err) in
                 if let document = document, document.exists {
                     
-                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                    let ride = RideModel(userID: userID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String, requestedArray: document.get("requested") as! [String])
                     completion(ride)
                 } else {
                     print("Document does not exist")
@@ -357,7 +358,8 @@ class FirestoreManager{
             "time": newRide.time,
             "accessibility": newRide.accessibility,
             "vacant": newRide.vacant,
-            "observation": newRide.observation
+            "observation": newRide.observation,
+            "requested": [""]
             ]){ err in
                 if let err = err {
                     print("Error writing afternoon ride: \(err)")
@@ -378,15 +380,21 @@ class FirestoreManager{
             } else {
                 for doc in querySnapshot!.documents {
                     group.enter()
+                    var ride: RideModel?
                     self.db.collection(type).document(doc.documentID).collection("rides").document(day).collection(period).document("infos").getDocument(){
                         (document, err) in
                         if let err = err{
                             print("No rides registered today: \(err)")
                         } else{
                             if let document = document, document.exists {
-                                let ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String)
+                                if document.get("requested") == nil{
+                                                                     ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String, requestedArray: [])
+                                    
+                                } else{
+                                     ride = RideModel(userID: doc.documentID, time: document.get("time") as! String, origin: document.get("origin") as! String, destiny: document.get("destiny") as! String, originPoint: Point(latitude: document.get("originLat") as! String, longitude: document.get("originLong") as! String), destinyPoint: Point(latitude: document.get("destinyLat") as! String, longitude: document.get("destinyLong") as! String), vacant: "", accessibility: "", observation: "", originType: document.get("originType") as! String, destinyType: document.get("destinyType") as! String, requestedArray: document.get("requested") as! [String])
+                                }
                                 
-                                rides.append(ride)
+                                rides.append(ride!)
                                 group.leave()
                             }
                         }
@@ -419,5 +427,80 @@ class FirestoreManager{
         }
     }
 
+    func sendRideRequest(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of requested rides on Firestore
+        
+        print(driverID, requestedUserID, weekday, period)
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "requested": FieldValue.arrayUnion([requestedUserID])])
+        
+        print("entrou")
+    }
+    
+    func checkResquestedRide(driverID: String, requestedUserID: String, weekday: String, period: String) -> [String] {
+        
+        db.collection("drivers").document(driverID).collection("rides")
+            .document(weekday).collection(period).document("infos").getDocument { (document, error) in
+                        if let document = document, document.exists {
+                            self.requestedArray = document.get("requested") as? [String] ?? [""]
+                        } else {
+                            print("Document does not exist")
+                    }
+            }
+        
+        return requestedArray
+        
+//        db.collection("Fruits")
+//        .whereField("vitamins", arrayContains: "B6")
+//        .whereField("vitamins", arrayContains: "C")
+        
+    }
+    
+    func addConfirmedRide(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of confirmed rides on Firestore
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "confirmedRides": requestedUserID])
+    }
+    
+    
+//    func match() {
+//
+//        let group = DispatchGroup()
+//
+//        var driversLocation = "Av. Albert Einstein, 251, Cidade Universitária, Campinas - SP"
+//        var passengerLocation = "Dr Mario de Nucci, 81, Cidade Universitária, Campinas - SP"
+//
+//        group.enter()
+//        getCoordinate(addressString: driversLocation) { placemark, error in
+//            if placemark != nil {
+//                self.coordDriver = placemark
+//                self.getCoordinate(addressString: passengerLocation) { placemark, error in
+//                    if placemark != nil {
+//                        self.coordPassenger = placemark
+//                        group.leave()
+//                    }
+//                }
+//            }
+//        }
+//
+//        group.notify(queue: DispatchQueue.main) {
+//            print("-------------------")
+//            print("Driver \(self.coordDriver!)");
+//            print("Passenger \(self.coordPassenger!)");
+//
+//            if self.coordPassenger?.latitude == self.coordDriver?.latitude && self.coordPassenger?.longitude == self.coordDriver?.longitude{
+//                print("IT`S A MATCH")
+//            } else {
+//                print("IT`S NOT A MATCH")
+//            }
+//        }
+//
+//    }
     
 }

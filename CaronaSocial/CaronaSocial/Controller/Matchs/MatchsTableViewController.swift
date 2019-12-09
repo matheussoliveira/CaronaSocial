@@ -25,6 +25,7 @@ class MatchsTableViewController: UITableViewController {
     var day: String?
     var period: String?
     var matchRides: [RideModel] = []
+    var userID: String?
 
     
     override func loadView() {
@@ -64,6 +65,8 @@ class MatchsTableViewController: UITableViewController {
         
         var rides: [RideModel] = []
 
+        self.userID = FirebaseManager.shared.getUserID()
+        
         if (rows == nil) {
             activityIndicatorView.startAnimating()
 
@@ -176,6 +179,7 @@ class MatchsTableViewController: UITableViewController {
         if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "roteCell") as! RoteTableViewCell
             cell.period.text = name
+            cell.selectionStyle = .none
             
                 
             //split address
@@ -192,6 +196,7 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell") as! TitleTableViewCellMatch
+            cell.selectionStyle = .none
             if self.userType == "drivers"{
                 cell.rideNumber.text = "Pessoas requisitando carona: \(drivers?.count ?? 0)"
             } else {
@@ -200,6 +205,7 @@ class MatchsTableViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "matchCell") as! MatchTableViewCell
+            cell.selectionStyle = .none
             if let driver = drivers?[(indexPath.row-2)] {
                 cell.driverImage.image = driversImage![(indexPath.row-2)]
                 cell.driver.text = driver.name
@@ -230,7 +236,9 @@ class MatchsTableViewController: UITableViewController {
             vc?.driver = drivers?[indexPath.row-2]
             vc?.newImage = driversImage![(indexPath.row-2)]
             vc?.ride = self.dailyRide
-
+            vc?.day = self.period
+            vc?.period = self.day
+            vc?.selectedDriver = self.matchRides[indexPath.row-2]
             
             self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -251,8 +259,18 @@ class MatchsTableViewController: UITableViewController {
     
     @IBAction func backToMatch(_ unwindSegue: UIStoryboardSegue) {
         let sourceViewController = unwindSegue.source
-        self.reloadInputViews()
-        self.tableView.reloadData()
-        self.viewWillAppear(true)
+        
+        let group = DispatchGroup()
+        
+        group.enter()
+        FirestoreManager.shared.fetchDailyRide(type: self.userType!, userID: self.userID!, weekDay: self.day!, period: self.period!){ result in
+            self.dailyRide = result
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.reloadInputViews()
+            self.tableView.reloadData()
+        }
     }
 }
