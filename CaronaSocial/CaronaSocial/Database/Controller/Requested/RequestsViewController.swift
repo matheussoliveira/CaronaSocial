@@ -36,6 +36,8 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.barTintColor = UIColor.customBlue
+        
         tableView.delegate = self
         tableView.dataSource = self
         

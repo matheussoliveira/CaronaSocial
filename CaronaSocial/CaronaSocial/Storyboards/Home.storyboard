@@ -12,17 +12,17 @@
             <objects>
                 <viewController storyboardIdentifier="Home" id="FUE-se-6CX" customClass="HomeViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VOP-Cm-MN6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selecione um dia da semana:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIr-if-PQl">
-                                <rect key="frame" x="20" y="16" width="374" height="24"/>
+                                <rect key="frame" x="20" y="60" width="374" height="24"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJO-io-2Yr">
-                                <rect key="frame" x="0.0" y="48" width="414" height="53"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="53"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7S-Vt-nb2">
                                         <rect key="frame" x="0.0" y="52" width="414" height="1"/>
@@ -230,7 +230,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HU8-kA-9NR">
-                                <rect key="frame" x="0.0" y="101" width="414" height="624"/>
+                                <rect key="frame" x="0.0" y="145" width="414" height="668"/>
                                 <color key="backgroundColor" white="0.95999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="146" id="VP9-Bg-u1W" customClass="HomeTableViewCell" customModule="Carona_Social" customModuleProvider="target">
@@ -941,10 +941,10 @@
             </objects>
             <point key="canvasLocation" x="4779.7101449275369" y="180.80357142857142"/>
         </scene>
-        <!--Requests View Controller-->
+        <!--Minhas caronas-->
         <scene sceneID="ctA-J2-i7e">
             <objects>
-                <viewController storyboardIdentifier="requested" id="898-vx-apO" customClass="RequestsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="requested" title="Minhas caronas" id="898-vx-apO" customClass="RequestsViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M4X-Uz-3Aa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1082,7 +1082,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Km2-OV-oMl"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hYO-Oy-joA"/>
+                    <navigationItem key="navigationItem" title="Minhas caronas" largeTitleDisplayMode="always" id="hYO-Oy-joA">
+                        <barButtonItem key="backBarButtonItem" title="Voltar" id="8ED-OB-F8H"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="segmentedControl" destination="ddW-nF-kRn" id="HeU-Pp-Suh"/>
                         <outlet property="tableView" destination="Gj6-9G-Tgc" id="9oS-iG-aZc"/>
@@ -1092,7 +1094,7 @@
             </objects>
             <point key="canvasLocation" x="878" y="915"/>
         </scene>
-        <!--Corrida-->
+        <!--Detalhes-->
         <scene sceneID="Oa0-g3-EEx">
             <objects>
                 <tableViewController storyboardIdentifier="driverRequested" id="nM0-P7-bJk" customClass="DriverRequestedTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
@@ -1343,7 +1345,7 @@
                             <outlet property="delegate" destination="nM0-P7-bJk" id="5Zb-RD-py9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Corrida" id="NFk-Fd-7eP"/>
+                    <navigationItem key="navigationItem" title="Detalhes" id="NFk-Fd-7eP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3py-Lv-4rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1352,7 +1354,7 @@
         <!--Minhas caronas-->
         <scene sceneID="Ps1-Ed-Ctm">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Ng-gr-2Kx" sceneMemberID="viewController">
+                <navigationController title="Minhas caronas" automaticallyAdjustsScrollViewInsets="NO" id="9Ng-gr-2Kx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Minhas caronas" image="wheel-icon" id="suN-z0-Npv"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="17O-cL-wXO">
@@ -1368,12 +1370,12 @@
             </objects>
             <point key="canvasLocation" x="-32" y="915"/>
         </scene>
-        <!--Caronas-->
+        <!--Tab Bar Controller-->
         <scene sceneID="0Hi-67-fgt">
             <objects>
-                <tabBarController title="Caronas" automaticallyAdjustsScrollViewInsets="NO" id="C4J-xS-8Xv" customClass="TabBarController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="C4J-xS-8Xv" customClass="TabBarController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YXq-xP-Mvk">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -116,6 +116,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.hidesBackButton = true  
         
         //Changing status bar color

@@ -45,7 +45,7 @@ class MatchsTableViewController: UITableViewController {
         
         let backbutton = UIButton(type: .custom)
         backbutton.setImage(UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        backbutton.setTitle(" Back", for: .normal)
+        backbutton.setTitle("Voltar", for: .normal)
         backbutton.tintColor = .white
         backbutton.setTitleColor(.white, for: .normal)
         backbutton.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
