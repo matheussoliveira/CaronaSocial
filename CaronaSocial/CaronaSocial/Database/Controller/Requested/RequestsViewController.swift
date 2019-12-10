@@ -79,16 +79,17 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             
             if selectedSegment == 1 {
                 
-                cell?.places.text = "Teste"
-                cell?.riderName.text = "Teste"
-                cell?.distance.text = "Teste"
+                cell?.places.text = "2 vagas"
+                cell?.riderName.text = "Ana Claudia"
+                cell?.distance.text = "Distância: 10km"
+                cell?.wheelChair.text = "Não"
                 return cell!
                 
             } else {
                 
-                cell?.places.text = "Teste1"
-                cell?.riderName.text = "Teste1"
-                cell?.distance.text = "Teste1"
+//                cell?.places.text = "Teste1"
+//                cell?.riderName.text = "Teste1"
+//                cell?.distance.text = "Teste1"
                 return cell!
                 
             }

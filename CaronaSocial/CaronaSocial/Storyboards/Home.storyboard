@@ -245,7 +245,7 @@
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="5Wi-dK-GAW">
                                                             <rect key="frame" x="17.5" y="60" width="17" height="20"/>
-                                                            <color key="tintColor" systemColor="placeholderTextColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="17" id="CnQ-43-e9I"/>
                                                                 <constraint firstAttribute="height" constant="20" id="DcG-cK-TUL"/>
@@ -384,6 +384,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hBl-mV-wzb" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="jm5-a9-iHQ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PDQ-af-L1F">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1020,13 +1021,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49p-Ef-IUB">
-                                                            <rect key="frame" x="105" y="53" width="151" height="21"/>
+                                                            <rect key="frame" x="105" y="53" width="85" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8st-4O-5Bi">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Rochaaa" translatesAutoresizingMaskIntoConstraints="NO" id="8st-4O-5Bi">
                                                             <rect key="frame" x="16" y="16" width="45" height="45"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <userDefinedRuntimeAttributes>
@@ -1048,6 +1049,18 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cadeirante" translatesAutoresizingMaskIntoConstraints="NO" id="sHC-oT-2Lp">
+                                                            <rect key="frame" x="197" y="53.5" width="20" height="20"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L88-TX-ATc">
+                                                            <rect key="frame" x="225" y="53.5" width="76" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1079,6 +1092,7 @@
                                             <outlet property="places" destination="49p-Ef-IUB" id="Sft-nV-fU7"/>
                                             <outlet property="profileImage" destination="8st-4O-5Bi" id="qEw-8m-kmz"/>
                                             <outlet property="riderName" destination="ZMi-X4-nmv" id="DSo-6d-bvq"/>
+                                            <outlet property="wheelChair" destination="L88-TX-ATc" id="9Rd-9c-cpG"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1110,14 +1124,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vcg-bW-fT9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="878" y="915"/>
+            <point key="canvasLocation" x="876.81159420289862" y="914.73214285714278"/>
         </scene>
         <!--Detalhes-->
         <scene sceneID="Oa0-g3-EEx">
             <objects>
                 <tableViewController storyboardIdentifier="driverRequested" id="nM0-P7-bJk" customClass="DriverRequestedTableViewController" customModule="Carona_Social" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dZJ-Uh-vNo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -1130,7 +1144,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mEL-FU-9pJ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rochaaa" translatesAutoresizingMaskIntoConstraints="NO" id="mEL-FU-9pJ">
                                                     <rect key="frame" x="20" y="11" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="N9y-k8-uz4"/>
@@ -1382,6 +1396,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="898-vx-apO" kind="relationship" relationship="rootViewController" id="vwc-ka-lMu"/>
+                        <segue destination="nM0-P7-bJk" kind="show" id="JNU-U0-ohF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ES-C1-Re5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1402,6 +1417,7 @@
                     <connections>
                         <segue destination="FUE-se-6CX" kind="relationship" relationship="viewControllers" id="D5N-Hp-sRU"/>
                         <segue destination="9Ng-gr-2Kx" kind="relationship" relationship="viewControllers" id="gpL-nq-wLA"/>
+                        <segue destination="hBl-mV-wzb" kind="show" id="myk-bt-Mxq"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2tZ-xp-O2M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1411,6 +1427,7 @@
     </scenes>
     <resources>
         <image name="Grupo 629" width="2" height="14"/>
+        <image name="Rochaaa" width="853" height="853"/>
         <image name="cadeirante" width="17" height="20"/>
         <image name="clock" width="20" height="20"/>
         <image name="morning" width="60" height="60"/>

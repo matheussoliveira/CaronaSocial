@@ -15,6 +15,7 @@ class RideTableViewCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var wheelChair: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
