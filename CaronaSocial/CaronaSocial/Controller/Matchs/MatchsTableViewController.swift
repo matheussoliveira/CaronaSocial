@@ -83,7 +83,7 @@ class MatchsTableViewController: UITableViewController {
                         self.match(rides: rides){ result in
                             self.drivers = result
                             group.enter()
-                            FirebaseManager.downloadImages(drivers: self.drivers!) { images in
+                            FirebaseManager.shared.downloadImages(drivers: self.drivers!) { images in
                                 self.driversImage = images
                                 group.leave()
                             }

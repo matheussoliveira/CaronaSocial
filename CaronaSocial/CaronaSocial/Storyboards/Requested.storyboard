@@ -124,7 +124,7 @@
                                         <connections>
                                             <outlet property="distance" destination="aIL-yK-Hfh" id="f5c-BN-t64"/>
                                             <outlet property="icon" destination="4m1-op-EvZ" id="7Na-kz-xWA"/>
-                                            <outlet property="places" destination="iBl-zX-CC6" id="GRc-cR-85f"/>
+                                            <outlet property="places" destination="iBl-zX-CC6" id="n6U-2m-ZDA"/>
                                             <outlet property="profileImage" destination="D2O-ve-eTu" id="V3M-gj-zPp"/>
                                             <outlet property="riderName" destination="V3q-7A-f4Z" id="RYR-fO-ZcS"/>
                                         </connections>
@@ -410,16 +410,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Corrida" id="AJ8-dh-orJ"/>
-                    <connections>
-                        <outlet property="accessibility" destination="DYu-G8-5Fh" id="qWB-ql-TM0"/>
-                        <outlet property="destiny" destination="eGz-GT-fYN" id="H5d-6G-bSF"/>
-                        <outlet property="driverName" destination="Lrc-9f-e8z" id="TOb-zb-rrx"/>
-                        <outlet property="driverPhoto" destination="rbc-LC-BGP" id="PVh-aN-UZo"/>
-                        <outlet property="observation" destination="JuM-u7-bRp" id="crF-3i-Pip"/>
-                        <outlet property="origin" destination="2nZ-ts-rvl" id="K48-2q-sI0"/>
-                        <outlet property="seats" destination="yxT-va-iTC" id="C6V-64-wuH"/>
-                        <outlet property="time" destination="l7m-i5-Oh7" id="Zvw-O0-aLF"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIU-uh-cCK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,11 +8,10 @@
 
 import UIKit
 
-class DriverRequestedTableViewController: UITableViewController {
+class DriverRequestedTableViewController: UITableViewController{
     var driver: UserModel?
     var ride: RideModel?
     var activityIndicatorView: UIActivityIndicatorView!
-    var rows: [String]?
     var group = DispatchGroup()
     
     @IBOutlet weak var driverName: UILabel!
@@ -24,41 +23,29 @@ class DriverRequestedTableViewController: UITableViewController {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var observation: UITextView!
     
-    override func loadView() {
-        super.loadView()
-
-        activityIndicatorView = UIActivityIndicatorView(style: .gray)
-
-        tableView.backgroundView = activityIndicatorView
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.driverName.text = driver?.name
-        self.accessibility.text = ride?.accessibility
-        self.seats.text = ride?.vacant
-        self.origin.text = ride?.origin
-        self.destiny.text = ride?.destiny
-        self.time.text = ride?.time
-        self.observation.text = ride?.observation
-        
-        self.rows = ["One", "Two"]
+        tableView.delegate = self
+        tableView.dataSource = self
 
-        self.activityIndicatorView.stopAnimating()
-
-        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+//        driverName.text = "oi"
+//        accessibility.text = ride?.accessibility
+//        seats.text = ride?.vacant
+//        origin.text = ride?.origin
+//        destiny.text = ride?.destiny
+//        time.text = ride?.time
+//        observation.text = ride?.observation
 
-        if (rows == nil) {
-            activityIndicatorView.startAnimating()
-            tableView.separatorStyle = .none
-        }
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+//        driverName.text = driver?.name
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source

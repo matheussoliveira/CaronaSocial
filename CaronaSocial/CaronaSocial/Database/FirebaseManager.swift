@@ -82,7 +82,7 @@ class FirebaseManager {
         return UIAlertController()
     }
     
-    static func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
+     func downloadImage(withURL url: URL, completion: @escaping (_ image: UIImage?) -> ()) {
         // Downloading image from database
         print(url)
         let dataTask = URLSession.shared.dataTask(with: url) { data, url, error in
@@ -97,7 +97,7 @@ class FirebaseManager {
         dataTask.resume()
     }
     
-    static func downloadImages(drivers: [UserModel], completion: @escaping ([UIImage]) -> Void){
+    func downloadImages(drivers: [UserModel], completion: @escaping ([UIImage]) -> Void){
         // Downloading image from database
         var images: [UIImage] = []
         let group = DispatchGroup()
@@ -106,7 +106,7 @@ class FirebaseManager {
         for driver in drivers{
             print(driver.profileImageURL)
             group.enter()
-            FirebaseManager.self.downloadImage(withURL: URL(string: driver.profileImageURL)!){ result in
+            self.downloadImage(withURL: URL(string: driver.profileImageURL)!){ result in
                 if (result != nil){
                     images.append(result!)
                     group.leave()

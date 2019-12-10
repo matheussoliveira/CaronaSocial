@@ -62,6 +62,7 @@
 		3AF88BBF238EB568004EC2AD /* Route.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF88BBE238EB568004EC2AD /* Route.storyboard */; };
 		9C0C5C46239D848D00B76C38 /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0C5C45239D848D00B76C38 /* LocationModel.swift */; };
 		9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C1A9C532379B1FB00734AA7 /* UserModel.swift */; };
+		9C32971C239FBCC50078BDE2 /* DriverRequestedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C32971B239FBCC50078BDE2 /* DriverRequestedTableViewCell.swift */; };
 		9C3C70082397E1DC0075E096 /* ButtonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3C70072397E1DC0075E096 /* ButtonManager.swift */; };
 		9C6EE0BB2395D2600070A42E /* AddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */; };
 		9C6EE0BD2395D2680070A42E /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */; };
@@ -134,6 +135,7 @@
 		97B746071873C36CD0D1B2FF /* Pods_CaronaSocial.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CaronaSocial.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0C5C45239D848D00B76C38 /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		9C1A9C532379B1FB00734AA7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		9C32971B239FBCC50078BDE2 /* DriverRequestedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverRequestedTableViewCell.swift; sourceTree = "<group>"; };
 		9C3C70072397E1DC0075E096 /* ButtonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonManager.swift; sourceTree = "<group>"; };
 		9C6EE0BA2395D2600070A42E /* AddressTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewController.swift; path = CaronaSocial/Database/Controller/Adress/AddressTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		9C6EE0BC2395D2680070A42E /* AddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddressTableViewCell.swift; path = CaronaSocial/Database/Controller/Adress/AddressTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -336,6 +338,7 @@
 				3AD2497F2398000100C6A076 /* RequestTitleTableViewCell.swift */,
 				3AD249812398004F00C6A076 /* RideTableViewCell.swift */,
 				3AD2498323993F0400C6A076 /* DriverRequestedTableViewController.swift */,
+				9C32971B239FBCC50078BDE2 /* DriverRequestedTableViewCell.swift */,
 			);
 			path = Requested;
 			sourceTree = "<group>";
@@ -554,6 +557,7 @@
 				3AD2498623994AE000C6A076 /* DriverMatchTableViewController.swift in Sources */,
 				9C0C5C46239D848D00B76C38 /* LocationModel.swift in Sources */,
 				0B0B4A88237A337800DAE5C7 /* AppInfoViewController.swift in Sources */,
+				9C32971C239FBCC50078BDE2 /* DriverRequestedTableViewCell.swift in Sources */,
 				9C1A9C542379B1FB00734AA7 /* UserModel.swift in Sources */,
 				9C6EE0C12395D31F0070A42E /* EditRoteTableViewController.swift in Sources */,
 				9C6EE0CD2395DFB40070A42E /* MatchsTableViewController.swift in Sources */,

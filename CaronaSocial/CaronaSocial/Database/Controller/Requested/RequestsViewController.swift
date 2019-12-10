@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,6 +20,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     var ridesRequested: [RideModel]?
     var rides: [RideModel] = []
     var drivers: [UserModel] = []
+    var images: [UIImage]?
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBAction func switchSegmented(_ sender: UISegmentedControl) {
@@ -54,6 +56,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let group = DispatchGroup()
+        self.images = []
 
         var type: String?
 
@@ -84,6 +87,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
                                     group.leave()
                                 }
                             }
+                            
                             group.leave()
                         }
                         
@@ -93,10 +97,18 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
                             
                     group.notify(queue: .main) {
                         self.rows = ["One", "Two"]
+                        
+                        for user in self.drivers {
+                            group.enter()
+                            FirebaseManager.shared.downloadImage(withURL: URL(string: user.profileImageURL)!){ result in
+                                self.images?.append(result!)
+                                group.leave()
+                            }
+                        }
+                        group.notify(queue: .main) {
+                            self.tableView.reloadData()
+                        }
 
-    //                    self.activityIndicatorView.stopAnimating()
-
-                        self.tableView.reloadData()
                     }
     
                 }
@@ -104,7 +116,6 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
         
-        self.tableView.reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -142,6 +153,8 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
                 cell?.places.text = self.rides[indexPath.row-1].vacant
                 cell?.riderName.text = self.drivers[indexPath.row-1].name
                 cell?.distance.text = self.rides[indexPath.row-1].time
+                cell?.profileImage.image = self.images![indexPath.row-1]
+                
                 return cell!
                 
             } else {
