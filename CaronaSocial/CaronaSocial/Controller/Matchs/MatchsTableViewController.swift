@@ -44,19 +44,8 @@ class MatchsTableViewController: UITableViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-//        let backbutton = UIButton(type: .custom)
-//        backbutton.setImage(UIImage(named: "backbutton")?.withRenderingMode(.alwaysTemplate), for: .normal)
-//        backbutton.setTitle(" Back", for: .normal)
-//        backbutton.tintColor = .white
-//        backbutton.setTitleColor(.white, for: .normal)
-
-
-//        self.navigationItem.leftBarButtonItem
-        
-        
         self.tableView.reloadData()
 
-        
     }
     
     
@@ -102,25 +91,6 @@ class MatchsTableViewController: UITableViewController {
                         }
                         group.leave()
                     }
-                    
-                    
-                    
-                    //fetch todas as rides de tipo oposto
-                    //comparar com endereço de destino, origem e horário
-        
-//                    group.enter()
-//                    FirestoreManager.shared.buildDrivers { (drivers) in
-//                        self.drivers = drivers
-//
-//                        group.enter()
-//                        FirebaseManager.downloadImages(drivers: self.drivers!) { images in
-//                            self.driversImage = images
-//                            group.leave()
-//                        }
-//
-//                        group.leave()
-//                    }
-//                    self.drivers = []
                     
                     group.notify(queue: .main) {
                         self.rows = ["One", "Two"]

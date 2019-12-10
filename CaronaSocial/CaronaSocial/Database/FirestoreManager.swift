@@ -17,6 +17,7 @@ class FirestoreManager{
     var driversArray: [DriverModel] = []
     var ridesArray: [RideModel] = []
     var requestedArray: [String] = []
+    var requests: [RequestModel] = []
 
 
     func observeUsers() {
@@ -381,6 +382,7 @@ class FirestoreManager{
         }
     }
     
+    //return a user location
     func fetchLocation(location: String, completionHandler: @escaping (LocationModel) -> Void){
         let userID = FirebaseManager.shared.getUserID()
         var dbLocation: String?
@@ -439,6 +441,62 @@ class FirestoreManager{
         db.collection("drivers").document(driverID).collection("rides")
         .document(weekday).collection(period).document("infos").updateData([
             "confirmedRides": requestedUserID])
+    }
+    
+    //return an array of requested rides
+    func fetchRequestsRides(userID: String, type: String, completionHandler: @escaping ([RideModel]) -> Void){
+    
+        let group = DispatchGroup()
+        let days = ["Seg", "Ter", "Qua", "Qui", "Sex"]
+        let periods = ["Manhã", "Tarde", "Noite"]
+        var ids: [String]?
+        var rides: [RideModel]?
+        let path = db.collection(type).document(userID).collection("rides")
+        
+        self.requests = []
+        //get rides drivers or passengers user IDs
+        for day in days {
+            for period in periods {
+                group.enter()
+                path.document(day).collection(period).document("infos").getDocument { (document, err) in
+                  
+                    var array = document?.get("requested") as! [String]
+                    if array.count > 1 {
+                        for item in array{
+                            if item != ""{
+                                let request = RequestModel(userID: item, day: day, period: period)
+                                self.requests.append(request)
+                            }
+                        }
+                    }
+                    group.leave()
+                }
+            }
+        }
+
+        group.notify(queue: .main) {
+            rides = []
+            var type2: String?
+            if type == "drivers"{
+                type2 = "passengers"
+            } else {
+                type2 = "drivers"
+            }
+
+            for request in self.requests{
+                group.enter()
+                self.fetchDailyRide(type: type2!, userID: request.userID, weekDay: request.day, period: request.period){ result in
+                    rides?.append(result)
+                    group.leave()
+
+                }
+            }
+            
+            group.notify(queue: .main) {
+                completionHandler(rides!)
+            }
+        }
+        
     }
     
 }
