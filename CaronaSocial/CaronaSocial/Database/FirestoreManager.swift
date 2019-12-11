@@ -115,6 +115,21 @@ class FirestoreManager{
         }
     }
     
+    func sendNewAddress(userID: String, address: String, coordinates: CLLocationCoordinate2D) {
+        // Send new adress and coordinates to Firestore.
+        db.collection("users").document(userID).collection("locations").document(address).setData([
+            "location": address,
+            "latitude": "\(coordinates.latitude)",
+            "longitude": "\(coordinates.longitude)"]) { err in
+                if let err = err {
+                    print("Error writing new adress: \(err)")
+                } else {
+                    print("New address sucessefuly written!")
+                }
+        }
+        
+    }
+    
     func sendLocation(userID: String, home: String, work: String, institution: String, homeCoord: CLLocationCoordinate2D, institutionCoord: CLLocationCoordinate2D, workCoord: CLLocationCoordinate2D) {
         // Sends all addresses and coordinates registered to Firestore.
         sendHomeLocation(home: home, coord: homeCoord, userID: userID)
@@ -269,7 +284,8 @@ class FirestoreManager{
             "time": "08h00-09h00",
             "accessibility": "Não",
             "vacant": "1",
-            "observation": ""]){ err in
+            "observation": "",
+            "requested": [""]]){ err in
                 if let err = err {
                     print("Error writing morning ride: \(err)")
                 } else {
@@ -289,7 +305,8 @@ class FirestoreManager{
             "time": "15h00-16h00",
             "accessibility": "Não",
             "vacant": "1",
-            "observation": ""
+            "observation": "",
+            "requested": [""]
             ]){ err in
                 if let err = err {
                     print("Error writing afternoon ride: \(err)")
@@ -310,7 +327,8 @@ class FirestoreManager{
             "time": "19h00-20h00",
             "accessibility": "Não",
             "vacant": "1",
-            "observation": ""]){ err in
+            "observation": "",
+            "requested": [""]]){ err in
                 if let err = err {
                     print("Error writing night ride: \(err)")
                 } else {
@@ -408,11 +426,21 @@ class FirestoreManager{
         
         print(driverID, requestedUserID, weekday, period)
         
-        db.collection("drivers").document(driverID).collection("rides")
+        
+        db.collection("drivers").document(requestedUserID).collection("rides")
         .document(weekday).collection(period).document("infos").updateData([
-            "requested": FieldValue.arrayUnion([requestedUserID])])
+            "requested": FieldValue.arrayUnion([driverID])])
         
         print("entrou")
+    }
+    
+    func removeRideRequest(driverID: String, requestedUserID: String, weekday: String, period: String) {
+        // Adds the passenger's userID to driver's
+        // array of requested rides on Firestore
+        
+        db.collection("drivers").document(driverID).collection("rides")
+        .document(weekday).collection(period).document("infos").updateData([
+            "requested": FieldValue.arrayRemove([requestedUserID])])
     }
     
     func checkResquestedRide(driverID: String, requestedUserID: String, weekday: String, period: String) -> [String] {

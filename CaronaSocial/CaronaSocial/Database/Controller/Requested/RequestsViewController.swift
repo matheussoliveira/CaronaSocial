@@ -43,7 +43,7 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.separatorStyle = .none
         navigationController?.navigationBar.barTintColor = UIColor.customBlue
         
         tableView.delegate = self
@@ -132,16 +132,21 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "requestTitle") as? RequestTitleTableViewCell
             
             if selectedSegment == 1{
-                
-                cell!.titleRequest.text = "Caronas pendentes"
+                if self.rides.count > 0{
+                    cell!.titleRequest.text = "Caronas pendentes"
+                }else{
+                    cell!.titleRequest.text = "Não há caronas pendentes"
+                }
                 
                 return cell!
                 
                 
             } else {
-                
-                cell!.titleRequest.text = "Caronas confirmadas"
-                
+                if self.rides.count > 0{
+                    cell!.titleRequest.text = "Caronas confirmadas"
+                }else {
+                    cell!.titleRequest.text = "Não há caronas confirmadas"
+                }
                 return cell!
                 
             }
@@ -149,24 +154,89 @@ class RequestsViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = self.tableView.dequeueReusableCell(withIdentifier: "rideCell") as? RideTableViewCell
             
             if selectedSegment == 1 {
-                
-                cell?.places.text = self.rides[indexPath.row-1].vacant
-                cell?.riderName.text = self.drivers[indexPath.row-1].name
-                cell?.distance.text = self.rides[indexPath.row-1].time
-                cell?.profileImage.image = self.images![indexPath.row-1]
-                
+                if self.rides.count > 0{
+                    cell?.places.text = self.rides[indexPath.row-1].vacant
+                    cell?.riderName.text = self.drivers[indexPath.row-1].name
+                    cell?.distance.text = self.rides[indexPath.row-1].time
+                    cell?.profileImage.image = self.images![indexPath.row-1]
+                    cell?.wheelChair.text = "Sim"
+                    
+                    cell?.places.text = "1 vaga"
+                }
                 return cell!
-                
             } else {
                 
-                cell?.places.text = "Teste1"
-                cell?.riderName.text = "Teste1"
-                cell?.distance.text = "Teste1"
+//                cell?.places.text = "Teste1"
+//                cell?.riderName.text = "Teste1"
+//                cell?.distance.text = "Teste1"
                 return cell!
                 
             }
         }
    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let group = DispatchGroup()
+                self.images = []
+
+                var type: String?
+
+                self.userID = FirebaseManager.shared.getUserID()
+                        
+                if (rows == nil) {
+        //            activityIndicatorView.startAnimating()
+
+                    tableView.separatorStyle = .none
+
+                    dispatchQueue.async {
+
+
+                        OperationQueue.main.addOperation() {
+
+                            group.enter()
+                            FirestoreManager.shared.checkUserType(userID: self.userID!){ result in
+                                type = result
+                                
+                                group.enter()
+                                FirestoreManager.shared.fetchRequestsRides(userID: self.userID!, type: type!){ result in
+                                    self.rides = result
+                                
+                                    for ride in self.rides{
+                                        group.enter()
+                                        FirestoreManager.shared.fetchDriver(userID: ride.userID){ result in
+                                            self.drivers.append(result)
+                                            group.leave()
+                                        }
+                                    }
+                                    
+                                    group.leave()
+                                }
+                                
+                                group.leave()
+                            }
+
+                                    
+                            group.notify(queue: .main) {
+                                self.rows = ["One", "Two"]
+                                
+                                for user in self.drivers {
+                                    group.enter()
+                                    FirebaseManager.shared.downloadImage(withURL: URL(string: user.profileImageURL)!){ result in
+                                        self.images?.append(result!)
+                                        group.leave()
+                                    }
+                                }
+                                group.notify(queue: .main) {
+                                    self.tableView.reloadData()
+                                }
+
+                            }
+            
+                        }
+                    
+                    }
+                }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //Condition for specific height

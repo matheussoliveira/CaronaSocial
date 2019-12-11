@@ -57,6 +57,7 @@ class DriverMatchTableViewController: UITableViewController {
         
         if (selectedDriver!.requestedArray.contains(userID!)) {
             requestedButton.setTitle("Cancelar pedido", for: .normal)
+            self.state = true
         }
         
     }
@@ -76,16 +77,39 @@ class DriverMatchTableViewController: UITableViewController {
         // Verifies if user already requested a ride or not
         
         if self.state == false {
+            
             FirestoreManager.shared.sendRideRequest(driverID: self.selectedDriver!.userID,
                                                     requestedUserID: self.userID!,
                                                     weekday: self.period!,
                                                     period: self.day!)
+            
             self.requestedButton.setTitle("Cancelar pedido", for: .normal)
             self.state = true
+            
+            let alert = UIAlertController(title: "Carona solicitada!", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
         } else {
-            // Still needs to remove it from Firestore
+            
+            FirestoreManager.shared.removeRideRequest(driverID: self.selectedDriver!.userID,
+                                                      requestedUserID: self.userID!,
+                                                      weekday: self.period!,
+                                                      period: self.day!)
+            
             self.requestedButton.setTitle("Requisitar carona", for: .normal)
             self.state = false
+            
+            let alert = UIAlertController(title: "Carona cancelada!", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Confirmar", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if isMovingFromParent{
+            performSegue(withIdentifier: "backToMatch", sender: self)
         }
     }
 

@@ -27,6 +27,8 @@ class MatchsTableViewController: UITableViewController {
     var period: String?
     var matchRides: [RideModel] = []
     var userID: String?
+    let image = UIImage(named: "Rochaaa")
+//    self.driversImage = [image!, image!, image!, image!]
 
     
     override func loadView() {
@@ -40,6 +42,8 @@ class MatchsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.driversImage = [image!, image!, image!, image!]
+
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -53,8 +57,11 @@ class MatchsTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let group = DispatchGroup()
-        
+//        let image = UIImage(named: "Rochaaa")
+//        self.driversImage = [image!, image!, image!, image!]
         var rides: [RideModel] = []
+        var i: Int?
+        var index: Int?
 
         self.userID = FirebaseManager.shared.getUserID()
         
@@ -82,10 +89,18 @@ class MatchsTableViewController: UITableViewController {
                         group.enter()
                         self.match(rides: rides){ result in
                             self.drivers = result
-                            group.enter()
-                            FirebaseManager.shared.downloadImages(drivers: self.drivers!) { images in
-                                self.driversImage = images
-                                group.leave()
+                            for driver in self.drivers!{
+         
+                                group.enter()
+                                FirebaseManager.shared.downloadImage(withURL: URL(string: driver.profileImageURL)!){ result in
+                                    for i in (0..<self.drivers!.count) {
+                                        if self.drivers![i].profileImageURL == driver.profileImageURL {
+                                             index = i
+                                         }
+                                     }
+                                    self.driversImage![index!] = result!
+                                    group.leave()
+                                }
                             }
                             group.leave()
                         }
@@ -188,8 +203,9 @@ class MatchsTableViewController: UITableViewController {
             if let driver = drivers?[(indexPath.row-2)] {
                 cell.driverImage.image = driversImage![(indexPath.row-2)]
                 cell.driver.text = driver.name
-                cell.vacantPlaces.text = "2"
-                cell.distance.text = "Distância: 10km"
+                cell.vacantPlaces.text = "1 vaga"
+                cell.wheel.text = "Não"
+                cell.distance.text = "Distância: 2km"
             }
             
             return cell
@@ -208,7 +224,7 @@ class MatchsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.row == 2) {
+        if (indexPath.row >= 2) {
             
             let vc = storyboard?.instantiateViewController(withIdentifier: "driverScreen") as? DriverMatchTableViewController
             
@@ -236,20 +252,79 @@ class MatchsTableViewController: UITableViewController {
 //        performSegue(withIdentifier: "backToHome", sender: self)
 //    }
     
+     
     @IBAction func backToMatch(_ unwindSegue: UIStoryboardSegue) {
-        let sourceViewController = unwindSegue.source
+//        let sourceViewController = unwindSegue.source
+//        let group = DispatchGroup()
+//        let image = UIImage(named: "Rochaaa")
+//        self.driversImage = [image!, image!, image!, image!]
+//        var rides: [RideModel] = []
+//        var i: Int?
+//        var index: Int?
+//
+//        self.userID = FirebaseManager.shared.getUserID()
+//        
+//        if (rows == nil) {
+//            activityIndicatorView.startAnimating()
+//
+//            tableView.separatorStyle = .none
+//
+//                    var fetchType: String?
+//                    
+//                    if self.userType == "drivers"{
+//                        fetchType = "passengers"
+//                    } else {
+//                        fetchType = "drivers"
+//                    }
+//                    
+//                    //get rides, perfom match and build match drivers
+//                    group.enter()
+//                    FirestoreManager.shared.fetchRides(type: fetchType!, day: self.day!, period: self.period!){ result in
+//                        rides = result
+//                        group.enter()
+//                        self.match(rides: rides){ result in
+//                            self.drivers = result
+//                            for driver in self.drivers!{
+//         
+//                                group.enter()
+//                                FirebaseManager.shared.downloadImage(withURL: URL(string: driver.profileImageURL)!){ result in
+//                                    for i in (0..<self.drivers!.count) {
+//                                        if self.drivers![i].profileImageURL == driver.profileImageURL {
+//                                             index = i
+//                                         }
+//                                     }
+//                                    self.driversImage![index!] = result!
+//                                    group.leave()
+//                                }
+//                            }
+//                            group.leave()
+//                        }
+//                        group.leave()
+//                    }
+//                    
+//                    group.notify(queue: .main) {
+//                        self.rows = ["One", "Two"]
+//
+//                        self.activityIndicatorView.stopAnimating()
+//
+//                        self.tableView.reloadData()
+//                    }
+//                    
+//                }
+//        
         
-        let group = DispatchGroup()
-        
-        group.enter()
-        FirestoreManager.shared.fetchDailyRide(type: self.userType!, userID: self.userID!, weekDay: self.day!, period: self.period!){ result in
-            self.dailyRide = result
-            group.leave()
-        }
-        
-        group.notify(queue: .main) {
-            self.reloadInputViews()
-            self.tableView.reloadData()
-        }
+//
+//        let group = DispatchGroup()
+//
+//        group.enter()
+//        FirestoreManager.shared.fetchDailyRide(type: self.userType!, userID: self.userID!, weekDay: self.day!, period: self.period!){ result in
+//            self.dailyRide = result
+//            group.leave()
+//        }
+//
+//        group.notify(queue: .main) {
+//            self.reloadInputViews()
+//            self.tableView.reloadData()
+//        }
     }
 }

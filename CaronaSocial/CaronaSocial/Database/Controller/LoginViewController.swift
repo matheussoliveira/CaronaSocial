@@ -18,6 +18,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    // This is not secure, but it will prevent us
+    // for making loging everytime
+    let userDefault = UserDefaults.standard
+//    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
+    
     // Database test
 
     
@@ -28,6 +33,9 @@ class LoginViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationItem.leftBarButtonItems = []
         self.navigationController?.navigationItem.hidesBackButton = true
+//        if userDefault.bool(forKey: "usersignedin") {
+//              performSegue(withIdentifier: "goToHome", sender: self)
+//          }
     }
     
     override func viewDidLoad() {
@@ -66,6 +74,9 @@ class LoginViewController: UIViewController {
             Auth.auth().signIn(withEmail: self.emailField.text!,
                                password: self.passwordField.text!) { (user, error) in
                 if error == nil {
+                    
+                    self.userDefault.set(true, forKey: "usersignedin")
+                    self.userDefault.synchronize()
                     self.performSegue(withIdentifier: "goToHome", sender: nil)
                 } else {
                     print(error!.localizedDescription)
