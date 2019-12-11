@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     // This is not secure, but it will prevent us
     // for making loging everytime
     let userDefault = UserDefaults.standard
-//    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
+    let launchedBefore = UserDefaults.standard.bool(forKey: "usersignedin")
     
     // Database test
 
@@ -33,9 +33,9 @@ class LoginViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.navigationController?.navigationItem.leftBarButtonItems = []
         self.navigationController?.navigationItem.hidesBackButton = true
-//        if userDefault.bool(forKey: "usersignedin") {
-//              performSegue(withIdentifier: "goToHome", sender: self)
-//          }
+        if userDefault.bool(forKey: "usersignedin") {
+              performSegue(withIdentifier: "goToHome", sender: self)
+          }
     }
     
     override func viewDidLoad() {
